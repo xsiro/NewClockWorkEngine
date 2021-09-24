@@ -10,6 +10,7 @@
 #include "ModuleSceneIntro.h"
 #include "ModuleRenderer3D.h"
 #include "ModuleCamera3D.h"
+#include "ModuleGui.h"
 
 
 class Application
@@ -19,6 +20,7 @@ public:
 	ModuleInput* input;
 	ModuleAudio* audio;
 	ModuleSceneIntro* scene_intro;
+	ModuleGui* gui;
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
 

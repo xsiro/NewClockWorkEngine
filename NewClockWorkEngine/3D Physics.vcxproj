@@ -48,6 +48,7 @@
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -76,11 +77,26 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Glew\include\eglew.h" />
+    <ClInclude Include="Glew\include\glew.h" />
+    <ClInclude Include="Glew\include\glxew.h" />
+    <ClInclude Include="Glew\include\wglew.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="ImGui\include\imconfig.h" />
+    <ClInclude Include="ImGui\include\imgui.h" />
+    <ClInclude Include="ImGui\include\imgui_impl_opengl3.h" />
+    <ClInclude Include="ImGui\include\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="ImGui\include\imgui_impl_sdl.h" />
+    <ClInclude Include="ImGui\include\imgui_internal.h" />
+    <ClInclude Include="ImGui\include\imstb_rectpack.h" />
+    <ClInclude Include="ImGui\include\imstb_textedit.h" />
+    <ClInclude Include="ImGui\include\imstb_truetype.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="ModuleCamera3D.h" />
+    <ClInclude Include="ModuleGui.h" />
     <ClInclude Include="ModuleRenderer3D.h" />
+    <ClInclude Include="OpenGL.h" />
     <ClInclude Include="p2List.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleAudio.h" />
@@ -96,11 +112,19 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="glmath.cpp" />
+    <ClCompile Include="ImGui\include\imgui.cpp" />
+    <ClCompile Include="ImGui\include\imgui_demo.cpp" />
+    <ClCompile Include="ImGui\include\imgui_draw.cpp" />
+    <ClCompile Include="ImGui\include\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="ImGui\include\imgui_impl_sdl.cpp" />
+    <ClCompile Include="ImGui\include\imgui_tables.cpp" />
+    <ClCompile Include="ImGui\include\imgui_widgets.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCamera3D.cpp" />
+    <ClCompile Include="ModuleGui.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRenderer3D.cpp" />
     <ClCompile Include="ModuleSceneIntro.cpp" />

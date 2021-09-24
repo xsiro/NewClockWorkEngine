@@ -19,6 +19,12 @@
     <Filter Include="Sources\Modules\Game">
       <UniqueIdentifier>{83f46af7-e02f-40c0-9e56-41d76082527b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Modules\Glew">
+      <UniqueIdentifier>{d282595f-cc83-40e4-9dfd-a8e8959e806d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Modules\ImGui">
+      <UniqueIdentifier>{cf27911b-b49f-4357-8877-52313693c020}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -54,9 +60,6 @@
     <ClInclude Include="Application.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
     <ClInclude Include="Primitive.h">
       <Filter>Sources\Helpers</Filter>
     </ClInclude>
@@ -71,6 +74,54 @@
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Sources\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleGui.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\wglew.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\eglew.h">
+      <Filter>Sources\Modules\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\glew.h">
+      <Filter>Sources\Modules\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Sources\Modules\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\glxew.h">
+      <Filter>Sources\Modules\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imgui.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imgui_impl_opengl3.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imgui_impl_opengl3_loader.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imgui_impl_sdl.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imgui_internal.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imstb_rectpack.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imstb_textedit.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imstb_truetype.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\include\imconfig.h">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL.h">
+      <Filter>Sources\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +166,30 @@
     </ClCompile>
     <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Sources\Modules\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleGui.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\include\imgui_demo.cpp">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\include\imgui_draw.cpp">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\include\imgui_impl_opengl3.cpp">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\include\imgui_impl_sdl.cpp">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\include\imgui_tables.cpp">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\include\imgui_widgets.cpp">
+      <Filter>Sources\Modules\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\include\imgui.cpp">
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

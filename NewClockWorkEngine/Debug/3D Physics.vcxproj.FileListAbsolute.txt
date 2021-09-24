@@ -2,3 +2,5 @@ C:\Users\druiz\OneDrive\Escritorio\Motores-master\F-MEGA\Debug\3D Physics - clas
 C:\Users\druiz\OneDrive\Escritorio\Motores-master\F-MEGA\Debug\3D Physics - class5.pdb
 C:\Users\polco\OneDrive\Documentos\GitHub\HOLIS\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
 C:\Users\polco\OneDrive\Documentos\GitHub\HOLIS\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.pdb
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.pdb
