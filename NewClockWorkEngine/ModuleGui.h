@@ -3,7 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
-#include "ImGui/include/imgui.h"
+#include "imgui.h"
 
 class ModuleGui : public Module
 {
@@ -38,13 +38,7 @@ public:
 	//our state
 	bool show_demo_window;
 	bool mainwindow;
-	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
-
-private:
-
-	SDL_GLContext gl_context;
-	ImGuiIO* io = nullptr;
+	ImVec4 clear_color;
 	
 
 };

@@ -6,10 +6,10 @@
 #include "OpenGL.h"
 
 #include <stdio.h>
-#include "ImGui/include/imgui.h"
-#include "ImGui/include/imgui_internal.h"
-#include "ImGui/include/imgui_impl_opengl3.h"
-#include "ImGui/include/imgui_impl_sdl.h"
+#include "imgui.h"
+#include "imgui_internal.h"
+#include "imgui_impl_opengl3.h"
+#include "imgui_impl_sdl.h"
 
 
 
@@ -35,12 +35,9 @@ bool ModuleGui::Awake()
 bool ModuleGui::Start()
 {
 	bool ret = true;
-
-	// ImGui context
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	(void)io;
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	ImGui::StyleColorsDark();
 
@@ -70,6 +67,7 @@ update_status ModuleGui::Update(float dt)
 	if (show_demo_window)
 		ImGui::ShowDemoWindow(&show_demo_window);
 	
+
 	return UPDATE_CONTINUE;
 }
 update_status ModuleGui::PostUpdate(float dt)
@@ -82,6 +80,7 @@ update_status ModuleGui::PostUpdate(float dt)
 	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	SDL_GL_SwapWindow(App->window->window);
+
 	return  UPDATE_CONTINUE;
 }
 

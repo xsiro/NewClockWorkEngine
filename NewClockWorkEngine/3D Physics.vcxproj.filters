@@ -78,16 +78,10 @@
     <ClInclude Include="ModuleGui.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Glew\include\wglew.h">
-      <Filter>Sources</Filter>
-    </ClInclude>
     <ClInclude Include="Glew\include\eglew.h">
       <Filter>Sources\Modules\Glew</Filter>
     </ClInclude>
     <ClInclude Include="Glew\include\glew.h">
-      <Filter>Sources\Modules\Glew</Filter>
-    </ClInclude>
-    <ClInclude Include="Globals.h">
       <Filter>Sources\Modules\Glew</Filter>
     </ClInclude>
     <ClInclude Include="Glew\include\glxew.h">
@@ -122,6 +116,12 @@
     </ClInclude>
     <ClInclude Include="OpenGL.h">
       <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Glew\include\wglew.h">
+      <Filter>Sources\Modules\Glew</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
