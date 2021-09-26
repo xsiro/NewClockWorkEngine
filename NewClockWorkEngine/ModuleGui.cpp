@@ -3,9 +3,9 @@
 #include "ModuleGui.h"
 #include "ModuleAudio.h"
 #include "ModuleWindow.h"
+#include "ModuleRenderer3D.h"
 #include "OpenGL.h"
 
-#include <stdio.h>
 #include "imgui.h"
 #include "imgui_internal.h"
 #include "imgui_impl_opengl3.h"
@@ -67,6 +67,14 @@ update_status ModuleGui::Update(float dt)
 	if (show_demo_window)
 		ImGui::ShowDemoWindow(&show_demo_window);
 	
+	if (ImGui::BeginMainMenuBar())
+	{
+		if (ImGui::BeginMenu("Close"))
+		{
+			return UPDATE_STOP;
+		}
+		ImGui::EndMainMenuBar();
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -81,7 +89,7 @@ update_status ModuleGui::PostUpdate(float dt)
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	SDL_GL_SwapWindow(App->window->window);
 
-	return  UPDATE_CONTINUE;
+	return  update_status();
 }
 
 bool ModuleGui::CleanUp()
