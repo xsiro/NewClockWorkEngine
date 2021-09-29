@@ -18,12 +18,26 @@ public:
 	bool Init();
 	bool CleanUp();
 
+	float GetBrightness();
+	void SetBright(float bright);
+	void GetSize(int& width, int& height);
+	void SetSize(int width, int height);
+	void SetFullScreen(bool state);
+	void SetBorderless(bool state);
+	void SetResizable(bool state);
+	void SetFullDesktop(bool state);
 	void SetTitle(const char* title);
 
 public:
 	//The window we'll be rendering to
 	SDL_Window* window;
-
+	bool fullscreen;
+	bool fullscreen_desktop;
+	bool resizable;
+	bool borderless;
+	float brightness;
+	int width;
+	int height;
 	//The surface contained by the window
 	SDL_Surface* screen_surface;
 };

@@ -27,7 +27,7 @@ public:
 private:
 
 	Timer	ms_timer;
-	float	dt;
+	
 	p2List<Module*> list_modules;
 
 public:
@@ -44,4 +44,9 @@ private:
 	void AddModule(Module* mod);
 	void PrepareUpdate();
 	void FinishUpdate();
+
+public:
+	float max_ms;
+	float fps;
+	float dt;
 };

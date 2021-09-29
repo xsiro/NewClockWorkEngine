@@ -5,6 +5,10 @@
 #include "Globals.h"
 #include "imgui.h"
 
+#include <list>
+#include <string>
+#include <vector>
+
 class ModuleGui : public Module
 {
 public:
@@ -34,13 +38,26 @@ public:
 
 
 public:
-
+	int fps;
+	int height;
+	int width;
+	bool fullscreen;
+	bool resizable;
+	bool borderless;
+	bool fulldesktop;
+	bool vertexlines;
+	bool facelines;
+	float brightness;
 	//our state
 	bool show_demo_window;
 	bool mainwindow;
+	bool show_config;
 	ImVec4 clear_color;
 	
+private:
 
+	std::vector<float> fps_log;
+	std::vector<float> ms_log;
 };
 
 #endif // __ModuleGui_H__

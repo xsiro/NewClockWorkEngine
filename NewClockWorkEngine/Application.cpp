@@ -25,6 +25,8 @@ Application::Application()
 
 	// Renderer last!
 	AddModule(renderer3D);
+	max_ms = 1000 / 60;
+	fps = 0;
 }
 
 Application::~Application()
@@ -70,6 +72,7 @@ void Application::PrepareUpdate()
 {
 	dt = (float)ms_timer.Read() / 1000.0f;
 	ms_timer.Start();
+	fps = 1.0f / dt;
 }
 
 // ---------------------------------------------
@@ -105,6 +108,13 @@ update_status Application::Update()
 	{
 		ret = item->data->PostUpdate(dt);
 		item = item->next;
+	}
+
+	int last_frame_ms = ms_timer.Read();
+
+	if (last_frame_ms < max_ms)
+	{
+		SDL_Delay(max_ms - last_frame_ms);
 	}
 
 	FinishUpdate();
