@@ -20,8 +20,8 @@ public:
 
 	float GetBrightness();
 	void SetBright(float bright);
-	void GetSize(int& width, int& height);
-	void SetSize(int width, int height);
+	void SetWidth(int width);
+	void SetHeight(int height);
 	void SetFullScreen(bool state);
 	void SetBorderless(bool state);
 	void SetResizable(bool state);

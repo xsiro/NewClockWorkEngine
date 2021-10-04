@@ -5,10 +5,11 @@ Application::Application()
 	window = new ModuleWindow(this);
 	input = new ModuleInput(this);
 	audio = new ModuleAudio(this, true);
-	scene_intro = new ModuleSceneIntro(this);
+	scene_intro = new ModuleSceneIntro(this);	
+	gui = new ModuleGui(this);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
-	gui = new ModuleGui(this);
+
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
 	// They will CleanUp() in reverse order
@@ -137,4 +138,113 @@ bool Application::CleanUp()
 void Application::AddModule(Module* mod)
 {
 	list_modules.add(mod);
+}
+
+int Application::CPUCount()
+{
+	return SDL_GetCPUCount();
+}
+
+int Application::CPUCache()
+{
+	return SDL_GetCPUCacheLineSize();
+}
+
+int Application::SystemRAM()
+{
+	int TransformtoGB = SDL_GetSystemRAM() * 0.001;
+	return TransformtoGB;
+}
+const char* Application::SystemCaps()
+{
+	Caps.clear();
+	// IF the processor has certain register it will be added to the string
+	if (SDL_Has3DNow())
+	{
+		Caps.append("3D Now, ");
+	}
+
+	if (SDL_HasAVX())
+	{
+		Caps.append("AVX, ");
+	}
+
+	if (SDL_HasAVX2())
+	{
+		Caps.append("AVX2, ");
+	}
+
+	if (SDL_HasAltiVec())
+	{
+		Caps.append("AltiVec, ");
+	}
+
+	if (SDL_HasMMX())
+	{
+		Caps.append("MMX, ");
+	}
+
+	if (SDL_HasRDTSC())
+	{
+		Caps.append("RDTSC, ");
+	}
+
+	if (SDL_HasSSE())
+	{
+		Caps.append("SSE, ");
+	}
+
+	if (SDL_HasSSE2())
+	{
+		Caps.append("SSE2, ");
+	}
+
+	if (SDL_HasSSE3())
+	{
+		Caps.append("SSE3, ");
+	}
+
+	if (SDL_HasSSE41())
+	{
+		Caps.append("SSE41, ");
+	}
+
+	if (SDL_HasSSE41())
+	{
+		Caps.append("SSE42");
+	}
+
+	return Caps.data();
+}
+
+const char* Application::Brand() {
+	return (const char*)glGetString(GL_VENDOR);
+}
+
+const char* Application::Model() {
+	return (const char*)glGetString(GL_RENDERER);
+}
+
+int Application::Budget() {
+	int budget;
+	glGetIntegerv(GL_GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX, &budget);
+	return budget / 1024;
+}
+
+int Application::Usage() {
+	int usage;
+	glGetIntegerv(GL_GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX, &usage);
+	return usage / 1024;
+}
+
+int Application::Available() {
+	int available;
+	glGetIntegerv(GL_GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX, &available);
+	return available / 1024;
+}
+
+int Application::Reserved() {
+	int reserved;
+	glGetIntegerv(GL_GPU_MEMORY_INFO_EVICTED_MEMORY_NVX, &reserved);
+	return reserved / 1024;
 }

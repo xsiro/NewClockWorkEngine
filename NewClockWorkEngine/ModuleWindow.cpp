@@ -112,9 +112,9 @@ void ModuleWindow::SetBorderless(bool state)
 //void ModuleWindow::SetResizable(bool state)
 //{
 //	if (state)
-//		SDL_SetWindowResizable(window, SDL_TRUE);
+//	SDL_SetWindowResizable(window, SDL_TRUE);
 //	else if (!state)
-//		SDL_SetWindowResizable(window, SDL_FALSE);
+//	SDL_SetWindowResizable(window, SDL_FALSE);
 //}
 
 void ModuleWindow::SetFullDesktop(bool state)
@@ -135,12 +135,12 @@ void ModuleWindow::SetBright(float bright)
 	SDL_SetWindowBrightness(window, bright);
 }
 
-void ModuleWindow::GetSize(int& g_width, int& g_height)
+void ModuleWindow::SetWidth(int width)
 {
-	SDL_GetWindowSize(window, &g_width, &g_height);
+	SDL_SetWindowSize(window, width, App->gui->height);
 }
 
-void ModuleWindow::SetSize(int g_width, int g_height)
+void ModuleWindow::SetHeight(int height)
 {
-	SDL_SetWindowSize(window, g_width, g_height);
+	SDL_SetWindowSize(window, App->gui->width, height);
 }

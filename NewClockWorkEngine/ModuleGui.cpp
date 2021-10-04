@@ -10,6 +10,7 @@
 #include "imgui_internal.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"
+#include "Glew/include/glew.h"
 
 
 
@@ -18,13 +19,13 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	brightness = 1.0f;
 	width = 1280;
 	height = 1024;
-	fps = 0;
 	fullscreen = false;
 	resizable = false;
 	borderless = true;
 	fulldesktop = false;
-	fps_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-	ms_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	fps = 0;
+	fps_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	ms_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 }
 
 // Destructor
@@ -52,6 +53,7 @@ bool ModuleGui::Start()
 
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 	ImGui_ImplOpenGL3_Init("#version 130");
+	App->renderer3D->OnResize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
 	return ret;
@@ -164,11 +166,17 @@ update_status ModuleGui::Update(float dt)
 			ImGui::SliderFloat("Brightness", &brightness, 0.f, 1.0f);
 			App->window->SetBright(brightness);
 
+			ImGui::SliderInt("Width", &width, 640, 1920);
+			App->window->SetWidth(width);
+
+			ImGui::SliderInt("Height", &height, 480, 1080);
+			App->window->SetHeight(height);
+
 			if (ImGui::Checkbox("Fullscreen", &fullscreen));
 			App->window->SetFullScreen(fullscreen);
 			ImGui::SameLine();
 
-		/*	ImGui::Checkbox("Resizable", &resizable);
+			/*ImGui::Checkbox("Resizable", &resizable);
 			App->window->SetResizable(resizable);*/
 
 			ImGui::Checkbox("Borderless", &borderless);
@@ -180,6 +188,73 @@ update_status ModuleGui::Update(float dt)
 
 			if (ImGui::IsAnyItemHovered())
 				ImGui::SetTooltip("Restart to Apply");
+		}
+		if (ImGui::CollapsingHeader("Hardware"))
+		{
+			ImVec4 color(1.0f, 1.0f, 0.0f, 1.0f);
+			ImGui::Text("SDL version: %d.%d.%d", SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);
+			ImGui::Separator();
+
+			int cpu;
+			int ram;
+			int cache;
+			ImGui::Text("CPUs:");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%i", cpu = App->CPUCount());
+			ImGui::SameLine();
+			ImGui::TextColored(color, "(Cache: %iKb)", cache = App->CPUCache());
+			ImGui::Text("System RAM: ");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%i.0GB", ram = App->SystemRAM());
+			ImGui::Text("Caps: ");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%s", App->SystemCaps());
+			ImGui::Separator();
+
+			ImGui::Text("Brand:");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%s", App->Brand());
+			ImGui::Text("Model:");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%s", App->Model());
+			ImGui::Text("VRAM Budget:");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%i Mb", App->Budget());
+			ImGui::Text("VRAM Usage:");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%i Mb", App->Usage());
+			ImGui::Text("VRAM Available:");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%i Mb", App->Available());
+			ImGui::Text("VRAM Reserved:");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%i Mb", App->Reserved());
+		}
+		if (ImGui::CollapsingHeader("Input"))
+		{
+			ImGui::Text("Mouse X: %d", App->input->GetMouseX());
+			ImGui::Text("Mouse Y: %d", App->input->GetMouseY());
+
+			ImGui::Spacing();
+
+			ImGui::Text("Current Window Mouse X: %.2f", App->gui->mouseScenePosition.x);
+			ImGui::Text("Current Window Mouse Y: %.2f", App->gui->mouseScenePosition.y);
+
+			ImGui::Spacing();
+
+			ImGui::Text("Normalized Mouse X: %.2f", App->gui->mouseScenePosition.x / App->gui->image_size.x);
+			ImGui::Text("Normalized Mouse Y: %.2f", App->gui->mouseScenePosition.y / App->gui->image_size.y);
+
+			ImGui::Spacing();
+
+			float normalized_x = App->gui->mouseScenePosition.x / App->gui->image_size.x;
+			float normalized_y = App->gui->mouseScenePosition.y / App->gui->image_size.y;
+
+			normalized_x = (normalized_x - 0.5f) * 2.0f;
+			normalized_y = -(normalized_y - 0.5f) * 2.0f;
+
+			ImGui::Text("Near Plane Mouse X: %.2f", normalized_x);
+			ImGui::Text("Near Plane Mouse Y: %.2f", normalized_y);
 		}
 
 		ImGui::End();
@@ -197,8 +272,8 @@ update_status ModuleGui::PostUpdate(float dt)
 	(void)io;
 	ImGui::Render();
 	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-	glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
-	glClear(GL_COLOR_BUFFER_BIT);
+	//glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
+	//glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	SDL_GL_SwapWindow(App->window->window);
 
@@ -217,3 +292,4 @@ bool ModuleGui::CleanUp()
 
 	return true;
 }
+

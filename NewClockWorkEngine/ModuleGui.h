@@ -53,7 +53,9 @@ public:
 	bool mainwindow;
 	bool show_config;
 	ImVec4 clear_color;
-	
+	ImVec2 mouseScenePosition;
+	ImVec2 image_size;
+
 private:
 
 	std::vector<float> fps_log;

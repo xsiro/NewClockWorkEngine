@@ -1,6 +1,6 @@
 ﻿  ModuleGui.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(141,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(143,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(112,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(167,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(143,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(145,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(114,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(175,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
   3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
