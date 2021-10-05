@@ -261,7 +261,29 @@ update_status ModuleGui::Update(float dt)
 
 		ImGui::End();
 	}
+	if (show_console)
+	{
+		if (!ImGui::Begin("Console", &show_console))
+		{
+			if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN) LOG("Console working");
 
+			ImGui::End();
+		}
+		else
+		{
+			std::vector<char*>::iterator item = logs.begin();
+			for (item; item != logs.end(); ++item)
+			{
+				ImGui::TextUnformatted((*item));
+			}
+			if (scroll)
+			{
+				//ImGui::SetScrollHere(1.0f);
+				scroll = false;
+			}
+			ImGui::End();
+		}
+	}
 
 	if (show_demo_window)
 
@@ -288,7 +310,7 @@ bool ModuleGui::CleanUp()
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();
-
+	ClearLog();
 	SDL_GL_DeleteContext(App->renderer3D->context);
 	SDL_DestroyWindow(App->window->window);
 	SDL_Quit();
@@ -296,74 +318,18 @@ bool ModuleGui::CleanUp()
 	return true;
 }
 
+void ModuleGui::ConsoleLog(char* log)
+{
+	logs.push_back(strdup(log));
+	scroll = true;
+}
 void ModuleGui::ClearLog()
 {
 	for (int i = 0; i < logs.size(); ++i)
 	{
 		free(logs[i]);
 	}
-
 	logs.clear();
-}
-
-bool ModuleGui::DrawConsole(ImGuiIO& io)
-{
-	bool ret = true;
-	ImGuiWindowFlags win_flags = ImGuiWindowFlags_MenuBar;
-	ImGui::Begin(GetName(), NULL, win_flags);
-	ConsoleMenu();
-	ConsoleOutput();
-	ImGui::End();
-	return ret;
-}
-
-void ModuleGui::ConsoleOutput()
-{
-	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 6));
-
-	for (int i = 0; i < logs.size(); ++i)
-	{
-		ImVec4 text_colour = { 1.0f, 1.0f, 1.0f, 1.0f };
-
-		if (strstr(logs[i], "[ERROR]") != nullptr)
-		{
-			text_colour = { 1.0f, 0.0f, 0.0f, 1.0f };
-
-			if (strstr(logs[i], "[WARNING]") != nullptr)
-			{
-				text_colour = { 1.0f, 1.0f, 0.0f, 1.0f };
-			}
-
-			ImGui::PushStyleColor(ImGuiCol_Text, text_colour);
-			ImGui::TextUnformatted(logs[i]);
-			ImGui::PopStyleColor();
-		}
-	}
-
-	ImGui::PopStyleVar();
-}
-
-void ModuleGui::ConsoleMenu()
-{
-	ImGui::BeginMenuBar();
-	
-		if (ImGui::BeginMenu("Options", &show_console))
-		{
-			if (ImGui::MenuItem("Clear Console"))
-			{
-				ClearLog();
-			}
-
-			if (ImGui::MenuItem("Close Console"))
-			{
-
-			}
-
-			ImGui::EndMenu();
-		}
-	
-
-	ImGui::EndMenuBar();
 }
 
 const char* ModuleGui::GetName() const

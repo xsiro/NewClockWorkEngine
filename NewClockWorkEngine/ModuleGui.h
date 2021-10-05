@@ -56,14 +56,16 @@ public:
 	bool vertexlines;
 	bool facelines;
 	float brightness;
+	bool scroll;
 	//our state
 	bool show_demo_window;
 	bool mainwindow;
 	bool show_config;
-	bool show_console=true;
+	bool show_console;
 	const char* GetName() const;
 	const char* name;
 	void ClearLog();
+	void ConsoleLog(char* log);
 	void ConsoleOutput();
 
 	ImVec4 clear_color;
