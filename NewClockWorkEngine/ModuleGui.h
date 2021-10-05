@@ -9,6 +9,12 @@
 #include <string>
 #include <vector>
 
+struct log_message 
+{
+	std::string log_text;
+	int warning_level;
+};
+
 class ModuleGui : public Module
 {
 public:
@@ -35,7 +41,9 @@ public:
 
 	// Called before quitting
 	bool CleanUp();
-
+	void AddConsoleLog(const char* log, int warning_level);
+	void ConsoleMenu();
+	bool DrawConsole(ImGuiIO& io);
 
 public:
 	int fps;
@@ -52,14 +60,22 @@ public:
 	bool show_demo_window;
 	bool mainwindow;
 	bool show_config;
+	bool show_console=true;
+	const char* GetName() const;
+	const char* name;
+	void ClearLog();
+	void ConsoleOutput();
+
 	ImVec4 clear_color;
 	ImVec2 mouseScenePosition;
 	ImVec2 image_size;
+	std::vector<log_message> console_log;
 
 private:
 
 	std::vector<float> fps_log;
 	std::vector<float> ms_log;
+	std::vector<char*> logs;
 };
 
 #endif // __ModuleGui_H__
