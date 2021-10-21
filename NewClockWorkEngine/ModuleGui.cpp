@@ -14,6 +14,7 @@
 
 
 
+
 ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	brightness = 1.0f;
@@ -23,9 +24,12 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	resizable = false;
 	borderless = true;
 	fulldesktop = false;
+	about_window = false;
 	fps = 0;
 	fps_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 	ms_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+
+	
 }
 
 // Destructor
@@ -105,6 +109,26 @@ update_status ModuleGui::Update(float dt)
 			
 			ImGui::EndMenu();
 
+		}
+		if (ImGui::BeginMenu("Help"))
+		{
+			if (ImGui::MenuItem("Gui Demo"))
+			{
+				show_demo_window = !show_demo_window;
+			}
+			if (ImGui::MenuItem("Documentation"))
+			{
+				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine/wiki");
+			}
+			if (ImGui::MenuItem("Download latest"))
+			{
+				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine");
+			}
+			if (ImGui::MenuItem("About"))
+			{
+				about_window = !about_window;
+			}
+			ImGui::EndMenu();
 		}
 
 
@@ -263,7 +287,8 @@ update_status ModuleGui::Update(float dt)
 	}
 	if (show_console)
 	{
-		if (!ImGui::Begin("Console", &show_console))
+		
+		if (ImGui::Begin("Console", &show_console))
 		{
 			if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN) LOG("Console working");
 
@@ -284,6 +309,49 @@ update_status ModuleGui::Update(float dt)
 			ImGui::End();
 		}
 	}
+	if (about_window)
+	{
+		if (ImGui::Begin("About", &about_window))
+		{
+			ImGui::Text("ClockWorkEngine v0.1");
+			ImGui::Text("ClockWorkEngine is developed by Daniel Ruiz & Pol Cortes");
+			ImGui::Text("This engine has been coded in C++");
+			ImGui::Text("3rd party libraries used:");
+			ImGui::BulletText("SDL 2.06");
+			ImGui::BulletText("Glew 2.0.0");
+			ImGui::BulletText("ImGui");
+			ImGui::BulletText("MathGeoLib");
+
+			ImGui::Text("");
+
+			ImGui::Text("LICENSE:");
+			ImGui::Text("");
+			ImGui::Text("MIT License");
+			ImGui::Text("");
+			ImGui::Text("Copyright (c) 2021 [Daniel Ruiz & Pol Cortes]");
+			ImGui::Text("");
+			ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
+			ImGui::Text("of this software and associated documentation files (the 'Software'), to deal");
+			ImGui::Text("in the Software without restriction, including without limitation the rights");
+			ImGui::Text("to use, copy, modify, merge, publish, distribute, sublicense, and/or sell");
+			ImGui::Text("copies of the Software, and to permit persons to whom the Software is");
+			ImGui::Text("furnished to do so, subject to the following conditions:");
+			ImGui::Text("");
+			ImGui::Text("The above copyright notice and this permission notice shall be included in all");
+			ImGui::Text("copies or substantial portions of the Software.");
+			ImGui::Text("");
+			ImGui::Text("THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR");
+			ImGui::Text("IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,");
+			ImGui::Text("FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE");
+			ImGui::Text("AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER");
+			ImGui::Text("LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,");
+			ImGui::Text("OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN ");
+			ImGui::Text("THE SOFTWARE.");
+			ImGui::End();
+		}
+		
+	}
+	
 
 	if (show_demo_window)
 

@@ -38,6 +38,7 @@ public:
 	Application();
 	~Application();
 
+	void RequestBrowser(const char* url)const;
 	int CPUCount();
 	int CPUCache();
 	int SystemRAM();
@@ -54,6 +55,7 @@ public:
 	bool CleanUp();
 	
 private:
+
 
 	void AddModule(Module* mod);
 	void PrepareUpdate();

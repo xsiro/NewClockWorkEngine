@@ -62,6 +62,7 @@ public:
 	bool mainwindow;
 	bool show_config;
 	bool show_console;
+	bool about_window;
 	const char* GetName() const;
 	const char* name;
 	void ClearLog();
@@ -72,6 +73,7 @@ public:
 	ImVec2 mouseScenePosition;
 	ImVec2 image_size;
 	std::vector<log_message> console_log;
+
 
 private:
 

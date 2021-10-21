@@ -156,6 +156,11 @@ int Application::SystemRAM()
 	int TransformtoGB = SDL_GetSystemRAM() * 0.001;
 	return TransformtoGB;
 }
+void Application::RequestBrowser(const char* url)const
+{
+	ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOWNORMAL);
+}
+
 const char* Application::SystemCaps()
 {
 	Caps.clear();
