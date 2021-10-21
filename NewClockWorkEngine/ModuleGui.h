@@ -9,11 +9,9 @@
 #include <string>
 #include <vector>
 
-struct log_message 
-{
-	std::string log_text;
-	int warning_level;
-};
+#define THRESHOLD_LOGS 1000
+
+
 
 class ModuleGui : public Module
 {
@@ -41,14 +39,12 @@ public:
 
 	// Called before quitting
 	bool CleanUp();
-	void AddConsoleLog(const char* log, int warning_level);
-	void ConsoleMenu();
-	bool DrawConsole(ImGuiIO& io);
-
+	
 public:
 	int fps;
 	int height;
 	int width;
+	bool check = true;
 	bool fullscreen;
 	bool resizable;
 	bool borderless;
@@ -66,13 +62,14 @@ public:
 	const char* GetName() const;
 	const char* name;
 	void ClearLog();
-	void ConsoleLog(char* log);
+	void ConsoleLog(char* logStr);
 	void ConsoleOutput();
+	
 
 	ImVec4 clear_color;
 	ImVec2 mouseScenePosition;
 	ImVec2 image_size;
-	std::vector<log_message> console_log;
+	std::vector<char*> console_log;
 
 
 private:

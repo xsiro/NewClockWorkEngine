@@ -28,7 +28,7 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	fps = 0;
 	fps_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 	ms_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-
+	
 	
 }
 
@@ -192,7 +192,7 @@ update_status ModuleGui::Update(float dt)
 			ImGui::SliderFloat("Brightness", &brightness, 0.f, 1.0f);
 			App->window->SetBright(brightness);
 
-			ImGui::SliderInt("Width", &width, 640, 1920);
+			ImGui::SliderInt("Width", &width, 720, 1920);
 			App->window->SetWidth(width);
 
 			ImGui::SliderInt("Height", &height, 480, 1080);
@@ -288,25 +288,14 @@ update_status ModuleGui::Update(float dt)
 	if (show_console)
 	{
 		
-		if (ImGui::Begin("Console", &show_console))
+		if (ImGui::Begin("Console", &show_console,ImGuiWindowFlags_None))
 		{
-			if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN) LOG("Console working");
-
-			ImGui::End();
-		}
-		else
-		{
-			std::vector<char*>::iterator item = logs.begin();
-			for (item; item != logs.end(); ++item)
+			for (uint i = 0; i < logs.size(); ++i)
 			{
-				ImGui::TextUnformatted((*item));
-			}
-			if (scroll)
-			{
-				//ImGui::SetScrollHere(1.0f);
-				scroll = false;
+				ImGui::TextUnformatted(logs[i]);
 			}
 			ImGui::End();
+			
 		}
 	}
 	if (about_window)
@@ -386,11 +375,18 @@ bool ModuleGui::CleanUp()
 	return true;
 }
 
-void ModuleGui::ConsoleLog(char* log)
+void ModuleGui::ConsoleLog(char* logStr)
 {
-	logs.push_back(strdup(log));
-	scroll = true;
+	if (logs.size() + 1 > THRESHOLD_LOGS)
+	{
+		ClearLog();
+	}
+
+	char* tmp = _strdup(logStr);
+
+	logs.push_back(tmp);
 }
+
 void ModuleGui::ClearLog()
 {
 	for (int i = 0; i < logs.size(); ++i)
@@ -399,6 +395,8 @@ void ModuleGui::ClearLog()
 	}
 	logs.clear();
 }
+
+
 
 const char* ModuleGui::GetName() const
 {

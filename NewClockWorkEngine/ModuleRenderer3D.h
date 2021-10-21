@@ -6,6 +6,8 @@
 
 #define MAX_LIGHTS 8
 
+class Mesh;
+
 class ModuleRenderer3D : public Module
 {
 public:
@@ -25,4 +27,5 @@ public:
 	SDL_GLContext context;
 	mat3x3 NormalMatrix;
 	mat4x4 ModelMatrix, ViewMatrix, ProjectionMatrix;
+	Mesh* myMesh;
 };
