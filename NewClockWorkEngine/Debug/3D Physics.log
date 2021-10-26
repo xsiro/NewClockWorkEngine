@@ -1,7 +1,7 @@
 ﻿  ModuleGui.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(179,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(181,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(150,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(209,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(401,20): warning C4018: '<': no coinciden signed/unsigned
-  3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
+C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(179,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(181,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(150,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(209,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(401,20): warning C4018: '<': no coinciden signed/unsigned
+  3D Physics.vcxproj -> C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe

@@ -79,7 +79,7 @@ update_status ModuleGui::Update(float dt)
 {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame(App->window->window);
-	ImGui::NewFrame();
+	//ImGui::NewFrame();
 	ImGuiIO& io = ImGui::GetIO();
 	(void)io;
 
