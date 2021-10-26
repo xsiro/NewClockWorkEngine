@@ -51,12 +51,14 @@ bool ModuleGui::Start()
 	bool ret = true;
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGuiIO& io = ImGui::GetIO(); 
+	(void)io;
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
 	ImGui::StyleColorsDark();
 
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
-	ImGui_ImplOpenGL3_Init();
+	ImGui_ImplOpenGL3_Init("#version 130");
 	
 
 
@@ -66,7 +68,9 @@ bool ModuleGui::Start()
 // Update all guis
 update_status ModuleGui::PreUpdate(float dt)
 {
-
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplSDL2_NewFrame(App->window->window);
+	ImGui::NewFrame();
 	return  UPDATE_CONTINUE;
 }
 
@@ -115,18 +119,22 @@ update_status ModuleGui::Update(float dt)
 			if (ImGui::MenuItem("Gui Demo"))
 			{
 				show_demo_window = !show_demo_window;
+				ImGui::End();
 			}
 			if (ImGui::MenuItem("Documentation"))
 			{
 				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine/wiki");
+				ImGui::End();
 			}
 			if (ImGui::MenuItem("Download latest"))
 			{
 				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine");
+				ImGui::End();
 			}
 			if (ImGui::MenuItem("About"))
 			{
 				about_window = !about_window;
+				ImGui::End();
 			}
 			ImGui::EndMenu();
 		}
@@ -338,13 +346,14 @@ update_status ModuleGui::Update(float dt)
 			ImGui::Text("THE SOFTWARE.");
 			ImGui::End();
 		}
-		
+		ImGui::EndMenu();
 	}
 	
+	Dock(dockingwindow);
 
-	if (show_demo_window)
+	/*if (show_demo_window)
 
-		ImGui::ShowDemoWindow(&show_demo_window);
+		ImGui::ShowDemoWindow(&show_demo_window);*/
 
 	return UPDATE_CONTINUE;
 }
@@ -358,7 +367,7 @@ update_status ModuleGui::PostUpdate(float dt)
 	//glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	SDL_GL_SwapWindow(App->window->window);
-
+	
 	return  update_status();
 }
 
@@ -396,7 +405,55 @@ void ModuleGui::ClearLog()
 	logs.clear();
 }
 
+update_status ModuleGui::Dock(bool* p_open)
+{
+	update_status ret = UPDATE_CONTINUE;
 
+	static bool opt_fullscreen = true;
+	static bool opt_padding = false;
+	static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_PassthruCentralNode;
+
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+	if (opt_fullscreen)
+	{
+		ImGuiViewport* viewport = ImGui::GetMainViewport();
+		ImGui::SetNextWindowPos(viewport->GetCenter());
+		ImGui::SetNextWindowSize(viewport->GetWorkCenter());
+		ImGui::SetNextWindowViewport(viewport->ID);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+		window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
+		window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+
+	}
+	else
+	{
+		dockspace_flags &= ~ImGuiDockNodeFlags_PassthruCentralNode;
+	}
+
+	if (dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode)
+		window_flags |= ImGuiWindowFlags_NoBackground;
+
+	if (!opt_padding)
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+	ImGui::Begin("DockSpace Demo", p_open, window_flags);
+	if (!opt_padding)
+		ImGui::PopStyleVar();
+
+	if (opt_fullscreen)
+		ImGui::PopStyleVar(2);
+
+	ImGuiIO& io = ImGui::GetIO();
+	if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
+	{
+		ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+		ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
+	}
+
+	ImGui::End();
+
+	return ret;
+}
 
 const char* ModuleGui::GetName() const
 {

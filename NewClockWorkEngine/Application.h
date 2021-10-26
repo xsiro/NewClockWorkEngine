@@ -24,7 +24,6 @@ public:
 	ModuleAudio* audio;
 	ModuleSceneIntro* scene_intro;
 	ModuleRenderer3D* renderer3D;
-	ModuleImporter* importer;
 	ModuleCamera3D* camera;
 	ModuleGui* gui;
 

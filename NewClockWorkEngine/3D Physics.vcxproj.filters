@@ -22,10 +22,7 @@
     <Filter Include="Sources\Modules\Glew">
       <UniqueIdentifier>{d282595f-cc83-40e4-9dfd-a8e8959e806d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Core">
-      <UniqueIdentifier>{2e9b6405-3917-49d0-830f-aa6144c0e913}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\Tools\ImGui">
+    <Filter Include="Sources\Modules\ImGui">
       <UniqueIdentifier>{cf27911b-b49f-4357-8877-52313693c020}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -60,6 +57,9 @@
     <ClInclude Include="glmath.h">
       <Filter>Sources\Containers</Filter>
     </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
     <ClInclude Include="Primitive.h">
       <Filter>Sources\Helpers</Filter>
     </ClInclude>
@@ -88,31 +88,31 @@
       <Filter>Sources\Modules\Glew</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imgui.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imgui_impl_opengl3.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imgui_impl_opengl3_loader.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imgui_impl_sdl.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imgui_internal.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imstb_rectpack.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imstb_textedit.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imstb_truetype.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\include\imconfig.h">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="OpenGL.h">
       <Filter>Sources\Modules</Filter>
@@ -120,29 +120,8 @@
     <ClInclude Include="Glew\include\wglew.h">
       <Filter>Sources\Modules\Glew</Filter>
     </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>Sources\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Globals.h">
-      <Filter>Sources\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleImporter.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleMesh.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleComponent.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleMaterial.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleTransform.h">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +146,12 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Sources\Tools</Filter>
     </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
     <ClCompile Include="glmath.cpp">
       <Filter>Sources\Containers</Filter>
     </ClCompile>
@@ -186,49 +171,25 @@
       <Filter>Sources\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\include\imgui_demo.cpp">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\include\imgui_draw.cpp">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\include\imgui_impl_opengl3.cpp">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\include\imgui_impl_sdl.cpp">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\include\imgui_tables.cpp">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\include\imgui_widgets.cpp">
-      <Filter>Sources\Tools\ImGui</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\include\imgui.cpp">
-      <Filter>Sources\Tools\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>Sources\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Sources\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleImporter.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleMesh.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleComponent.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleMaterial.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleTransform.cpp">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources\Modules\ImGui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

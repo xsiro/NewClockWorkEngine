@@ -8,7 +8,6 @@ Application::Application()
 	audio = new ModuleAudio(this, true);
 	scene_intro = new ModuleSceneIntro(this);	
 	gui = new ModuleGui(this);
-	importer = new ModuleImporter(this);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
 
@@ -22,7 +21,6 @@ Application::Application()
 	AddModule(input);
 	AddModule(audio);
 	AddModule(gui);
-	AddModule(importer);
 	
 	// Scenes
 	AddModule(scene_intro);
