@@ -46,7 +46,7 @@ bool ModuleGui::Awake()
 }
 
 // Called before the first frame
-bool ModuleGui::Start()
+bool ModuleGui::Init()
 {
 	bool ret = true;
 	IMGUI_CHECKVERSION();
@@ -57,9 +57,11 @@ bool ModuleGui::Start()
 
 	ImGui::StyleColorsDark();
 
-	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
-	ImGui_ImplOpenGL3_Init("#version 130");
+	gl_context = SDL_GL_CreateContext(App->window->window);
+	SDL_GL_MakeCurrent(App->window->window, gl_context);
 	
+	ImGui_ImplOpenGL3_Init();
+	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 
 
 	return ret;
@@ -77,11 +79,12 @@ update_status ModuleGui::PreUpdate(float dt)
 // Called every frame
 update_status ModuleGui::Update(float dt)
 {
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplSDL2_NewFrame(App->window->window);
-	//ImGui::NewFrame();
-	ImGuiIO& io = ImGui::GetIO();
-	(void)io;
+	Dock(dockingwindow);
+	//ImGui_ImplOpenGL3_NewFrame();
+	//ImGui_ImplSDL2_NewFrame(App->window->window);
+	////ImGui::NewFrame();
+	//ImGuiIO& io = ImGui::GetIO();
+	//(void)io;
 
 	
 	
@@ -349,11 +352,11 @@ update_status ModuleGui::Update(float dt)
 		ImGui::EndMenu();
 	}
 	
-	Dock(dockingwindow);
+	
 
-	/*if (show_demo_window)
+	if (show_demo_window)
 
-		ImGui::ShowDemoWindow(&show_demo_window);*/
+		ImGui::ShowDemoWindow(&show_demo_window);
 
 	return UPDATE_CONTINUE;
 }
@@ -361,10 +364,10 @@ update_status ModuleGui::PostUpdate(float dt)
 {
 	ImGuiIO& io = ImGui::GetIO();
 	(void)io;
-	ImGui::Render();
+	
+	
 	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-	//glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
-	//glClear(GL_COLOR_BUFFER_BIT);
+	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	SDL_GL_SwapWindow(App->window->window);
 	
@@ -417,8 +420,8 @@ update_status ModuleGui::Dock(bool* p_open)
 	if (opt_fullscreen)
 	{
 		ImGuiViewport* viewport = ImGui::GetMainViewport();
-		ImGui::SetNextWindowPos(viewport->GetCenter());
-		ImGui::SetNextWindowSize(viewport->GetWorkCenter());
+		ImGui::SetNextWindowPos(viewport->GetWorkPos());
+		ImGui::SetNextWindowSize(viewport->GetWorkSize());
 		ImGui::SetNextWindowViewport(viewport->ID);
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);

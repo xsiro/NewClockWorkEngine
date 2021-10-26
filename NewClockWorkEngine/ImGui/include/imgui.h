@@ -2925,7 +2925,10 @@ struct ImGuiViewport
     ImVec2              Pos;                    // Main Area: Position of the viewport (Dear ImGui coordinates are the same as OS desktop/native coordinates)
     ImVec2              Size;                   // Main Area: Size of the viewport.
     ImVec2              WorkPos;                // Work Area: Position of the viewport minus task bars, menus bars, status bars (>= Pos)
-    ImVec2              WorkSize;               // Work Area: Size of the viewport minus task bars, menu bars, status bars (<= Size)
+    ImVec2              WorkSize;   
+    ImVec2              WorkOffsetMin;
+    ImVec2              WorkOffsetMax;
+    // Work Area: Size of the viewport minus task bars, menu bars, status bars (<= Size)
     float               DpiScale;               // 1.0f = 96 DPI = No extra scale.
     ImGuiID             ParentViewportId;       // (Advanced) 0: no parent. Instruct the platform backend to setup a parent/child relationship between platform windows.
     ImDrawData*         DrawData;               // The ImDrawData corresponding to this viewport. Valid after Render() and until the next call to NewFrame().
@@ -2948,8 +2951,8 @@ struct ImGuiViewport
     // Helpers
     ImVec2              GetCenter() const       { return ImVec2(Pos.x + Size.x * 0.5f, Pos.y + Size.y * 0.5f); }
     ImVec2              GetWorkCenter() const   { return ImVec2(WorkPos.x + WorkSize.x * 0.5f, WorkPos.y + WorkSize.y * 0.5f); }
-   // ImVec2              GetWorkPos() { return ImVec2(Pos.x + WorkPos.x, Pos.y + WorkPos.y); }
-   // ImVec2              GetWorkSize() { return ImVec2(Size.x - WorkPos.x + WorkSize.x, Size.y - WorkPos.y + WorkSize.y); } // This not clamped
+    ImVec2              GetWorkPos() { return ImVec2(Pos.x + WorkOffsetMin.x, Pos.y + WorkOffsetMin.y); }
+    ImVec2              GetWorkSize() { return ImVec2(Size.x - WorkOffsetMin.x + WorkOffsetMax.x, Size.y - WorkOffsetMin.y + WorkOffsetMax.y); } // This not clamped
 };
 
 

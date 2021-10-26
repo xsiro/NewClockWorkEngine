@@ -26,7 +26,7 @@ public:
 	bool Awake();
 
 	// Call before first frame
-	bool Start();
+	bool Init();
 
 	// Called before all Updates
 	update_status PreUpdate(float dt);
@@ -39,11 +39,18 @@ public:
 
 	// Called before quitting
 	bool CleanUp();
+
+	//Docking
+	update_status Dock(bool* p_open);
 	
 public:
+
 	int fps;
 	int height;
 	int width;
+
+	float brightness;
+
 	bool check = true;
 	bool fullscreen;
 	bool resizable;
@@ -51,21 +58,23 @@ public:
 	bool fulldesktop;
 	bool vertexlines;
 	bool facelines;
-	float brightness;
 	bool scroll;
-	//our state
 	bool show_demo_window;
 	bool mainwindow;
 	bool show_config;
 	bool show_console;
 	bool about_window;
 	bool* dockingwindow;
+
 	const char* GetName() const;
 	const char* name;
+
 	void ClearLog();
 	void ConsoleLog(char* logStr);
 	void ConsoleOutput();
-	update_status Dock(bool* p_open);
+	
+
+	SDL_GLContext gl_context;
 
 	ImVec4 clear_color;
 	ImVec2 mouseScenePosition;
