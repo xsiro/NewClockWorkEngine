@@ -1,26 +1,9 @@
-﻿  Application.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(119,20): warning C4244: 'argumento': conversión de 'float' a 'Uint32'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(156,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_opengl3.cpp
-  imgui_impl_sdl.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  Main.cpp
-  ModuleAudio.cpp
-  ModuleCamera3D.cpp
+﻿  ModuleCamera3D.cpp
   ModuleGui.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(182,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(184,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(153,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(212,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(404,20): warning C4018: '<': no coinciden signed/unsigned
-  ModuleInput.cpp
-  ModuleRenderer3D.cpp
-  ModuleSceneIntro.cpp
-  ModuleWindow.cpp
-  log.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(233,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(235,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(204,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(263,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(411,20): warning C4018: '<': no coinciden signed/unsigned
   Generando código...
   3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe

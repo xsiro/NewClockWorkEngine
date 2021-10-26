@@ -65,6 +65,7 @@ public:
 	bool show_console;
 	bool about_window;
 	bool* dockingwindow;
+	bool hierarchy;
 
 	const char* GetName() const;
 	const char* name;
@@ -72,6 +73,7 @@ public:
 	void ClearLog();
 	void ConsoleLog(char* logStr);
 	void ConsoleOutput();
+	void Hierarchy();
 	
 
 	SDL_GLContext gl_context;
