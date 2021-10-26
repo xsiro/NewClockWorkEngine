@@ -59,13 +59,12 @@ public:
 	bool show_config;
 	bool show_console;
 	bool about_window;
-	bool* dockingwindow;
 	const char* GetName() const;
 	const char* name;
 	void ClearLog();
 	void ConsoleLog(char* logStr);
 	void ConsoleOutput();
-	update_status Dock(bool* p_open);
+	
 
 	ImVec4 clear_color;
 	ImVec2 mouseScenePosition;
