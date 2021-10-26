@@ -1,7 +1,323 @@
-﻿  ModuleGui.cpp
-C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(179,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(181,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(150,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(209,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(401,20): warning C4018: '<': no coinciden signed/unsigned
-  3D Physics.vcxproj -> C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  Application.cpp
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(121,20): warning C4244: 'argumento': conversión de 'float' a 'Uint32'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(158,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  GameObject.cpp
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleComponent.h(6,26): error C2011: 'ComponentType': nueva definición del tipo 'enum'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleComponent.h(6): message : vea la declaración de 'ComponentType'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleComponent.h(13,1): error C2011: 'ModuleComponent': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleComponent.h(12): message : vea la declaración de 'ModuleComponent'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleTransform.h(8,1): error C2504: 'ModuleComponent': clase base sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.h(10,1): error C2504: 'ModuleComponent': clase base sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,1): error C2504: 'ModuleComponent': clase base sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(26,6): error C2027: uso del tipo 'ModuleComponent' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleComponent.h(12): message : vea la declaración de 'ModuleComponent'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(40,22): error C2027: uso del tipo 'ComponentType' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleComponent.h(6): message : vea la declaración de 'ComponentType'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(40,31): error C2065: 'Transform': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(41,36): error C2440: '=': no se puede realizar la conversión de 'ModuleTransform *' a 'ModuleComponent *'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(41,34): message : Los tipos señalados no están relacionados; la conversión requiere reinterpret_cast, conversión de estilo de C o conversión de estilo de función
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(44,22): error C2027: uso del tipo 'ComponentType' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleComponent.h(6): message : vea la declaración de 'ComponentType'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(44,26): error C2275: 'Mesh': uso no válido de este tipo como expresión
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Moduleimporter.h(13): message : vea la declaración de 'Mesh'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(45,31): error C2440: '=': no se puede realizar la conversión de 'ModuleMesh *' a 'ModuleComponent *'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(45,29): message : Los tipos señalados no están relacionados; la conversión requiere reinterpret_cast, conversión de estilo de C o conversión de estilo de función
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(48,22): error C2027: uso del tipo 'ComponentType' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleComponent.h(6): message : vea la declaración de 'ComponentType'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(48,30): error C2065: 'Material': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(49,35): error C2440: '=': no se puede realizar la conversión de 'ModuleMaterial *' a 'ModuleComponent *'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(49,33): message : Los tipos señalados no están relacionados; la conversión requiere reinterpret_cast, conversión de estilo de C o conversión de estilo de función
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(40,1): error C2051: la expresión case no es una constante
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(44,1): error C2051: la expresión case no es una constante
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(48,1): error C2051: la expresión case no es una constante
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(52,2): warning C4060: la instrucción switch no contiene etiquetas 'case' ni 'default'
+  log.cpp
+  Main.cpp
+  ModuleAudio.cpp
+  ModuleCamera3D.cpp
+  ModuleGui.cpp
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(14,1): error C2011: 'Mesh': nueva definición del tipo 'struct'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(8): message : vea la declaración de 'Mesh'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47,22): error C2011: 'ModuleImporter': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14,24): error C2011: 'ModuleRenderer3D': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(58,67): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(58,76): error C2660: 'ImGui_ImplSDL2_InitForOpenGL': la función no acepta 1 argumentos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ImGui\include\imgui_impl_sdl.h(24,25): message : vea la declaración de 'ImGui_ImplSDL2_InitForOpenGL'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(171,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(173,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(142,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(201,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(371,38): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(392,20): warning C4018: '<': no coinciden signed/unsigned
+  ModuleImporter.cpp
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(14,1): error C2011: 'Mesh': nueva definición del tipo 'struct'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(8): message : vea la declaración de 'Mesh'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47,22): error C2011: 'ModuleImporter': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14,24): error C2011: 'ModuleRenderer3D': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(11,17): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(11,70): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(12,1): error C2550: '{ctor}': las listas de inicializadores de constructor solo se permiten en las definiciones de constructor
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(14,1): warning C4508: '{ctor}': la función debe devolver un valor; se supone que el tipo de valor devuelto es 'void'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(16,18): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(17,1): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(19,1): warning C4508: '{dtor}': la función debe devolver un valor; se supone que el tipo de valor devuelto es 'void'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(22,22): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(28,46): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(28,2): error C3861: 'UploadFile': no se encontró el identificador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(38,22): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(43,22): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(44,2): error C2065: 'meshfilename': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(49,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(54,4): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(55,4): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(55,30): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(55,52): error C3078: se debe especificar el tamaño de la matriz en nuevas expresiones sin un inicializador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(56,11): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(56,62): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(56,83): error C2660: 'memcpy': la función no acepta 2 argumentos
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h(43,15): message : vea la declaración de 'memcpy'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(57,4): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(62,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(63,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(63,29): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(63,46): error C3078: se debe especificar el tamaño de la matriz en nuevas expresiones sin un inicializador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(68,21): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(75,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(76,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(76,32): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(76,55): error C3078: se debe especificar el tamaño de la matriz en nuevas expresiones sin un inicializador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(77,41): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(79,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(80,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(81,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(87,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(88,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(88,31): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(88,53): error C3078: se debe especificar el tamaño de la matriz en nuevas expresiones sin un inicializador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(89,41): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(91,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(92,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(93,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(94,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(100,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(101,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(101,34): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(101,59): error C3078: se debe especificar el tamaño de la matriz en nuevas expresiones sin un inicializador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(102,41): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(104,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(105,6): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(107,5): error C2065: 'myMesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(120,22): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(123,2): error C2065: 'materialfilename': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(127,2): error C2065: 'Gl_Tex': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(137,23): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(139,9): error C2065: 'meshfilename': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(143,23): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(145,9): error C2065: 'materialfilename': identificador no declarado
+  ModuleInput.cpp
+  ModuleMesh.cpp
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(14,1): error C2011: 'Mesh': nueva definición del tipo 'struct'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(8): message : vea la declaración de 'Mesh'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47,22): error C2011: 'ModuleImporter': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(228,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(228,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(238,16): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(238,44): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,22): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(257,16): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(257,48): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(287,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(288,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(333,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+  ModuleRenderer3D.cpp
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(14,1): error C2011: 'Mesh': nueva definición del tipo 'struct'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(8): message : vea la declaración de 'Mesh'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47,22): error C2011: 'ModuleImporter': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14,24): error C2011: 'ModuleRenderer3D': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(20,19): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(20,74): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(21,1): error C2550: '{ctor}': las listas de inicializadores de constructor solo se permiten en las definiciones de constructor
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(22,1): warning C4508: '{ctor}': la función debe devolver un valor; se supone que el tipo de valor devuelto es 'void'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(25,20): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(26,1): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(26,2): warning C4508: '{dtor}': la función debe devolver un valor; se supone que el tipo de valor devuelto es 'void'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(29,24): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(35,2): error C2065: 'context': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(36,6): error C2065: 'context': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(91,3): error C2065: 'lights': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(92,3): error C2065: 'lights': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(93,3): error C2065: 'lights': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(94,3): error C2065: 'lights': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(95,3): error C2065: 'lights': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(105,3): error C2065: 'lights': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(109,3): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(109,24): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(111,29): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(111,44): error C2198: 'PFNGLGENBUFFERSPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(112,33): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(112,48): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(113,49): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(113,71): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(113,99): error C2198: 'PFNGLBUFFERDATAPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(115,29): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(115,43): error C2198: 'PFNGLGENBUFFERSPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(116,41): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(116,55): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(117,56): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(117,73): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(117,100): error C2198: 'PFNGLBUFFERDATAPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(119,29): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(119,45): error C2198: 'PFNGLGENBUFFERSPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(120,33): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(120,49): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(121,48): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(121,71): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(121,100): error C2198: 'PFNGLBUFFERDATAPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(123,29): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(123,47): error C2198: 'PFNGLGENBUFFERSPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(124,33): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(124,51): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(125,49): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(125,74): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(125,105): error C2198: 'PFNGLBUFFERDATAPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(127,3): error C3861: 'LoadTextures': no se encontró el identificador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(131,2): error C3861: 'OnResize': no se encontró el identificador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(137,33): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(149,2): error C2065: 'lights': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(152,3): error C2065: 'lights': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(158,33): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(160,2): error C3861: 'RenderFBX': no se encontró el identificador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(163,3): error C3861: 'DrawVertexNormalLines': no se encontró el identificador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(167,3): error C3861: 'DrawFaceNormalLines': no se encontró el identificador
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(176,24): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(180,23): error C2065: 'context': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(185,24): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(187,2): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(187,23): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(189,28): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(189,43): error C2198: 'PFNGLGENBUFFERSPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(190,32): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(190,47): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(191,48): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(191,70): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(191,98): error C2198: 'PFNGLBUFFERDATAPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(193,28): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(193,42): error C2198: 'PFNGLGENBUFFERSPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(194,40): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(194,54): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(195,55): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(195,72): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(195,99): error C2198: 'PFNGLBUFFERDATAPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(197,28): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(197,44): error C2198: 'PFNGLGENBUFFERSPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(198,32): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(198,48): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(199,47): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(199,70): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(199,99): error C2198: 'PFNGLBUFFERDATAPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(201,28): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(201,46): error C2198: 'PFNGLGENBUFFERSPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(202,32): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(202,50): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(203,48): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(203,73): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(203,104): error C2198: 'PFNGLBUFFERDATAPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(207,24): error C2027: uso del tipo 'ModuleRenderer3D' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(14): message : vea la declaración de 'ModuleRenderer3D'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(210,8): error C2065: 'rendered': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(212,17): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(213,4): error C2065: 'rendered': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(217,32): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(217,46): error C2660: 'glBindTexture': la función no acepta 1 argumentos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glew\include\glew.h(853,23): message : vea la declaración de 'glBindTexture'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(218,45): error C2027: uso del tipo 'ModuleImporter' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(47): message : vea la declaración de 'ModuleImporter'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(218,53): error C2660: 'glBindTexture': la función no acepta 1 argumentos
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glew\include\glew.h(853,23): message : vea la declaración de 'glBindTexture'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(222,3): error C2065: 'rendered': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(231,34): error C2065: 'checkImage': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(238,32): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(238,47): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(241,32): error C2065: 'mesh': identificador no declarado
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(241,48): error C2198: 'PFNGLBINDBUFFERPROC': no hay suficientes argumentos para la llamada
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(241,48): fatal error C1003: el recuento de errores supera 100; se detiene la compilación
+  ModuleSceneIntro.cpp
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.h(7,24): error C2011: 'ModuleSceneIntro': nueva definición del tipo 'class'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.h(7): message : vea la declaración de 'ModuleSceneIntro'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(10,19): error C2027: uso del tipo 'ModuleSceneIntro' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.h(7): message : vea la declaración de 'ModuleSceneIntro'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(10,74): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(11,1): error C2550: '{ctor}': las listas de inicializadores de constructor solo se permiten en las definiciones de constructor
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(12,1): warning C4508: '{ctor}': la función debe devolver un valor; se supone que el tipo de valor devuelto es 'void'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(14,20): error C2027: uso del tipo 'ModuleSceneIntro' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.h(7): message : vea la declaración de 'ModuleSceneIntro'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(15,1): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(15,2): warning C4508: '{dtor}': la función debe devolver un valor; se supone que el tipo de valor devuelto es 'void'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(18,24): error C2027: uso del tipo 'ModuleSceneIntro' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.h(7): message : vea la declaración de 'ModuleSceneIntro'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(30,24): error C2027: uso del tipo 'ModuleSceneIntro' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.h(7): message : vea la declaración de 'ModuleSceneIntro'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(40,33): error C2027: uso del tipo 'ModuleSceneIntro' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.h(7): message : vea la declaración de 'ModuleSceneIntro'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(49,16): error C2039: "wireframe": no es un miembro de "ModuleGui"
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.h(16): message : vea la declaración de 'ModuleGui'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(52,21): error C2039: "wireframe": no es un miembro de "ModuleGui"
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.h(16): message : vea la declaración de 'ModuleGui'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(55,16): error C2039: "cube": no es un miembro de "ModuleGui"
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.h(16): message : vea la declaración de 'ModuleGui'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(59,16): error C2039: "pyramid": no es un miembro de "ModuleGui"
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.h(16): message : vea la declaración de 'ModuleGui'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(64,16): error C2039: "cylinder": no es un miembro de "ModuleGui"
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.h(16): message : vea la declaración de 'ModuleGui'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(69,16): error C2039: "sphere": no es un miembro de "ModuleGui"
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.h(16): message : vea la declaración de 'ModuleGui'
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(77,31): error C2027: uso del tipo 'ModuleSceneIntro' sin definir
+C:\Users\danielrc8\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.h(7): message : vea la declaración de 'ModuleSceneIntro'
+  ModuleTransform.cpp
+  ModuleWindow.cpp
+  Timer.cpp
+  Generando código...

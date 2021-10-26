@@ -4,4 +4,3 @@ C:\Users\polco\OneDrive\Documentos\GitHub\HOLIS\NewClockWorkEngine\NewClockWorkE
 C:\Users\polco\OneDrive\Documentos\GitHub\HOLIS\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.pdb
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.pdb
-C:\Users\polce\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
