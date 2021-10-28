@@ -42,10 +42,16 @@ class ALIGN16 AABB
 public:
 
 	/// Specifies the minimum extent of this AABB in the world space x, y and z axes.
-	float3 minPoint;
+	ALIGN16 float3 minPoint;
+#ifdef MATH_SIMD
+	float padding;
+#endif
 
 	/// Specifies the maximum extent of this AABB in the world space x, y and z axes. [similarOverload: minPoint]
-	float3 maxPoint;
+	ALIGN16 float3 maxPoint;
+#ifdef MATH_SIMD
+	float padding2;
+#endif
 
 	/// The default constructor does not initialize any members of this class.
 	/** This means that the values of the members minPoint and maxPoint are undefined after creating a new AABB using this

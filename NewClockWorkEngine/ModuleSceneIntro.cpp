@@ -2,8 +2,10 @@
 #include "Application.h"
 #include "ModuleSceneIntro.h"
 #include "Primitive.h"
-#include "ModuleAudio.h"
+#include "ModuleGui.h"
+#include "imgui.h"
 
+class ComponentMesh;
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -46,15 +48,37 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Render();
 	
-	//render all walls
 
+
+
+	Cube cube(1.0f, 1.0f, 1.0f);
+	if (App->gui->wireframe == true) {
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	else if (App->gui->wireframe == false) {
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+	if (App->gui->cube) {
+		ComponentMesh CreateCubeDirect();
+	}
+
+	if (App->gui->pyramid)
+	{
+		ComponentMesh CreatePyramid();
+	}
+
+	if (App->gui->cylinder)
+	{
+		ComponentMesh CreateCylinder();
+	}
+
+	if (App->gui->sphere)
+	{
+		ComponentMesh CreateSphere();
+	}
 
 	return UPDATE_CONTINUE;
 }
 
 
-
-void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
-{
-}
 

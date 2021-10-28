@@ -1,6 +1,10 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModuleImporter.h"
+#include "imgui.h"
+#include "imgui_impl_sdl.h"
+#include "imgui_impl_opengl3.h"
 
 #define MAX_KEYS 300
 
@@ -86,6 +90,7 @@ update_status ModuleInput::PreUpdate(float dt)
 
 	bool quit = false;
 	SDL_Event e;
+	char* dropped_file;
 	while(SDL_PollEvent(&e))
 	{
 		switch(e.type)
@@ -105,6 +110,16 @@ update_status ModuleInput::PreUpdate(float dt)
 			case SDL_QUIT:
 			quit = true;
 			break;
+
+			case SDL_DROPFILE:
+			{
+				dropped_file = e.drop.file;
+				std::string format(e.drop.file);
+				App->importer->UploadFile(dropped_file, App->renderer3D->texture_id);
+				App->importer->LoadTexture(dropped_file);
+				App->renderer3D->LoadFBXBuffer();
+				SDL_free(dropped_file);
+			}
 
 			case SDL_WINDOWEVENT:
 			{

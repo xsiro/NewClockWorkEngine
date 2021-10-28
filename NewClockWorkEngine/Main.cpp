@@ -6,6 +6,17 @@
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
+#pragma comment( lib, "glew/libx86/glew32.lib" )
+#pragma comment( lib, "glew/libx86/glew32s.lib" )
+
+#ifdef _DEBUG
+#pragma comment( lib, "MathGeoLib/libx86/Debug/MathGeoLib.lib" )
+
+#else
+#pragma comment( lib, "MathGeoLib/libx86/Release/MathGeoLib.lib" )
+
+#endif
+
 enum main_states
 {
 	MAIN_CREATION,

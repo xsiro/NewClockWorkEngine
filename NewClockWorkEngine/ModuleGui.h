@@ -5,6 +5,9 @@
 #include "Globals.h"
 #include "imgui.h"
 
+#include "SDL/include/SDL_rect.h"
+#include "SDL/include/SDL_video.h"
+
 #include <list>
 #include <string>
 #include <vector>
@@ -64,8 +67,24 @@ public:
 	bool show_config;
 	bool show_console;
 	bool about_window;
+	bool inspector;
 	bool* dockingwindow;
 	bool hierarchy;
+	bool depthtest;
+	bool cullface;
+	bool lighting;
+	bool polygonssmooth;
+	bool material;
+	bool texture2D;
+	bool cubemap;
+	bool checker;
+	bool wireframe;
+	bool cube;
+	bool pyramid;
+	bool cylinder;
+	bool sphere;
+	bool showmaterial;
+
 
 	const char* GetName() const;
 	const char* name;

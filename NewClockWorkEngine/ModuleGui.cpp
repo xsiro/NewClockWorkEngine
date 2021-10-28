@@ -1,17 +1,24 @@
+#include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
 #include "ModuleGui.h"
 #include "ModuleAudio.h"
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
+#include "ModuleImporter.h"
+#include "Primitive.h"
+#include "GameObject.h"
+#include "ModuleComponent.h"
+#include "ModuleSceneIntro.h"
+
 #include "OpenGL.h"
 #include <stdio.h>
 #include "imgui.h"
 #include "imgui_internal.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"
-#include "Glew/include/glew.h"
-
+#include "glew.h"
+#include "SDL_opengl.h"
 
 
 
@@ -29,7 +36,20 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	fps_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 	ms_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 	
-	
+
+	depthtest = false;
+	cullface = false;
+	lighting = false;
+	material = false;
+	cubemap = true;
+	polygonssmooth = false;
+
+	wireframe = false;
+	vertexlines = false;
+	facelines = false;
+	check = false;
+
+
 }
 
 // Destructor
@@ -63,7 +83,6 @@ bool ModuleGui::Init()
 	ImGui_ImplOpenGL3_Init();
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 
-
 	return ret;
 }
 
@@ -80,12 +99,6 @@ update_status ModuleGui::PreUpdate(float dt)
 update_status ModuleGui::Update(float dt)
 {
 	Dock(dockingwindow);
-	//ImGui_ImplOpenGL3_NewFrame();
-	//ImGui_ImplSDL2_NewFrame(App->window->window);
-	////ImGui::NewFrame();
-	//ImGuiIO& io = ImGui::GetIO();
-	//(void)io;
-
 	
 	
 	if (ImGui::BeginMainMenuBar())
@@ -126,17 +139,17 @@ update_status ModuleGui::Update(float dt)
 			if (ImGui::MenuItem("Gui Demo"))
 			{
 				show_demo_window = !show_demo_window;
-				ImGui::End();
+				
 			}
 			if (ImGui::MenuItem("Documentation"))
 			{
 				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine/wiki");
-				ImGui::End();
+				
 			}
 			if (ImGui::MenuItem("Download latest"))
 			{
 				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine");
-				ImGui::End();
+				
 			}
 			if (ImGui::MenuItem("About")) about_window = !about_window;
 			{
@@ -188,14 +201,65 @@ update_status ModuleGui::Update(float dt)
 
 	if (hierarchy)
 	{
-		ImGui::Begin("Hierarchy", &hierarchy);
-
-		if (ImGui::Button("Delete"))
+		if (ImGui::Begin("Hierarchy", &hierarchy));
 		{
-			App->scene_intro->CleanUp();
-		}
-		//Hierarchy();
 
+			if (ImGui::Button("Delete"))
+			{
+				App->scene_intro->CleanUp();
+			}
+			ImGui::End();
+		}
+
+		
+	}
+	if (inspector)
+	{
+		ImGui::Begin("Inspector", &inspector);
+		ImGui::Text("Inspector");
+		if (ImGui::CollapsingHeader("Mesh"))
+		{
+			ImGui::Separator();
+			ImGui::Text("File:");
+			ImGui::SameLine();
+			ImGui::TextColored({ 1.0f, 1.0f, 0.0f, 1.0f }, "%s", App->importer->GetMeshFileName());
+			ImGui::Separator();
+			ImGui::Text("General");
+			ImGui::Text("");
+			if (ImGui::Checkbox("Wireframe", &wireframe));
+
+			if (ImGui::Checkbox("See Vertex Lines (Blue)", &vertexlines));
+
+			if (ImGui::Checkbox("See Face Lines (Green)", &facelines));
+
+			if (ImGui::Checkbox("Depth Test", &depthtest)) {
+				App->renderer3D->SetDepthtest(depthtest);
+			}
+			if (ImGui::Checkbox("Cull Face", &cullface)) {
+				App->renderer3D->SetCullface(cullface);
+			}
+			if (ImGui::Checkbox("Lightning", &lighting)) {
+				App->renderer3D->SetLighting(lighting);
+			}
+			ImGui::Text("");
+			ImGui::Text("Polygons smoothing");
+			ImGui::Text("");
+			if (ImGui::Checkbox("Polygons smooth", &polygonssmooth))
+			{
+				App->renderer3D->SetPolygonssmooth(polygonssmooth);
+			}
+		}
+		if (ImGui::CollapsingHeader("Material"))
+		{
+			ImGui::Text("Textures");
+			ImGui::Text("");
+			if (ImGui::Checkbox("Cube Map", &cubemap))
+			{
+				App->renderer3D->SetCubemap(cubemap);
+			}
+
+			if (ImGui::Checkbox("Checker Mode", &check));
+		}
 		ImGui::End();
 	}
 
@@ -347,6 +411,12 @@ update_status ModuleGui::Update(float dt)
 
 		ImGui::End();
 	}
+	if (ImGui::CollapsingHeader("Renderer"))
+	{
+
+	}
+
+
 	if (show_console)
 	{
 		
@@ -369,16 +439,14 @@ update_status ModuleGui::Update(float dt)
 }
 update_status ModuleGui::PostUpdate(float dt)
 {
-	ImGuiIO& io = ImGui::GetIO();
-	(void)io;
-	
-	
-	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
+
 	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-	SDL_GL_SwapWindow(App->window->window);
+
 	
-	return  update_status();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+	
+	
+	return  UPDATE_CONTINUE;
 }
 
 bool ModuleGui::CleanUp()
@@ -387,9 +455,7 @@ bool ModuleGui::CleanUp()
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();
 	ClearLog();
-	SDL_GL_DeleteContext(App->renderer3D->context);
-	SDL_DestroyWindow(App->window->window);
-	SDL_Quit();
+
 
 	return true;
 }
