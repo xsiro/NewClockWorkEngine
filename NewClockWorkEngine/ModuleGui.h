@@ -93,6 +93,8 @@ public:
 	void ConsoleLog(char* logStr);
 	void ConsoleOutput();
 	void Hierarchy();
+	void GameObjectsHierarchy();
+	void Draw();
 	
 
 	SDL_GLContext gl_context;

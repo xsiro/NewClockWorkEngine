@@ -11,6 +11,8 @@ Application::Application()
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
 	importer = new ModuleImporter(this);
+	filesystem = new FileSystem(this);
+	
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
 	// They will CleanUp() in reverse order
@@ -22,6 +24,8 @@ Application::Application()
 	AddModule(audio);
 	AddModule(gui);
 	AddModule(importer);
+	AddModule(filesystem);
+	
 	// Scenes
 	AddModule(scene_intro);
 

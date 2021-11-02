@@ -11,6 +11,12 @@
 #pragma comment( lib, "Devil/libx86/ILU.lib" )
 #pragma comment( lib, "Devil/libx86/ILUT.lib" )
 
+class GameObject;
+class ModuleMaterial;
+class ModuleMesh;
+class aiScene;
+struct aiNode;
+
 struct Mesh
 {
 	//Index
@@ -55,16 +61,18 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	void UploadFile(char* file_path, int id);
+	ModuleMesh* UploadFile(const aiScene* scene, aiNode* node, uint id, const char* path);
+	GameObject* LoadFBX(const char* path);
+	void TextureSetter(const aiScene* scene, aiNode* node, const char* path);
+	void RecursiveCall(const aiScene* scene, aiNode* node, aiNode* parentNode, GameObject* parent, const char* path);
+	void LoadTexture(const char* path);
+	const char* GetMeshFileName();
+	const char* GetMaterialFileName();
 
-	void LoadTexture(char* path);
-	char* GetMeshFileName();
-	char* GetMaterialFileName();
+public:
 
-private:
-
-	char* meshfilename;
-	char* materialfilename;
+	const char* meshfilename;
+	const char* materialfilename;
 
 public:
 

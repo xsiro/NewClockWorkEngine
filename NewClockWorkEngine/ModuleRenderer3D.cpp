@@ -206,7 +206,7 @@ void ModuleRenderer3D::LoadFBXBuffer() {
 void ModuleRenderer3D::RenderFBX() {
 	if (!App->gui->check)
 	{
-		if (!rendered)
+		if (rendered)
 		{
 			App->importer->LoadTexture("Assets/Baker_house.png");
 			rendered = true;

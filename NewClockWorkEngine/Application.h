@@ -14,7 +14,7 @@
 #include "ModuleSceneIntro.h"
 #include "ModuleImporter.h"
 #include "Glew/include/glew.h"
-
+#include "FileSystem.h"
 
 
 class Application
@@ -28,6 +28,7 @@ public:
 	ModuleCamera3D* camera;
 	ModuleGui* gui;
 	ModuleImporter* importer;
+	FileSystem* filesystem;
 
 private:
 

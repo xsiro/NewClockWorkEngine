@@ -5,7 +5,7 @@
 #include "ModuleMesh.h"
 #include "ModuleMaterial.h"
 
-GameObject::GameObject()
+GameObject::GameObject() : active(true), name("Game Object"), parent(nullptr)
 {
 	active = true;
 
@@ -13,14 +13,27 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-
+	parent = nullptr;
+	components.clear();
+	children.clear();
 }
 
-void GameObject::Update() {
+void GameObject::Update() 
+{
 
+	for (size_t i = 0; i < components.size(); i++)
+	{
+		components[i]->Update();
+	}
+
+	for (size_t i = 0; i < children.size(); i++)
+	{
+		children[i]->Update();
+	}
 }
 
-ModuleComponent* GameObject::GetComponent(ComponentType component) {
+ModuleComponent* GameObject::GetComponent(ComponentType component) 
+{
 
 	for (size_t i = 0; i < components.size(); i++)
 	{
@@ -52,6 +65,21 @@ ModuleComponent* GameObject::CreateComponent(ComponentType type) {
 		break;
 	}
 	return component;
+}
+
+bool GameObject::DeleteComponent(ModuleComponent* component)
+{
+	for (size_t i = 0; i < components.size(); i++)
+	{
+		if (components[i] == component) {
+			delete components[i];
+			components.erase(components.begin() + i);
+			component = nullptr;
+			return true;
+		}
+	}
+
+	return false;
 }
 
 

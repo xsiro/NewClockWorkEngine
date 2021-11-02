@@ -151,44 +151,10 @@ update_status ModuleGui::Update(float dt)
 				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine");
 				
 			}
-			if (ImGui::MenuItem("About")) about_window = !about_window;
+			if (ImGui::MenuItem("About")) 
 			{
+				about_window = !about_window;
 				
-				ImGui::Text("ClockWorkEngine v0.1");
-				ImGui::Text("ClockWorkEngine is developed by Daniel Ruiz & Pol Cortes");
-				ImGui::Text("This engine has been coded in C++");
-				ImGui::Text("3rd party libraries used:");
-				ImGui::BulletText("SDL 2.06");
-				ImGui::BulletText("Glew 2.0.0");
-				ImGui::BulletText("ImGui");
-				ImGui::BulletText("MathGeoLib");
-
-				ImGui::Text("");
-
-				ImGui::Text("LICENSE:");
-				ImGui::Text("");
-				ImGui::Text("MIT License");
-				ImGui::Text("");
-				ImGui::Text("Copyright (c) 2021 [Daniel Ruiz & Pol Cortes]");
-				ImGui::Text("");
-				ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
-				ImGui::Text("of this software and associated documentation files (the 'Software'), to deal");
-				ImGui::Text("in the Software without restriction, including without limitation the rights");
-				ImGui::Text("to use, copy, modify, merge, publish, distribute, sublicense, and/or sell");
-				ImGui::Text("copies of the Software, and to permit persons to whom the Software is");
-				ImGui::Text("furnished to do so, subject to the following conditions:");
-				ImGui::Text("");
-				ImGui::Text("The above copyright notice and this permission notice shall be included in all");
-				ImGui::Text("copies or substantial portions of the Software.");
-				ImGui::Text("");
-				ImGui::Text("THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR");
-				ImGui::Text("IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,");
-				ImGui::Text("FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE");
-				ImGui::Text("AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER");
-				ImGui::Text("LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,");
-				ImGui::Text("OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN ");
-				ImGui::Text("THE SOFTWARE.");
-				ImGui::End();
 			}
 			
 		}
@@ -199,20 +165,6 @@ update_status ModuleGui::Update(float dt)
 
 	//Here we create the different windows
 
-	if (hierarchy)
-	{
-		if (ImGui::Begin("Hierarchy", &hierarchy));
-		{
-
-			if (ImGui::Button("Delete"))
-			{
-				App->scene_intro->CleanUp();
-			}
-			ImGui::End();
-		}
-
-		
-	}
 	if (inspector)
 	{
 		ImGui::Begin("Inspector", &inspector);
@@ -416,6 +368,48 @@ update_status ModuleGui::Update(float dt)
 
 	}
 
+	if (about_window)
+	{
+		GLint major, minor;
+		glGetIntegerv(GL_MAJOR_VERSION, &major);
+		glGetIntegerv(GL_MINOR_VERSION, &minor);
+
+		ImGui::Text("ClockWorkEngine v0.1");
+		ImGui::Text("ClockWorkEngine is developed by Daniel Ruiz & Pol Cortes");
+		ImGui::Text("This engine has been coded in C++");
+		ImGui::Text("3rd party libraries used:");
+		ImGui::BulletText("SDL 2.06");
+		ImGui::BulletText("Glew 2.0.0");
+		ImGui::BulletText("ImGui");
+		ImGui::BulletText("MathGeoLib");
+
+		ImGui::Text("");
+
+		ImGui::Text("LICENSE:");
+		ImGui::Text("");
+		ImGui::Text("MIT License");
+		ImGui::Text("");
+		ImGui::Text("Copyright (c) 2021 [Daniel Ruiz & Pol Cortes]");
+		ImGui::Text("");
+		ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
+		ImGui::Text("of this software and associated documentation files (the 'Software'), to deal");
+		ImGui::Text("in the Software without restriction, including without limitation the rights");
+		ImGui::Text("to use, copy, modify, merge, publish, distribute, sublicense, and/or sell");
+		ImGui::Text("copies of the Software, and to permit persons to whom the Software is");
+		ImGui::Text("furnished to do so, subject to the following conditions:");
+		ImGui::Text("");
+		ImGui::Text("The above copyright notice and this permission notice shall be included in all");
+		ImGui::Text("copies or substantial portions of the Software.");
+		ImGui::Text("");
+		ImGui::Text("THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR");
+		ImGui::Text("IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,");
+		ImGui::Text("FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE");
+		ImGui::Text("AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER");
+		ImGui::Text("LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,");
+		ImGui::Text("OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN ");
+		ImGui::Text("THE SOFTWARE.");
+		ImGui::End();
+	}
 
 	if (show_console)
 	{
@@ -430,10 +424,18 @@ update_status ModuleGui::Update(float dt)
 			
 		}
 	}
+	if (hierarchy)
+	{
+		ImGui::Begin("Hierarchy", &hierarchy);
 
-	if (show_demo_window)
+		if (ImGui::Button("Delete"))
+		{
+			App->scene_intro->CleanUp();
+		}
+		GameObjectsHierarchy();
+		ImGui::End();
+	}
 
-		ImGui::ShowDemoWindow(&show_demo_window);
 
 	return UPDATE_CONTINUE;
 }
@@ -448,6 +450,7 @@ update_status ModuleGui::PostUpdate(float dt)
 	
 	return  UPDATE_CONTINUE;
 }
+
 
 bool ModuleGui::CleanUp()
 {
@@ -529,6 +532,27 @@ update_status ModuleGui::Dock(bool* p_open)
 	ImGui::End();
 
 	return ret;
+}
+
+void ModuleGui::GameObjectsHierarchy()
+{
+
+	if (ImGui::TreeNode("GameObject")) {
+		for (size_t i = 0; i < App->scene_intro->game_objects.size(); i = i + 2)
+		{
+			if (App->scene_intro->game_objects[i]->parent != nullptr) continue;
+
+			if (ImGui::TreeNodeEx(App->scene_intro->game_objects[i]->name.c_str(), ImGuiTreeNodeFlags_Leaf)) {
+				if (ImGui::IsItemClicked()) {
+					App->scene_intro->selected = App->scene_intro->game_objects[i];
+				}
+			}
+			ImGui::TreePop();
+		}
+		ImGui::TreePop();
+	}
+
+
 }
 
 const char* ModuleGui::GetName() const
