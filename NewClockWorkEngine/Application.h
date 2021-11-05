@@ -1,19 +1,21 @@
 #pragma once
 
-#include "p2List.h"
+#include <vector>
+#include <string>
+
 #include "Globals.h"
 #include "Timer.h"
 #include "Module.h"
 #include "Primitive.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
-#include "ModuleRenderer3D.h"
-#include "ModuleCamera3D.h"
-#include "ModuleGui.h"
 #include "ModuleSceneIntro.h"
+#include "ModuleCamera3D.h"
+#include "ModuleRenderer3D.h"
+#include "ModuleGui.h"
 #include "ModuleImporter.h"
 #include "Glew/include/glew.h"
-#include "FileSystem.h"
+
 
 
 class Application
@@ -27,13 +29,13 @@ public:
 	ModuleCamera3D* camera;
 	ModuleGui* gui;
 	ModuleImporter* importer;
-	FileSystem* filesystem;
+
 
 private:
 
 	Timer	ms_timer;
 	
-	p2List<Module*> list_modules;
+	std::vector<Module*> list_modules;
 
 public:
 
@@ -55,6 +57,7 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
+	bool closewindow;
 	
 private:
 

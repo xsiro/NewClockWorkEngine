@@ -25,6 +25,7 @@ private:
 public:
 	
 	vec3 X, Y, Z, Position, Reference;
+	Color background;
 	bool free_camera = false;
 	bool rotate_camera = false;
 private:

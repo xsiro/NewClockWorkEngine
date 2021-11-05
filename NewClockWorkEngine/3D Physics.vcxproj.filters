@@ -147,9 +147,6 @@
     <ClInclude Include="Window.h">
       <Filter>Sources\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="FileSystem.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -235,9 +232,6 @@
     </ClCompile>
     <ClCompile Include="Wabout.cpp">
       <Filter>Sources\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSystem.cpp">
-      <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

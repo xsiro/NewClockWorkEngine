@@ -11,45 +11,39 @@
 #pragma comment( lib, "Devil/libx86/ILU.lib" )
 #pragma comment( lib, "Devil/libx86/ILUT.lib" )
 
-class GameObject;
-class ModuleMaterial;
-class ModuleMesh;
-class aiScene;
-struct aiNode;
-//
-//struct Mesh
-//{
-//	//Index
-//
-//	uint* index = nullptr;
-//	uint id_index = 0;
-//	uint num_index = 0;
-//
-//	//Normals
-//
-//	uint	id_normals = 0;
-//	uint	num_normals = 0;
-//	float* normals = NULL;
-//
-//	//Colors
-//
-//	uint	id_colors = 0;
-//	uint	num_colors = 0;
-//	float* colors = NULL;
-//
-//	//Coords
-//
-//	uint	id_texcoords = 0;
-//	uint	num_texcoords = 0;
-//	float* texcoords = nullptr;
-//	uint image_id;
-//
-//	//Vertex
-//
-//	uint id_vertex = 0;
-//	uint num_vertex = 0;
-//	float* vertex = nullptr;
-//};
+struct Mesh
+{
+	//Index
+
+	uint* index = nullptr;
+	uint id_index = 0;
+	uint num_index = 0;
+
+	//Normals
+
+	uint	id_normals = 0;
+	uint	num_normals = 0;
+	float* normals = NULL;
+
+	//Colors
+
+	uint	id_colors = 0;
+	uint	num_colors = 0;
+	float* colors = NULL;
+
+	//Coords
+
+	uint	id_texcoords = 0;
+	uint	num_texcoords = 0;
+	float* texcoords = nullptr;
+	uint image_id;
+
+	//Vertex
+
+	uint id_vertex = 0;
+	uint num_vertex = 0;
+	float* vertex = nullptr;
+};
 
 class ModuleImporter : public Module
 {
@@ -61,22 +55,20 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	ModuleMesh* UploadFile(const aiScene* scene, aiNode* node, uint id, const char* path);
-	GameObject* LoadFBX(const char* path);
-	void TextureSetter(const aiScene* scene, aiNode* node, const char* path);
-	void RecursiveCall(const aiScene* scene, aiNode* node, aiNode* parentNode, GameObject* parent, const char* path);
-	void LoadTexture(const char* path);
-	const char* GetMeshFileName();
-	const char* GetMaterialFileName();
+	void UploadFile(char* file_path, int id);
+
+	void LoadTexture(char* path);
+	char* GetMeshFileName();
+	char* GetMaterialFileName();
+
+private:
+
+	char* meshfilename;
+	char* materialfilename;
 
 public:
 
-	const char* meshfilename;
-	const char* materialfilename;
-
-public:
-
-	//Mesh myMesh;
+	Mesh myMesh;
 	GLuint Gl_Tex;
 
 };

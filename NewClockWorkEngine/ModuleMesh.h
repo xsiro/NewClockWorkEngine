@@ -22,14 +22,6 @@ public:
 	void CreateSphere(float radius, unsigned int rings, unsigned int sectors);
 	void CreateCylinder(float radius, float height, int sides);
 
-	virtual void Update();
-
-	void RenderFBX();
-	void LoadFBXBuffer();
-	void DrawVertexNormalLines();
-	void DrawFaceNormalLines();
-	void LoadingTextures();
-	void LoadingCheckerTextures();
 
 public:
 

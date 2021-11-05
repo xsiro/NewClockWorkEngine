@@ -38,7 +38,7 @@ public:
 	update_status Update(float dt);
 
 	// Called after all Updates
-	//update_status PostUpdate(float dt);
+	update_status PostUpdate(float dt);
 
 	// Called before quitting
 	bool CleanUp();
@@ -54,7 +54,7 @@ public:
 
 	float brightness;
 
-	bool check = true;
+	bool check=false;
 	bool fullscreen;
 	bool resizable;
 	bool borderless;

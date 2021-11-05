@@ -44,7 +44,7 @@ public:
 	void CreateVertexCube();
 	void CreateIndexCube();
 
-	bool rendered;
+	bool rendered=false;
 
 public:
 

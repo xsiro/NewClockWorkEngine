@@ -4,9 +4,6 @@
 #include "Primitive.h"
 #include "ModuleGui.h"
 #include "imgui.h"
-#include "ModuleMesh.h"
-#include "FileSystem.h"
-#include "GameObject.h"
 
 class ComponentMesh;
 
@@ -21,18 +18,16 @@ ModuleSceneIntro::~ModuleSceneIntro()
 bool ModuleSceneIntro::Start()
 {
 	LOG("Loading Intro assets");
-	
-	
-	
+
+
+
 	bool ret = true;
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
-	
+
 	//walls colliders
-	GameObject* house = App->importer->LoadFBX("Assets/BakerHouse.fbx");
-	App->importer->LoadTexture("Assets/Baker_house.png");
-	CreateGameObject(house);
-	
+
+
 	return ret;
 }
 
@@ -40,14 +35,6 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
-
-
-	for (size_t i = 0; i < game_objects.size(); i++)
-	{
-		delete game_objects[i];
-		game_objects[i] = nullptr;
-	}
-	game_objects.clear();
 
 	return true;
 }
@@ -60,7 +47,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
-	
+
 
 
 
@@ -90,23 +77,8 @@ update_status ModuleSceneIntro::Update(float dt)
 		ComponentMesh CreateSphere();
 	}
 
-	for (size_t i = 0; i < game_objects.size(); i++)
-	{
-		game_objects[i]->Update();
-	}
-
 	return UPDATE_CONTINUE;
 }
 
-GameObject* ModuleSceneIntro::CreateGameObject(GameObject* father) {
-
-	GameObject* newgo = new GameObject();
-	newgo->parent = father;
-	game_objects.push_back(newgo);
-
-	selected = father;
-
-	return newgo;
-}
 
 

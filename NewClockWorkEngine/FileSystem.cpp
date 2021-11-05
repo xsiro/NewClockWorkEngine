@@ -3,7 +3,7 @@
 #include "ModuleMesh.h"
 #include "Moduleimporter.h"
 #include "GameObject.h"
-#include "ModuleSceneIntro.h"
+
 
 #include "SDL/include/SDL.h"
 #include <fstream>
@@ -40,7 +40,7 @@ FileSystem::FileSystem(Application* app, bool start_enabled) : Module(app, start
 	if (PHYSFS_setWriteDir(".") == 0)
 		LOG("File System error while creating write dir: %s\n", PHYSFS_getLastError());
 
-	AddPath("."); //Adding ProjectFolder (working directory)
+	//AddPath(); //Adding ProjectFolder (working directory)
 	AddPath("Assets");
 	CreateLibraryDirectories();
 }

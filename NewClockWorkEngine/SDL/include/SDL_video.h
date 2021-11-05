@@ -710,6 +710,9 @@ extern DECLSPEC void SDLCALL SDL_RestoreWindow(SDL_Window * window);
  *  \sa SDL_SetWindowDisplayMode()
  *  \sa SDL_GetWindowDisplayMode()
  */
+extern DECLSPEC void SDLCALL SDL_SetWindowResizable(SDL_Window* window,
+    SDL_bool resizable);
+
 extern DECLSPEC int SDLCALL SDL_SetWindowFullscreen(SDL_Window * window,
                                                     Uint32 flags);
 

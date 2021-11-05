@@ -8,7 +8,7 @@
 
 GameObject::GameObject() : active(true), name("Game Object"), parent(nullptr)
 {
-	active = true;
+	CreateComponent(ComponentType::Transform);
 
 }
 
@@ -84,8 +84,8 @@ bool GameObject::DeleteComponent(ModuleComponent* component)
 }
 
 
-void GameObject::AddComponent(ModuleComponent* component) {
-
-	components.push_back(component);
-
-}
+//void GameObject::AddComponent(ModuleComponent* component) {
+//
+//	components.push_back(component);
+//
+//}

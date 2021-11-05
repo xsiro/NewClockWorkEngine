@@ -46,7 +46,7 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	wireframe = false;
 	vertexlines = false;
 	facelines = false;
-	checker = false;
+	check = false;
 
 
 }
@@ -77,7 +77,7 @@ bool ModuleGui::Init()
 	ImGui::StyleColorsDark();
 
 	gl_context = SDL_GL_CreateContext(App->window->window);
-	SDL_GL_MakeCurrent(App->window->window, gl_context);
+	//SDL_GL_MakeCurrent(App->window->window, gl_context);
 	
 	ImGui_ImplOpenGL3_Init();
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
@@ -168,6 +168,27 @@ update_status ModuleGui::Update(float dt)
 	{
 		ImGui::Begin("Inspector", &inspector);
 		ImGui::Text("Inspector");
+		if (ImGui::CollapsingHeader("Local Transformation"))
+		{
+			ImGui::Separator();
+			vec3 position = { 0,0,0 };
+			vec3 rotation = { 0,0,0 };
+			vec3 scale = { 0,0,0 };
+			if (ImGui::DragFloat3("Position", &position, 0.1f))
+			{
+
+			}
+
+			if (ImGui::DragFloat3("Rotation", &rotation, 0.1f))
+			{
+
+			}
+
+			if (ImGui::DragFloat3("Scale", &scale, 0.1f))
+			{
+
+			}
+		}
 		if (ImGui::CollapsingHeader("Mesh"))
 		{
 			ImGui::Separator();
@@ -362,10 +383,6 @@ update_status ModuleGui::Update(float dt)
 
 		ImGui::End();
 	}
-	if (ImGui::CollapsingHeader("Renderer"))
-	{
-
-	}
 
 	if (about_window)
 	{
@@ -379,7 +396,7 @@ update_status ModuleGui::Update(float dt)
 				ImGui::Text("ClockWorkEngine is developed by Daniel Ruiz & Pol Cortes");
 				ImGui::Text("This engine has been coded in C++");
 				ImGui::Text("Libraries used: ");
-				ImVec4 color(1.0f, 1.0f, 0.0f, 1.0f);
+				ImVec4 color(1.0f, 0.0f, 0.0f, 1.0f);
 
 				ImGui::BulletText("SDL ");
 			ImGui::SameLine();
@@ -457,14 +474,24 @@ update_status ModuleGui::Update(float dt)
 
 	return UPDATE_CONTINUE;
 }
-
-
-void ModuleGui::Draw() {
+update_status ModuleGui::PostUpdate(float dt)
+{
 
 	ImGui::Render();
+
+
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
+
+	return  UPDATE_CONTINUE;
 }
+
+//void ModuleGui::Draw() {
+//
+//	ImGui::Render();
+//	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+//
+//}
 
 bool ModuleGui::CleanUp()
 {
@@ -567,9 +594,4 @@ void ModuleGui::GameObjectsHierarchy()
 	}
 
 
-}
-
-const char* ModuleGui::GetName() const
-{
-	return name;
 }

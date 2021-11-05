@@ -20,7 +20,6 @@ public:
 	GameObject* CreateGameObject(GameObject* GameObject);
 
 
-	GameObject* selected_object = nullptr;
-	std::vector<GameObject*> game_objects;
 	GameObject* selected;
+	std::vector<GameObject*> game_objects;
 };
