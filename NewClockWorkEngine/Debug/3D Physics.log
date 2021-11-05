@@ -9,5 +9,5 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(213,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(220,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(279,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(480,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(499,20): warning C4018: '<': no coinciden signed/unsigned
   3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
