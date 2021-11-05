@@ -116,7 +116,6 @@ update_status ModuleInput::PreUpdate(float dt)
 				dropped_file = e.drop.file;
 				std::string format(e.drop.file);
 				App->filesystem->LoadFile(dropped_file);
-				App->renderer3D->LoadFBXBuffer();
 				SDL_free(dropped_file);
 			}
 

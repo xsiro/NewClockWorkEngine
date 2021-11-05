@@ -5,6 +5,7 @@
 #include "ModuleMesh.h"
 #include "ModuleMaterial.h"
 
+
 GameObject::GameObject() : active(true), name("Game Object"), parent(nullptr)
 {
 	active = true;

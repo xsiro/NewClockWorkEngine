@@ -1,13 +1,25 @@
-﻿  ModuleGui.cpp
+﻿  log.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(249,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(251,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(181,49): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(183,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(185,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(213,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(220,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(279,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(499,20): warning C4018: '<': no coinciden signed/unsigned
+  ModuleGui.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(248,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(250,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(180,49): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(182,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(184,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(212,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(219,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(278,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(494,20): warning C4018: '<': no coinciden signed/unsigned
+  ModuleImporter.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\cimport.h(54,15): warning C4099: 'aiScene': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(18): message : vea la declaración de 'aiScene'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\scene.h(278,1): warning C4099: 'aiScene': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\scene.h(277): message : vea la declaración de 'aiScene'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(57,21): warning C4018: '<': no coinciden signed/unsigned
+  Generando código...
   3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe

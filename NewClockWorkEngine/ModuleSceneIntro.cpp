@@ -90,6 +90,11 @@ update_status ModuleSceneIntro::Update(float dt)
 		ComponentMesh CreateSphere();
 	}
 
+	for (size_t i = 0; i < game_objects.size(); i++)
+	{
+		game_objects[i]->Update();
+	}
+
 	return UPDATE_CONTINUE;
 }
 

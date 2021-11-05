@@ -2,7 +2,6 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "ModuleGui.h"
-#include "ModuleAudio.h"
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
 #include "ModuleImporter.h"
@@ -47,7 +46,7 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	wireframe = false;
 	vertexlines = false;
 	facelines = false;
-	check = false;
+	checker = false;
 
 
 }
@@ -458,18 +457,14 @@ update_status ModuleGui::Update(float dt)
 
 	return UPDATE_CONTINUE;
 }
-update_status ModuleGui::PostUpdate(float dt)
-{
+
+
+void ModuleGui::Draw() {
 
 	ImGui::Render();
-
-	
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-	
-	
-	return  UPDATE_CONTINUE;
-}
 
+}
 
 bool ModuleGui::CleanUp()
 {

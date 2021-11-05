@@ -1,15 +1,14 @@
 #include "Application.h"
-#include <functional>
+
 
 Application::Application()
 {
 	window = new ModuleWindow(this);
 	input = new ModuleInput(this);
-	audio = new ModuleAudio(this, true);
 	scene_intro = new ModuleSceneIntro(this);	
-	gui = new ModuleGui(this);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
+	gui = new ModuleGui(this);
 	importer = new ModuleImporter(this);
 	filesystem = new FileSystem(this);
 	
@@ -21,7 +20,6 @@ Application::Application()
 	AddModule(window);
 	AddModule(camera);
 	AddModule(input);
-	AddModule(audio);
 	AddModule(gui);
 	AddModule(importer);
 	AddModule(filesystem);
@@ -61,6 +59,14 @@ bool Application::Init()
 
 	// After all Init calls we call Start() in all modules
 	LOG("Application Start --------------");
+	LOG("Engine Info-----------------------");
+	//LOG("Using Glew %s", glewGetString(GLEW_VERSION));
+	LOG("Vendor: %s", glGetString(GL_VENDOR));
+	LOG("Renderer: %s", glGetString(GL_RENDERER));
+	LOG("OpenGL version supported %s", glGetString(GL_VERSION));
+	LOG("GLSL: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+	ms_timer.Start();
+	return ret;
 	item = list_modules.getFirst();
 
 	while(item != NULL && ret == true)
@@ -84,6 +90,7 @@ void Application::PrepareUpdate()
 // ---------------------------------------------
 void Application::FinishUpdate()
 {
+
 }
 
 // Call PreUpdate, Update and PostUpdate on all modules
