@@ -106,7 +106,7 @@ public:
 
 
 private:
-
+	GameObject* object = nullptr;
 	std::vector<float> fps_log;
 	std::vector<float> ms_log;
 	std::vector<char*> logs;

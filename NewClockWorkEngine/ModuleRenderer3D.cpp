@@ -4,6 +4,7 @@
 #include "Primitive.h"
 #include "ModuleWindow.h"
 #include "ModuleImporter.h"
+#include "ModuleMesh.h"
 #include "glmath.h"
 #include "Glew/include/glew.h"
 #include "SDL_opengl.h"
@@ -150,6 +151,33 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 	for (uint i = 0; i < MAX_LIGHTS; ++i)
 		lights[i].Render();
 
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleRenderer3D::Update(float dt)
+{
+	if (App->gui->cube) {
+		ModuleMesh* Cube = new ModuleMesh();
+		Cube->CreateCubeDirect();
+	}
+
+	if (App->gui->pyramid)
+	{
+		ModuleMesh* Pyramid = new ModuleMesh();
+		Pyramid->CreatePyramid();
+	}
+
+	if (App->gui->cylinder)
+	{
+		ModuleMesh* Cylinder = new ModuleMesh();
+		Cylinder->CreateCylinder(1, 3, 6);
+	}
+
+	if (App->gui->sphere)
+	{
+		ModuleMesh* Sphere = new ModuleMesh();
+		Sphere->CreateSphere(1, 24, 24);
+	}
 	return UPDATE_CONTINUE;
 }
 

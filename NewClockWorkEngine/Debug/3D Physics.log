@@ -1,2 +1,57 @@
-﻿  GameObject.cpp
+﻿  Application.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(51,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(93,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(98,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(103,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(143,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  GameObject.cpp
+  ModuleCamera3D.cpp
+  ModuleGui.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(316,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(318,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(248,49): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(250,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(252,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(280,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(287,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(346,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(588,20): warning C4018: '<': no coinciden signed/unsigned
+  ModuleImporter.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(49,21): warning C4018: '<': no coinciden signed/unsigned
+  ModuleInput.cpp
+  ModuleMaterial.cpp
+  ModuleMesh.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(228,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(228,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(238,16): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(238,44): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,22): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(257,16): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(257,48): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(287,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(288,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(333,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+  ModuleRenderer3D.cpp
+  ModuleSceneIntro.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(62,14): warning C4930: 'ModuleMesh CreateCubeDirect(void)': no se ha llamado a la función prototipo (¿se pensó una definición de variable?)
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(67,14): warning C4930: 'ModuleMesh CreatePyramid(void)': no se ha llamado a la función prototipo (¿se pensó una definición de variable?)
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(72,14): warning C4930: 'ModuleMesh CreateCylinder(void)': no se ha llamado a la función prototipo (¿se pensó una definición de variable?)
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(77,14): warning C4930: 'ModuleMesh CreateSphere(void)': no se ha llamado a la función prototipo (¿se pensó una definición de variable?)
+  ModuleWindow.cpp
+  Generando código...
   3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe

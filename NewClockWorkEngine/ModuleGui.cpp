@@ -35,6 +35,10 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	fps_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 	ms_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 	
+	cube = false;
+	pyramid = false;
+	cylinder = false;
+	sphere = false;
 
 	depthtest = false;
 	cullface = false;
@@ -157,7 +161,50 @@ update_status ModuleGui::Update(float dt)
 			}
 			ImGui::EndMenu();
 		}
-
+		if (ImGui::BeginMenu("Create GameObject"))
+		{
+			if (ImGui::MenuItem("Cube")) {
+				pyramid = false;
+				cylinder = false;
+				sphere = false;
+				cube = !cube;
+				if (cube)
+				{
+					LOG("Cube primitive created");
+				}
+			}
+			if (ImGui::MenuItem("Pyramid")) {
+				cube = false;
+				cylinder = false;
+				sphere = false;
+				pyramid = !pyramid;
+				if (pyramid)
+				{
+					LOG("Pyramid primitive created")
+				}
+			}
+			if (ImGui::MenuItem("Cylinder")) {
+				pyramid = false;
+				cube = false;
+				sphere = false;
+				cylinder = !cylinder;
+				if (cylinder)
+				{
+					LOG("Cylinder primitive created")
+				}
+			}
+			if (ImGui::MenuItem("Sphere")) {
+				pyramid = false;
+				cylinder = false;
+				cube = false;
+				sphere = !sphere;
+				if (sphere)
+				{
+					LOG("Sphere primitive created")
+				}
+			}
+			ImGui::EndMenu();
+		}
 
 		ImGui::EndMainMenuBar();
 	}
@@ -383,8 +430,14 @@ update_status ModuleGui::Update(float dt)
 		}
 		if (ImGui::CollapsingHeader("Input"))
 		{
-			ImGui::Text("Mouse X: %d", App->input->GetMouseX());
-			ImGui::Text("Mouse Y: %d", App->input->GetMouseY());
+			ImVec4 color(1.0f, 0.0f, 1.0f, 1.0f);
+
+			ImGui::Text("Mouse X:");
+			ImGui::SameLine();
+			ImGui::TextColored(color,"%d", App->input->GetMouseX());
+			ImGui::Text("Mouse Y:");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%d", App->input->GetMouseY());
 
 			ImGui::Spacing();
 
@@ -393,19 +446,6 @@ update_status ModuleGui::Update(float dt)
 
 			ImGui::Spacing();
 
-			ImGui::Text("Normalized Mouse X: %.2f", App->gui->mouseScenePosition.x / App->gui->image_size.x);
-			ImGui::Text("Normalized Mouse Y: %.2f", App->gui->mouseScenePosition.y / App->gui->image_size.y);
-
-			ImGui::Spacing();
-
-			float normalized_x = App->gui->mouseScenePosition.x / App->gui->image_size.x;
-			float normalized_y = App->gui->mouseScenePosition.y / App->gui->image_size.y;
-
-			normalized_x = (normalized_x - 0.5f) * 2.0f;
-			normalized_y = -(normalized_y - 0.5f) * 2.0f;
-
-			ImGui::Text("Near Plane Mouse X: %.2f", normalized_x);
-			ImGui::Text("Near Plane Mouse Y: %.2f", normalized_y);
 		}
 
 		ImGui::End();
