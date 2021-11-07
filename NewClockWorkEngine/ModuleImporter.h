@@ -43,6 +43,8 @@ struct Mesh
 	uint id_vertex = 0;
 	uint num_vertex = 0;
 	float* vertex = nullptr;
+
+
 };
 
 class ModuleImporter : public Module

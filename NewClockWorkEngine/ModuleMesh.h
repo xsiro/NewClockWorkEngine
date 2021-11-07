@@ -21,6 +21,7 @@ public:
 	void CreatePyramid();
 	void CreateSphere(float radius, unsigned int rings, unsigned int sectors);
 	void CreateCylinder(float radius, float height, int sides);
+	void DrawInspector();
 
 
 public:
@@ -52,5 +53,6 @@ public:
 	GLuint texture_id;
 	bool reload = false;
 
+	Mesh* mesh;
 };
 

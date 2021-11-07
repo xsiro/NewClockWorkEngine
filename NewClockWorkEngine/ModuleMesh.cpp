@@ -17,7 +17,7 @@
 ModuleMesh::ModuleMesh() : ModuleComponent()
 {
 	type = ComponentType::Mesh;
-	//rendered = false;
+	
 }
 
 ModuleMesh::~ModuleMesh()

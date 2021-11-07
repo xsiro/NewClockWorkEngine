@@ -72,9 +72,3 @@ bool GameObject::DeleteComponent(ModuleComponent* component)
 	return false;
 }
 
-
-//void GameObject::AddComponent(ModuleComponent* component) {
-//
-//	components.push_back(component);
-//
-//}

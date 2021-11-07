@@ -5,6 +5,7 @@
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
 #include "ModuleImporter.h"
+#include "ModuleMesh.h"
 #include "Primitive.h"
 #include "GameObject.h"
 #include "ModuleComponent.h"
@@ -108,7 +109,7 @@ update_status ModuleGui::Update(float dt)
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("Exit"))
+			if (ImGui::MenuItem("Exit", "(Alt+F4)"))
 			{
 				return UPDATE_STOP;
 				
@@ -132,6 +133,10 @@ update_status ModuleGui::Update(float dt)
 			if (ImGui::MenuItem("Hierarchy"))
 			{
 				hierarchy = !hierarchy;
+			}
+			if (ImGui::MenuItem("Inspector"))
+			{
+				inspector = !inspector;
 			}
 			
 			ImGui::EndMenu();
@@ -229,10 +234,13 @@ update_status ModuleGui::Update(float dt)
 		}
 		if (ImGui::CollapsingHeader("Mesh"))
 		{
+		
 			ImGui::Separator();
 			ImGui::Text("File:");
 			ImGui::SameLine();
 			ImGui::TextColored({ 1.0f, 1.0f, 0.0f, 1.0f }, "%s", App->importer->GetMeshFileName());
+			
+		
 			ImGui::Separator();
 			ImGui::Text("General");
 			ImGui::Text("");
@@ -251,6 +259,7 @@ update_status ModuleGui::Update(float dt)
 			if (ImGui::Checkbox("Lightning", &lighting)) {
 				App->renderer3D->SetLighting(lighting);
 			}
+
 			ImGui::Text("");
 			ImGui::Text("Polygons smoothing");
 			ImGui::Text("");
@@ -261,7 +270,13 @@ update_status ModuleGui::Update(float dt)
 		}
 		if (ImGui::CollapsingHeader("Material"))
 		{
-			ImGui::Text("Textures");
+			
+			ImGui::Separator();
+			ImGui::Text("Texture:");
+			ImGui::SameLine();
+			ImGui::TextColored({ 1.0f, 1.0f, 0.0f, 1.0f }, "%s", App->importer->GetMaterialFileName());
+			ImGui::Separator();
+			ImGui::Text("General");
 			ImGui::Text("");
 			if (ImGui::Checkbox("Cube Map", &cubemap))
 			{
@@ -337,9 +352,6 @@ update_status ModuleGui::Update(float dt)
 			if (ImGui::Checkbox("Fullscreen", &fullscreen));
 			App->window->SetFullScreen(fullscreen);
 			ImGui::SameLine();
-
-			/*ImGui::Checkbox("Resizable", &resizable);
-			App->window->SetResizable(resizable);*/
 
 			ImGui::Checkbox("Borderless", &borderless);
 			App->window->SetBorderless(borderless);
@@ -456,7 +468,7 @@ update_status ModuleGui::Update(float dt)
 				ImGui::Text("Libraries used: ");
 				ImVec4 color(1.0f, 0.0f, 0.0f, 1.0f);
 
-				ImGui::BulletText("SDL ");
+			ImGui::BulletText("SDL ");
 			ImGui::SameLine();
 			ImGui::TextColored(color, "%d.%d.%d", SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);
 			ImGui::BulletText("ImGui ");
@@ -543,13 +555,6 @@ update_status ModuleGui::PostUpdate(float dt)
 
 	return  UPDATE_CONTINUE;
 }
-
-//void ModuleGui::Draw() {
-//
-//	ImGui::Render();
-//	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-//
-//}
 
 bool ModuleGui::CleanUp()
 {
@@ -650,6 +655,5 @@ void ModuleGui::GameObjectsHierarchy()
 		}
 		ImGui::TreePop();
 	}
-
 
 }

@@ -74,6 +74,7 @@ public:
 	bool cullface;
 	bool lighting;
 	bool polygonssmooth;
+	bool colormaterial;
 	bool material;
 	bool texture2D;
 	bool cubemap;
@@ -85,14 +86,10 @@ public:
 	bool sphere;
 	bool showmaterial;
 
-
-	const char* GetName() const;
 	const char* name;
 
 	void ClearLog();
 	void ConsoleLog(char* logStr);
-	void ConsoleOutput();
-	void Hierarchy();
 	void GameObjectsHierarchy();
 	void Draw();
 	
@@ -106,6 +103,7 @@ public:
 
 
 private:
+
 	GameObject* object = nullptr;
 	std::vector<float> fps_log;
 	std::vector<float> ms_log;

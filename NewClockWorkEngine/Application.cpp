@@ -46,7 +46,7 @@ Application::~Application()
 bool Application::Init()
 {
 	bool ret = true;
-
+	LOG("Application Start --------------");
 	// Call Init() in all modules
 	for (int i = 0; i < list_modules.size() && ret == true; i++)
 	{
@@ -54,7 +54,7 @@ bool Application::Init()
 	}
 
 	// After all Init calls we call Start() in all modules
-	LOG("Application Start --------------");
+	
 	LOG("Engine Info-----------------------");
 	//LOG("Using Glew %s", glewGetString(GLEW_VERSION));
 	LOG("Vendor: %s", glGetString(GL_VENDOR));
