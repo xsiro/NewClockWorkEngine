@@ -354,6 +354,33 @@ update_status ModuleGui::Update(float dt)
 			ImGui::SameLine();
 			ImGui::TextColored(color, "%i Mb", App->Reserved());
 		}
+		if (ImGui::CollapsingHeader("Software"))
+		{
+			GLint major, minor;
+			glGetIntegerv(GL_MAJOR_VERSION, &major);
+			glGetIntegerv(GL_MINOR_VERSION, &minor);
+
+			ImVec4 color(1.0f, 0.0f, 1.0f, 1.0f);
+
+			ImGui::BulletText("SDL ");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%d.%d.%d", SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);
+			ImGui::BulletText("ImGui ");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%s", ImGui::GetVersion());
+			ImGui::BulletText("Glew ");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%d.%d.%d", GLEW_VERSION_MAJOR, GLEW_VERSION_MINOR, GLEW_VERSION_MICRO);
+			ImGui::BulletText("OpenGL ");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%d.%d.%d", GLEW_VERSION_MAJOR, GLEW_VERSION_MINOR, GLEW_VERSION_MICRO);
+			ImGui::BulletText("DeviL ");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "%d.%d", major, minor);
+			ImGui::BulletText("MathGeoLib");
+			ImGui::SameLine();
+			ImGui::TextColored(color, "1.5");
+		}
 		if (ImGui::CollapsingHeader("Input"))
 		{
 			ImGui::Text("Mouse X: %d", App->input->GetMouseX());
