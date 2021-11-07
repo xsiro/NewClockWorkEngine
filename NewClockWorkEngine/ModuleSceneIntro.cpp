@@ -5,7 +5,7 @@
 #include "ModuleGui.h"
 #include "imgui.h"
 
-class ComponentMesh;
+class ModuleMesh;
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -59,22 +59,22 @@ update_status ModuleSceneIntro::Update(float dt)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 	if (App->gui->cube) {
-		ComponentMesh CreateCubeDirect();
+		ModuleMesh CreateCubeDirect();
 	}
 
 	if (App->gui->pyramid)
 	{
-		ComponentMesh CreatePyramid();
+		ModuleMesh CreatePyramid();
 	}
 
 	if (App->gui->cylinder)
 	{
-		ComponentMesh CreateCylinder();
+		ModuleMesh CreateCylinder();
 	}
 
 	if (App->gui->sphere)
 	{
-		ComponentMesh CreateSphere();
+		ModuleMesh CreateSphere();
 	}
 
 	return UPDATE_CONTINUE;

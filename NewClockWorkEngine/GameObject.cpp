@@ -6,31 +6,20 @@
 #include "ModuleMaterial.h"
 
 
-GameObject::GameObject() : active(true), name("Game Object"), parent(nullptr)
+GameObject::GameObject()
 {
-	CreateComponent(ComponentType::Transform);
+	active = true;
 
 }
 
 GameObject::~GameObject()
 {
-	parent = nullptr;
-	components.clear();
-	children.clear();
+	
 }
 
 void GameObject::Update() 
 {
 
-	for (size_t i = 0; i < components.size(); i++)
-	{
-		components[i]->Update();
-	}
-
-	for (size_t i = 0; i < children.size(); i++)
-	{
-		children[i]->Update();
-	}
 }
 
 ModuleComponent* GameObject::GetComponent(ComponentType component) 
