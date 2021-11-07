@@ -167,11 +167,6 @@ update_status ModuleRenderer3D::Update(float dt)
 		Pyramid->CreatePyramid();
 	}
 
-	if (App->gui->cylinder)
-	{
-		ModuleMesh* Cylinder = new ModuleMesh();
-		Cylinder->CreateCylinder(1, 3, 6);
-	}
 
 	if (App->gui->sphere)
 	{
