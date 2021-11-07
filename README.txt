@@ -42,6 +42,15 @@ NEW CLOCK WORK ENGINE
 
 - D --> Move right
 
+- R --> Move up
+
+- F --> Move down
+
+- Shift + movement key --> doubles movement speed
+
 ## Notes
 
 When you drag and drop the model will be loaded bakwards
+
+
+https://github.com/xsiro/NewClockWorkEngine
