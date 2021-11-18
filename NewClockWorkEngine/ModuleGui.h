@@ -23,10 +23,7 @@ public:
 	ModuleGui(Application* app, bool start_enabled = true);
 
 	// Destructor
-	virtual ~ModuleGui();
-
-	// Called when before render is available
-	bool Awake();
+	ModuleGui::~ModuleGui();
 
 	// Call before first frame
 	bool Init();

@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include "imgui.h"
 
 class ModuleComponent;
 enum class ComponentType;
@@ -25,6 +26,5 @@ public:
 	bool active;
 	std::string name;
 	std::vector<ModuleComponent*> components;
-	std::vector<GameObject*> comp;
 	std::vector<GameObject*> children;
 };

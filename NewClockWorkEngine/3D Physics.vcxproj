@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="FileSystem.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Glew\include\eglew.h" />
     <ClInclude Include="Glew\include\glew.h" />
@@ -115,12 +116,11 @@
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="Wabout.h" />
-    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="ImGui\include\imgui.cpp" />
@@ -146,7 +146,6 @@
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="Wabout.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

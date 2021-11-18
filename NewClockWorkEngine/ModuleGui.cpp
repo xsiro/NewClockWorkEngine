@@ -60,14 +60,6 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 ModuleGui::~ModuleGui()
 {}
 
-// Called before render is available
-bool ModuleGui::Awake()
-{
-	LOG("Loading GUI atlas");
-	bool ret = true;
-
-	return ret;
-}
 
 // Called before the first frame
 bool ModuleGui::Init()

@@ -3,10 +3,12 @@
 #include "glmath.h"
 #include <vector>
 #include "ModuleComponent.h"
-#include "Moduleimporter.h"
 
 
 class GameObject;
+class ModuleMaterial;
+typedef unsigned int GLuint;
+typedef unsigned char GLubyte;
 
 class ModuleMesh : public ModuleComponent
 {
@@ -21,13 +23,21 @@ public:
 	void CreatePyramid();
 	void CreateSphere(float radius, unsigned int rings, unsigned int sectors);
 	void CreateCylinder(float radius, float height, int sides);
-	void DrawInspector();
 
+	virtual void Update();
+
+	void RenderFBX();
+	void LoadFBXBuffer();
+	void DrawVertexNormalLines();
+	void DrawFaceNormalLines();
+
+	void LoadingCheckerTextures();
 
 public:
-
 	GLubyte checkerImage[64][64][4];
 	bool rendered;
+
+public:
 
 	uint id_index = 0; // index in VRAM
 	uint num_index = 0;
@@ -52,7 +62,5 @@ public:
 	GLuint texture = 0;
 	GLuint texture_id;
 	bool reload = false;
-
-	Mesh* mesh;
 };
 

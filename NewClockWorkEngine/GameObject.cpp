@@ -4,22 +4,33 @@
 #include "ModuleTransform.h"
 #include "ModuleMesh.h"
 #include "ModuleMaterial.h"
+#include "imgui.h"
 
+#include <vector>
 
-GameObject::GameObject()
+GameObject::GameObject() : active(true), name("Game Object"), parent(nullptr)
 {
-	active = true;
-
+	CreateComponent(ComponentType::Transform);
 }
 
 GameObject::~GameObject()
 {
-	
+	parent = nullptr;
+	components.clear();
+	children.clear();
 }
 
 void GameObject::Update() 
 {
+	for (size_t i = 0; i < components.size(); i++)
+	{
+		components[i]->Update();
+	}
 
+	for (size_t i = 0; i < children.size(); i++)
+	{
+		children[i]->Update();
+	}
 }
 
 ModuleComponent* GameObject::GetComponent(ComponentType component) 

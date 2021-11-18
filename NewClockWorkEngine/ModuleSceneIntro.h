@@ -3,6 +3,7 @@
 #include "p2DynArray.h"
 #include "Globals.h"
 #include "Primitive.h"
+#include "imgui.h"
 
 class GameObject;
 
@@ -12,7 +13,7 @@ public:
 	ModuleSceneIntro(Application* app, bool start_enabled = true);
 	~ModuleSceneIntro();
 
-	bool Start();
+	bool Init();
 	update_status Update(float dt) override;
 
 

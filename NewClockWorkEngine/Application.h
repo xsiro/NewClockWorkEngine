@@ -14,7 +14,8 @@
 #include "ModuleRenderer3D.h"
 #include "ModuleGui.h"
 #include "ModuleImporter.h"
-#include "Glew/include/glew.h"
+#include "FileSystem.h"
+#include "glew.h"
 
 
 
@@ -29,7 +30,7 @@ public:
 	ModuleCamera3D* camera;
 	ModuleGui* gui;
 	ModuleImporter* importer;
-
+	FileSystem* filesystem;
 
 private:
 

@@ -25,9 +25,6 @@
     <Filter Include="Sources\Modules\ImGui">
       <UniqueIdentifier>{cf27911b-b49f-4357-8877-52313693c020}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Windows">
-      <UniqueIdentifier>{9711c364-265e-4875-9315-5a7459853063}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -141,11 +138,8 @@
     <ClInclude Include="ModuleTransform.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Wabout.h">
-      <Filter>Sources\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Sources\Windows</Filter>
+    <ClInclude Include="FileSystem.h">
+      <Filter>Sources\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -230,8 +224,8 @@
     <ClCompile Include="ModuleTransform.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Wabout.cpp">
-      <Filter>Sources\Windows</Filter>
+    <ClCompile Include="FileSystem.cpp">
+      <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
