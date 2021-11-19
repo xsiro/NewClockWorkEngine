@@ -40,7 +40,7 @@ FileSystem::FileSystem(Application* app, bool start_enabled) : Module(app, start
 		LOG("File System error while creating write dir: %s\n", PHYSFS_getLastError());
 
 	AddPath("."); //Adding ProjectFolder (working directory)
-	AddPath("Assets");
+	AddPath("");
 	CreateLibraryDirectories();
 }
 

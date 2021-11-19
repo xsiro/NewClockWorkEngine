@@ -30,7 +30,7 @@ bool ModuleImporter::Init() {
 	stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr);
 	aiAttachLogStream(&stream);
 
-	//UploadFile("Assets/BakerHouse.fbx", App->renderer3D->texture_id);
+	
 	LOG("Loading Assimp library");
 	ilInit();
 	iluInit();

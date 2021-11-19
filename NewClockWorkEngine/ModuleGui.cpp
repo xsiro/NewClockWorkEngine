@@ -180,7 +180,16 @@ update_status ModuleGui::Update(float dt)
 					LOG("Pyramid primitive created")
 				}
 			}
-		
+			if (ImGui::MenuItem("Cylinder")) {
+				pyramid = false;
+				cube = false;
+				sphere = false;
+				cylinder = !cylinder;
+				if (cylinder)
+				{
+					LOG("Cylinder primitive created")
+				}
+			}
 			if (ImGui::MenuItem("Sphere")) {
 				pyramid = false;
 				cylinder = false;

@@ -141,16 +141,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
-	/*RenderFBX();
-
-	if (App->gui->vertexlines)
-	{
-		DrawVertexNormalLines();
-	}
-	if (App->gui->facelines)
-	{
-		DrawFaceNormalLines();
-	}*/
+	
 	App->gui->PostUpdate(dt);
 	SDL_GL_SwapWindow(App->window->window);
 
