@@ -460,7 +460,7 @@ void ModuleMesh::Update()
 
 void ModuleMesh::RenderFBX() {
 
-	if (!App->gui->checker)
+	if (!App->gui->check)
 	{
 		if (reload)
 		{
@@ -472,7 +472,7 @@ void ModuleMesh::RenderFBX() {
 		glBindTexture(GL_TEXTURE_2D, App->importer->Gl_Tex);
 
 	}
-	if (App->gui->checker)
+	if (App->gui->check)
 	{
 		reload = true;
 		glEnable(GL_TEXTURE_2D);
