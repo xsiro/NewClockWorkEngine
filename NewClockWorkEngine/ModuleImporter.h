@@ -3,7 +3,7 @@
 #include "Module.h"
 #include "ModuleRenderer3D.h"
 
-#include "glew.h"
+#include "glew/include/glew.h"
 #include "Devil/include/IL/ilu.h"
 #include "Devil/include/IL/ilut.h"
 

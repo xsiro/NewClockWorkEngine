@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include "Glew/include/glew.h"
 
 #include "Globals.h"
 #include "Timer.h"
@@ -15,7 +16,7 @@
 #include "ModuleGui.h"
 #include "ModuleImporter.h"
 #include "FileSystem.h"
-#include "glew.h"
+
 
 
 
@@ -24,7 +25,6 @@ class Application
 public:
 	ModuleWindow* window;
 	ModuleInput* input;
-
 	ModuleSceneIntro* scene_intro;
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;

@@ -6,8 +6,8 @@
 #include "ModuleImporter.h"
 #include "ModuleMesh.h"
 #include "glmath.h"
-#include "glew.h"
-#include "SDL_opengl.h"
+#include "glew/include/glew.h"
+#include "SDL/include/SDL_opengl.h"
 
 #include <gl/GL.h>
 #include <gl/GLU.h>

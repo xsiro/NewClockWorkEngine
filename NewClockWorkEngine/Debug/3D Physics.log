@@ -1,29 +1,90 @@
-﻿  ModuleMesh.cpp
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(228,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(228,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(238,16): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(238,44): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,22): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(257,16): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(257,48): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(287,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
+﻿  Application.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(51,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(59,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(99,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(104,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(109,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(149,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  FileSystem.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15,21): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16): message : vea la declaración de 'ModuleMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.h(9,21): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\cimport.h(54,15): warning C4099: 'aiScene': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(17): message : vea la declaración de 'aiScene'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\scene.h(278,1): warning C4099: 'aiScene': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\scene.h(277): message : vea la declaración de 'aiScene'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.cpp(268,20): warning C4018: '<': no coinciden signed/unsigned
+  ModuleCamera3D.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+  ModuleGui.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(314,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(316,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(239,49): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(241,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(243,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(278,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(285,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(344,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(576,20): warning C4018: '<': no coinciden signed/unsigned
+  ModuleImporter.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\cimport.h(54,15): warning C4099: 'aiScene': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(18): message : vea la declaración de 'aiScene'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\scene.h(278,1): warning C4099: 'aiScene': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\scene.h(277): message : vea la declaración de 'aiScene'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(57,21): warning C4018: '<': no coinciden signed/unsigned
+  ModuleInput.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+  ModuleMaterial.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+  ModuleMesh.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(230,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(230,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,16): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,44): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,22): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(242,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(242,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(258,16): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(258,48): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(288,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
           with
           [
               _Ty=float
           ]
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(288,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(289,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
           with
           [
               _Ty=float
           ]
-C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(333,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-  3D Physics.vcxproj -> C:\Users\Rosa Maria\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(334,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+  ModuleRenderer3D.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+  ModuleSceneIntro.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+  ModuleWindow.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+  log.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+  Generando código...
+  3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
