@@ -58,6 +58,8 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
+	uint GetFRLimit() const;
+	void SetFRLimit(uint max_framerate);
 	bool closewindow;
 	
 private:
@@ -68,6 +70,10 @@ private:
 	void FinishUpdate();
 
 public:
+	int	miliseconds;
+	int contFPS;
+	int	last_ms;
+	int	last_fps;
 	float max_ms;
 	float fps;
 	float dt;

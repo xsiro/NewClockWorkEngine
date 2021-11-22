@@ -130,6 +130,20 @@ float ModuleWindow::GetBrightness()
 	return brightness;
 }
 
+uint ModuleWindow::GetWidth() const
+{
+	int width, height;
+	SDL_GetWindowSize(window, &width, &height);
+	return width;
+}
+
+uint ModuleWindow::GetHeight() const
+{
+	int width, height;
+	SDL_GetWindowSize(window, &width, &height);
+	return height;
+}
+
 void ModuleWindow::SetBright(float bright)
 {
 	SDL_SetWindowBrightness(window, bright);
@@ -137,10 +151,10 @@ void ModuleWindow::SetBright(float bright)
 
 void ModuleWindow::SetWidth(int width)
 {
-	SDL_SetWindowSize(window, width, App->gui->height);
+	SDL_SetWindowSize(window, width, GetHeight());
 }
 
 void ModuleWindow::SetHeight(int height)
 {
-	SDL_SetWindowSize(window, App->gui->width, height);
+	SDL_SetWindowSize(window, GetWidth(), height);
 }

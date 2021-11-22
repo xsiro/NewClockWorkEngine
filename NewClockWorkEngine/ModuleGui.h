@@ -14,6 +14,7 @@
 
 class Window;
 class Win_Console;
+class Win_Configuration;
 
 class ModuleGui : public Module
 {
@@ -44,20 +45,11 @@ public:
 
 	void AddWindow(Window* window);
 	void Log(char* text);
+	void LogFPS(float fps, float ms);
 	
 public:
 
-	int fps;
-	int height;
-	int width;
-
-	float brightness;
-
 	bool check=false;
-	bool fullscreen;
-	bool resizable;
-	bool borderless;
-	bool fulldesktop;
 	bool vertexlines;
 	bool facelines;
 	bool scroll;
@@ -99,6 +91,7 @@ public:
 
 	std::vector<Window*> winArray;
 	Win_Console* console = nullptr;
+	Win_Configuration* config = nullptr;
 
 
 private:

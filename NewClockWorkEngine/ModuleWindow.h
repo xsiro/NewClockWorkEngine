@@ -20,6 +20,8 @@ public:
 
 	float GetBrightness();
 	void SetBright(float bright);
+	uint GetWidth() const;
+	uint GetHeight() const;
 	void SetWidth(int width);
 	void SetHeight(int height);
 	void SetFullScreen(bool state);

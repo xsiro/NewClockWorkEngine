@@ -112,7 +112,7 @@ bool ModuleRenderer3D::Init()
 	}
 
 	// Projection matrix for
-	OnResize(App->gui->width, App->gui->height);
+	OnResize(App->window->GetWidth(), App->window->GetHeight());
 
 	return ret;
 }
