@@ -25,6 +25,9 @@
     <Filter Include="Sources\Modules\ImGui">
       <UniqueIdentifier>{cf27911b-b49f-4357-8877-52313693c020}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Modules\Window">
+      <UniqueIdentifier>{2330a47e-e468-4927-83a9-47d42644b653}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -141,6 +144,12 @@
     <ClInclude Include="FileSystem.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Sources\Modules\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Win_Console.h">
+      <Filter>Sources\Modules\Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -226,6 +235,12 @@
     </ClCompile>
     <ClCompile Include="FileSystem.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Sources\Modules\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Win_Console.cpp">
+      <Filter>Sources\Modules\Window</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

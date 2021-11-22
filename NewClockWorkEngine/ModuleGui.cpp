@@ -11,6 +11,12 @@
 #include "ModuleComponent.h"
 #include "ModuleSceneIntro.h"
 
+#include "Window.h"
+//#include "Win_Inspector.h"
+//#include "Win_Configuration.h"
+//#include "Win_Hierarchy.h"
+#include "Win_Console.h"
+
 #include "OpenGL.h"
 #include <stdio.h>
 #include "imgui.h"
@@ -53,12 +59,17 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	facelines = false;
 	check = false;
 
+	console = new Win_Console(true);
 
+	AddWindow(console);
 }
 
 // Destructor
 ModuleGui::~ModuleGui()
-{}
+{
+	
+
+}
 
 
 // Called before the first frame
@@ -118,9 +129,9 @@ update_status ModuleGui::Update(float dt)
 			{
 				show_config = !show_config;
 			}
-			if (ImGui::MenuItem("Console"))
+			if (ImGui::MenuItem("Console", " ", console->active))
 			{
-				show_console = !show_console;
+				console->SetActive();
 			}
 			if (ImGui::MenuItem("Hierarchy"))
 			{
@@ -517,19 +528,6 @@ update_status ModuleGui::Update(float dt)
 		}
 	}
 
-	if (show_console)
-	{
-		
-		if (ImGui::Begin("Console", &show_console,ImGuiWindowFlags_None))
-		{
-			for (uint i = 0; i < logs.size(); ++i)
-			{
-				ImGui::TextUnformatted(logs[i]);
-			}
-			ImGui::End();
-			
-		}
-	}
 	if (hierarchy)
 	{
 		ImGui::Begin("Hierarchy", &hierarchy);
@@ -541,6 +539,14 @@ update_status ModuleGui::Update(float dt)
 		GameObjectsHierarchy();
 		ImGui::End();
 	}
+
+	std::vector<Window*>::iterator item = winArray.begin();
+
+	for (item; item != winArray.end(); ++item)
+	{
+		(*item)->Draw();
+	}
+
 
 
 	return UPDATE_CONTINUE;
@@ -559,35 +565,18 @@ update_status ModuleGui::PostUpdate(float dt)
 
 bool ModuleGui::CleanUp()
 {
+	std::vector<Window*>::iterator item = winArray.begin();
+	for (item; item != winArray.end(); ++item)
+		(*item)->CleanUp();
+
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();
-	ClearLog();
-
 
 	return true;
 }
 
-void ModuleGui::ConsoleLog(char* logStr)
-{
-	if (logs.size() + 1 > THRESHOLD_LOGS)
-	{
-		ClearLog();
-	}
 
-	char* tmp = _strdup(logStr);
-
-	logs.push_back(tmp);
-}
-
-void ModuleGui::ClearLog()
-{
-	for (int i = 0; i < logs.size(); ++i)
-	{
-		free(logs[i]);
-	}
-	logs.clear();
-}
 
 update_status ModuleGui::Dock(bool* p_open)
 {
@@ -657,4 +646,15 @@ void ModuleGui::GameObjectsHierarchy()
 		ImGui::TreePop();
 	}
 
+}
+
+void ModuleGui::AddWindow(Window* window)
+{
+	winArray.push_back(window);
+}
+
+void ModuleGui::Log(char* text)
+{
+	if (console != nullptr)
+		console->ConsoleLog(text);
 }

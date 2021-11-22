@@ -1,33 +1,16 @@
-﻿  ModuleMesh.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(229,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(230,21): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(230,16): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,16): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(239,44): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,22): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(240,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(241,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(242,41): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(242,17): warning C4244: 'inicializando': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(258,16): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(258,48): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(288,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(289,35): warning C4244: 'argumento': conversión de 'double' a '_Ty'; posible pérdida de datos
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(334,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-  ModuleRenderer3D.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+﻿  ModuleGui.cpp
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(334,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(336,72): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(259,49): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(261,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(263,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(298,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(305,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(364,51): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+  Win_Console.cpp
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Console.cpp(32,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Console.cpp(51,20): warning C4018: '<': no coinciden signed/unsigned
   Generando código...
-  3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
+  3D Physics.vcxproj -> C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe

@@ -19,6 +19,6 @@ void log(const char file[], int line, const char* format, ...)
 	if (App != nullptr)
 	{
 		std::string log_text = std::string(tmp_string);
-		App->gui->ConsoleLog(tmp_string2);
+		App->gui->Log(tmp_string2);
 	}
 }

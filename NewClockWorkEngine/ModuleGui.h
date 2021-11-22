@@ -12,9 +12,8 @@
 #include <string>
 #include <vector>
 
-#define THRESHOLD_LOGS 1000
-
-
+class Window;
+class Win_Console;
 
 class ModuleGui : public Module
 {
@@ -42,6 +41,9 @@ public:
 
 	//Docking
 	update_status Dock(bool* p_open);
+
+	void AddWindow(Window* window);
+	void Log(char* text);
 	
 public:
 
@@ -62,7 +64,6 @@ public:
 	bool show_demo_window;
 	bool mainwindow;
 	bool show_config;
-	bool show_console;
 	bool about_window;
 	bool inspector;
 	bool* dockingwindow;
@@ -85,8 +86,7 @@ public:
 
 	const char* name;
 
-	void ClearLog();
-	void ConsoleLog(char* logStr);
+	
 	void GameObjectsHierarchy();
 	void Draw();
 	
@@ -96,7 +96,9 @@ public:
 	ImVec4 clear_color;
 	ImVec2 mouseScenePosition;
 	ImVec2 image_size;
-	std::vector<char*> console_log;
+
+	std::vector<Window*> winArray;
+	Win_Console* console = nullptr;
 
 
 private:
@@ -104,7 +106,6 @@ private:
 	GameObject* object = nullptr;
 	std::vector<float> fps_log;
 	std::vector<float> ms_log;
-	std::vector<char*> logs;
 };
 
 #endif // __ModuleGui_H__

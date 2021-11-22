@@ -89,6 +89,7 @@
     <ClInclude Include="Glew\include\wglew.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="ImGui\include\imconfig.h" />
     <ClInclude Include="ImGui\include\imgui.h" />
     <ClInclude Include="ImGui\include\imgui_impl_opengl3.h" />
@@ -117,6 +118,7 @@
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Win_Console.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -147,6 +149,8 @@
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Win_Console.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
