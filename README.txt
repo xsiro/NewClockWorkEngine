@@ -28,6 +28,8 @@ NEW CLOCK WORK ENGINE
 
 - Pol Cortés (PolCorTs) --> https://github.com/PolCorTs
 
+- Alex Lopez (AlexLA99) --> https://github.com/AlexLA99
+
 ## Controls
 
 - Right click --> Rotate the camera
