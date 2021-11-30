@@ -29,10 +29,10 @@ C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleIm
   ModuleGui.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(254,49): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(256,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(258,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(293,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(255,49): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(257,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(259,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleGui.cpp(294,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
   ModuleImporter.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
@@ -82,6 +82,9 @@ C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleIm
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
   ModuleWindow.cpp
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
+  Win_About.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
   Win_Hierarchy.cpp

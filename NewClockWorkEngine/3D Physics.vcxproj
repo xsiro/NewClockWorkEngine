@@ -118,6 +118,7 @@
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Win_About.h" />
     <ClInclude Include="Win_Hierarchy.h" />
     <ClInclude Include="Win_Configuration.h" />
     <ClInclude Include="Win_Console.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Win_About.cpp" />
     <ClCompile Include="Win_Hierarchy.cpp" />
     <ClCompile Include="Win_Configuration.cpp" />
     <ClCompile Include="Win_Console.cpp" />

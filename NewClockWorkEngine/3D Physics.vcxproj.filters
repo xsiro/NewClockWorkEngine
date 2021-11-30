@@ -159,6 +159,9 @@
     <ClInclude Include="Win_Hierarchy.h">
       <Filter>Sources\Modules\Window</Filter>
     </ClInclude>
+    <ClInclude Include="Win_About.h">
+      <Filter>Sources\Modules\Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -255,6 +258,9 @@
       <Filter>Sources\Modules\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Win_Hierarchy.cpp">
+      <Filter>Sources\Modules\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Win_About.cpp">
       <Filter>Sources\Modules\Window</Filter>
     </ClCompile>
   </ItemGroup>

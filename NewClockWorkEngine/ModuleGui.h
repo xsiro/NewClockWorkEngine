@@ -13,6 +13,7 @@
 #include <vector>
 
 class Window;
+class Win_About;
 class Win_Console;
 class Win_Configuration;
 class Win_Hierarchy;
@@ -88,6 +89,7 @@ public:
 	ImVec2 image_size;
 
 	std::vector<Window*> winArray;
+	Win_About* about = nullptr;
 	Win_Console* console = nullptr;
 	Win_Hierarchy* hierarchy = nullptr;
 	Win_Configuration* config = nullptr;
