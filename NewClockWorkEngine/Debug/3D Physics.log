@@ -7,7 +7,6 @@ C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Applicat
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(104,20): warning C4018: '<': no coinciden signed/unsigned
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(109,20): warning C4018: '<': no coinciden signed/unsigned
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(149,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-  Color.cpp
   FileSystem.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15,21): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16): message : vea la declaración de 'ModuleMaterial'
@@ -18,30 +17,6 @@ C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleIm
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\scene.h(278,1): warning C4099: 'aiScene': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Assimp\include\scene.h(277): message : vea la declaración de 'aiScene'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.cpp(268,20): warning C4018: '<': no coinciden signed/unsigned
-  GameObject.cpp
-  glmath.cpp
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(12,13): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(27,17): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(43,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(53,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(53,26): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(72,13): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(87,17): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(103,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(600,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(618,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(618,33): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(758,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(778,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(778,33): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_opengl3.cpp
-  imgui_impl_sdl.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  Light.cpp
   log.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
@@ -51,7 +26,6 @@ C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleIm
   ModuleCamera3D.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
-  ModuleComponent.cpp
   ModuleGui.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
@@ -70,8 +44,6 @@ C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleIm
   ModuleInput.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
-  Generando código...
-  Compilando...
   ModuleMaterial.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
@@ -109,24 +81,12 @@ C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleIm
   ModuleSceneIntro.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
-  ModuleTransform.cpp
   ModuleWindow.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
-  Primitive.cpp
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(198,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(199,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(199,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(208,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(209,53): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(209,36): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(217,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(219,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(219,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(220,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(220,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-  Timer.cpp
-  Window.cpp
+  Win_Hierarchy.cpp
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
   Win_Configuration.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
@@ -134,8 +94,5 @@ C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Conf
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(90,71): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(59,45): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(118,50): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-  Win_Console.cpp
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Console.cpp(32,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Console.cpp(51,20): warning C4018: '<': no coinciden signed/unsigned
   Generando código...
   3D Physics.vcxproj -> C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe

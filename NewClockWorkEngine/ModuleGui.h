@@ -15,6 +15,7 @@
 class Window;
 class Win_Console;
 class Win_Configuration;
+class Win_Hierarchy;
 
 class ModuleGui : public Module
 {
@@ -59,7 +60,6 @@ public:
 	bool about_window;
 	bool inspector;
 	bool* dockingwindow;
-	bool hierarchy;
 	bool depthtest;
 	bool cullface;
 	bool lighting;
@@ -78,8 +78,6 @@ public:
 
 	const char* name;
 
-	
-	void GameObjectsHierarchy();
 	void Draw();
 	
 
@@ -91,6 +89,7 @@ public:
 
 	std::vector<Window*> winArray;
 	Win_Console* console = nullptr;
+	Win_Hierarchy* hierarchy = nullptr;
 	Win_Configuration* config = nullptr;
 
 

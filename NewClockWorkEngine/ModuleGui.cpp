@@ -14,7 +14,7 @@
 #include "Window.h"
 //#include "Win_Inspector.h"
 #include "Win_Configuration.h"
-//#include "Win_Hierarchy.h"
+#include "Win_Hierarchy.h"
 #include "Win_Console.h"
 
 #include "OpenGL.h"
@@ -32,9 +32,7 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 {
 	
 	about_window = false;
-	fps_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-	ms_log = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-	
+
 	cube = false;
 	pyramid = false;
 	cylinder = false;
@@ -53,9 +51,11 @@ ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_e
 	check = false;
 
 	console = new Win_Console(true);
+	hierarchy = new Win_Hierarchy(true);
 	config = new Win_Configuration((int)App->GetFRLimit(), true);
 
 	AddWindow(console);
+	AddWindow(hierarchy);
 	AddWindow(config);
 }
 
@@ -130,7 +130,7 @@ update_status ModuleGui::Update(float dt)
 			}
 			if (ImGui::MenuItem("Hierarchy"))
 			{
-				hierarchy = !hierarchy;
+				hierarchy->SetActive();
 			}
 			if (ImGui::MenuItem("Inspector"))
 			{
@@ -304,7 +304,7 @@ update_status ModuleGui::Update(float dt)
 				glGetIntegerv(GL_MINOR_VERSION, &minor);
 
 				ImGui::Text("ClockWorkEngine v0.1");
-				ImGui::Text("ClockWorkEngine is developed by Daniel Ruiz & Pol Cortes");
+				ImGui::Text("ClockWorkEngine is developed by Daniel Ruiz, Alex Lopez & Pol Cortes");
 				ImGui::Text("This engine has been coded in C++");
 				ImGui::Text("Libraries used: ");
 				ImVec4 color(1.0f, 0.0f, 0.0f, 1.0f);
@@ -334,7 +334,7 @@ update_status ModuleGui::Update(float dt)
 			ImGui::Text("");
 			ImGui::Text("MIT License");
 			ImGui::Text("");
-			ImGui::Text("Copyright (c) 2021 [Daniel Ruiz & Pol Cortes]");
+			ImGui::Text("Copyright (c) 2021 [Daniel Ruiz, Alex Lopez & Pol Cortes]");
 			ImGui::Text("");
 			ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
 			ImGui::Text("of this software and associated documentation files (the 'Software'), to deal");
@@ -355,18 +355,6 @@ update_status ModuleGui::Update(float dt)
 			ImGui::Text("THE SOFTWARE.");
 			ImGui::End();
 		}
-	}
-
-	if (hierarchy)
-	{
-		ImGui::Begin("Hierarchy", &hierarchy);
-
-		if (ImGui::Button("Delete"))
-		{
-			App->scene_intro->CleanUp();
-		}
-		GameObjectsHierarchy();
-		ImGui::End();
 	}
 
 	std::vector<Window*>::iterator item = winArray.begin();
@@ -457,25 +445,7 @@ update_status ModuleGui::Dock(bool* p_open)
 	return ret;
 }
 
-void ModuleGui::GameObjectsHierarchy()
-{
 
-	if (ImGui::TreeNode("GameObject")) {
-		for (size_t i = 0; i < App->scene_intro->game_objects.size(); i = i + 2)
-		{
-			if (App->scene_intro->game_objects[i]->parent != nullptr) continue;
-
-			if (ImGui::TreeNodeEx(App->scene_intro->game_objects[i]->name.c_str(), ImGuiTreeNodeFlags_Leaf)) {
-				if (ImGui::IsItemClicked()) {
-					App->scene_intro->selected = App->scene_intro->game_objects[i];
-				}
-			}
-			ImGui::TreePop();
-		}
-		ImGui::TreePop();
-	}
-
-}
 
 void ModuleGui::AddWindow(Window* window)
 {
