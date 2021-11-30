@@ -19,7 +19,7 @@ fps_log(LOG_LENGTH), ms_log(LOG_LENGTH)
 	brightness = 1.0f;
 	fullscreen = false;
 	resizable = false;
-	borderless = true;
+	borderless = false;
 	fulldesktop = false;
 	fps = 0;
 }
@@ -126,8 +126,6 @@ void Win_Configuration::Draw()
 		ImGui::Checkbox("Fulldesktop", &fulldesktop);
 		App->window->SetFullDesktop(fulldesktop);
 
-		if (ImGui::IsAnyItemHovered())
-			ImGui::SetTooltip("Restart to Apply");
 	}
 	if (ImGui::CollapsingHeader("Hardware"))
 	{

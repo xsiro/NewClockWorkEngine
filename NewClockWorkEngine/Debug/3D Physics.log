@@ -1,8 +1,8 @@
-﻿  Win_Inspector.cpp
+﻿  Win_Configuration.cpp
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.h(16,22): warning C4099: 'ModuleMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(15): message : vea la declaración de 'ModuleMaterial'
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Inspector.cpp(74,49): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Inspector.cpp(76,65): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Inspector.cpp(78,62): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Inspector.cpp(113,48): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(88,12): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(90,71): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(59,45): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(118,50): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
   3D Physics.vcxproj -> C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
