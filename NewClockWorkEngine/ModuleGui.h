@@ -13,6 +13,7 @@
 #include <vector>
 
 class Window;
+class Win_Inspector;
 class Win_About;
 class Win_Console;
 class Win_Configuration;
@@ -48,29 +49,19 @@ public:
 	void AddWindow(Window* window);
 	void Log(char* text);
 	void LogFPS(float fps, float ms);
+	bool GetVL();
+	bool GetFL();
+	bool GetCheck();
+	bool GetWireframe();
 	
 public:
 
-	bool check=false;
-	bool vertexlines;
-	bool facelines;
 	bool scroll;
 	bool show_demo_window;
 	bool mainwindow;
-	bool show_config;
-	bool about_window;
-	bool inspector;
 	bool* dockingwindow;
-	bool depthtest;
-	bool cullface;
-	bool lighting;
-	bool polygonssmooth;
-	bool colormaterial;
-	bool material;
 	bool texture2D;
-	bool cubemap;
 	bool checker;
-	bool wireframe;
 	bool cube;
 	bool pyramid;
 	bool cylinder;
@@ -90,6 +81,7 @@ public:
 
 	std::vector<Window*> winArray;
 	Win_About* about = nullptr;
+	Win_Inspector* inspector = nullptr;
 	Win_Console* console = nullptr;
 	Win_Hierarchy* hierarchy = nullptr;
 	Win_Configuration* config = nullptr;

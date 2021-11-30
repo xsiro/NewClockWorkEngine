@@ -57,10 +57,10 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.Render();
 
 	Cube cube(1.0f, 1.0f, 1.0f);
-	if (App->gui->wireframe == true) {
+	if (App->gui->GetWireframe() == true) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}
-	else if (App->gui->wireframe == false) {
+	else if (App->gui->GetWireframe() == false) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 	if (App->gui->cube) {

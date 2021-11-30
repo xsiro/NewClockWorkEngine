@@ -448,11 +448,11 @@ void ModuleMesh::LoadFBXBuffer() {
 void ModuleMesh::Update()
 {
 	RenderFBX();
-	if (App->gui->vertexlines)
+	if (App->gui->GetVL())
 	{
 		DrawVertexNormalLines();
 	}
-	if (App->gui->facelines)
+	if (App->gui->GetFL())
 	{
 		DrawFaceNormalLines();
 	}
@@ -460,7 +460,7 @@ void ModuleMesh::Update()
 
 void ModuleMesh::RenderFBX() {
 
-	if (!App->gui->check)
+	if (!App->gui->GetCheck())
 	{
 		if (reload)
 		{
@@ -472,7 +472,7 @@ void ModuleMesh::RenderFBX() {
 		glBindTexture(GL_TEXTURE_2D, App->importer->Gl_Tex);
 
 	}
-	if (App->gui->check)
+	if (App->gui->GetCheck())
 	{
 		reload = true;
 		glEnable(GL_TEXTURE_2D);

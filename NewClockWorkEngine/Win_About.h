@@ -1,7 +1,6 @@
 #include "Window.h"
 
 
-
 class Win_About : public Window
 {
 public:
