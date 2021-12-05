@@ -10,9 +10,10 @@ public:
 
 	void SetActive();
 
+	virtual void Init() = 0;
 	virtual void Draw() = 0;
 
-	inline bool IsActive() const { return active; }
+	bool IsActive() const;
 
 	virtual void CleanUp() = 0;
 

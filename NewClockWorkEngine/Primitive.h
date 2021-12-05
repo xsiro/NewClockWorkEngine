@@ -83,13 +83,14 @@ public:
 };
 
 // ============================================
-class Plane : public Primitive
+class Planes : public Primitive
 {
 public:
-	Plane();
-	Plane(float x, float y, float z, float d);
+	Planes(const vec3& normal = vec3(0, 1, 0));
+	vec3 GetNormal() const;
+protected:
 	void InnerRender() const;
 public:
 	vec3 normal;
-	float constant;
+	
 };

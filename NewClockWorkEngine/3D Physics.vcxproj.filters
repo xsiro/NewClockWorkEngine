@@ -165,6 +165,9 @@
     <ClInclude Include="Win_Inspector.h">
       <Filter>Sources\Modules\Window</Filter>
     </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Sources\Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">

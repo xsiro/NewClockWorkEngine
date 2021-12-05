@@ -14,21 +14,23 @@ class ModuleComponent
 {
 public:
 
-	ModuleComponent();
+	ModuleComponent(ComponentType type);
+	ModuleComponent(ComponentType type, GameObject* owner);
 	~ModuleComponent();
 
 	virtual void Enable();
 	virtual void Update();
 	virtual void Disable();
-
+	virtual void DrawInspector() = 0;
+	bool IsActive();
 	ComponentType ReturnType();
 	GameObject* ReturnGameObject();
 
 
 public:
 
-	bool active;
-	GameObject* owner;
+	bool active = true;
+	GameObject* owner = nullptr;
 	ComponentType type;
 
 

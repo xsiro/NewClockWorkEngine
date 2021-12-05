@@ -29,7 +29,7 @@
 
 
 
-ModuleGui::ModuleGui(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 {
 	
 	cube = false;
@@ -59,7 +59,7 @@ ModuleGui::~ModuleGui()
 
 
 // Called before the first frame
-bool ModuleGui::Init()
+bool ModuleGui::Start()
 {
 	bool ret = true;
 	IMGUI_CHECKVERSION();
@@ -73,6 +73,10 @@ bool ModuleGui::Init()
 	gl_context = SDL_GL_CreateContext(App->window->window);
 	//SDL_GL_MakeCurrent(App->window->window, gl_context);
 	
+	std::vector<Window*>::iterator item = winArray.begin();
+	for (item; item != winArray.end(); ++item)
+		(*item)->Init();
+
 	ImGui_ImplOpenGL3_Init();
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 
@@ -89,26 +93,28 @@ update_status ModuleGui::PreUpdate(float dt)
 }
 
 // Called every frame
-update_status ModuleGui::Update(float dt)
+
+void ModuleGui::Draw()
 {
+
 	Dock(dockingwindow);
-	
-	
+
+
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("Exit", "(Alt+F4)"))
+			if (ImGui::MenuItem("Exit", "(Alt+F4)")) 
 			{
-				return UPDATE_STOP;
-				
+				App->ExitApp();
+
 			}
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("View"))
 		{
-			if(ImGui::MenuItem("Demo menu"))
-			{ 
+			if (ImGui::MenuItem("Demo menu"))
+			{
 				show_demo_window = !show_demo_window;
 			}
 			if (ImGui::MenuItem("Configuration menu"))
@@ -127,7 +133,7 @@ update_status ModuleGui::Update(float dt)
 			{
 				inspector->SetActive();
 			}
-			
+
 			ImGui::EndMenu();
 
 		}
@@ -136,22 +142,22 @@ update_status ModuleGui::Update(float dt)
 			if (ImGui::MenuItem("Gui Demo"))
 			{
 				show_demo_window = !show_demo_window;
-				
+
 			}
 			if (ImGui::MenuItem("Documentation"))
 			{
 				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine/wiki");
-				
+
 			}
 			if (ImGui::MenuItem("Download latest"))
 			{
 				App->RequestBrowser("https://github.com/xsiro/NewClockWorkEngine");
-				
+
 			}
-			if (ImGui::MenuItem("About")) 
+			if (ImGui::MenuItem("About"))
 			{
 				about->SetActive();
-				
+
 			}
 			ImGui::EndMenu();
 		}
@@ -202,30 +208,15 @@ update_status ModuleGui::Update(float dt)
 
 		ImGui::EndMainMenuBar();
 	}
-
-	//Here we create the different windows
-
 	std::vector<Window*>::iterator item = winArray.begin();
-
 	for (item; item != winArray.end(); ++item)
-	{
 		(*item)->Draw();
-	}
-
-
-
-	return UPDATE_CONTINUE;
-}
-update_status ModuleGui::PostUpdate(float dt)
-{
-
 	ImGui::Render();
 
 
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 
-	return  UPDATE_CONTINUE;
 }
 
 bool ModuleGui::CleanUp()
@@ -233,6 +224,14 @@ bool ModuleGui::CleanUp()
 	std::vector<Window*>::iterator item = winArray.begin();
 	for (item; item != winArray.end(); ++item)
 		(*item)->CleanUp();
+
+	delete console;
+	delete config;
+	delete about;
+	delete hierarchy;
+	delete inspector;
+
+	winArray.clear();
 
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();

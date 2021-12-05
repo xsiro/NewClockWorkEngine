@@ -11,6 +11,7 @@ public:
 	Win_Console(bool _active);
 	virtual ~Win_Console();
 
+	void Init() override;
 	void Draw() override;
 
 	void CleanUp() override;

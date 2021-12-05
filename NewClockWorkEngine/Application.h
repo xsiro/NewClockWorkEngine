@@ -16,6 +16,7 @@
 #include "ModuleGui.h"
 #include "ModuleImporter.h"
 #include "FileSystem.h"
+#include "Brofiler/Brofiler.h"
 
 
 
@@ -29,7 +30,6 @@ public:
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
 	ModuleGui* gui;
-	ModuleImporter* importer;
 	FileSystem* filesystem;
 
 private:
@@ -59,9 +59,11 @@ public:
 	update_status Update();
 	bool CleanUp();
 	uint GetFRLimit() const;
+	void ExitApp();
 	void SetFRLimit(uint max_framerate);
 	bool closewindow;
 	
+
 private:
 
 

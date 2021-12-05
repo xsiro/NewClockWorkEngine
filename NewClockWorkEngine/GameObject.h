@@ -5,23 +5,28 @@
 #include "Imgui/include/imgui.h"
 
 class ModuleComponent;
+class ModuleTransform;
+class ModuleMaterial;
 enum class ComponentType;
 
 class GameObject
 {
 public:
-	GameObject();
+	GameObject(char* name);
+	GameObject(GameObject* parent, char* name);
 	~GameObject();
 
 	void Update();
-
+	const char* GetName();
 	ModuleComponent* GetComponent(ComponentType component);
-	ModuleComponent* CreateComponent(ComponentType type);
-	void AddComponent(ModuleComponent* component);
-	bool DeleteComponent(ModuleComponent* component);
+	ModuleComponent* AddComponent(ModuleComponent* component);
+	void DeleteComponent(ComponentType type);
+	std::vector<ModuleComponent*> GetComponents()const;
+	bool HasComponentType(ComponentType type);
 
 public:
-
+	ModuleTransform* transform = nullptr;
+	ModuleMaterial* material = nullptr;
 	GameObject* parent;
 	bool active;
 	std::string name;

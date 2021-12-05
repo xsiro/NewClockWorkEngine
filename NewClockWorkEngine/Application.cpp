@@ -9,7 +9,6 @@ Application::Application()
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
 	gui = new ModuleGui(this);
-	importer = new ModuleImporter(this);
 	filesystem = new FileSystem(this);
 	
 	// The order of calls is very important!
@@ -21,7 +20,6 @@ Application::Application()
 	AddModule(camera);
 	AddModule(input);
 	AddModule(gui);
-	AddModule(importer);
 	AddModule(filesystem);
 	
 	// Scenes
@@ -93,26 +91,37 @@ update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 	PrepareUpdate();
-	
-	std::vector<Module*>::reverse_iterator item = list_modules.rbegin();
-	
-	for (int i = 0; i < list_modules.size() && ret == UPDATE_CONTINUE; i++)
-	{
-		ret = list_modules[i]->PreUpdate(dt);
-	}
 
-	for (int i = 0; i < list_modules.size() && ret == UPDATE_CONTINUE; i++)
-	{
-		ret = list_modules[i]->Update(dt);
-	}
+	std::vector<Module*>::iterator item = list_modules.begin();
 
-	for (int i = 0; i < list_modules.size() && ret == UPDATE_CONTINUE; i++)
-	{
-		ret = list_modules[i]->PostUpdate(dt);
-	}
+	//BROFILER_CATEGORY("Engine PreUpdate", Profiler::Color::Yellow)
+		for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+		{
+			ret = (*item)->PreUpdate(dt);
+		}
 
-	
-	FinishUpdate();
+	item = list_modules.begin();
+
+	//BROFILER_CATEGORY("Engine Update", Profiler::Color::Green)
+		for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+		{
+			ret = (*item)->Update(dt);
+		}
+
+	item = list_modules.begin();
+
+	//BROFILER_CATEGORY("Engine PostUpdate", Profiler::Color::Purple)
+		for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+		{
+			ret = (*item)->PostUpdate(dt);
+		}
+
+	//BROFILER_CATEGORY("Sleep", Profiler::Color::Blue)
+		FinishUpdate();
+
+	if (closewindow)
+		ret = update_status::UPDATE_STOP;
+
 	return ret;
 }
 
@@ -262,4 +271,9 @@ void Application::SetFRLimit(uint max_framerate)
 		miliseconds = 1000 / max_framerate;
 	else
 		miliseconds = 0;
+}
+
+void Application::ExitApp()
+{
+	closewindow = true;
 }

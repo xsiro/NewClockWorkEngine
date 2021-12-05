@@ -8,16 +8,19 @@
 
 #include <vector>
 
-GameObject::GameObject() : active(true), name("Game Object"), parent(nullptr)
+GameObject::GameObject(char* name) : name(name)
 {
-	CreateComponent(ComponentType::Transform);
+	AddComponent(new ModuleTransform(this));
+}
+
+GameObject::GameObject(GameObject* parent = nullptr, char* name = "Object") : parent(parent), name(name)
+{
+	AddComponent(new ModuleTransform(this));
 }
 
 GameObject::~GameObject()
 {
-	parent = nullptr;
-	components.clear();
-	children.clear();
+	
 }
 
 void GameObject::Update() 
@@ -47,39 +50,106 @@ ModuleComponent* GameObject::GetComponent(ComponentType component)
 	return nullptr;
 }
 
-ModuleComponent* GameObject::CreateComponent(ComponentType type) {
+//ModuleComponent* GameObject::CreateComponent(ComponentType type) {
+//
+//	ModuleComponent* component = nullptr;
+//	switch (type)
+//	{
+//	case ComponentType::Transform:
+//		component = new ModuleTransform();
+//		components.push_back(component);
+//		break;
+//	case ComponentType::Mesh:
+//		component = new ModuleMesh();
+//		components.push_back(component);
+//		break;
+//	case ComponentType::Material:
+//		component = new ModuleMaterial();
+//		components.push_back(component);
+//		break;
+//	}
+//	return component;
+//}
 
-	ModuleComponent* component = nullptr;
+void GameObject::DeleteComponent(ComponentType type)
+{
+	std::vector<ModuleComponent*>::iterator item = components.begin();
+	for (; item != components.end(); ++item)
+	{
+		if ((*item)->ReturnType() == type)
+		{
+			components.erase(item);
+			return;
+
+		}
+	}
+}
+
+std::vector<ModuleComponent*> GameObject::GetComponents()const
+{
+	return components;
+}
+
+ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
+{
+	ComponentType type = component->ReturnType();
+
 	switch (type)
 	{
 	case ComponentType::Transform:
-		component = new ModuleTransform();
+
 		components.push_back(component);
+		transform = (ModuleTransform*)component;
 		break;
-	case ComponentType::Mesh:
-		component = new ModuleMesh();
-		components.push_back(component);
+		case ComponentType::Mesh:
+
+		if (!HasComponentType(ComponentType::Mesh))
+		{
+			components.push_back(component);
+		}
+		else
+			LOG("(ERROR) Error adding Mesh: Object already has Mesh");
+
 		break;
+
 	case ComponentType::Material:
-		component = new ModuleMaterial();
-		components.push_back(component);
+
+		if (!HasComponentType(ComponentType::Material))
+		{
+			components.push_back(component);
+			material = (ModuleMaterial*)component;
+		}
+		else
+		{
+			DeleteComponent(ComponentType::Material);
+			components.push_back(component);
+			material = (ModuleMaterial*)component;
+		}
+
 		break;
 	}
+
 	return component;
 }
 
-bool GameObject::DeleteComponent(ModuleComponent* component)
+bool GameObject::HasComponentType(ComponentType type)
 {
-	for (size_t i = 0; i < components.size(); i++)
+	bool ret = false;
+	std::vector<ModuleComponent*>::iterator item = components.begin();
+	for (; item != components.end(); ++item)
 	{
-		if (components[i] == component) {
-			delete components[i];
-			components.erase(components.begin() + i);
-			component = nullptr;
-			return true;
+		if ((*item)->ReturnType() == type)
+		{
+			ret = true;
+			return ret;
 		}
 	}
 
-	return false;
+	return ret;
+}
+
+const char* GameObject::GetName()
+{
+	return name.c_str();
 }
 

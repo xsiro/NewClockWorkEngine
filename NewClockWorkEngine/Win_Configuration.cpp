@@ -27,6 +27,11 @@ fps_log(LOG_LENGTH), ms_log(LOG_LENGTH)
 Win_Configuration::~Win_Configuration()
 {}
 
+void Win_Configuration::Init()
+{
+	
+}
+
 void Win_Configuration::CleanUp()
 {
 }
@@ -217,3 +222,4 @@ void Win_Configuration::Draw()
 
 	ImGui::End();
 }
+

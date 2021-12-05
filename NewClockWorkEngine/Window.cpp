@@ -14,5 +14,10 @@ void Window::SetActive()
 	active = !active;
 }
 
+void Window::Draw() {};
 
+bool Window::IsActive() const
+{
+	return active;
+}
 

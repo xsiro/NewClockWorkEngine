@@ -1,8 +1,11 @@
-#pragma once
-#include "Globals.h"
+#ifndef __MODULEFILESYSTEM_H__
+#define __MODULEFILESYSTEM_H__
+
 #include "Module.h"
 #include <vector>
 #include <string>
+#include "Globals.h"
+
 struct SDL_RWops;
 int close_sdl_rwops(SDL_RWops* rw);
 
@@ -12,23 +15,17 @@ struct aiFileIO;
 class Config;
 struct PathNode;
 
-class GameObject;
-struct ModuleMaterial;
-class ModuleMesh;
-class aiScene;
-struct aiNode;
-
 class FileSystem : public Module
 {
 public:
 
-	FileSystem(Application* app, bool start_enabled = true);// const char* game_path = nullptr);
+	FileSystem(bool start_enabled = true);// const char* game_path = nullptr);
 
 	// Destructor
 	~FileSystem();
 
 	// Called before render is available
-	bool Init(Config& config);
+	bool Init() override; //Config& config
 
 	// Called before quitting
 	bool CleanUp() override;
@@ -64,9 +61,8 @@ public:
 	unsigned int Save(const char* file, const void* buffer, unsigned int size, bool append = false) const;
 	bool Remove(const char* file);
 
-	//uint64 GetLastModTime(const char* filename);
+	uint64 GetLastModTime(const char* filename);
 	std::string GetUniqueName(const char* path, const char* name) const;
-
-	void LoadFile(const char* file_path);
-
 };
+
+#endif // __MODULEFILESYSTEM_H__

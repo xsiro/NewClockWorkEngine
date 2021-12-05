@@ -8,10 +8,12 @@
 #include "ModuleMaterial.h"
 #include "GameObject.h"
 #include "FileSystem.h"
+#include "ModuleImporter.h"
+
 
 class ModuleMesh;
 
-ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled), selected(nullptr)
+ModuleSceneIntro::ModuleSceneIntro(bool start_enabled) : Module(start_enabled)
 {
 }
 
@@ -27,9 +29,7 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	GameObject* house = App->importer->LoadFBX("Assets/BakerHouse.fbx");
-	App->importer->LoadTexture("Assets/Baker_house.png");
-	CreateGameObject(house);
+	CreateGameObject("BakerHouse", "Assets/BakerHouse.fbx", "Assets/Baker_house.png");
 
 	return ret;
 }
@@ -52,7 +52,7 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update(float dt)
 {
-	Plane p(0, 1, 0, 0);
+	Planes p(vec3(0, 1, 0));
 	p.axis = true;
 	p.Render();
 
@@ -63,7 +63,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	else if (App->gui->GetWireframe() == false) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
-	if (App->gui->cube) {
+	/*if (App->gui->cube) {
 		ModuleMesh* Cube = new ModuleMesh();
 		Cube->CreateCubeDirect();
 	}
@@ -84,7 +84,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	{
 		ModuleMesh* Sphere = new ModuleMesh();
 		Sphere->CreateSphere(1, 24, 24);
-	}
+	}*/
 
 	for (size_t i = 0; i < game_objects.size(); i++)
 	{
@@ -94,17 +94,54 @@ update_status ModuleSceneIntro::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
-GameObject* ModuleSceneIntro::CreateGameObject(GameObject* father) {
+void ModuleSceneIntro::CreateGameObject(char* name, char* meshPath = "", char* texturePath = "")
+{
+	GameObject* newGameObject = nullptr;
+	if (meshPath != "")
+	{
+		std::vector<Mesh*> meshes = Importer::MeshImporter::Import(meshPath);
 
-	GameObject* newgo = new GameObject();
-	newgo->parent = father;
-	game_objects.push_back(newgo);
+		if (meshes.size() == 0)
+		{
+			LOG("(ERROR) No meshes found in %s", meshPath);
+			return;
+		}
 
-	selected = father;
+		newGameObject = new GameObject(nullptr, name);
+		game_objects.push_back(newGameObject);
 
-	return newgo;
+		if (meshes.size() == 1)
+		{
+			newGameObject->AddComponent(new ModuleMesh(newGameObject, meshPath, meshes.front()));
+			if (texturePath != "")
+				newGameObject->AddComponent(new ModuleMaterial(game_objects.back(), texturePath, Importer::TextureImp::Import(texturePath)));
+		}
+		else
+		{
+			std::vector<Mesh*>::iterator item = meshes.begin();
+			for (; item != meshes.end(); ++item)
+			{
+				GameObject* childGameObject = new GameObject(newGameObject, "MeshObject");
+				ModuleMesh* newComp = new ModuleMesh(childGameObject, meshPath, (*item));
+
+				childGameObject->AddComponent((ModuleComponent*)newComp);
+
+				if (texturePath != "")
+					childGameObject->AddComponent(new ModuleMaterial(game_objects.back(), texturePath, Importer::TextureImp::Import(texturePath)));
+
+				newGameObject->children.push_back(childGameObject);
+			}
+		}
+	}
 }
 
-
+void ModuleSceneIntro::SetSelectedObject(GameObject* object)
+{
+	if (object != nullptr)
+	{
+		selected = object;
+		LOG("Object selected: %s", selected->GetName());
+	}
+}
 
 

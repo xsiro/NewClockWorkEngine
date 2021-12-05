@@ -12,6 +12,7 @@ public:
 	Win_Configuration(int _max_fps, bool _active);
 	virtual ~Win_Configuration();
 
+	void Init() override;
 	void Draw() override;
 	void CleanUp() override;
 

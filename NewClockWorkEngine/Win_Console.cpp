@@ -13,6 +13,11 @@ Win_Console::Win_Console(bool _active) : Window(_active)
 Win_Console::~Win_Console()
 {}
 
+void Win_Console::Init()
+{
+
+}
+
 void Win_Console::Draw()
 {
 	if (!active)

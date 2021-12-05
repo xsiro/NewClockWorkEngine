@@ -14,10 +14,14 @@
 #pragma comment (lib, "opengl32.lib")
 #pragma comment (lib, "Glew/libx86/glew32.lib")
 
-ModuleMaterial::ModuleMaterial() : ModuleComponent()
+ModuleMaterial::ModuleMaterial(GameObject* owner) : ModuleComponent(ComponentType::Material, owner)
 {
-	type = ComponentType::Material;
-	Gl_Tex = 0;
+
+}
+
+ModuleMaterial::ModuleMaterial(GameObject* owner, char* path, Material* texture = nullptr) : ModuleComponent(ComponentType::Material, owner), material(texture), path(path)
+{
+
 }
 
 ModuleMaterial::~ModuleMaterial()
@@ -26,4 +30,35 @@ ModuleMaterial::~ModuleMaterial()
 void ModuleMaterial::Update()
 {
 
+}
+
+void ModuleMaterial::DrawInspector()
+{
+	if (ImGui::CollapsingHeader("Texture"))
+	{
+		ImGui::Text("Path: %s", path);
+		ImGui::Text("Texture height: %d", material->height);
+		ImGui::Text("Texture width: %d", material->width);
+		if (ImGui::Checkbox("DrawTexture", &drawTexture)) {}
+	}
+}
+
+char* ModuleMaterial::GetPath()const
+{
+	return path;
+}
+
+Material* ModuleMaterial::GetTexture() const
+{
+	return material;
+}
+
+bool ModuleMaterial::IsEnable()
+{
+	return drawTexture;
+}
+
+void ModuleMaterial::SwitchEnabledTexture()
+{
+	active = !active;
 }

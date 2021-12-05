@@ -4,18 +4,34 @@
 #include <vector>
 #include "ModuleComponent.h"
 
-class GameObject;
+
 typedef unsigned int GLuint;
 typedef unsigned char GLubyte;
+class ModuleComponent;
+struct Material;
 
 class ModuleMaterial : public ModuleComponent
 {
 public:
 
-	ModuleMaterial();
+	ModuleMaterial(GameObject* owner);
+	ModuleMaterial(GameObject* owner, char* path, Material* mesh);;
 	~ModuleMaterial();
 	virtual void Update();
+	void DrawInspector() override;
+
+	char* GetPath()const;
+	Material* GetTexture() const;
+	bool IsEnable();
+	void SwitchEnabledTexture();
 
 public:
 	GLuint Gl_Tex;
+
+private:
+
+	Material* material = nullptr;
+	char* path = "";
+	bool drawTexture = true;
+
 };

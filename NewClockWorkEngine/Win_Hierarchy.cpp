@@ -15,6 +15,11 @@ Win_Hierarchy::Win_Hierarchy(bool _active) : Window(_active)
 Win_Hierarchy::~Win_Hierarchy()
 {}
 
+void Win_Hierarchy::Init()
+{
+
+}
+
 void Win_Hierarchy::Draw()
 {
 	if (!active)

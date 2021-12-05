@@ -6,7 +6,7 @@ class Win_Inspector : public Window
 public:
 	Win_Inspector(bool _active);
 	virtual ~Win_Inspector();
-
+	void Init() override;
 	void Draw() override;
 
 	void CleanUp() override;

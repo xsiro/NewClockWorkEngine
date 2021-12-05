@@ -6,10 +6,14 @@
 #include "imgui.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl3.h"
+#include "ModuleComponent.h"
+#include "ModuleMaterial.h"
+#include "ModuleSceneIntro.h"
+#include "GameObject.h"
 
 #define MAX_KEYS 300
 
-ModuleInput::ModuleInput(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleInput::ModuleInput(bool start_enabled) : Module(start_enabled)
 {
 	keyboard = new KEY_STATE[MAX_KEYS];
 	memset(keyboard, KEY_IDLE, sizeof(KEY_STATE) * MAX_KEYS);
@@ -113,12 +117,25 @@ update_status ModuleInput::PreUpdate(float dt)
 			break;
 
 			case SDL_DROPFILE:
-			{
-				dropped_file = e.drop.file;
-				std::string format(e.drop.file);
-				App->filesystem->LoadFile(dropped_file);
-				SDL_free(dropped_file);
-			}
+
+				if (strstr(e.drop.file, ".fbx") != nullptr || strstr(e.drop.file, ".FBX") != nullptr)
+				{
+					LOG("Loading .FBX file");
+					App->scene_intro->CreateGameObject("Imported Game Object", e.drop.file, "");
+				}
+
+				if (strstr(e.drop.file, ".png") != nullptr || strstr(e.drop.file, ".dds") != nullptr || strstr(e.drop.file, ".PNG") != nullptr || strstr(e.drop.file, ".DDS") != nullptr)
+				{
+					LOG("Loading .png /.dds file");
+					if (App->scene_intro->selected == nullptr)
+					{
+						LOG("There is no GameObject selected"); 
+						break;
+					}
+					App->scene_intro->selected->AddComponent(new ModuleMaterial(App->scene_intro->selected, e.drop.file, Importer::TextureImp::Import(e.drop.file)));
+				}
+
+				break;
 
 			case SDL_WINDOWEVENT:
 			{

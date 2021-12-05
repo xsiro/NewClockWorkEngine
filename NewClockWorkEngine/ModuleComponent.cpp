@@ -1,11 +1,14 @@
 #pragma once
 #include "ModuleComponent.h"
 
-ModuleComponent::ModuleComponent()
+ModuleComponent::ModuleComponent(ComponentType type) : type(type)
 {
-	active = true;
-	owner = nullptr;
-	type = type;
+
+}
+
+ModuleComponent::ModuleComponent(ComponentType type, GameObject* owner) : owner(owner), type(type)
+{
+
 }
 
 ModuleComponent::~ModuleComponent()

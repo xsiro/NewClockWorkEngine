@@ -10,7 +10,7 @@ class GameObject;
 class ModuleSceneIntro : public Module
 {
 public:
-	ModuleSceneIntro(Application* app, bool start_enabled = true);
+	ModuleSceneIntro(bool start_enabled = true);
 	~ModuleSceneIntro();
 
 	bool Start();
@@ -18,9 +18,10 @@ public:
 
 
 	bool CleanUp();
-	GameObject* CreateGameObject(GameObject* GameObject);
+	void CreateGameObject(char* name, char* meshPath, char* texturePath);
+	void SetSelectedObject(GameObject* object);
 
 
-	GameObject* selected;
+	GameObject* selected = nullptr;
 	std::vector<GameObject*> game_objects;
 };

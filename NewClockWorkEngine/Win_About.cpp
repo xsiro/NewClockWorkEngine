@@ -18,6 +18,11 @@ Win_About::Win_About(bool _active) : Window(_active)
 Win_About::~Win_About()
 {}
 
+void Win_About::Init()
+{
+
+}
+
 void Win_About::Draw()
 {
 	if (!active)

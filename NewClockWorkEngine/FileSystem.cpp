@@ -1,34 +1,18 @@
-#include "FileSystem.h"
+#include "Globals.h"
 #include "Application.h"
-#include "ModuleMesh.h"
-#include "ModuleImporter.h"
-#include "GameObject.h"
-
-#include "SDL/include/SDL.h"
-#include <fstream>
-#include <iostream>
-#include <Shlwapi.h>
-#include <string>
-
-#pragma comment(lib,"shlwapi.lib")
+#include "FileSystem.h"
+#include "Path.h"
 
 #include "PhysFS/include/physfs.h"
-#include "Assimp/include/cimport.h"
-#include "Assimp/include/scene.h"
-#include "Assimp/include/postprocess.h"
+#include <fstream>
+#include <filesystem>
 
-#include "Devil/include/IL/il.h"
-#include "Devil/include/IL/ilu.h"
-#include "Devil/include/IL/ilut.h"
+#include "Assimp/include/cfileio.h"
+#include "Assimp/include/types.h"
 
-#pragma comment (lib, "PhysFS/libx86/physfs.lib")
-#pragma comment (lib, "Assimp/libx86/assimp.lib")
+#pragma comment( lib, "PhysFS/libx86/physfs.lib" )
 
-#pragma comment (lib, "Devil/libx86/DevIL.lib")	
-#pragma comment (lib, "Devil/libx86/ILU.lib")	
-#pragma comment (lib, "Devil/libx86/ILUT.lib")	
-
-FileSystem::FileSystem(Application* app, bool start_enabled) : Module(app, start_enabled)
+FileSystem::FileSystem(bool start_enabled) //: Module("FileSystem", true)
 {
 	// needs to be created before Init so other modules can use it
 	char* base_path = SDL_GetBasePath();
@@ -40,7 +24,7 @@ FileSystem::FileSystem(Application* app, bool start_enabled) : Module(app, start
 		LOG("File System error while creating write dir: %s\n", PHYSFS_getLastError());
 
 	AddPath("."); //Adding ProjectFolder (working directory)
-	AddPath("");
+	AddPath("Assets");
 	CreateLibraryDirectories();
 }
 
@@ -51,7 +35,7 @@ FileSystem::~FileSystem()
 }
 
 // Called before render is available
-bool FileSystem::Init(Config& config)
+bool FileSystem::Init() //Config& config
 {
 	LOG("Loading File System");
 	bool ret = true;
@@ -78,8 +62,7 @@ bool FileSystem::CleanUp()
 
 void FileSystem::CreateLibraryDirectories()
 {
-	/*
-	CreateDir(LIBRARY_PATH);
+	/*CreateDir(LIBRARY_PATH);
 	CreateDir(FOLDERS_PATH);
 	CreateDir(MESHES_PATH);
 	CreateDir(TEXTURES_PATH);
@@ -88,8 +71,7 @@ void FileSystem::CreateLibraryDirectories()
 	CreateDir(ANIMATIONS_PATH);
 	CreateDir(PARTICLES_PATH);
 	CreateDir(SHADERS_PATH);
-	CreateDir(SCENES_PATH);
-	*/
+	CreateDir(SCENES_PATH);*/
 }
 
 // Add a new zip file or folder
@@ -167,14 +149,14 @@ void FileSystem::GetAllFilesWithExtension(const char* directory, const char* ext
 			file_list.push_back(files[i]);
 	}
 }
-/*
+
 PathNode FileSystem::GetAllFiles(const char* directory, std::vector<std::string>* filter_ext, std::vector<std::string>* ignore_ext) const
 {
 	PathNode root;
 	if (Exists(directory))
 	{
 		root.path = directory;
-		Engine->fileSystem->SplitFilePath(directory, nullptr, &root.localPath);
+		App->filesystem->SplitFilePath(directory, nullptr, &root.localPath);
 		if (root.localPath == "")
 			root.localPath = directory;
 
@@ -213,7 +195,7 @@ PathNode FileSystem::GetAllFiles(const char* directory, std::vector<std::string>
 	}
 	return root;
 }
-*/
+
 void FileSystem::GetRealDir(const char* path, std::string& output) const
 {
 	output = PHYSFS_getBaseDir();
@@ -391,7 +373,7 @@ bool FileSystem::DuplicateFile(const char* srcFile, const char* dstFile)
 
 int close_sdl_rwops(SDL_RWops* rw)
 {
-	//RELEASEARRAY(rw->hidden.mem.base);
+	//RELEASE_ARRAY(rw->hidden.mem.base);
 	SDL_FreeRW(rw);
 	return 0;
 }
@@ -413,14 +395,18 @@ uint FileSystem::Save(const char* file, const void* buffer, unsigned int size, b
 		}
 		else
 		{
-			if (append == true) {
+			if (append == true)
+			{
 				LOG("Added %u data to [%s%s]", size, GetWriteDir(), file);
 			}
-			else if (overwrite == true) {
+			else if (overwrite == true)
+			{
 				LOG("File [%s%s] overwritten with %u bytes", GetWriteDir(), file, size);
 			}
 			else
+			{
 				LOG("New file created [%s%s] of %u bytes", GetWriteDir(), file, size);
+			}
 
 			ret = written;
 		}
@@ -433,7 +419,7 @@ uint FileSystem::Save(const char* file, const void* buffer, unsigned int size, b
 
 	return ret;
 }
-/*
+
 bool FileSystem::Remove(const char* file)
 {
 	bool ret = false;
@@ -461,14 +447,11 @@ bool FileSystem::Remove(const char* file)
 
 	return ret;
 }
-*/
 
-/*
 uint64 FileSystem::GetLastModTime(const char* filename)
 {
 	return PHYSFS_getLastModTime(filename);
 }
-*/
 
 std::string FileSystem::GetUniqueName(const char* path, const char* name) const
 {
@@ -504,18 +487,3 @@ std::string FileSystem::GetUniqueName(const char* path, const char* name) const
 	}
 	return finalName;
 }
-
-void FileSystem::LoadFile(const char* file_path)
-{
-	char* extension = PathFindExtensionA(file_path);
-
-	if (strcmp(extension, ".fbx") == 0 || strcmp(extension, ".FBX") == 0)
-	{
-		App->scene_intro->CreateGameObject(App->importer->LoadFBX(file_path));
-	}
-	if (strcmp(extension, ".png") == 0 || strcmp(extension, ".dds") == 0) {
-		App->importer->LoadTexture(file_path);
-	}
-}
-
-

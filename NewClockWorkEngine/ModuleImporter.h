@@ -17,67 +17,65 @@ class ModuleMesh;
 class aiScene;
 struct aiNode;
 
-//struct Mesh
-//{
-//	//Index
-//
-//	uint* index = nullptr;
-//	uint id_index = 0;
-//	uint num_index = 0;
-//
-//	//Normals
-//
-//	uint	id_normals = 0;
-//	uint	num_normals = 0;
-//	float* normals = NULL;
-//
-//	//Colors
-//
-//	uint	id_colors = 0;
-//	uint	num_colors = 0;
-//	float* colors = NULL;
-//
-//	//Coords
-//
-//	uint	id_texcoords = 0;
-//	uint	num_texcoords = 0;
-//	float* texcoords = nullptr;
-//	uint image_id;
-//
-//	//Vertex
-//
-//	uint id_vertex = 0;
-//	uint num_vertex = 0;
-//	float* vertex = nullptr;
-//
-//
-//};
 
-class ModuleImporter : public Module
+struct Material
 {
-public:
-	ModuleImporter(Application* app, bool start_enabled = true);
-	~ModuleImporter();
+	uint width;
+	uint height;
 
-	bool Init();
-	bool CleanUp();
+	uint id;
+	const char* path;
+ };
 
-	ModuleMesh* UploadFile(const aiScene* scene, aiNode* node, uint id, const char* path);
-	GameObject* LoadFBX(const char* path);
-	void TextureSetter(const aiScene* scene, aiNode* node, const char* path);
-	void RecursiveCall(const aiScene* scene, aiNode* node, aiNode* parentNode, GameObject* parent, const char* path);
-	void LoadTexture(const char* path);
-	const char* GetMeshFileName();
-	const char* GetMaterialFileName();
+struct Texture
+{
+	uint width;
+	uint height;
 
-	const char* meshfilename;
-	const char* materialfilename;
-private:
-
-public:
-
-	//Mesh myMesh;
-	GLuint Gl_Tex;
-
-
+	uint id;
+	const char* path;
 };
+
+struct Mesh
+{
+	Mesh() {};
+
+	enum Buffers
+	{
+		index,
+		vertex,
+		normal,
+		texture,
+		maxBuffers
+	};
+
+	uint buffersId[maxBuffers];
+	uint buffersSize[maxBuffers];
+
+	uint* indices = nullptr;
+	float* vertices = nullptr;
+	float* normals = nullptr;
+	float* textureCoords = nullptr;
+
+	const char* path;
+};
+
+
+namespace Importer
+{
+	namespace MeshImporter
+	{
+		std::vector<Mesh*> Import(const char* file);
+
+		void Save(const Mesh mesh);
+
+		void Load(const char* fileBuffer, Mesh* mesh);
+
+	}
+	namespace TextureImp
+	{
+		Material* Import(const char* path);
+		uint CreateTexture(const void* data, uint width, uint height, uint format);
+		void InitDevil();
+	}
+}

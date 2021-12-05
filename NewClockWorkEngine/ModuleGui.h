@@ -23,26 +23,28 @@ class ModuleGui : public Module
 {
 public:
 
-	ModuleGui(Application* app, bool start_enabled = true);
+	ModuleGui( bool start_enabled = true);
 
 	// Destructor
 	ModuleGui::~ModuleGui();
 
 	// Call before first frame
-	bool Init();
+	bool Start();
 
 	// Called before all Updates
 	update_status PreUpdate(float dt);
 
 	// Called every frame
-	update_status Update(float dt);
+
 
 	// Called after all Updates
-	update_status PostUpdate(float dt);
+
 
 	// Called before quitting
 	bool CleanUp();
 
+
+	void Draw();
 	//Docking
 	update_status Dock(bool* p_open);
 
@@ -54,6 +56,9 @@ public:
 	bool GetCheck();
 	bool GetWireframe();
 	
+	void UpdateConfigFPS(int fps);
+	void UpdateConfigMS(int ms);
+
 public:
 
 	bool scroll;
@@ -70,7 +75,7 @@ public:
 
 	const char* name;
 
-	void Draw();
+	
 	
 
 	SDL_GLContext gl_context;

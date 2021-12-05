@@ -8,6 +8,11 @@
 #include "glmath.h"
 #include "glew/include/glew.h"
 #include "SDL/include/SDL_opengl.h"
+#include "Brofiler/Brofiler.h"
+#include "ModuleGui.h"
+#include "ModuleComponent.h"
+#include "ModuleMaterial.h"
+#include "GameObject.h"
 
 #include <gl/GL.h>
 #include <gl/GLU.h>
@@ -17,9 +22,15 @@
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment (lib, "glew/libx86/glew32.lib")
 
-ModuleRenderer3D::ModuleRenderer3D(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module(start_enabled), context()
 {
-	context = nullptr;
+	SetCullface = true;
+	SetColormaterial = true;
+	SetLighting = false;
+	SetDepthtest = true;
+	SetTexture2D = true;
+	wireframeMode = false;
+	checkersId = 0;
 }
 
 // Destructor
@@ -29,34 +40,27 @@ ModuleRenderer3D::~ModuleRenderer3D()
 // Called before render is available
 bool ModuleRenderer3D::Init()
 {
-	LOG("Creating 3D Renderer context");
+	LOG("(INIT) Creating 3D Renderer context");
 	bool ret = true;
 
 	//Create context
 	context = SDL_GL_CreateContext(App->window->window);
-	if (context != NULL)
-	{
-		LOG("OpenGL context successfully created")
-	}
 	if (context == NULL)
 	{
-		LOG("OpenGL context could not be created! SDL_Error: %s\n", SDL_GetError());
-		ret = false;
-	}
-
-	GLenum error = glewInit();
-	if (error == GL_NO_ERROR)
-	{
-		LOG("Successfully initializated glew library");
-	}
-	if (error != GL_NO_ERROR)
-	{
-		LOG("Error initializing glew library! %s", SDL_GetError());
+		LOG("(ERROR) OpenGL context could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
 
 	if (ret == true)
 	{
+		//Init Glew
+		if (glewInit() != GLEW_OK) {
+			LOG("(ERROR) ERROR ON GLEWINIT");
+			ret = false;
+		}
+		else
+			LOG("(INIT) Glew initialized succesfully!");
+
 		//Use Vsync
 		if (VSYNC && SDL_GL_SetSwapInterval(1) < 0)
 			LOG("Warning: Unable to set VSync! SDL Error: %s\n", SDL_GetError());
@@ -65,19 +69,23 @@ bool ModuleRenderer3D::Init()
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 
+		//Check for error
+		GLenum error = glGetError();
+		if (error != GL_NO_ERROR)
+		{
+			LOG("(ERROR) Error initializing OpenGL! %s\n", gluErrorString(error));
+			ret = false;
+		}
+
 		//Initialize Modelview Matrix
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
 		//Check for error
 		error = glGetError();
-		if (error == GL_NO_ERROR)
-		{
-			LOG("Successfully initializated OpenGL library")
-		}
 		if (error != GL_NO_ERROR)
 		{
-			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
+			LOG("(ERROR) Error initializing OpenGL! %s\n", gluErrorString(error));
 			ret = false;
 		}
 
@@ -86,6 +94,14 @@ bool ModuleRenderer3D::Init()
 
 		//Initialize clear color
 		glClearColor(0.f, 0.f, 0.f, 1.f);
+
+		//Check for error
+		error = glGetError();
+		if (error != GL_NO_ERROR)
+		{
+			LOG("(ERROR) Error initializing OpenGL! %s\n", gluErrorString(error));
+			ret = false;
+		}
 
 		GLfloat LightModelAmbient[] = { 0.0f, 0.0f, 0.0f, 1.0f };
 		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, LightModelAmbient);
@@ -102,17 +118,20 @@ bool ModuleRenderer3D::Init()
 		GLfloat MaterialDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, MaterialDiffuse);
 
+		glEnable(GL_LINE);
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);
-		lights[0].Active(true);
-		glEnable(GL_LIGHTING);
+		//glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_TEXTURE_2D);
-
+		lights[0].Active(true);
 	}
 
 	// Projection matrix for
-	OnResize(App->window->GetWidth(), App->window->GetHeight());
+	OnResize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	CreateChekerTexture();
+	Importer::TextureImp::InitDevil();
 
 	return ret;
 }
@@ -123,10 +142,8 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
-	Color c = App->camera->background;
-	glClearColor(c.r, c.g, c.b, c.a);
-
 	glMatrixMode(GL_MODELVIEW);
+
 	glLoadMatrixf(App->camera->GetViewMatrix());
 
 	// light 0 on cam pos
@@ -141,9 +158,13 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
-	
-	App->gui->PostUpdate(dt);
-	SDL_GL_SwapWindow(App->window->window);
+	//ImGui::ShowDemoWindow();
+
+	//BROFILER_CATEGORY("Draw imgui", Profiler::Color::AliceBlue)
+		App->gui->Draw();
+
+	//BROFILER_CATEGORY("SwapWindow", Profiler::Color::GoldenRod)
+		SDL_GL_SwapWindow(App->window->window);
 
 	return UPDATE_CONTINUE;
 }
@@ -154,10 +175,8 @@ bool ModuleRenderer3D::CleanUp()
 	LOG("Destroying 3D Renderer");
 
 	SDL_GL_DeleteContext(context);
-
 	return true;
 }
-
 
 void ModuleRenderer3D::OnResize(int width, int height)
 {
@@ -172,45 +191,150 @@ void ModuleRenderer3D::OnResize(int width, int height)
 	glLoadIdentity();
 }
 
-void ModuleRenderer3D::SetDepthtest(bool state) {
-	if (state == false)
+void ModuleRenderer3D::DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, bool drawVertexNormals)
+{
+	wireframeMode == false ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : (glPolygonMode(GL_FRONT_AND_BACK, GL_LINE), glColor4f(255, 255, 0, 255));
+
+	glPushMatrix();
+	glMultMatrixf((float*)&transform.Transposed());
+
+	glLineWidth(2);
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	//Pass TextureID
+	if (!wireframeMode)
+	{
+		if (textureId == 0)
+			glBindTexture(GL_TEXTURE_2D, checkersId);
+		else
+			glBindTexture(GL_TEXTURE_2D, textureId);
+	}
+
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->buffersId[Mesh::texture]);
+	glTexCoordPointer(2, GL_FLOAT, 0, NULL);
+
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->buffersId[Mesh::vertex]);
+	glVertexPointer(3, GL_FLOAT, 0, NULL);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->buffersId[Mesh::index]);
+	glDrawElements(GL_TRIANGLES, mesh->buffersSize[Mesh::index], GL_UNSIGNED_INT, NULL);
+
+	glPopMatrix();
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	if (drawVertexNormals)
+	{
+		DrawVertexNormals(mesh);
+	}
+}
+
+void ModuleRenderer3D::DrawVertexNormals(Mesh* mesh)
+{
+	//Draw Normals
+	glBegin(GL_LINES);
+	uint loops = mesh->buffersSize[Mesh::vertex];
+	for (uint i = 0; i < loops; i += 3)
+	{
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		glVertex3f(mesh->vertices[i], mesh->vertices[i + 1], mesh->vertices[i + 2]);
+		glVertex3f(mesh->vertices[i] + mesh->normals[i], mesh->vertices[i + 1] + mesh->normals[i + 1], mesh->vertices[i + 2] + mesh->normals[i + 2]);
+
+	}
+	glEnd();
+}
+
+void ModuleRenderer3D::GenerateBuffers(Mesh* newMesh)
+{
+	//Vertex buffer
+	glGenBuffers(1, (GLuint*)&(newMesh->buffersId[Mesh::vertex]));
+	glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[Mesh::vertex]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * newMesh->buffersSize[Mesh::vertex] * 3, newMesh->vertices, GL_STATIC_DRAW);
+
+
+	if (newMesh->indices != nullptr)
+	{
+		//Index buffer
+		glGenBuffers(1, (GLuint*)&(newMesh->buffersId[Mesh::index]));
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, newMesh->buffersId[Mesh::index]);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint) * newMesh->buffersSize[Mesh::index], newMesh->indices, GL_STATIC_DRAW);
+	}
+
+	if (newMesh->normals != nullptr)
+	{
+		//Normals buffer
+		glGenBuffers(1, (GLuint*)&(newMesh->buffersId[Mesh::normal]));
+		glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[Mesh::normal]);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * newMesh->buffersSize[Mesh::normal] * 3, newMesh->normals, GL_STATIC_DRAW);
+	}
+
+	if (newMesh->textureCoords != nullptr)
+	{
+		glGenBuffers(1, (GLuint*)&newMesh->buffersId[Mesh::texture]);
+		glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[Mesh::texture]);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * newMesh->buffersSize[Mesh::texture] * 2, newMesh->textureCoords, GL_STATIC_DRAW);
+	}
+
+}
+
+void ModuleRenderer3D::CreateChekerTexture()
+{
+	GLubyte checkerImage[64][64][4];
+	for (int i = 0; i < 64; i++) {
+		for (int j = 0; j < 64; j++) {
+			int c = ((((i & 0x8) == 0) ^ (((j & 0x8)) == 0))) * 255;
+
+			checkerImage[i][j][0] = (GLubyte)c;
+			checkerImage[i][j][1] = (GLubyte)c;
+			checkerImage[i][j][2] = (GLubyte)c;
+			checkerImage[i][j][3] = (GLubyte)255;
+		}
+	}
+
+	checkersId = Importer::TextureImp::CreateTexture(checkerImage, 64, 64, GL_RGBA);
+
+}
+
+void ModuleRenderer3D::SwitchCullFace()
+{
+	glIsEnabled(GL_CULL_FACE) == false ? glEnable(GL_CULL_FACE) : glDisable(GL_CULL_FACE);
+}
+
+void ModuleRenderer3D::SwitchDepthTest()
+{
+	if (SetDepthtest)
 		glEnable(GL_DEPTH_TEST);
-	else if (state == true)
+	else
 		glDisable(GL_DEPTH_TEST);
 }
-void ModuleRenderer3D::SetCullface(bool state) {
-	if (state == false)
-		glEnable(GL_CULL_FACE);
-	else if (state == true)
-		glDisable(GL_CULL_FACE);
-}
-void ModuleRenderer3D::SetLighting(bool state) {
-	if (state == false)
+
+void ModuleRenderer3D::SwitchLighting()
+{
+	if (SetLighting)
 		glEnable(GL_LIGHTING);
-	else if (state == true)
+	else
 		glDisable(GL_LIGHTING);
 }
-void ModuleRenderer3D::SetColormaterial(bool state) {
-	if (state == false)
-		glEnable(GL_COLOR_MATERIAL);
-	else if (state == true)
-		glDisable(GL_COLOR_MATERIAL);
-}
-void ModuleRenderer3D::SetTexture2D(bool state) {
-	if (state == false)
+
+void ModuleRenderer3D::SwitchTexture2d()
+{
+	if (SetTexture2D)
 		glEnable(GL_TEXTURE_2D);
-	else if (state == true)
+	else
 		glDisable(GL_TEXTURE_2D);
 }
-void ModuleRenderer3D::SetCubemap(bool state) {
-	if (state == false)
-		glEnable(GL_TEXTURE_CUBE_MAP);
-	else if (state == true)
-		glDisable(GL_TEXTURE_CUBE_MAP);
-}
-void ModuleRenderer3D::SetPolygonssmooth(bool state) {
-	if (state == false)
-		glEnable(GL_POLYGON_SMOOTH);
-	else if (state == true)
-		glDisable(GL_POLYGON_SMOOTH);
+
+void ModuleRenderer3D::SwitchColorMaterial()
+{
+	if (glColorMaterial)
+		glEnable(GL_COLOR_MATERIAL);
+	else
+		glDisable(GL_COLOR_MATERIAL);
 }
