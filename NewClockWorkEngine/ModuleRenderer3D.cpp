@@ -22,7 +22,7 @@
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment (lib, "glew/libx86/glew32.lib")
 
-ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module(start_enabled), context()
+ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module(start_enabled)
 {
 	SetCullface = true;
 	SetColormaterial = true;
@@ -44,6 +44,7 @@ bool ModuleRenderer3D::Init()
 	bool ret = true;
 
 	//Create context
+	bool i = App->gui->scroll;
 	context = SDL_GL_CreateContext(App->window->window);
 	if (context == NULL)
 	{

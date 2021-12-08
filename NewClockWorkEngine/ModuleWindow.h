@@ -42,6 +42,7 @@ public:
 	int height;
 	//The surface contained by the window
 	SDL_Surface* screen_surface;
+	SDL_GLContext context;
 };
 
 #endif // __ModuleWindow_H__

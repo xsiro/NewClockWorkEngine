@@ -32,7 +32,7 @@ public:
 	void GenerateBuffers(Mesh* newMesh);
 	void CreateChekerTexture();
 
-	void SwitchCullFace(); //This is ugly sorry
+	void SwitchCullFace();
 	void SwitchDepthTest();
 	void SwitchLighting();
 	void SwitchTexture2d();

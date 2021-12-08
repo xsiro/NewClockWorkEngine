@@ -11,7 +11,7 @@
 using namespace std;
 
 // ---------------------------------------------------------
-Win_Configuration::Win_Configuration(int _max_fps, bool _active) : Window(_active),
+Win_Configuration::Win_Configuration(bool _active) : Window(_active),
 fps_log(LOG_LENGTH), ms_log(LOG_LENGTH)
 {
 	width = 1280;
@@ -98,7 +98,7 @@ void Win_Configuration::Draw()
 		ImGui::SameLine();
 		ImGui::TextColored(color, "%i", fps);
 		fps_log.erase(fps_log.begin());
-		fps_log.push_back(App->fps);
+		fps_log.push_back(App->contFPS);
 		ms_log.erase(ms_log.begin());
 		ms_log.push_back(App->dt * 1000);
 

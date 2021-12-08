@@ -9,7 +9,7 @@ class Win_Configuration : public Window
 {
 public:
 
-	Win_Configuration(int _max_fps, bool _active);
+	Win_Configuration(bool _active);
 	virtual ~Win_Configuration();
 
 	void Init() override;

@@ -35,6 +35,7 @@ public:
 private:
 
 	Timer	ms_timer;
+	Timer	fps_timer;
 	
 	std::vector<Module*> list_modules;
 
@@ -61,7 +62,7 @@ public:
 	uint GetFRLimit() const;
 	void ExitApp();
 	void SetFRLimit(uint max_framerate);
-	bool closewindow;
+	
 	
 
 private:
@@ -77,8 +78,9 @@ public:
 	int	last_ms;
 	int	last_fps;
 	float max_ms;
-	float fps;
 	float dt;
+	Uint32 frames;
+	bool closewindow;
 
 	
 };

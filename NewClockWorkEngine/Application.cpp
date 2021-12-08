@@ -27,8 +27,12 @@ Application::Application()
 
 	// Renderer last!
 	AddModule(renderer3D);
-	max_ms = 1000 / 60;
-	fps = 0;
+
+	contFPS = 0;
+	frames = 0;
+	miliseconds = 1000 / 60;
+	last_fps = -1;
+	last_ms = -1;
 }
 
 Application::~Application()
@@ -65,7 +69,6 @@ bool Application::Init()
 	LOG("Renderer: %s", glGetString(GL_RENDERER));
 	LOG("OpenGL version supported %s", glGetString(GL_VERSION));
 	LOG("GLSL: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
-	ms_timer.Start();
 
 	
 	ms_timer.Start();
@@ -77,15 +80,29 @@ void Application::PrepareUpdate()
 {
 	dt = (float)ms_timer.Read() / 1000.0f;
 	ms_timer.Start();
-	fps = 1.0f / dt;
 }
 
 // ---------------------------------------------
 void Application::FinishUpdate()
 {
+	++frames;
+	++contFPS;
 
+	if (fps_timer.Read() >= 1000)
+	{
+		last_fps = contFPS;
+		contFPS = 0;
+		fps_timer.Start();
+	}
+
+	last_ms = ms_timer.Read();
+
+	if (miliseconds > 0 && (last_ms < miliseconds))
+	{
+		SDL_Delay(miliseconds - last_ms);
+	}
+	gui->LogFPS((float)last_fps, (float)last_ms);
 }
-
 // Call PreUpdate, Update and PostUpdate on all modules
 update_status Application::Update()
 {

@@ -41,7 +41,7 @@ ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 	about = new Win_About(false);
 	hierarchy = new Win_Hierarchy(true);
 	inspector = new Win_Inspector(true);
-	config = new Win_Configuration((int)App->GetFRLimit(), true);
+	config = new Win_Configuration(true);
 
 	AddWindow(console);
 	AddWindow(inspector);
@@ -70,7 +70,7 @@ bool ModuleGui::Start()
 
 	ImGui::StyleColorsDark();
 
-	gl_context = SDL_GL_CreateContext(App->window->window);
+	//gl_context = SDL_GL_CreateContext(App->window->window);
 	//SDL_GL_MakeCurrent(App->window->window, gl_context);
 	
 	std::vector<Window*>::iterator item = winArray.begin();
@@ -89,6 +89,7 @@ update_status ModuleGui::PreUpdate(float dt)
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame(App->window->window);
 	ImGui::NewFrame();
+	Dock(dockingwindow);
 	return  UPDATE_CONTINUE;
 }
 
@@ -96,10 +97,6 @@ update_status ModuleGui::PreUpdate(float dt)
 
 void ModuleGui::Draw()
 {
-
-	Dock(dockingwindow);
-
-
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
