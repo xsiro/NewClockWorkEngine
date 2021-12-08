@@ -19,7 +19,8 @@ public:
 	~ModuleComponent();
 
 	virtual void Enable();
-	virtual void Update();
+	virtual void Update() = 0;
+	virtual void CleanUp() = 0;
 	virtual void Disable();
 	virtual void DrawInspector() = 0;
 	bool IsActive();

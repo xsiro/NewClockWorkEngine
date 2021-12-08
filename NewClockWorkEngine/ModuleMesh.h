@@ -20,7 +20,7 @@ public:
 	~ModuleMesh();
 
 	void Update() override;
-	void CleanUp();
+	void CleanUp() override;
 	void DrawInspector() override;
 
 	void DrawMesh();

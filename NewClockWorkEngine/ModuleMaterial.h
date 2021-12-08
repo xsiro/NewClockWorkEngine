@@ -17,7 +17,8 @@ public:
 	ModuleMaterial(GameObject* owner);
 	ModuleMaterial(GameObject* owner, char* path, Material* mesh);;
 	~ModuleMaterial();
-	virtual void Update();
+	void Update() override;
+	void CleanUp() override;
 	void DrawInspector() override;
 
 	char* GetPath()const;

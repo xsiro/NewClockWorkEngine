@@ -14,7 +14,7 @@ public:
 	~ModuleTransform();
 
 	void Update() override;
-	void CleanUp();
+	void CleanUp() override;
 	void DrawInspector()override;
 
 	float4x4 GetTransform() const;

@@ -25,15 +25,39 @@ GameObject::~GameObject()
 
 void GameObject::Update() 
 {
-	for (size_t i = 0; i < components.size(); i++)
+	std::vector<ModuleComponent*>::iterator item = components.begin();
+	for (; item != components.end(); ++item)
 	{
-		components[i]->Update();
+		(*item)->Update();
 	}
 
-	for (size_t i = 0; i < children.size(); i++)
+	std::vector<GameObject*>::iterator child = children.begin();
+	for (; child != children.end(); ++child)
 	{
-		children[i]->Update();
+		(*child)->Update();
 	}
+}
+
+void GameObject::CleanUp()
+{
+
+	std::vector<ModuleComponent*>::iterator item = components.begin();
+	for (; item != components.end(); ++item)
+	{
+		(*item)->CleanUp();
+		delete (*item);
+	}
+
+	components.clear();
+
+	std::vector<GameObject*>::iterator child = children.begin();
+	for (; child != children.end(); ++child)
+	{
+		(*child)->CleanUp();
+		delete (*child);
+	}
+
+	children.clear();
 }
 
 ModuleComponent* GameObject::GetComponent(ComponentType component) 

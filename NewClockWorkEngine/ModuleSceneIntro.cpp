@@ -39,11 +39,13 @@ bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
 
-	for (size_t i = 0; i < game_objects.size(); i++)
+	std::vector<GameObject*>::iterator item = game_objects.begin();
+	for (; item != game_objects.end(); ++item)
 	{
-		delete game_objects[i];
-		game_objects[i] = nullptr;
+		(*item)->CleanUp();
+		delete (*item);
 	}
+
 	game_objects.clear();
 
 	return true;
@@ -57,39 +59,11 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.Render();
 
 	Cube cube(1.0f, 1.0f, 1.0f);
-	if (App->gui->GetWireframe() == true) {
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	}
-	else if (App->gui->GetWireframe() == false) {
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
-	/*if (App->gui->cube) {
-		ModuleMesh* Cube = new ModuleMesh();
-		Cube->CreateCubeDirect();
-	}
 
-	if (App->gui->pyramid)
-	{
-		ModuleMesh* Pyramid = new ModuleMesh();
-		Pyramid->CreatePyramid();
-	}
 
-	if (App->gui->cylinder)
-	{
-		ModuleMesh* Cylinder = new ModuleMesh();
-		Cylinder->CreateCylinder(1, 3, 6);
-	}
-
-	if (App->gui->sphere)
-	{
-		ModuleMesh* Sphere = new ModuleMesh();
-		Sphere->CreateSphere(1, 24, 24);
-	}*/
-
-	for (size_t i = 0; i < game_objects.size(); i++)
-	{
-		game_objects[i]->Update();
-	}
+	std::vector<GameObject*>::iterator item = game_objects.begin();
+	for (; item != game_objects.end(); ++item)
+		(*item)->Update();
 
 	return UPDATE_CONTINUE;
 }

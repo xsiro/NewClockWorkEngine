@@ -17,6 +17,7 @@ public:
 	~GameObject();
 
 	void Update();
+	void CleanUp();
 	const char* GetName();
 	ModuleComponent* GetComponent(ComponentType component);
 	ModuleComponent* AddComponent(ModuleComponent* component);

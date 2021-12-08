@@ -31,7 +31,11 @@ void ModuleMaterial::Update()
 {
 
 }
-
+ 
+void ModuleMaterial::CleanUp()
+{
+	delete material;
+}
 void ModuleMaterial::DrawInspector()
 {
 	if (ImGui::CollapsingHeader("Texture"))
