@@ -1,4 +1,4 @@
-﻿  ModuleMaterial.cpp
+﻿  Win_Inspector.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'

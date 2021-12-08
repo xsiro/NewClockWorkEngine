@@ -5,13 +5,11 @@
 #include "Light.h"
 #include "ModuleImporter.h"
 #include "MathGeoLib/src/MathGeoLib.h"
+#include "SDL.h"
+#include <vector>
 
 
-typedef void* SDL_GLContext;
 struct Mesh;
-typedef unsigned int GLuint;
-typedef signed char GLbyte;
-class ModuleMesh;
 
 #define MAX_LIGHTS 8
 
@@ -47,7 +45,7 @@ public:
 	bool SetColormaterial;
 	bool SetTexture2D;
 	bool SetCubemap=false;
-	bool SetPolygonssmooth;
+	//bool SetPolygonssmooth;
 	bool wireframeMode;
 
 	uint checkersId;

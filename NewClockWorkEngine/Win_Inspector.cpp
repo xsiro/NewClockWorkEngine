@@ -12,6 +12,7 @@
 #include "ModuleComponent.h"
 #include "GameObject.h"
 #include "ModuleTransform.h"
+#include "ModuleRenderer3D.h"
 
 Win_Inspector::Win_Inspector(bool _active) : Window(_active)
 {
@@ -47,6 +48,17 @@ void Win_Inspector::Draw()
 		ImGui::End();
 		return;
 	}
+	if (ImGui::CollapsingHeader("Render"))
+	{
+		if (ImGui::Checkbox("Wireframe Mode", &App->renderer3D->wireframeMode)) {}
+		if (ImGui::Checkbox("GL_CULL_FACE", &App->renderer3D->SetCullface)) { App->renderer3D->SwitchCullFace(); }
+		if (ImGui::Checkbox("GL_DEPTH_TEST", &App->renderer3D->SetDepthtest)) { App->renderer3D->SwitchDepthTest(); }
+		if (ImGui::Checkbox("GL_LIGHT", &App->renderer3D->SetLighting)) { App->renderer3D->SwitchLighting(); }
+		if (ImGui::Checkbox("GL_COLOR_MATERIAL", &App->renderer3D->SetColormaterial)) { App->renderer3D->SwitchColorMaterial(); }
+		if (ImGui::Checkbox("GL_TEXTURE_2D", &App->renderer3D->SetTexture2D)) { App->renderer3D->SwitchTexture2d(); }
+	}
+		
+	
 
 	if (App->scene_intro->selected != nullptr)
 	{

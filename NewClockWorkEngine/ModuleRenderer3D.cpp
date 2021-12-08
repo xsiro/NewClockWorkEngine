@@ -13,6 +13,14 @@
 #include "ModuleComponent.h"
 #include "ModuleMaterial.h"
 #include "GameObject.h"
+#include "ModuleSceneIntro.h"
+#include "ModuleTransform.h"
+#include <Windows.h>
+
+#include "imgui.h"
+#include "imgui_internal.h"
+#include "imgui_impl_sdl.h"
+#include "imgui_impl_opengl3.h"
 
 #include <gl/GL.h>
 #include <gl/GLU.h>

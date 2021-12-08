@@ -3,6 +3,10 @@
 #include "imgui.h"
 #include "Globals.h"
 #include "ModuleImporter.h"
+#include "ModuleRenderer3D.h"
+#include "ModuleTransform.h"
+#include "GameObject.h"
+#include "ModuleComponent.h"
 
 #include "SDL/include/SDL_opengl.h"
 #include "glew.h"
@@ -10,9 +14,6 @@
 #include <gl/GLU.h>
 
 
-#pragma comment (lib, "glu32.lib") 
-#pragma comment (lib, "opengl32.lib")
-#pragma comment (lib, "Glew/libx86/glew32.lib")
 
 ModuleMaterial::ModuleMaterial(GameObject* owner) : ModuleComponent(ComponentType::Material, owner)
 {
@@ -57,7 +58,7 @@ Material* ModuleMaterial::GetTexture() const
 	return material;
 }
 
-bool ModuleMaterial::IsEnable()
+bool ModuleMaterial::IsEnabled()
 {
 	return drawTexture;
 }

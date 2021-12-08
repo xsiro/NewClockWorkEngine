@@ -34,12 +34,6 @@ public:
 	// Called before all Updates
 	update_status PreUpdate(float dt);
 
-	// Called every frame
-
-
-	// Called after all Updates
-
-
 	// Called before quitting
 	bool CleanUp();
 
@@ -56,9 +50,6 @@ public:
 	bool GetCheck();
 	bool GetWireframe();
 	
-	void UpdateConfigFPS(int fps);
-	void UpdateConfigMS(int ms);
-
 public:
 
 	bool scroll;
@@ -73,12 +64,7 @@ public:
 	bool sphere;
 	bool showmaterial;
 
-	const char* name;
 
-	
-	
-
-	SDL_GLContext gl_context;
 
 	ImVec4 clear_color;
 	ImVec2 mouseScenePosition;

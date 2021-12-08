@@ -19,6 +19,9 @@ public:
 	void Update();
 	void CleanUp();
 	const char* GetName();
+	void Enable();
+	void Disable();
+	bool IsActive();
 	ModuleComponent* GetComponent(ComponentType component);
 	ModuleComponent* AddComponent(ModuleComponent* component);
 	void DeleteComponent(ComponentType type);

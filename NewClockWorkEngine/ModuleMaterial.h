@@ -4,9 +4,6 @@
 #include <vector>
 #include "ModuleComponent.h"
 
-
-typedef unsigned int GLuint;
-typedef unsigned char GLubyte;
 class ModuleComponent;
 struct Material;
 
@@ -23,11 +20,9 @@ public:
 
 	char* GetPath()const;
 	Material* GetTexture() const;
-	bool IsEnable();
+	bool IsEnabled();
 	void SwitchEnabledTexture();
 
-public:
-	GLuint Gl_Tex;
 
 private:
 

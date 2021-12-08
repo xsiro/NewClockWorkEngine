@@ -1,7 +1,8 @@
 #include "ModuleTransform.h"
 #include "imgui.h"
 #include "Globals.h"
-#include "MathGeoLib/src/MathGeoLib.h"
+#include "GameObject.h"
+#include "ModuleComponent.h"
 
 ModuleTransform::ModuleTransform(GameObject* owner) : ModuleComponent(ComponentType::Transform, owner)
 {

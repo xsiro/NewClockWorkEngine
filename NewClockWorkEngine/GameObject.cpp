@@ -74,26 +74,6 @@ ModuleComponent* GameObject::GetComponent(ComponentType component)
 	return nullptr;
 }
 
-//ModuleComponent* GameObject::CreateComponent(ComponentType type) {
-//
-//	ModuleComponent* component = nullptr;
-//	switch (type)
-//	{
-//	case ComponentType::Transform:
-//		component = new ModuleTransform();
-//		components.push_back(component);
-//		break;
-//	case ComponentType::Mesh:
-//		component = new ModuleMesh();
-//		components.push_back(component);
-//		break;
-//	case ComponentType::Material:
-//		component = new ModuleMaterial();
-//		components.push_back(component);
-//		break;
-//	}
-//	return component;
-//}
 
 void GameObject::DeleteComponent(ComponentType type)
 {
@@ -177,3 +157,17 @@ const char* GameObject::GetName()
 	return name.c_str();
 }
 
+void GameObject::Enable()
+{
+	active = true;
+}
+
+void GameObject::Disable()
+{
+	active = false;
+}
+
+bool GameObject::IsActive()
+{
+	return active;
+}

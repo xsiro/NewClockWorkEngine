@@ -9,6 +9,7 @@
 #include "ModuleImporter.h"
 #include "ModuleComponent.h"
 #include "GameObject.h"
+#include "ModuleRenderer3D.h"
 
 
 #include "SDL/include/SDL_opengl.h"
@@ -40,7 +41,6 @@ void ModuleMesh::Update()
 
 void ModuleMesh::CleanUp()
 {
-	//delete path; //What is this
 	delete mesh;
 }
 
@@ -62,7 +62,7 @@ void ModuleMesh::DrawMesh()
 
 	if (owner->material != nullptr)
 	{
-		if (owner->material->IsEnable())
+		if (owner->material->IsEnabled())
 		{
 			App->renderer3D->DrawMesh(mesh, owner->transform->GetTransform(), owner->material->GetTexture()->id, drawVertexNormals);
 			return;
