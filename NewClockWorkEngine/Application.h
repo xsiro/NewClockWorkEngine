@@ -81,6 +81,7 @@ public:
 	float dt;
 	Uint32 frames;
 	bool closewindow;
+	bool debug;
 
 	
 };

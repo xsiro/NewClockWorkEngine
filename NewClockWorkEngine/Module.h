@@ -1,7 +1,6 @@
 #pragma once
 #include "Globals.h"
 
-class Application;
 
 class Module
 {
@@ -9,7 +8,7 @@ private :
 	bool enabled;
 
 public:
-	Application* App;
+	
 
 	Module(bool start_enabled = true) : enabled(start_enabled)
 	{}

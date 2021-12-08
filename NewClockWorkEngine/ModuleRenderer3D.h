@@ -46,7 +46,7 @@ public:
 	bool SetLighting;
 	bool SetColormaterial;
 	bool SetTexture2D;
-	bool SetCubemap;
+	bool SetCubemap=false;
 	bool SetPolygonssmooth;
 	bool wireframeMode;
 

@@ -89,6 +89,9 @@
     <ClInclude Include="Glew\include\wglew.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="MathGeoLib\src\MathBuildConfig.h" />
+    <ClInclude Include="MathGeoLib\src\MathGeoLib.h" />
+    <ClInclude Include="MathGeoLib\src\MathGeoLibFwd.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="ImGui\include\imconfig.h" />

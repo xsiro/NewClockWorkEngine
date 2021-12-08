@@ -31,6 +31,12 @@
     <Filter Include="Sources\Modules\GameObjects">
       <UniqueIdentifier>{7b859eaf-c791-4640-a62e-7de7dd4c0179}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dependencies">
+      <UniqueIdentifier>{67dd099b-f9cd-47e0-8ee0-2c855c303854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\MathGeoLib">
+      <UniqueIdentifier>{6126a0b7-7758-4355-b093-49c6c55336d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -167,6 +173,15 @@
     </ClInclude>
     <ClInclude Include="Path.h">
       <Filter>Sources\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\src\MathBuildConfig.h">
+      <Filter>Dependencies\MathGeoLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\src\MathGeoLib.h">
+      <Filter>Dependencies\MathGeoLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\src\MathGeoLibFwd.h">
+      <Filter>Dependencies\MathGeoLib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

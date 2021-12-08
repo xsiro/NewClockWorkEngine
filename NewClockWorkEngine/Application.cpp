@@ -1,7 +1,8 @@
 #include "Application.h"
 
 
-Application::Application()
+
+Application::Application() : debug(false), dt(0.16f)
 {
 	window = new ModuleWindow(this);
 	input = new ModuleInput(this);
@@ -28,6 +29,7 @@ Application::Application()
 	// Renderer last!
 	AddModule(renderer3D);
 
+	closewindow = false;
 	contFPS = 0;
 	frames = 0;
 	miliseconds = 1000 / 60;
@@ -37,30 +39,31 @@ Application::Application()
 
 Application::~Application()
 {
-	std::vector<Module*>::reverse_iterator item = list_modules.rbegin();
-	while (item != list_modules.rend())
-	{
-		delete* item;
-		item++;
+	std::vector<Module*>::iterator item = list_modules.end();
+	for (; item != list_modules.begin(); --item) {
+		delete (*item);
 	}
 }
 
 bool Application::Init()
 {
 	bool ret = true;
+	App = this;
 	LOG("Application Start --------------");
 	// Call Init() in all modules
-	for (int i = 0; i < list_modules.size() && ret == true; i++)
-	{
-		ret = list_modules[i]->Init();
+	std::vector<Module*>::iterator item = list_modules.begin();
+
+	for (; item != list_modules.end() && ret == true; ++item) {
+		ret = (*item)->Init();
 	}
 
 	// After all Init calls we call Start() in all modules
 	
 	LOG("Application Start --------------");
-	for (int i = 0; i < list_modules.size() && ret == true; i++)
-	{
-		ret = list_modules[i]->Start();
+	item = list_modules.begin();
+
+	for (; item != list_modules.end() && ret == true; ++item) {
+		ret = (*item)->Start();
 	}
 
 	LOG("Engine Info-----------------------");
@@ -294,3 +297,5 @@ void Application::ExitApp()
 {
 	closewindow = true;
 }
+
+Application* App = nullptr;
