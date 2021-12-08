@@ -98,6 +98,7 @@ update_status ModuleInput::PreUpdate(float dt)
 	char* dropped_file;
 	while(SDL_PollEvent(&e))
 	{
+		ImGui_ImplSDL2_ProcessEvent(&e);
 		switch(e.type)
 		{
 			case SDL_MOUSEWHEEL:
@@ -114,6 +115,7 @@ update_status ModuleInput::PreUpdate(float dt)
 
 			case SDL_QUIT:
 			quit = true;
+			App->closewindow = true;
 			break;
 
 			case SDL_DROPFILE:

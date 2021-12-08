@@ -1,7 +1,8 @@
 #include "Window.h"
 #include <vector>
 
-
+class Window;
+class GameObject;
 class Win_Hierarchy : public Window
 {
 public:
@@ -12,7 +13,7 @@ public:
 
 	void CleanUp() override;
 
-	void GameObjectsHierarchy();
+	void GameObjectsHierarchy(GameObject* object);
 
 
 private:

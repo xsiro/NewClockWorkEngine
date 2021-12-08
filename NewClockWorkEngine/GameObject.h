@@ -7,6 +7,7 @@
 class ModuleComponent;
 class ModuleTransform;
 class ModuleMaterial;
+class ModuleMesh;
 enum class ComponentType;
 
 class GameObject
@@ -28,12 +29,15 @@ public:
 	std::vector<ModuleComponent*> GetComponents()const;
 	bool HasComponentType(ComponentType type);
 
+
+private:	
+	bool active;
+	std::string name;
+	std::vector<ModuleComponent*> components;
+
 public:
 	ModuleTransform* transform = nullptr;
 	ModuleMaterial* material = nullptr;
 	GameObject* parent;
-	bool active;
-	std::string name;
-	std::vector<ModuleComponent*> components;
 	std::vector<GameObject*> children;
 };

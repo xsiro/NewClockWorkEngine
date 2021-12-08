@@ -1,5 +1,6 @@
 #pragma once
 #include "ModuleComponent.h"
+#include "GameObject.h"
 
 ModuleComponent::ModuleComponent(ComponentType type) : type(type)
 {
@@ -16,19 +17,25 @@ ModuleComponent::~ModuleComponent()
 
 }
 
-void ModuleComponent::Enable() {
-
-	active = true;
-
-}
 
 void ModuleComponent::Update() {
 
 }
 
-void ModuleComponent::Disable() {
+void ModuleComponent::Enable() 
+{
+	active = true;
+}
+
+void ModuleComponent::Disable()
+{
 
 	active = false;
+}
+
+bool ModuleComponent::IsActive()
+{
+	return active;
 }
 
 ComponentType ModuleComponent::ReturnType() {

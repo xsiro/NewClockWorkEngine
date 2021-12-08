@@ -1,4 +1,5 @@
 #include "Win_Hierarchy.h"
+#include "Window.h"
 #include "imgui.h"
 #include "imgui_internal.h"
 #include "imgui_impl_opengl3.h"
@@ -24,13 +25,19 @@ void Win_Hierarchy::Draw()
 {
 	if (!active)
 		return;
-	ImGui::Begin("Hierarchy", &active);
-
-	if (ImGui::Button("Delete"))
+	if (!ImGui::Begin("Hierarchy", &active))
 	{
-		App->scene_intro->CleanUp();
+		ImGui::End();
+		return;
 	}
-	GameObjectsHierarchy();
+
+
+	ImGuiTreeNodeFlags base_flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_SpanAvailWidth;
+
+	std::vector<GameObject*>::iterator item = App->scene_intro->game_objects.begin();
+	for (; item != App->scene_intro->game_objects.end(); ++item)
+		GameObjectsHierarchy((*item));
+
 	ImGui::End();
 }
 
@@ -38,22 +45,33 @@ void Win_Hierarchy::CleanUp()
 {
 }
 
-void Win_Hierarchy::GameObjectsHierarchy()
+void Win_Hierarchy::GameObjectsHierarchy(GameObject* object)
 {
 
-	if (ImGui::TreeNode("GameObject")) {
-		for (size_t i = 0; i < App->scene_intro->game_objects.size(); i = i + 2)
-		{
-			if (App->scene_intro->game_objects[i]->parent != nullptr) continue;
+	ImGuiTreeNodeFlags baseFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_SpanAvailWidth;
 
-			if (ImGui::TreeNodeEx(App->scene_intro->game_objects[i]->name.c_str(), ImGuiTreeNodeFlags_Leaf)) {
-				if (ImGui::IsItemClicked()) {
-					App->scene_intro->selected = App->scene_intro->game_objects[i];
-				}
+	if (!object->children.empty())
+	{
+		bool node_open = ImGui::TreeNodeEx(object->GetName(), baseFlags);
+		if (ImGui::IsItemClicked())
+			App->scene_intro->SetSelectedObject(object);
+
+		if (node_open)
+		{
+			std::vector<GameObject*>::iterator child = object->children.begin();
+			for (; child != object->children.end(); ++child)
+			{
+				GameObjectsHierarchy((*child));
 			}
 			ImGui::TreePop();
 		}
-		ImGui::TreePop();
+	}
+	else
+	{
+		ImGuiTreeNodeFlags finalFlags = baseFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+		bool node_open = ImGui::TreeNodeEx(object->GetName(), finalFlags);
+		if (ImGui::IsItemClicked())
+			App->scene_intro->SetSelectedObject(object);
 	}
 
 }

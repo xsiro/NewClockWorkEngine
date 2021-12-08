@@ -1,22 +1,6 @@
 #pragma once
 #include "Globals.h"
-#include "Module.h"
-#include "ModuleRenderer3D.h"
-
-#include "glew/include/glew.h"
-#include "Devil/include/IL/ilu.h"
-#include "Devil/include/IL/ilut.h"
-
-#pragma comment( lib, "Devil/libx86/DevIL.lib" )
-#pragma comment( lib, "Devil/libx86/ILU.lib" )
-#pragma comment( lib, "Devil/libx86/ILUT.lib" )
-
-class GameObject;
-class ModuleMaterial;
-class ModuleMesh;
-class aiScene;
-struct aiNode;
-
+#include <vector>
 
 struct Material
 {
