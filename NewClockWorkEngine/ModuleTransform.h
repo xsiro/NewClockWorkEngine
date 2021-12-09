@@ -18,6 +18,7 @@ public:
 	void DrawInspector()override;
 
 	float4x4 GetTransform() const;
+	float4x4 GetGlobalTransform()const;
 	float3 GetPosition()const;
 	float3 GetScale()const;
 
@@ -32,6 +33,7 @@ public:
 private:
 
 	float4x4 transform;
+	float4x4 globalTransform;
 
 	float3 position;
 	float3 scale;

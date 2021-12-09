@@ -63,7 +63,13 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	std::vector<GameObject*>::iterator item = game_objects.begin();
 	for (; item != game_objects.end(); ++item)
+	{
 		(*item)->Update();
+		if ((*item)->GetName() != "root")
+		{
+			((GameObject*)*item)->DrawBB(drawBB);
+		}
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -95,7 +101,7 @@ void ModuleSceneIntro::CreateGameObject(char* name, char* meshPath = "", char* t
 			std::vector<Mesh*>::iterator item = meshes.begin();
 			for (; item != meshes.end(); ++item)
 			{
-				GameObject* childGameObject = new GameObject(newGameObject, "MeshObject");
+				GameObject* childGameObject = new GameObject(newGameObject, name);
 				ModuleMesh* newComp = new ModuleMesh(childGameObject, meshPath, (*item));
 
 				childGameObject->AddComponent((ModuleComponent*)newComp);

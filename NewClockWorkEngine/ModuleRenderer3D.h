@@ -13,6 +13,17 @@ struct Mesh;
 
 #define MAX_LIGHTS 8
 
+
+template <typename Box>
+struct RenderBox
+{
+	RenderBox(const Box* box, const Color& color) : box(box), color(color)
+	{}
+
+	const Box* box;
+	Color color;
+};
+
 class ModuleRenderer3D : public Module
 {
 public:
@@ -35,6 +46,9 @@ public:
 	void SwitchLighting();
 	void SwitchTexture2d();
 	void SwitchColorMaterial();
+	void CreateAABB(const AABB& box, const Color& color);
+	void CreateOBB(const OBB& box, const Color& color);
+	void DrawBB();
 
 
 public:
@@ -53,4 +67,6 @@ public:
 	SDL_GLContext context;
 	mat3x3 NormalMatrix;
 	mat4x4 ModelMatrix, ViewMatrix, ProjectionMatrix;
+	std::vector<RenderBox<AABB>> aabb;
+	std::vector<RenderBox<OBB>> obb;
 };

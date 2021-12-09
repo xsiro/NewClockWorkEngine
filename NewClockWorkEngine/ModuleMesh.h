@@ -22,13 +22,24 @@ public:
 	void Update() override;
 	void CleanUp() override;
 	void DrawInspector() override;
+	Mesh* GetMesh() const;
 
 	void DrawMesh();
 	char* GetPath()const;
+
+	const AABB& GetAABB() const;
+	const OBB& GetOBB() const;
+
+
 private:
 
 	Mesh* mesh = nullptr;
 	char* path = nullptr;
 	bool drawVertexNormals = false;
+
+public:
+
+	AABB aabb;
+	OBB obb;
 };
 
