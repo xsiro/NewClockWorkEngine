@@ -48,10 +48,15 @@ void  ModuleTransform::DrawInspector()
 	{
 		ImGuiInputTextFlags flags = ImGuiInputTextFlags_EnterReturnsTrue;
 
-		if (ImGui::InputFloat3("Transform", (float*)&position, "%.2f", flags)) { RecalculateMatrix(); };
-		if (ImGui::InputFloat3("Scale", (float*)&scale, "%.2f", flags)) { RecalculateMatrix(); };
-		if (ImGui::InputFloat3("Rotation", (float*)&eulerRotationUi, "%.2f")) { SetEulerRotation(eulerRotationUi); }
+		if (ImGui::DragFloat3("Transform", (float*)&position)) { RecalculateMatrix(); };
+		if (ImGui::DragFloat3("Scale", (float*)&scale)) { RecalculateMatrix(); };
+		if (ImGui::DragFloat3("Rotation", (float*)&eulerRotationUi)) { SetEulerRotation(eulerRotationUi); };
+		//if (ImGui::InputFloat3("Transform", (float*)&position, "%.2f", flags)) { RecalculateMatrix(); };
+		//if (ImGui::InputFloat3("Scale", (float*)&scale, "%.2f", flags)) { RecalculateMatrix(); };
+		//if (ImGui::InputFloat3("Rotation", (float*)&eulerRotationUi, "%.2f")) { SetEulerRotation(eulerRotationUi); }
+	
 	}
+	
 }
 
 void ModuleTransform::SetEulerRotation(float3 euler_angles)
