@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "Imgui/include/imgui.h"
+#include "MathGeoLib/include/MathGeoLib.h"
 
 class ModuleComponent;
 class ModuleTransform;

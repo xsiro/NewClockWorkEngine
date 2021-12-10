@@ -4,7 +4,7 @@
 #include "glmath.h"
 #include "Light.h"
 #include "ModuleImporter.h"
-#include "MathGeoLib/src/MathGeoLib.h"
+#include "MathGeoLib/include/MathGeoLib.h"
 #include "SDL.h"
 #include <vector>
 

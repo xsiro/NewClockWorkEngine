@@ -23,6 +23,8 @@ public:
 	bool IsEnabled();
 	void SwitchEnabledTexture();
 
+	static inline ComponentType GetType() { return ComponentType::Material; };
+
 
 private:
 
