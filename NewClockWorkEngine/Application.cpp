@@ -6,11 +6,12 @@ Application::Application() : debug(false), dt(0.16f)
 {
 	window = new ModuleWindow(this);
 	input = new ModuleInput(this);
-	scene_intro = new ModuleSceneIntro(this);	
+	scene_intro = new ModuleSceneIntro(this);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
 	gui = new ModuleGui(this);
 	filesystem = new FileSystem(this);
+
 	resourcemanager = new ModuleResourceM();
 	
 	// The order of calls is very important!
@@ -23,7 +24,7 @@ Application::Application() : debug(false), dt(0.16f)
 	AddModule(input);
 	AddModule(gui);
 	AddModule(filesystem);
-	
+
 	// Scenes
 	AddModule(scene_intro);
 
@@ -59,7 +60,7 @@ bool Application::Init()
 	}
 
 	// After all Init calls we call Start() in all modules
-	
+
 	LOG("Application Start --------------");
 	item = list_modules.begin();
 
@@ -74,7 +75,7 @@ bool Application::Init()
 	LOG("OpenGL version supported %s", glGetString(GL_VERSION));
 	LOG("GLSL: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
 
-	
+
 	ms_timer.Start();
 	return ret;
 }
@@ -82,8 +83,17 @@ bool Application::Init()
 // ---------------------------------------------
 void Application::PrepareUpdate()
 {
-	dt = (float)ms_timer.Read() / 1000.0f;
-	ms_timer.Start();
+	frame_count++;
+	last_sec_frame_count++;
+
+	dt = (float)frame_time.Read() / 1000.0f;
+	frame_time.Start();
+
+	if (!GameMode || GamePaused)
+		Game_dt = 0.0f;
+	else
+		Game_dt = dt;
+	Game_dt *= GameSpeed;
 }
 
 // ---------------------------------------------
@@ -116,29 +126,29 @@ update_status Application::Update()
 	std::vector<Module*>::iterator item = list_modules.begin();
 
 	//BROFILER_CATEGORY("Engine PreUpdate", Profiler::Color::Yellow)
-		for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
-		{
-			ret = (*item)->PreUpdate(dt);
-		}
+	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+	{
+		ret = (*item)->PreUpdate(dt);
+	}
 
 	item = list_modules.begin();
 
 	//BROFILER_CATEGORY("Engine Update", Profiler::Color::Green)
-		for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
-		{
-			ret = (*item)->Update(dt);
-		}
+	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+	{
+		ret = (*item)->Update(dt);
+	}
 
 	item = list_modules.begin();
 
 	//BROFILER_CATEGORY("Engine PostUpdate", Profiler::Color::Purple)
-		for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
-		{
-			ret = (*item)->PostUpdate(dt);
-		}
+	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+	{
+		ret = (*item)->PostUpdate(dt);
+	}
 
 	//BROFILER_CATEGORY("Sleep", Profiler::Color::Blue)
-		FinishUpdate();
+	FinishUpdate();
 
 	if (closewindow)
 		ret = update_status::UPDATE_STOP;
@@ -164,6 +174,38 @@ void Application::AddModule(Module* mod)
 	list_modules.push_back(mod);
 }
 
+void Application::PlayGame()
+{
+	if (!GameMode)
+	{
+		GameMode = true;
+	}
+}
+
+void Application::PauseGame()
+{
+	if (GameMode)
+	{
+		GamePaused = true;
+	}
+}
+
+void Application::ResumeGame()
+{
+	if (GameMode && GamePaused)
+	{
+		GamePaused = false;
+	}
+}
+
+void Application::StopPlay()
+{
+	if (GameMode)
+	{
+		GameMode = false;
+		GamePaused = false;
+	}
+}
 int Application::CPUCount()
 {
 	return SDL_GetCPUCount();

@@ -105,7 +105,7 @@ void EditTransform(const Camera& camera, matrix_t& matrix)
 #pragma once
 
 #ifdef USE_IMGUI_API
-#include "../imgui-1.78/imconfig.h"
+#include "imconfig.h"
 #endif
 #ifndef IMGUI_API
 #define IMGUI_API
@@ -115,10 +115,16 @@ namespace ImGuizmo
 {
    // call inside your own window and before Manipulate() in order to draw gizmo to that window.
    // Or pass a specific ImDrawList to draw to (e.g. ImGui::GetForegroundDrawList()).
-   IMGUI_API void SetDrawlist();
+   IMGUI_API void SetDrawlist(ImDrawList* drawlist = nullptr);
 
    // call BeginFrame right after ImGui_XXXX_NewFrame();
    IMGUI_API void BeginFrame();
+
+   // this is necessary because when imguizmo is compiled into a dll, and imgui into another
+   // globals are not shared between them.
+   // More details at https://stackoverflow.com/questions/19373061/what-happens-to-global-and-static-variables-in-a-shared-library-when-it-is-dynam
+   // expose method to set imgui context
+   IMGUI_API void SetImGuiContext(ImGuiContext* ctx);
 
    // return true if mouse cursor is over any gizmo control (axis, plan or screen component)
    IMGUI_API bool IsOver();
@@ -177,11 +183,11 @@ namespace ImGuizmo
    // It seems to be a defensive patent in the US. I don't think it will bring troubles using it as
    // other software are using the same mechanics. But just in case, you are now warned!
    //
-   //IMGUI_API void ViewManipulate(float* view, float length, ImVec2 position, ImVec2 size, ImU32 backgroundColor);
+   IMGUI_API void ViewManipulate(float* view, float length, ImVec2 position, ImVec2 size, ImU32 backgroundColor);
 
-   //IMGUI_API void SetID(int id);
+   IMGUI_API void SetID(int id);
 
-   //// return true if the cursor is over the operation's gizmo
-   //IMGUI_API bool IsOver(OPERATION op);
-   //IMGUI_API void SetGizmoSizeClipSpace(float value);
+   // return true if the cursor is over the operation's gizmo
+   IMGUI_API bool IsOver(OPERATION op);
+   IMGUI_API void SetGizmoSizeClipSpace(float value);
 };

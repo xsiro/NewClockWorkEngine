@@ -134,6 +134,7 @@ float4x4 ModuleTransform::GetGlobalTransform()const
 	return globalTransform;
 }
 
+
 void ModuleTransform::UpdatedTransform(float4x4 parentGlobalTransform)
 {
 	globalTransform = parentGlobalTransform * transform;
@@ -148,3 +149,4 @@ void ModuleTransform::UpdateLocalTransform()
 	updateTransform = true;
 	RecalculateEuler();
 }
+

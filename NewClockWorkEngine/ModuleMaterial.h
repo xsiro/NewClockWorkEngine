@@ -18,12 +18,13 @@ public:
 	void CleanUp() override;
 	void DrawInspector() override;
 
+
 	const char* GetPath()const;
 	ResourceMaterial* GetTexture() const;
 	bool IsEnabled() const;
-	void SwitchEnabledTexture();
 
 	static inline ComponentType GetType() { return ComponentType::Material; };
+	void SwitchEnabledTexture();
 
 
 private:

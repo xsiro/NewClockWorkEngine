@@ -20,12 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "imgui-1.78/imgui.h"
+#include "../imgui/imgui.h"
 #ifndef IMGUI_DEFINE_MATH_OPERATORS
 #define IMGUI_DEFINE_MATH_OPERATORS
 #endif
-#include "imgui-1.78/imgui_internal.h"
-#include "imgui-1.78/ImGuizmo.h"
+#include "../imgui/imgui_internal.h"
+#include "ImGuizmo.h"
 #if !defined(_WIN32) 
 #define _malloca(x) alloca(x)
 #else
@@ -849,6 +849,11 @@ namespace ImGuizmo
    void SetDrawlist(ImDrawList* drawlist)
    {
       gContext.mDrawList = drawlist ? drawlist : ImGui::GetWindowDrawList();
+   }
+
+   void SetImGuiContext(ImGuiContext* ctx) 
+   {
+      ImGui::SetCurrentContext(ctx);
    }
 
    void BeginFrame()

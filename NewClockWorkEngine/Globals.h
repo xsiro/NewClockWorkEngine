@@ -40,9 +40,22 @@ enum update_status
 #define TITLE "NewClockWork Engine"
 #define ORGANIZATION "UPC"
 
+
 #define LIBRARY_PATH ""
 #define FOLDERS_PATH ""
 #define MESHES_PATH ""
 #define MATERIALS_PATH ""
 #define TEXTURES_PATH ""
 #define SCENES_PATH ""
+
+
+
+#define RELEASE_ARRAY( x )\
+	{\
+       if( x != nullptr )\
+       {\
+           delete[] x;\
+	       x = nullptr;\
+		 }\
+	}
+

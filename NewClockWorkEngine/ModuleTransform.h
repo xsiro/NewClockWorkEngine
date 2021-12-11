@@ -17,8 +17,9 @@ public:
 	void CleanUp() override;
 	void DrawInspector()override;
 
+	static inline ComponentType GetType() { return ComponentType::Transform; };
+
 	float4x4 GetTransform() const;
-	float4x4 GetGlobalTransform()const;
 	float3 GetPosition()const;
 	float3 GetScale()const;
 
@@ -31,9 +32,13 @@ public:
 	void UpdateTRS();
 	void UpdatedTransform(float4x4 parentGlobalTransform);
 	void RecalculateEuler();
+
 	void UpdateLocalTransform();
 
 	static inline ComponentType GetType() { return ComponentType::Transform; };
+
+	float4x4 GetGlobalTransform()const;
+
 
 private:
 

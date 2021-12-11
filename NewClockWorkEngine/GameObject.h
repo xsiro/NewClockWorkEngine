@@ -4,7 +4,9 @@
 #include <string>
 #include "Imgui/include/imgui.h"
 #include "MathGeoLib/src/MathGeoLib.h"
+
 #include "ModuleComponent.h"
+
 
 
 class ModuleTransform;
@@ -40,6 +42,7 @@ public:
 		}
 		return nullptr;
 	}
+	ModuleComponent* GetComponent(ComponentType component);
 	ModuleComponent* AddComponent(ModuleComponent* component);
 	ModuleMesh* GetComponentMesh();
 	ModuleTransform* GetComponentTransform();

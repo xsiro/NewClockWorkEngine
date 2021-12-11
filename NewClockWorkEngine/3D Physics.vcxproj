@@ -48,7 +48,10 @@
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)Glew\include;$(ProjectDir)SDL\include;$(ProjectDir)ImGui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+
+
+      <AdditionalIncludeDirectories>$(ProjectDir)Glew\include;$(ProjectDir)SDL\include;$(ProjectDir)ImGuizmo;$(ProjectDir)ImGui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+
       <PreprocessorDefinitions>WINDOWS_IGNORE_PACKING_MISMATCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -83,6 +86,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Gizmos.h" />
     <ClInclude Include="Glew\include\eglew.h" />
     <ClInclude Include="Glew\include\glew.h" />
     <ClInclude Include="Glew\include\glxew.h" />
@@ -137,6 +141,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Gizmos.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="ImGui\include\imgui.cpp" />
     <ClCompile Include="ImGui\include\imgui_demo.cpp" />

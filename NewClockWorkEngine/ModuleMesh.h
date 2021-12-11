@@ -4,6 +4,7 @@
 #include <vector>
 #include "ModuleComponent.h"
 #include "ModuleImporter.h"
+#include "MathGeoLib/src/MathGeoLib.h"
 
 
 class GameObject;
@@ -25,19 +26,19 @@ public:
 	void DrawInspector() override;
 	ResourceMesh* GetMesh() const;
 
+	static inline ComponentType GetType() { return ComponentType::Mesh; };
+
 	void DrawMesh();
 	char* GetPath()const;
 
 	const AABB& GetAABB() const;
 	const OBB& GetOBB() const;
-	static inline ComponentType GetType() { return ComponentType::Mesh; };
-
-
 private:
 
 	ResourceMesh* mesh = nullptr;
 	char* path = nullptr;
 	bool drawVertexNormals = false;
+
 
 public:
 

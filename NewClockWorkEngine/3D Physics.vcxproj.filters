@@ -186,6 +186,7 @@
     <ClInclude Include="MathGeoLib\src\MathGeoLibFwd.h">
       <Filter>Dependencies\MathGeoLib</Filter>
     </ClInclude>
+
     <ClInclude Include="ModuleResourceM.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
@@ -197,6 +198,10 @@
     </ClInclude>
     <ClInclude Include="ResourceMesh.h">
       <Filter>Sources\Modules\Resources</Filter>
+</ClInclude>
+    <ClInclude Include="Gizmos.h">
+      <Filter>Sources\Containers</Filter>
+
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -302,6 +307,7 @@
     <ClCompile Include="Win_Inspector.cpp">
       <Filter>Sources\Modules\Window</Filter>
     </ClCompile>
+
     <ClCompile Include="ModuleResourceM.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
@@ -313,6 +319,10 @@
     </ClCompile>
     <ClCompile Include="ResourceMesh.cpp">
       <Filter>Sources\Modules\Resources</Filter>
+</ClCompile>
+    <ClCompile Include="Gizmos.cpp">
+      <Filter>Sources\Containers</Filter>
+
     </ClCompile>
   </ItemGroup>
 </Project>

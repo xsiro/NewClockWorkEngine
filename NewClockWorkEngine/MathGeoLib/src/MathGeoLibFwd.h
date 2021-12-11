@@ -1,4 +1,4 @@
-/* Copyright Jukka Jylänki
+/* Copyright Jukka Jylï¿½nki
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
    limitations under the License. */
 
    /** @file MathFwd.h
-	   @author Jukka Jylänki
+	   @author Jukka Jylï¿½nki
 	   @brief */
 #pragma once
 
@@ -242,4 +242,7 @@ REGISTER_POD(MATH_NS::LCG);
 REGISTER_POD(MATH_NS::float4_storage);
 REGISTER_POD(MATH_NS::Triangle_storage);
 REGISTER_POD(MATH_NS::LineSegment_storage);
+
+
 #endif
+

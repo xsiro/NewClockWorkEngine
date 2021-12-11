@@ -3,6 +3,7 @@
 #include <vector>
 #include "MathGeoLib/src/MathGeoLib.h"
 
+
 struct aiNode;
 struct aiScene;
 class ResourceMaterial;
@@ -46,6 +47,7 @@ struct Mesh
 	float* vertices = nullptr;
 	float* normals = nullptr;
 	float* textureCoords = nullptr;
+
 	AABB aabb;
 
 	const char* path;

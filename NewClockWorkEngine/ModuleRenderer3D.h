@@ -11,9 +11,6 @@
 
 struct Mesh;
 
-#define MAX_LIGHTS 8
-
-
 template <typename Box>
 struct RenderBox
 {
@@ -23,6 +20,8 @@ struct RenderBox
 	const Box* box;
 	Color color;
 };
+
+#define MAX_LIGHTS 8
 
 class ModuleRenderer3D : public Module
 {
@@ -36,9 +35,11 @@ public:
 	bool CleanUp();
 
 	void OnResize(int width, int height);
-	void DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals = false, bool drawboundingbox = false);
+	void DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals = false, bool drawboundingbox = false, GameObject* gameObject);
 	void DrawVertexNormals(ResourceMesh* mesh, float4x4 transform);
 	void GenerateBuffers(ResourceMesh* newMesh);
+
+	
 	void CreateChekerTexture();
 
 	void SwitchCullFace();
@@ -48,8 +49,11 @@ public:
 	void SwitchColorMaterial();
 	void CreateAABB(const AABB& box, const Color& color);
 	void CreateOBB(const OBB& box, const Color& color);
-	void DrawBB(ResourceMesh* mesh);
+
 	void DrawScenePlane(int size);
+
+	void DrawBox(float3* corners);
+
 
 
 public:

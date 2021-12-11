@@ -38,7 +38,15 @@ private:
 
 	Timer	ms_timer;
 	Timer	fps_timer;
-	
+	uint	frame_count = 0;
+	Timer	startup_time;
+	Timer	frame_time;
+	Timer	last_sec_frame_time;
+	uint	last_sec_frame_count = 0;
+	uint	prev_last_sec_frame_count = 0;
+	uint	framerate_cap = 0;
+	int		capped_ms = -1;
+
 	std::vector<Module*> list_modules;
 
 public:
@@ -64,8 +72,9 @@ public:
 	uint GetFRLimit() const;
 	void ExitApp();
 	void SetFRLimit(uint max_framerate);
-	
-	
+	int GameMaxFPS = 60;
+
+
 
 private:
 
@@ -73,6 +82,7 @@ private:
 	void AddModule(Module* mod);
 	void PrepareUpdate();
 	void FinishUpdate();
+
 
 public:
 	int	miliseconds;
@@ -85,7 +95,18 @@ public:
 	bool closewindow;
 	bool debug;
 
-	
+	float Game_dt = 0.0f;
+	float GameSpeed = 1.0f;
+	//int GameMaxFPS = 60;
+	bool GameMode = false;
+	bool GamePaused = false;
+
+	void PlayGame();
+	void PauseGame();
+	void ResumeGame();
+	void StopPlay();
+
+
 };
-	extern Application* App;
-	extern std::vector<std::string> log_record;
+extern Application* App;
+extern std::vector<std::string> log_record;

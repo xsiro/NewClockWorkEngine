@@ -5,6 +5,7 @@
 #include "SDL\include\SDL_opengl.h"
 #include "Color.h"
 #include "Math.h"
+#include "MathGeoLib/src/MathGeoLib.h"
 
 class Gizmos
 {

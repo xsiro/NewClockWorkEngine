@@ -26,9 +26,11 @@ GameObject::~GameObject()
 
 void GameObject::Update() 
 {
+
 	//UpdateBoundingBoxes();
 
 	if (!components.empty())
+
 	{
 		std::vector<ModuleComponent*>::iterator item = components.begin();
 		for (; item != components.end(); ++item)
@@ -52,6 +54,7 @@ void GameObject::CleanUp()
 
 	components.clear();
 	children.clear();
+
 
 }
 
@@ -85,6 +88,24 @@ void GameObject::CleanUp()
 
 
 void GameObject::DeleteComponent(ModuleComponent::ComponentType type)
+
+ModuleComponent* GameObject::GetComponent(ComponentType component) 
+{
+
+	for (size_t i = 0; i < components.size(); i++)
+	{
+		if (components[i]->ReturnType() == component)
+		{
+			return components[i];
+		}
+	}
+
+	return nullptr;
+}
+
+
+void GameObject::DeleteComponent(ComponentType type)
+
 {
 	std::vector<ModuleComponent*>::iterator item = components.begin();
 	for (; item != components.end(); ++item)
@@ -187,28 +208,6 @@ bool GameObject::IsActive()
 	return active;
 }
 
-//void GameObject::UpdateBoundingBoxes()
-//{
-//	if (HasComponentType(ComponentType::Mesh))
-//	{
-//		obb = GetComponent<ModuleMesh>()->GetMesh()->aabb;
-//		obb.Transform(transform->GetGlobalTransform());
-//
-//		aabb.SetNegativeInfinity();
-//		aabb.Enclose(obb);
-//	}
-//}
-
-//
-//void GameObject::DrawBB(bool drawBB)
-//{
-//	if (drawBB)
-//	{
-//		App->renderer3D->CreateAABB(aabb, Green);
-//		App->renderer3D->CreateOBB(obb, Pink);
-//	}
-//
-//}
 
 void GameObject::UpdatedTransform()
 {
@@ -224,3 +223,44 @@ void GameObject::UpdatedTransform()
 		(*child)->UpdatedTransform();
 	}
 }
+
+ModuleMesh* GameObject::GetComponentMesh()
+{
+	ModuleComponent* mesh = nullptr;
+	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
+	{
+		if ((*i)->type == ComponentType::Mesh)
+		{
+			return (ModuleMesh*)*i;
+		}
+	}
+	return (ModuleMesh*)mesh;
+}
+
+
+ModuleTransform* GameObject::GetComponentTransform()
+{
+	ModuleComponent* transform = nullptr;
+	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
+	{
+		if ((*i)->type == ComponentType::Transform)
+		{
+			return (ModuleTransform*)*i;
+		}
+	}
+	return (ModuleTransform*)transform;
+}
+
+void GameObject::UpdateBoundingBoxes()
+{
+	if (HasComponentType(ComponentType::Mesh))
+	{
+		obb = GetComponent<ModuleMesh>()->GetMesh()->aabb;
+		obb.Transform(transform->GetGlobalTransform());
+
+		aabb.SetNegativeInfinity();
+		aabb.Enclose(obb);
+	}
+}
+
+
