@@ -25,4 +25,6 @@ public:
 
 	GameObject* selected = nullptr;
 	std::vector<GameObject*> game_objects;
+
+	bool drawBB = false;
 };

@@ -30,10 +30,12 @@ public:
 	void UpdateTRS();
 
 	void RecalculateEuler();
+	float4x4 GetGlobalTransform()const;
 
 private:
 
 	float4x4 transform;
+	float4x4 globalTransform;
 
 	float3 position;
 	float3 scale;

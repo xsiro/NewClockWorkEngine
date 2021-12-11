@@ -16,6 +16,7 @@
 #include "ModuleSceneIntro.h"
 #include "ModuleTransform.h"
 #include <Windows.h>
+#include "Gizmos.h"
 
 #include "imgui.h"
 #include "imgui_internal.h"
@@ -172,6 +173,8 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 	//BROFILER_CATEGORY("Draw imgui", Profiler::Color::AliceBlue)
 		App->gui->Draw();
+
+		DrawBB();
 
 	//BROFILER_CATEGORY("SwapWindow", Profiler::Color::GoldenRod)
 		SDL_GL_SwapWindow(App->window->window);
@@ -347,4 +350,35 @@ void ModuleRenderer3D::SwitchColorMaterial()
 		glEnable(GL_COLOR_MATERIAL);
 	else
 		glDisable(GL_COLOR_MATERIAL);
+}
+
+void ModuleRenderer3D::CreateAABB(const AABB& box, const Color& color)
+{
+	aabb.push_back(RenderBox<AABB>(&box, color));
+}
+
+void ModuleRenderer3D::CreateOBB(const OBB& box, const Color& color)
+{
+	obb.push_back(RenderBox<OBB>(&box, color));
+}
+
+void ModuleRenderer3D::DrawBB()
+{
+	glDisable(GL_LIGHTING);
+	glBegin(GL_LINES);
+
+	for (uint i = 0; i < aabb.size(); i++)
+	{
+		Gizmos::DrawWireBox(*aabb[i].box, aabb[i].color);
+	}
+	aabb.clear();
+
+	for (uint i = 0; i < obb.size(); i++)
+	{
+		Gizmos::DrawWireBox(*obb[i].box, obb[i].color);
+	}
+	obb.clear();
+
+	glEnd();
+	glEnable(GL_LIGHTING);
 }

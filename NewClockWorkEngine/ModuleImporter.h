@@ -1,6 +1,7 @@
 #pragma once
 #include "Globals.h"
 #include <vector>
+#include "MathGeoLib/src/MathGeoLib.h"
 
 struct Material
 {
@@ -40,6 +41,8 @@ struct Mesh
 	float* vertices = nullptr;
 	float* normals = nullptr;
 	float* textureCoords = nullptr;
+
+	AABB aabb;
 
 	const char* path;
 };

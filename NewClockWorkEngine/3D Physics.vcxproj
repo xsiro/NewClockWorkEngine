@@ -83,6 +83,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Gizmos.h" />
     <ClInclude Include="Glew\include\eglew.h" />
     <ClInclude Include="Glew\include\glew.h" />
     <ClInclude Include="Glew\include\glxew.h" />
@@ -133,6 +134,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Gizmos.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="ImGui\include\imgui.cpp" />
     <ClCompile Include="ImGui\include\imgui_demo.cpp" />
