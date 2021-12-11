@@ -35,7 +35,7 @@ public:
 	bool CleanUp();
 
 	void OnResize(int width, int height);
-	void DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals = false, bool drawboundingbox = false, GameObject* gameObject);
+	void DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals = false, bool drawboundingbox = false, GameObject* gameObject= nullptr);
 	void DrawVertexNormals(ResourceMesh* mesh, float4x4 transform);
 	void GenerateBuffers(ResourceMesh* newMesh);
 

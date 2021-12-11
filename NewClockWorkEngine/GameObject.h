@@ -42,7 +42,7 @@ public:
 		}
 		return nullptr;
 	}
-	ModuleComponent* GetComponent(ComponentType component);
+	ModuleComponent* GetComponent(ModuleComponent::ComponentType component);
 	ModuleComponent* AddComponent(ModuleComponent* component);
 	ModuleMesh* GetComponentMesh();
 	ModuleTransform* GetComponentTransform();

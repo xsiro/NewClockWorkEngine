@@ -274,7 +274,7 @@ void ModuleRenderer3D::DrawMesh(ResourceMesh* mesh, float4x4 transform, Resource
 	{
 		if (gameObject != nullptr)
 
-			if (gameObject->HasComponentType(ComponentType::Mesh))
+			if (gameObject->HasComponentType(ModuleComponent::ComponentType::Mesh))
 			{
 				vec* corners = new vec[8];
 				glColor4f(0.5, 0, 0.5, 1);
@@ -404,50 +404,6 @@ void ModuleRenderer3D::SwitchColorMaterial()
 //{
 //	obb.push_back(RenderBox<OBB>(&box, color));
 //}
-
-void ModuleRenderer3D::DrawBB(ResourceMesh* mesh)
-{
-	float3 corners[8];
-	mesh->aabb.GetCornerPoints(corners);
-	glBegin(GL_LINES);
-	//Between-planes right
-	glVertex3fv((GLfloat*)&corners[1]);
-	glVertex3fv((GLfloat*)&corners[5]);
-	glVertex3fv((GLfloat*)&corners[7]);
-	glVertex3fv((GLfloat*)&corners[3]);
-
-	//Between-planes left
-	glVertex3fv((GLfloat*)&corners[4]);
-	glVertex3fv((GLfloat*)&corners[0]);
-	glVertex3fv((GLfloat*)&corners[2]);
-	glVertex3fv((GLfloat*)&corners[6]);
-
-	//Far plane horizontal
-	glVertex3fv((GLfloat*)&corners[5]);
-	glVertex3fv((GLfloat*)&corners[4]);
-	glVertex3fv((GLfloat*)&corners[6]);
-	glVertex3fv((GLfloat*)&corners[7]);
-
-	//Near plane horizontal
-	glVertex3fv((GLfloat*)&corners[0]);
-	glVertex3fv((GLfloat*)&corners[1]);
-	glVertex3fv((GLfloat*)&corners[3]);
-	glVertex3fv((GLfloat*)&corners[2]);
-
-	//Near plane vertical
-	glVertex3fv((GLfloat*)&corners[1]);
-	glVertex3fv((GLfloat*)&corners[3]);
-	glVertex3fv((GLfloat*)&corners[0]);
-	glVertex3fv((GLfloat*)&corners[2]);
-
-	//Far plane vertical
-	glVertex3fv((GLfloat*)&corners[5]);
-	glVertex3fv((GLfloat*)&corners[7]);
-	glVertex3fv((GLfloat*)&corners[4]);
-	glVertex3fv((GLfloat*)&corners[6]);
-
-	glEnd();
-}
 
 
 void ModuleRenderer3D::DrawScenePlane(int size)

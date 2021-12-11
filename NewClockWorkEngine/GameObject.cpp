@@ -6,6 +6,7 @@
 #include "ModuleMaterial.h"
 #include "imgui.h"
 #include "Application.h"
+#include "ResourceMesh.h"
 
 
 
@@ -86,10 +87,7 @@ void GameObject::CleanUp()
 //	return (ModuleTransform*)transform;
 //}
 
-
-void GameObject::DeleteComponent(ModuleComponent::ComponentType type)
-
-ModuleComponent* GameObject::GetComponent(ComponentType component) 
+ModuleComponent* GameObject::GetComponent(ModuleComponent::ComponentType component) 
 {
 
 	for (size_t i = 0; i < components.size(); i++)
@@ -103,8 +101,7 @@ ModuleComponent* GameObject::GetComponent(ComponentType component)
 	return nullptr;
 }
 
-
-void GameObject::DeleteComponent(ComponentType type)
+void GameObject::DeleteComponent(ModuleComponent::ComponentType type)
 
 {
 	std::vector<ModuleComponent*>::iterator item = components.begin();
@@ -229,7 +226,7 @@ ModuleMesh* GameObject::GetComponentMesh()
 	ModuleComponent* mesh = nullptr;
 	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
 	{
-		if ((*i)->type == ComponentType::Mesh)
+		if ((*i)->type == ModuleComponent::ComponentType::Mesh)
 		{
 			return (ModuleMesh*)*i;
 		}
@@ -243,7 +240,7 @@ ModuleTransform* GameObject::GetComponentTransform()
 	ModuleComponent* transform = nullptr;
 	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
 	{
-		if ((*i)->type == ComponentType::Transform)
+		if ((*i)->type == ModuleComponent::ComponentType::Transform)
 		{
 			return (ModuleTransform*)*i;
 		}
@@ -253,7 +250,7 @@ ModuleTransform* GameObject::GetComponentTransform()
 
 void GameObject::UpdateBoundingBoxes()
 {
-	if (HasComponentType(ComponentType::Mesh))
+	if (HasComponentType(ModuleComponent::ComponentType::Mesh))
 	{
 		obb = GetComponent<ModuleMesh>()->GetMesh()->aabb;
 		obb.Transform(transform->GetGlobalTransform());
