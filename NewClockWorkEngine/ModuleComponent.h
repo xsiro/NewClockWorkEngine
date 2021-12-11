@@ -26,6 +26,7 @@ public:
 	void Disable();
 	void Enable();
 	bool IsActive();
+	inline ComponentType GetType() const { return type; };
 	ComponentType ReturnType();
 	GameObject* ReturnGameObject();
 

@@ -23,6 +23,8 @@ public:
 	void CleanUp() override;
 	void DrawInspector() override;
 
+	static inline ComponentType GetType() { return ComponentType::Mesh; };
+
 	void DrawMesh();
 	char* GetPath()const;
 private:

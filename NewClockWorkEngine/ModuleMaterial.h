@@ -18,6 +18,8 @@ public:
 	void CleanUp() override;
 	void DrawInspector() override;
 
+	static inline ComponentType GetType() { return ComponentType::Material; };
+
 	char* GetPath()const;
 	Material* GetTexture() const;
 	bool IsEnabled();
