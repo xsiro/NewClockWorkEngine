@@ -215,12 +215,12 @@ void GameObject::UpdateBoundingBoxes()
 }
 
 
-void GameObject::DrawBB(bool drawBB)
-{
-	if (drawBB)
-	{
-		App->renderer3D->CreateAABB(aabb, Green);
-		App->renderer3D->CreateOBB(obb, Pink);
-	}
-
-}
+//void GameObject::DrawBB(bool drawBB)
+//{
+//	if (drawBB)
+//	{
+//		App->renderer3D->CreateAABB(aabb, Green);
+//		App->renderer3D->CreateOBB(obb, Pink);
+//	}
+//
+//}

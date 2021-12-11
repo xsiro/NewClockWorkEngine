@@ -18,6 +18,8 @@
 #include <Windows.h>
 #include "Gizmos.h"
 
+
+
 #include "imgui.h"
 #include "imgui_internal.h"
 #include "imgui_impl_sdl.h"
@@ -174,7 +176,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	//BROFILER_CATEGORY("Draw imgui", Profiler::Color::AliceBlue)
 		App->gui->Draw();
 
-		DrawBB();
+		//DrawBB();
 
 	//BROFILER_CATEGORY("SwapWindow", Profiler::Color::GoldenRod)
 		SDL_GL_SwapWindow(App->window->window);
@@ -204,7 +206,7 @@ void ModuleRenderer3D::OnResize(int width, int height)
 	glLoadIdentity();
 }
 
-void ModuleRenderer3D::DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, bool drawVertexNormals)
+void ModuleRenderer3D::DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, bool drawVertexNormals, GameObject* gameObject)
 {
 	wireframeMode == false ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : (glPolygonMode(GL_FRONT_AND_BACK, GL_LINE), glColor4f(255, 255, 0, 255));
 
@@ -246,6 +248,23 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, 
 	if (drawVertexNormals)
 	{
 		DrawVertexNormals(mesh);
+	}
+
+	if (App->scene_intro->drawBB)
+	{
+		if (gameObject != nullptr)
+
+			if (gameObject->HasComponentType(ComponentType::Mesh))
+			{
+				vec* corners = new vec[8];
+				glColor4f(0.5, 0, 0.5, 1);
+				gameObject->obb.GetCornerPoints(corners);
+				DrawBox(corners);
+				glColor4f(0, 0.5, 0, 1);
+				gameObject->aabb.GetCornerPoints(corners);
+				DrawBox(corners);
+				RELEASE_ARRAY(corners);
+			}
 	}
 }
 
@@ -362,23 +381,52 @@ void ModuleRenderer3D::CreateOBB(const OBB& box, const Color& color)
 	obb.push_back(RenderBox<OBB>(&box, color));
 }
 
-void ModuleRenderer3D::DrawBB()
+void ModuleRenderer3D::DrawBox(float3* corners)
 {
 	glDisable(GL_LIGHTING);
+	//glColor4f(255, 255, 0, 255);
+	//mesh->aabb.GetCornerPoints(corners);
+
 	glBegin(GL_LINES);
 
-	for (uint i = 0; i < aabb.size(); i++)
-	{
-		Gizmos::DrawWireBox(*aabb[i].box, aabb[i].color);
-	}
-	aabb.clear();
+	//Between-planes right
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[7]);
+	glVertex3fv((GLfloat*)&corners[3]);
 
-	for (uint i = 0; i < obb.size(); i++)
-	{
-		Gizmos::DrawWireBox(*obb[i].box, obb[i].color);
-	}
-	obb.clear();
+	//Between-planes left
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[2]);
+	glVertex3fv((GLfloat*)&corners[6]);
+
+	//Far plane horizontal
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[6]);
+	glVertex3fv((GLfloat*)&corners[7]);
+
+	//Near plane horizontal
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[3]);
+	glVertex3fv((GLfloat*)&corners[2]);
+
+	//Near plane vertical
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[3]);
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[2]);
+
+	//Far plane vertical
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[7]);
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[6]);
 
 	glEnd();
-	glEnable(GL_LIGHTING);
+	glColor4f(1, 1, 1, 1);
+
+	SwitchLighting();
 }

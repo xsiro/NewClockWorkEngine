@@ -35,7 +35,7 @@ public:
 	bool CleanUp();
 
 	void OnResize(int width, int height);
-	void DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, bool drawVertexNormals);
+	void DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, bool drawVertexNormals, GameObject* gameObject = nullptr);
 	void DrawVertexNormals(Mesh* mesh);
 	void GenerateBuffers(Mesh* newMesh);
 	void CreateChekerTexture();
@@ -47,7 +47,7 @@ public:
 	void SwitchColorMaterial();
 	void CreateAABB(const AABB& box, const Color& color);
 	void CreateOBB(const OBB& box, const Color& color);
-	void DrawBB();
+	void DrawBox(float3* corners);
 
 
 public:

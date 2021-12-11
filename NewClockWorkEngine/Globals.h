@@ -39,3 +39,14 @@ enum update_status
 #define VSYNC true
 #define TITLE "NewClockWork Engine"
 #define ORGANIZATION "UPC"
+
+
+
+#define RELEASE_ARRAY( x )\
+	{\
+       if( x != nullptr )\
+       {\
+           delete[] x;\
+	       x = nullptr;\
+		 }\
+	}

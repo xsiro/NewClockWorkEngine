@@ -64,12 +64,12 @@ void ModuleMesh::DrawMesh()
 	{
 		if (owner->material->IsEnabled())
 		{
-			App->renderer3D->DrawMesh(mesh, owner->transform->GetTransform(), owner->material->GetTexture()->id, drawVertexNormals);
+			App->renderer3D->DrawMesh(mesh, owner->transform->GetTransform(), owner->material->GetTexture()->id, drawVertexNormals, owner);
 			return;
 		}
 	}
 
-	App->renderer3D->DrawMesh(mesh, owner->transform->GetTransform(), 0, drawVertexNormals);
+	App->renderer3D->DrawMesh(mesh, owner->transform->GetTransform(), 0, drawVertexNormals, owner);
 }
 
 char* ModuleMesh::GetPath()const

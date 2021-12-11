@@ -65,10 +65,6 @@ update_status ModuleSceneIntro::Update(float dt)
 	for (; item != game_objects.end(); ++item)
 	{
 		(*item)->Update();
-		if ((*item)->GetName() != "root")
-		{
-			((GameObject*)*item)->DrawBB(drawBB);
-		}
 	}
 
 	return UPDATE_CONTINUE;
