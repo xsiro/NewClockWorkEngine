@@ -76,17 +76,3 @@ char* ModuleMesh::GetPath()const
 {
 	return path;
 }
-
-const AABB& ModuleMesh::GetAABB() const
-{
-	return aabb;
-}
-
-const OBB& ModuleMesh::GetOBB() const
-{
-	return obb;
-}
-Mesh* ModuleMesh::GetMesh() const
-{
-	return Mesh;
-}

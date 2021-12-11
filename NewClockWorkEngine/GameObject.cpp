@@ -5,7 +5,6 @@
 #include "ModuleMesh.h"
 #include "ModuleMaterial.h"
 #include "imgui.h"
-#include "Application.h"
 
 #include <vector>
 
@@ -26,8 +25,6 @@ GameObject::~GameObject()
 
 void GameObject::Update() 
 {
-	UpdateBoundingBoxes();
-
 	std::vector<ModuleComponent*>::iterator item = components.begin();
 	for (; item != components.end(); ++item)
 	{
@@ -63,32 +60,18 @@ void GameObject::CleanUp()
 	children.clear();
 }
 
-
-ModuleMesh* GameObject::GetComponentMesh()
+ModuleComponent* GameObject::GetComponent(ComponentType component) 
 {
-	ModuleComponent* mesh = nullptr;
-	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
+
+	for (size_t i = 0; i < components.size(); i++)
 	{
-		if ((*i)->type == ComponentType::Mesh)
+		if (components[i]->ReturnType() == component)
 		{
-			return (ModuleMesh*)*i;
+			return components[i];
 		}
 	}
-	return (ModuleMesh*)mesh;
-}
 
-
-ModuleTransform* GameObject::GetComponentTransform()
-{
-	ModuleComponent* transform = nullptr;
-	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
-	{
-		if ((*i)->type == ComponentType::Transform)
-		{
-			return (ModuleTransform*)*i;
-		}
-	}
-	return (ModuleTransform*)transform;
+	return nullptr;
 }
 
 
@@ -127,7 +110,6 @@ ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
 		if (!HasComponentType(ComponentType::Mesh))
 		{
 			components.push_back(component);
-			UpdateBoundingBoxes();
 		}
 		else
 			LOG("(ERROR) Error adding Mesh: Object already has Mesh");
@@ -188,27 +170,4 @@ void GameObject::Disable()
 bool GameObject::IsActive()
 {
 	return active;
-}
-
-void GameObject::UpdateBoundingBoxes()
-{
-	if (HasComponentType(ComponentType::Mesh))
-	{
-		obb = GetComponent<ModuleMesh>()->GetMesh()->aabb;
-		obb.Transform(transform->GetGlobalTransform());
-
-		aabb.SetNegativeInfinity();
-		aabb.Enclose(obb);
-	}
-}
-
-
-void GameObject::DrawBB(bool drawBB)
-{
-	if (drawBB)
-	{
-		App->renderer3D->CreateAABB(aabb, Green);
-		App->renderer3D->CreateOBB(obb, Pink);
-	}
-
 }

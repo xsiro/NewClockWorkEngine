@@ -48,7 +48,7 @@ std::vector<Mesh*> Importer::MeshImporter::Import(const char* file)
                 {
                     if (scene->mMeshes[i]->mFaces[f].mNumIndices != 3)
                     {
-                        LOG("WARNING, geometry face with != 3 indices!");
+                        LOG("WARNING, geometery face with != 3 indices!");
                     }
                     else
                     {
@@ -75,9 +75,6 @@ std::vector<Mesh*> Importer::MeshImporter::Import(const char* file)
                     newMesh->textureCoords[j * 2 + 1] = scene->mMeshes[i]->mTextureCoords[0][j].y;
                 }
             }
-
-            newMesh->aabb.SetNegativeInfinity();
-            newMesh->aabb.Enclose((float3*)newMesh->vertices, newMesh->buffersSize[Mesh::vertex]);
 
             App->renderer3D->GenerateBuffers(newMesh);
 

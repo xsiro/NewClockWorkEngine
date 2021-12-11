@@ -16,7 +16,6 @@ ModuleTransform::ModuleTransform(GameObject* owner) : ModuleComponent(ComponentT
 	rotation = Quat::identity;
 
 	transform = float4x4::FromTRS(position, rotation, scale);
-	globalTransform = Quat::identity;
 }
 
 ModuleTransform::~ModuleTransform()
@@ -105,9 +104,4 @@ void ModuleTransform::RecalculateEuler()
 {
 	eulerRotation = rotation.ToEulerXYZ();
 	eulerRotation *= 57.295779513082320876f;
-}
-
-float4x4 ModuleTransform::GetGlobalTransform()const
-{
-	return globalTransform;
 }

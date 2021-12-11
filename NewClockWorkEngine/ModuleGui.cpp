@@ -158,56 +158,48 @@ void ModuleGui::Draw()
 			}
 			ImGui::EndMenu();
 		}
-		if (ImGui::BeginMenu("GameObject"))
+		if (ImGui::BeginMenu("Create GameObject"))
 		{
-			if (ImGui::BeginMenu("Create GameObject"))
-			{
-				if (ImGui::MenuItem("Cube")) {
-					pyramid = false;
-					cylinder = false;
-					sphere = false;
-					cube = !cube;
-					if (cube)
-					{
-						LOG("Cube primitive created");
-					}
+			if (ImGui::MenuItem("Cube")) {
+				pyramid = false;
+				cylinder = false;
+				sphere = false;
+				cube = !cube;
+				if (cube)
+				{
+					LOG("Cube primitive created");
 				}
-				if (ImGui::MenuItem("Pyramid")) {
-					cube = false;
-					cylinder = false;
-					sphere = false;
-					pyramid = !pyramid;
-					if (pyramid)
-					{
-						LOG("Pyramid primitive created")
-					}
-				}
-				if (ImGui::MenuItem("Cylinder")) {
-					pyramid = false;
-					cube = false;
-					sphere = false;
-					cylinder = !cylinder;
-					if (cylinder)
-					{
-						LOG("Cylinder primitive created")
-					}
-				}
-				if (ImGui::MenuItem("Sphere")) {
-					pyramid = false;
-					cylinder = false;
-					cube = false;
-					sphere = !sphere;
-					if (sphere)
-					{
-						LOG("Sphere primitive created")
-					}
-				}
-				ImGui::EndMenu();
 			}
-			ImGui::Separator();
-
-			ImGui::MenuItem("Draw Bounding Boxes", nullptr, &App->scene_intro->drawBB);
-
+			if (ImGui::MenuItem("Pyramid")) {
+				cube = false;
+				cylinder = false;
+				sphere = false;
+				pyramid = !pyramid;
+				if (pyramid)
+				{
+					LOG("Pyramid primitive created")
+				}
+			}
+			if (ImGui::MenuItem("Cylinder")) {
+				pyramid = false;
+				cube = false;
+				sphere = false;
+				cylinder = !cylinder;
+				if (cylinder)
+				{
+					LOG("Cylinder primitive created")
+				}
+			}
+			if (ImGui::MenuItem("Sphere")) {
+				pyramid = false;
+				cylinder = false;
+				cube = false;
+				sphere = !sphere;
+				if (sphere)
+				{
+					LOG("Sphere primitive created")
+				}
+			}
 			ImGui::EndMenu();
 		}
 
