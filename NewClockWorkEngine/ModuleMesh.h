@@ -29,7 +29,6 @@ public:
 
 	const AABB& GetAABB() const;
 	const OBB& GetOBB() const;
-	static inline ComponentType GetType() { return ComponentType::Mesh; };
 
 
 private:

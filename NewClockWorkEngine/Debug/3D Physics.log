@@ -1,26 +1,162 @@
-﻿  Main.cpp
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\include\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-GameObject.obj : error LNK2019: símbolo externo "public: class math::float3 & __thiscall math::float3::operator=(class math::float3 const &)" (??4float3@math@@QAEAAV01@ABV01@@Z) sin resolver al que se hace referencia en la función "public: class math::OBB & __thiscall math::OBB::operator=(class math::OBB &&)" (??4OBB@math@@QAEAAV01@$$QAV01@@Z)
-ModuleTransform.obj : error LNK2001: símbolo externo "public: class math::float3 & __thiscall math::float3::operator=(class math::float3 const &)" (??4float3@math@@QAEAAV01@ABV01@@Z) sin resolver
-GameObject.obj : error LNK2019: símbolo externo "public: void __thiscall math::AABB::SetNegativeInfinity(void)" (?SetNegativeInfinity@AABB@math@@QAEXXZ) sin resolver al que se hace referencia en la función "public: void __thiscall GameObject::UpdateBoundingBoxes(void)" (?UpdateBoundingBoxes@GameObject@@QAEXXZ)
-ModuleImporter.obj : error LNK2001: símbolo externo "public: void __thiscall math::AABB::SetNegativeInfinity(void)" (?SetNegativeInfinity@AABB@math@@QAEXXZ) sin resolver
-GameObject.obj : error LNK2019: símbolo externo "public: void __thiscall math::AABB::Enclose(class math::OBB const &)" (?Enclose@AABB@math@@QAEXABVOBB@2@@Z) sin resolver al que se hace referencia en la función "public: void __thiscall GameObject::UpdateBoundingBoxes(void)" (?UpdateBoundingBoxes@GameObject@@QAEXXZ)
-GameObject.obj : error LNK2019: símbolo externo "public: __thiscall math::OBB::OBB(class math::AABB const &)" (??0OBB@math@@QAE@ABVAABB@1@@Z) sin resolver al que se hace referencia en la función "public: void __thiscall GameObject::UpdateBoundingBoxes(void)" (?UpdateBoundingBoxes@GameObject@@QAEXXZ)
-GameObject.obj : error LNK2019: símbolo externo "public: void __thiscall math::OBB::Transform(class math::float4x4 const &)" (?Transform@OBB@math@@QAEXABVfloat4x4@2@@Z) sin resolver al que se hace referencia en la función "public: void __thiscall GameObject::UpdateBoundingBoxes(void)" (?UpdateBoundingBoxes@GameObject@@QAEXXZ)
-ModuleImporter.obj : error LNK2019: símbolo externo "public: void __thiscall math::AABB::Enclose(class math::float3 const *,int)" (?Enclose@AABB@math@@QAEXPBVfloat3@2@H@Z) sin resolver al que se hace referencia en la función "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > __cdecl Importer::MeshImporter::Import(char const *)" (?Import@MeshImporter@Importer@@YA?AV?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@PBD@Z)
-ModuleRenderer3D.obj : error LNK2019: símbolo externo "public: void __thiscall math::AABB::GetCornerPoints(class math::float3 *)const " (?GetCornerPoints@AABB@math@@QBEXPAVfloat3@2@@Z) sin resolver al que se hace referencia en la función "public: static void __cdecl Gizmos::DrawWireBox<class math::AABB>(class math::AABB const &,struct Color)" (??$DrawWireBox@VAABB@math@@@Gizmos@@SAXABVAABB@math@@UColor@@@Z)
-ModuleRenderer3D.obj : error LNK2019: símbolo externo "public: class math::float4x4 __thiscall math::float4x4::Transposed(void)const " (?Transposed@float4x4@math@@QBE?AV12@XZ) sin resolver al que se hace referencia en la función "public: void __thiscall ModuleRenderer3D::DrawMesh(struct Mesh *,class math::float4x4,unsigned int,bool)" (?DrawMesh@ModuleRenderer3D@@QAEXPAUMesh@@Vfloat4x4@math@@I_N@Z)
-ModuleRenderer3D.obj : error LNK2019: símbolo externo "public: void __thiscall math::OBB::GetCornerPoints(class math::float3 *)const " (?GetCornerPoints@OBB@math@@QBEXPAVfloat3@2@@Z) sin resolver al que se hace referencia en la función "public: static void __cdecl Gizmos::DrawWireBox<class math::OBB>(class math::OBB const &,struct Color)" (??$DrawWireBox@VOBB@math@@@Gizmos@@SAXABVOBB@math@@UColor@@@Z)
-ModuleRenderer3D.obj : error LNK2019: símbolo externo "public: static void __cdecl Gizmos::DrawWireCube(class math::float3 const *,struct Color)" (?DrawWireCube@Gizmos@@SAXPBVfloat3@math@@UColor@@@Z) sin resolver al que se hace referencia en la función "public: static void __cdecl Gizmos::DrawWireBox<class math::AABB>(class math::AABB const &,struct Color)" (??$DrawWireBox@VAABB@math@@@Gizmos@@SAXABVAABB@math@@UColor@@@Z)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: __thiscall math::float3::float3(float,float,float)" (??0float3@math@@QAE@MMM@Z) sin resolver al que se hace referencia en la función "public: __thiscall ModuleTransform::ModuleTransform(class GameObject *)" (??0ModuleTransform@@QAE@PAVGameObject@@@Z)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: class math::float3 __thiscall math::float3::operator-(class math::float3 const &)const " (??Gfloat3@math@@QBE?AV01@ABV01@@Z) sin resolver al que se hace referencia en la función "public: void __thiscall ModuleTransform::SetEulerRotation(class math::float3)" (?SetEulerRotation@ModuleTransform@@QAEXVfloat3@math@@@Z)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: class math::float3 __thiscall math::float3::operator*(float)const " (??Dfloat3@math@@QBE?AV01@M@Z) sin resolver al que se hace referencia en la función "public: void __thiscall ModuleTransform::SetEulerRotation(class math::float3)" (?SetEulerRotation@ModuleTransform@@QAEXVfloat3@math@@@Z)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: class math::float3 & __thiscall math::float3::operator*=(float)" (??Xfloat3@math@@QAEAAV01@M@Z) sin resolver al que se hace referencia en la función "public: void __thiscall ModuleTransform::RecalculateEuler(void)" (?RecalculateEuler@ModuleTransform@@QAEXXZ)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: static class math::float4x4 __cdecl math::float4x4::FromTRS(class math::float3 const &,class math::Quat const &,class math::float3 const &)" (?FromTRS@float4x4@math@@SA?AV12@ABVfloat3@2@ABVQuat@2@0@Z) sin resolver al que se hace referencia en la función "public: __thiscall ModuleTransform::ModuleTransform(class GameObject *)" (??0ModuleTransform@@QAE@PAVGameObject@@@Z)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: class math::float4x4 & __thiscall math::float4x4::operator=(class math::Quat const &)" (??4float4x4@math@@QAEAAV01@ABVQuat@1@@Z) sin resolver al que se hace referencia en la función "public: __thiscall ModuleTransform::ModuleTransform(class GameObject *)" (??0ModuleTransform@@QAE@PAVGameObject@@@Z)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: void __thiscall math::float4x4::Decompose(class math::float3 &,class math::Quat &,class math::float3 &)const " (?Decompose@float4x4@math@@QBEXAAVfloat3@2@AAVQuat@2@0@Z) sin resolver al que se hace referencia en la función "public: void __thiscall ModuleTransform::UpdateTRS(void)" (?UpdateTRS@ModuleTransform@@QAEXXZ)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: static class math::Quat __cdecl math::Quat::FromEulerXYZ(float,float,float)" (?FromEulerXYZ@Quat@math@@SA?AV12@MMM@Z) sin resolver al que se hace referencia en la función "public: void __thiscall ModuleTransform::SetEulerRotation(class math::float3)" (?SetEulerRotation@ModuleTransform@@QAEXVfloat3@math@@@Z)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: class math::float3 __thiscall math::Quat::ToEulerXYZ(void)const " (?ToEulerXYZ@Quat@math@@QBE?AVfloat3@2@XZ) sin resolver al que se hace referencia en la función "public: void __thiscall ModuleTransform::RecalculateEuler(void)" (?RecalculateEuler@ModuleTransform@@QAEXXZ)
-ModuleTransform.obj : error LNK2019: símbolo externo "public: class math::Quat __thiscall math::Quat::operator*(class math::Quat const &)const " (??DQuat@math@@QBE?AV01@ABV01@@Z) sin resolver al que se hace referencia en la función "public: void __thiscall ModuleTransform::SetEulerRotation(class math::float3)" (?SetEulerRotation@ModuleTransform@@QAEXVfloat3@math@@@Z)
-ModuleTransform.obj : error LNK2001: símbolo externo "public: static class math::Quat const math::Quat::identity" (?identity@Quat@math@@2V12@B) sin resolver
-C:\Users\alexla2\Documents\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe : fatal error LNK1120: 21 externos sin resolver
+﻿  Application.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(178,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  Color.cpp
+  FileSystem.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  The contents of <filesystem> are available only with C++17 or later.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.cpp(250,20): warning C4018: '<': no coinciden signed/unsigned
+  GameObject.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(59,9): error C3646: 'obb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(59,9): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(60,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(60,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(197,3): error C2065: 'obb': identificador no declarado
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(198,3): error C2065: 'obb': identificador no declarado
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(200,3): error C2065: 'aabb': identificador no declarado
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(201,3): error C2065: 'aabb': identificador no declarado
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(201,16): error C2065: 'obb': identificador no declarado
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(210,31): error C2065: 'aabb': identificador no declarado
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(211,30): error C2065: 'obb': identificador no declarado
+  Light.cpp
+  log.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  Main.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  ModuleCamera3D.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  ModuleComponent.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(59,9): error C3646: 'obb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(59,9): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(60,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(60,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+  ModuleGui.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  ModuleImporter.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(34,27): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(72,35): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(79,22): error C2039: "aabb": no es un miembro de "Mesh"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(12): message : vea la declaración de 'Mesh'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(80,22): error C2039: "aabb": no es un miembro de "Mesh"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(12): message : vea la declaración de 'Mesh'
+  ModuleInput.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  ModuleMaterial.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  ModuleMesh.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(91,9): error C2275: 'Mesh': uso no válido de este tipo como expresión
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.h(12): message : vea la declaración de 'Mesh'
+  ModuleRenderer3D.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(349,6): warning C4551: la llamada a la función no tiene lista de argumentos
+  ModuleSceneIntro.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  ModuleTransform.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  ModuleWindow.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  Primitive.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(198,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(199,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(199,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(208,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(209,53): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(209,36): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(217,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(219,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(219,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(220,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(220,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  Win_About.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  Generando código...
+  Compilando...
+  Win_Hierarchy.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  Win_Configuration.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(93,12): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(95,71): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(101,24): warning C4244: 'argumento': conversión de 'int' a 'const _Ty'; posible pérdida de datos
+          with
+          [
+              _Ty=float
+          ]
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(64,45): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(123,50): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+  Win_Inspector.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C3646: 'aabb': especificador de invalidación desconocido
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(43,11): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  Generando código...

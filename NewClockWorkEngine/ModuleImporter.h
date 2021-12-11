@@ -1,7 +1,6 @@
 #pragma once
 #include "Globals.h"
 #include <vector>
-#include "MathGeoLib/include/MathGeoLib.h"
 
 struct Material
 {

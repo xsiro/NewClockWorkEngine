@@ -3,7 +3,7 @@
 #include "Globals.h"
 #include <vector>
 #include "ModuleComponent.h"
-#include "MathGeoLib/include/MathGeoLib.h"
+#include "MathGeoLib/src/MathGeoLib.h"
 
 class ModuleComponent;
 
@@ -29,8 +29,6 @@ public:
 	void UpdateTRS();
 
 	void RecalculateEuler();
-
-	static inline ComponentType GetType() { return ComponentType::Transform; };
 
 private:
 

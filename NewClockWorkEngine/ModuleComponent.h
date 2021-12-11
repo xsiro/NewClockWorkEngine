@@ -28,7 +28,6 @@ public:
 	bool IsActive();
 	ComponentType ReturnType();
 	GameObject* ReturnGameObject();
-	inline ComponentType GetType() const { return type; };
 
 
 public:

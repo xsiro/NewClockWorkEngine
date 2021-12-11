@@ -88,5 +88,5 @@ const OBB& ModuleMesh::GetOBB() const
 }
 Mesh* ModuleMesh::GetMesh() const
 {
-	return mesh;
+	return Mesh;
 }
