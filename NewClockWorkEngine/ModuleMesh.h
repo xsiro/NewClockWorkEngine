@@ -7,7 +7,8 @@
 
 
 class GameObject;
-class ModuleMaterial;
+class ResourceMesh;
+class ModuleComponent;
 typedef unsigned int GLuint;
 typedef unsigned char GLubyte;
 
@@ -16,13 +17,13 @@ class ModuleMesh : public ModuleComponent
 public:
 
 	ModuleMesh(GameObject* owner);
-	ModuleMesh(GameObject* owner, char* path, Mesh* mesh);
+	ModuleMesh(GameObject* owner, char* path, ResourceMesh* mesh);
 	~ModuleMesh();
 
 	void Update() override;
 	void CleanUp() override;
 	void DrawInspector() override;
-	Mesh* GetMesh() const;
+	ResourceMesh* GetMesh() const;
 
 	void DrawMesh();
 	char* GetPath()const;
@@ -34,7 +35,7 @@ public:
 
 private:
 
-	Mesh* mesh = nullptr;
+	ResourceMesh* mesh = nullptr;
 	char* path = nullptr;
 	bool drawVertexNormals = false;
 

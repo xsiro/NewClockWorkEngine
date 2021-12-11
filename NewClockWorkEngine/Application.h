@@ -16,6 +16,7 @@
 #include "ModuleGui.h"
 #include "ModuleImporter.h"
 #include "FileSystem.h"
+#include "ModuleResourceM.h"
 #include "Brofiler/Brofiler.h"
 
 
@@ -31,6 +32,7 @@ public:
 	ModuleCamera3D* camera;
 	ModuleGui* gui;
 	FileSystem* filesystem;
+	ModuleResourceM* resourcemanager;
 
 private:
 

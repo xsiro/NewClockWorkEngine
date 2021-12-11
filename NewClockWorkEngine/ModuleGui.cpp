@@ -97,6 +97,8 @@ update_status ModuleGui::PreUpdate(float dt)
 
 void ModuleGui::Draw()
 {
+	ImGuiIO io = ImGui::GetIO();
+
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
@@ -218,7 +220,8 @@ void ModuleGui::Draw()
 		(*item)->Draw();
 	ImGui::Render();
 
-
+	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
+	glClearColor(0, 0, 0, 0);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 

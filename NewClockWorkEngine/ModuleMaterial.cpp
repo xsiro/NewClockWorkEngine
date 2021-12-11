@@ -7,6 +7,7 @@
 #include "ModuleTransform.h"
 #include "GameObject.h"
 #include "ModuleComponent.h"
+#include "ResourceMaterial.h"
 
 #include "SDL/include/SDL_opengl.h"
 #include "glew.h"
@@ -20,7 +21,7 @@ ModuleMaterial::ModuleMaterial(GameObject* owner) : ModuleComponent(ComponentTyp
 
 }
 
-ModuleMaterial::ModuleMaterial(GameObject* owner, char* path, Material* texture = nullptr) : ModuleComponent(ComponentType::Material, owner), material(texture), path(path)
+ModuleMaterial::ModuleMaterial(GameObject* owner, const char* path, ResourceMaterial* texture = nullptr) : ModuleComponent(ComponentType::Material, owner), material(texture), path(path)
 {
 
 }
@@ -42,23 +43,23 @@ void ModuleMaterial::DrawInspector()
 	if (ImGui::CollapsingHeader("Texture"))
 	{
 		ImGui::Text("Path: %s", path);
-		ImGui::Text("Texture height: %d", material->height);
-		ImGui::Text("Texture width: %d", material->width);
+		ImGui::Text("Texture height: %d", material->GetHeight());
+		ImGui::Text("Texture width: %d", material->GetWidth());
 		if (ImGui::Checkbox("DrawTexture", &drawTexture)) {}
 	}
 }
 
-char* ModuleMaterial::GetPath()const
+const char* ModuleMaterial::GetPath()const
 {
 	return path;
 }
 
-Material* ModuleMaterial::GetTexture() const
+ResourceMaterial* ModuleMaterial::GetTexture() const
 {
 	return material;
 }
 
-bool ModuleMaterial::IsEnabled()
+bool ModuleMaterial::IsEnabled() const
 {
 	return drawTexture;
 }

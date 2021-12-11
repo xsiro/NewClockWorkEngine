@@ -1,7 +1,12 @@
 #pragma once
 #include "Globals.h"
 #include <vector>
-#include "MathGeoLib/include/MathGeoLib.h"
+#include "MathGeoLib/src/MathGeoLib.h"
+
+struct aiNode;
+struct aiScene;
+class ResourceMaterial;
+class ResourceMesh;
 
 struct Material
 {
@@ -51,17 +56,32 @@ namespace Importer
 {
 	namespace MeshImporter
 	{
-		std::vector<Mesh*> Import(const char* file);
+		std::vector<ResourceMesh*>Import(const char* file);
+		 
+		void LoadNodeMesh(const aiScene* scene, const aiNode* node, std::vector<ResourceMesh*>& meshes);
+		uint64 Save(const ResourceMesh mesh);
 
-		void Save(const Mesh mesh);
-
-		void Load(const char* fileBuffer, Mesh* mesh);
+		void Load(const char* fileBuffer, ResourceMesh* mesh);
 
 	}
 	namespace TextureImp
 	{
-		Material* Import(const char* path);
+		ResourceMaterial* Import(const char* path);
 		uint CreateTexture(const void* data, uint width, uint height, uint format);
 		void InitDevil();
+	}
+	namespace SceneImporter
+	{
+		void Import(const char* file);
+
+		void ProcessAiNode(const aiScene* scene, const aiNode* node, GameObject* parentObject, const char* file);
+
+		void LoadTransform(const aiNode* node, GameObject* newGameObject);
+		void LoadMeshes(const aiScene* scene, const aiNode* node, GameObject* newGameObject);
+		void LoadMaterial(const aiScene* scene, const aiNode* node, GameObject* newGameObject, const char* file);
+		uint64 Save();	//Store mesh info into custom format file
+
+		void Load(); //Load buffer from custom format file and store into mesh
+
 	}
 }

@@ -4,7 +4,7 @@
 #include "glmath.h"
 #include "Light.h"
 #include "ModuleImporter.h"
-#include "MathGeoLib/include/MathGeoLib.h"
+#include "MathGeoLib/src/MathGeoLib.h"
 #include "SDL.h"
 #include <vector>
 
@@ -36,9 +36,9 @@ public:
 	bool CleanUp();
 
 	void OnResize(int width, int height);
-	void DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, bool drawVertexNormals);
-	void DrawVertexNormals(Mesh* mesh);
-	void GenerateBuffers(Mesh* newMesh);
+	void DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals = false, bool drawboundingbox = false);
+	void DrawVertexNormals(ResourceMesh* mesh, float4x4 transform);
+	void GenerateBuffers(ResourceMesh* newMesh);
 	void CreateChekerTexture();
 
 	void SwitchCullFace();
@@ -48,7 +48,8 @@ public:
 	void SwitchColorMaterial();
 	void CreateAABB(const AABB& box, const Color& color);
 	void CreateOBB(const OBB& box, const Color& color);
-	void DrawBB();
+	void DrawBB(ResourceMesh* mesh);
+	void DrawScenePlane(int size);
 
 
 public:

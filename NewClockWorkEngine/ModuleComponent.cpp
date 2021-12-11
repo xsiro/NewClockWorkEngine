@@ -38,7 +38,7 @@ bool ModuleComponent::IsActive()
 	return active;
 }
 
-ComponentType ModuleComponent::ReturnType() {
+ModuleComponent::ComponentType ModuleComponent::ReturnType() {
 
 	return type;
 

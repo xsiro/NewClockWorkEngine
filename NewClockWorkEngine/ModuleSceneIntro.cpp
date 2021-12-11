@@ -29,8 +29,10 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	CreateGameObject("BakerHouse", "Assets/BakerHouse.fbx", "Assets/Baker_house.png");
+	rootObject = CreateGameObject("rootObject", "", "", true);
 
+	CreateGameObject("BakerHouse", "Assets/BakerHouse.fbx", "Assets/Baker_house.png");
+	//Importer::SceneImporter::Import("Assets/BakerHouse.fbx");
 	return ret;
 }
 
@@ -54,41 +56,49 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update(float dt)
 {
-	Planes p(vec3(0, 1, 0));
+	/*Planes p(vec3(0, 1, 0));
 	p.axis = true;
-	p.Render();
+	p.Render();*/
 
-	Cube cube(1.0f, 1.0f, 1.0f);
+	App->renderer3D->DrawScenePlane(200);
 
 
+	rootObject->Update();
 	std::vector<GameObject*>::iterator item = game_objects.begin();
 	for (; item != game_objects.end(); ++item)
 	{
 		(*item)->Update();
-		if ((*item)->GetName() != "root")
+		/*if ((*item)->GetName() != "root")
 		{
 			((GameObject*)*item)->DrawBB(drawBB);
-		}
+		}*/
 	}
 
 	return UPDATE_CONTINUE;
 }
 
-void ModuleSceneIntro::CreateGameObject(char* name, char* meshPath = "", char* texturePath = "")
+GameObject* ModuleSceneIntro::CreateGameObject(char* name, char* meshPath, char* texturePath, bool isRoot)
 {
 	GameObject* newGameObject = nullptr;
+	if (isRoot)
+	{
+		newGameObject = new GameObject(nullptr, name);
+		return newGameObject;
+	}
+
 	if (meshPath != "")
 	{
-		std::vector<Mesh*> meshes = Importer::MeshImporter::Import(meshPath);
+		std::vector<ResourceMesh*> meshes = Importer::MeshImporter::Import(meshPath);
 
 		if (meshes.size() == 0)
 		{
 			LOG("(ERROR) No meshes found in %s", meshPath);
-			return;
+			
 		}
 
-		newGameObject = new GameObject(nullptr, name);
+		newGameObject = new GameObject(rootObject, name);
 		game_objects.push_back(newGameObject);
+		rootObject->children.push_back(newGameObject);
 
 		if (meshes.size() == 1)
 		{
@@ -98,7 +108,7 @@ void ModuleSceneIntro::CreateGameObject(char* name, char* meshPath = "", char* t
 		}
 		else
 		{
-			std::vector<Mesh*>::iterator item = meshes.begin();
+			std::vector<ResourceMesh*>::iterator item = meshes.begin();
 			for (; item != meshes.end(); ++item)
 			{
 				GameObject* childGameObject = new GameObject(newGameObject, name);
@@ -109,10 +119,12 @@ void ModuleSceneIntro::CreateGameObject(char* name, char* meshPath = "", char* t
 				if (texturePath != "")
 					childGameObject->AddComponent(new ModuleMaterial(game_objects.back(), texturePath, Importer::TextureImp::Import(texturePath)));
 
+				game_objects.push_back(childGameObject);
 				newGameObject->children.push_back(childGameObject);
 			}
 		}
 	}
+	return newGameObject;
 }
 
 void ModuleSceneIntro::SetSelectedObject(GameObject* object)

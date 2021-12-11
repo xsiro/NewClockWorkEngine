@@ -4,17 +4,17 @@
 
 class GameObject;
 
-enum class ComponentType {
-	Mesh,
-	Transform,
-	Material,
-	None
-};
+
 
 class ModuleComponent
 {
 public:
-
+	enum class ComponentType {
+	Mesh,
+	Transform,
+	Material,
+	None
+	};
 	ModuleComponent(ComponentType type);
 	ModuleComponent(ComponentType type, GameObject* owner);
 	~ModuleComponent();

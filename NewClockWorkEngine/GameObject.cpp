@@ -7,14 +7,14 @@
 #include "imgui.h"
 #include "Application.h"
 
-#include <vector>
 
-GameObject::GameObject(char* name) : name(name)
+
+GameObject::GameObject(const char* name) : name(name)
 {
 	AddComponent(new ModuleTransform(this));
 }
 
-GameObject::GameObject(GameObject* parent = nullptr, char* name = "Object") : parent(parent), name(name)
+GameObject::GameObject(GameObject* parent = nullptr, const char* name = "Object") : parent(parent), name(name)
 {
 	AddComponent(new ModuleTransform(this));
 }
@@ -26,20 +26,19 @@ GameObject::~GameObject()
 
 void GameObject::Update() 
 {
-	UpdateBoundingBoxes();
+	//UpdateBoundingBoxes();
 
-	std::vector<ModuleComponent*>::iterator item = components.begin();
-	for (; item != components.end(); ++item)
+	if (!components.empty())
 	{
-		(*item)->Update();
-	}
-
-	std::vector<GameObject*>::iterator child = children.begin();
-	for (; child != children.end(); ++child)
-	{
-		(*child)->Update();
+		std::vector<ModuleComponent*>::iterator item = components.begin();
+		for (; item != components.end(); ++item)
+		{
+			(*item)->Update();
+		}
 	}
 }
+
+
 
 void GameObject::CleanUp()
 {
@@ -52,47 +51,40 @@ void GameObject::CleanUp()
 	}
 
 	components.clear();
-
-	std::vector<GameObject*>::iterator child = children.begin();
-	for (; child != children.end(); ++child)
-	{
-		(*child)->CleanUp();
-		delete (*child);
-	}
-
 	children.clear();
+
 }
 
+//
+//ModuleMesh* GameObject::GetComponentMesh()
+//{
+//	ModuleComponent* mesh = nullptr;
+//	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
+//	{
+//		if ((*i)->type == ComponentType::Mesh)
+//		{
+//			return (ModuleMesh*)*i;
+//		}
+//	}
+//	return (ModuleMesh*)mesh;
+//}
 
-ModuleMesh* GameObject::GetComponentMesh()
-{
-	ModuleComponent* mesh = nullptr;
-	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
-	{
-		if ((*i)->type == ComponentType::Mesh)
-		{
-			return (ModuleMesh*)*i;
-		}
-	}
-	return (ModuleMesh*)mesh;
-}
+//
+//ModuleTransform* GameObject::GetComponentTransform()
+//{
+//	ModuleComponent* transform = nullptr;
+//	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
+//	{
+//		if ((*i)->type == ComponentType::Transform)
+//		{
+//			return (ModuleTransform*)*i;
+//		}
+//	}
+//	return (ModuleTransform*)transform;
+//}
 
 
-ModuleTransform* GameObject::GetComponentTransform()
-{
-	ModuleComponent* transform = nullptr;
-	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
-	{
-		if ((*i)->type == ComponentType::Transform)
-		{
-			return (ModuleTransform*)*i;
-		}
-	}
-	return (ModuleTransform*)transform;
-}
-
-
-void GameObject::DeleteComponent(ComponentType type)
+void GameObject::DeleteComponent(ModuleComponent::ComponentType type)
 {
 	std::vector<ModuleComponent*>::iterator item = components.begin();
 	for (; item != components.end(); ++item)
@@ -113,39 +105,39 @@ std::vector<ModuleComponent*> GameObject::GetComponents()const
 
 ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
 {
-	ComponentType type = component->ReturnType();
+	ModuleComponent::ComponentType type = component->ReturnType();
 
 	switch (type)
 	{
-	case ComponentType::Transform:
+	case ModuleComponent::ComponentType::Transform:
 
 		components.push_back(component);
 		transform = (ModuleTransform*)component;
 		break;
-		case ComponentType::Mesh:
+		case ModuleComponent::ComponentType::Mesh:
 
-		if (!HasComponentType(ComponentType::Mesh))
+		if (!HasComponentType(ModuleComponent::ComponentType::Mesh))
 		{
 			components.push_back(component);
-			UpdateBoundingBoxes();
+			//UpdateBoundingBoxes();
 		}
 		else
 			LOG("(ERROR) Error adding Mesh: Object already has Mesh");
 
 		break;
 
-	case ComponentType::Material:
+	case ModuleComponent::ComponentType::Material:
 
-		if (!HasComponentType(ComponentType::Material))
+		if (!HasComponentType(ModuleComponent::ComponentType::Material))
 		{
 			components.push_back(component);
-			material = (ModuleMaterial*)component;
+			//material = (ModuleMaterial*)component;
 		}
 		else
 		{
-			DeleteComponent(ComponentType::Material);
+			DeleteComponent(ModuleComponent::ComponentType::Material);
 			components.push_back(component);
-			material = (ModuleMaterial*)component;
+			//material = (ModuleMaterial*)component;
 		}
 
 		break;
@@ -154,7 +146,7 @@ ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
 	return component;
 }
 
-bool GameObject::HasComponentType(ComponentType type)
+bool GameObject::HasComponentType(ModuleComponent::ComponentType type)
 {
 	bool ret = false;
 	std::vector<ModuleComponent*>::iterator item = components.begin();
@@ -175,6 +167,11 @@ const char* GameObject::GetName()
 	return name.c_str();
 }
 
+void GameObject::SetName(const char* name)
+{
+	this->name = name;
+}
+
 void GameObject::Enable()
 {
 	active = true;
@@ -190,25 +187,40 @@ bool GameObject::IsActive()
 	return active;
 }
 
-void GameObject::UpdateBoundingBoxes()
+//void GameObject::UpdateBoundingBoxes()
+//{
+//	if (HasComponentType(ComponentType::Mesh))
+//	{
+//		obb = GetComponent<ModuleMesh>()->GetMesh()->aabb;
+//		obb.Transform(transform->GetGlobalTransform());
+//
+//		aabb.SetNegativeInfinity();
+//		aabb.Enclose(obb);
+//	}
+//}
+
+//
+//void GameObject::DrawBB(bool drawBB)
+//{
+//	if (drawBB)
+//	{
+//		App->renderer3D->CreateAABB(aabb, Green);
+//		App->renderer3D->CreateOBB(obb, Pink);
+//	}
+//
+//}
+
+void GameObject::UpdatedTransform()
 {
-	if (HasComponentType(ComponentType::Mesh))
+
+	transform->UpdatedTransform(parent->transform->GetGlobalTransform());
+	
+	
+	//call children's on updateTransforms
+
+	std::vector<GameObject*>::iterator child = children.begin();
+	for (; child != children.end(); ++child)
 	{
-		obb = GetComponent<ModuleMesh>()->GetMesh()->aabb;
-		obb.Transform(transform->GetGlobalTransform());
-
-		aabb.SetNegativeInfinity();
-		aabb.Enclose(obb);
+		(*child)->UpdatedTransform();
 	}
-}
-
-
-void GameObject::DrawBB(bool drawBB)
-{
-	if (drawBB)
-	{
-		App->renderer3D->CreateAABB(aabb, Green);
-		App->renderer3D->CreateOBB(obb, Pink);
-	}
-
 }

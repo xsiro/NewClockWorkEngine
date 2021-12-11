@@ -3,7 +3,7 @@
 #include "Globals.h"
 #include <vector>
 #include "ModuleComponent.h"
-#include "MathGeoLib/include/MathGeoLib.h"
+#include "MathGeoLib/src/MathGeoLib.h"
 
 class ModuleComponent;
 
@@ -24,11 +24,14 @@ public:
 
 	void SetPosition(float3 position);
 	void SetScale(float3 scale);
+	void SetLocalTransform(float3 position, float3 scale, Quat rotation);
+	void SetTransform(float3 position, float3 scale, Quat rotation);
 	void RecalculateMatrix();
 	void SetEulerRotation(float3 euler_angles);
 	void UpdateTRS();
-
+	void UpdatedTransform(float4x4 parentGlobalTransform);
 	void RecalculateEuler();
+	void UpdateLocalTransform();
 
 	static inline ComponentType GetType() { return ComponentType::Transform; };
 
@@ -45,5 +48,6 @@ private:
 
 	float3 eulerRotationUi;
 	float3 positionUI;
-
+public:
+	bool updateTransform = false;
 };

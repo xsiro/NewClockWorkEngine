@@ -15,6 +15,9 @@
 #include "GameObject.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleTransform.h"
+#include "Resource.h"
+#include "ResourceMesh.h"
+#include "ResourceMaterial.h"
 #include <Windows.h>
 #include "Gizmos.h"
 
@@ -136,6 +139,9 @@ bool ModuleRenderer3D::Init()
 		glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_TEXTURE_2D);
 		lights[0].Active(true);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 	// Projection matrix for
@@ -174,7 +180,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	//BROFILER_CATEGORY("Draw imgui", Profiler::Color::AliceBlue)
 		App->gui->Draw();
 
-		DrawBB();
+		//DrawBB(Mesh* mesh);
 
 	//BROFILER_CATEGORY("SwapWindow", Profiler::Color::GoldenRod)
 		SDL_GL_SwapWindow(App->window->window);
@@ -204,7 +210,7 @@ void ModuleRenderer3D::OnResize(int width, int height)
 	glLoadIdentity();
 }
 
-void ModuleRenderer3D::DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, bool drawVertexNormals)
+void ModuleRenderer3D::DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals, bool drawBoundingBox)
 {
 	wireframeMode == false ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : (glPolygonMode(GL_FRONT_AND_BACK, GL_LINE), glColor4f(255, 255, 0, 255));
 
@@ -214,25 +220,36 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, 
 	glLineWidth(2);
 
 	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	//Pass TextureID
 	if (!wireframeMode)
 	{
-		if (textureId == 0)
-			glBindTexture(GL_TEXTURE_2D, checkersId);
+		if (material != nullptr)
+		{
+			if (material->GetId() == 0)
+				glBindTexture(GL_TEXTURE_2D, checkersId);
+			else
+				glBindTexture(GL_TEXTURE_2D, material->GetId());
+		}
 		else
-			glBindTexture(GL_TEXTURE_2D, textureId);
+		{
+
+		}
 	}
 
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->buffersId[Mesh::texture]);
-	glTexCoordPointer(2, GL_FLOAT, 0, NULL);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->buffersId[ResourceMesh::texture]);
+	glTexCoordPointer(2, GL_FLOAT, 0, nullptr);
 
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->buffersId[Mesh::vertex]);
-	glVertexPointer(3, GL_FLOAT, 0, NULL);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->buffersId[ResourceMesh::normal]);
+	glNormalPointer(GL_FLOAT, 0, nullptr);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->buffersId[Mesh::index]);
-	glDrawElements(GL_TRIANGLES, mesh->buffersSize[Mesh::index], GL_UNSIGNED_INT, NULL);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->buffersId[ResourceMesh::vertex]);
+	glVertexPointer(3, GL_FLOAT, 0, nullptr);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->buffersId[ResourceMesh::index]);
+	glDrawElements(GL_TRIANGLES, mesh->buffersSize[ResourceMesh::index], GL_UNSIGNED_INT, nullptr);
 
 	glPopMatrix();
 
@@ -245,15 +262,19 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh, float4x4 transform, uint textureId, 
 
 	if (drawVertexNormals)
 	{
-		DrawVertexNormals(mesh);
+		DrawVertexNormals(mesh,transform);
 	}
+	if (drawBoundingBox)
+		DrawBB(mesh);
 }
 
-void ModuleRenderer3D::DrawVertexNormals(Mesh* mesh)
+void ModuleRenderer3D::DrawVertexNormals(ResourceMesh* mesh, float4x4 transform)
 {
 	//Draw Normals
+	glPushMatrix();
+	glMultMatrixf((float*)&transform.Transposed());
 	glBegin(GL_LINES);
-	uint loops = mesh->buffersSize[Mesh::vertex];
+	uint loops = mesh->buffersSize[ResourceMesh::vertex];
 	for (uint i = 0; i < loops; i += 3)
 	{
 		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -261,38 +282,39 @@ void ModuleRenderer3D::DrawVertexNormals(Mesh* mesh)
 		glVertex3f(mesh->vertices[i] + mesh->normals[i], mesh->vertices[i + 1] + mesh->normals[i + 1], mesh->vertices[i + 2] + mesh->normals[i + 2]);
 
 	}
+	glPopMatrix();
 	glEnd();
 }
 
-void ModuleRenderer3D::GenerateBuffers(Mesh* newMesh)
+void ModuleRenderer3D::GenerateBuffers(ResourceMesh* newMesh)
 {
 	//Vertex buffer
-	glGenBuffers(1, (GLuint*)&(newMesh->buffersId[Mesh::vertex]));
-	glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[Mesh::vertex]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * newMesh->buffersSize[Mesh::vertex] * 3, newMesh->vertices, GL_STATIC_DRAW);
+	glGenBuffers(1, (GLuint*)&(newMesh->buffersId[ResourceMesh::vertex]));
+	glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[ResourceMesh::vertex]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * newMesh->buffersSize[ResourceMesh::vertex] * 3, newMesh->vertices, GL_STATIC_DRAW);
 
 
 	if (newMesh->indices != nullptr)
 	{
 		//Index buffer
-		glGenBuffers(1, (GLuint*)&(newMesh->buffersId[Mesh::index]));
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, newMesh->buffersId[Mesh::index]);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint) * newMesh->buffersSize[Mesh::index], newMesh->indices, GL_STATIC_DRAW);
+		glGenBuffers(1, (GLuint*)&(newMesh->buffersId[ResourceMesh::index]));
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, newMesh->buffersId[ResourceMesh::index]);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint) * newMesh->buffersSize[ResourceMesh::index], newMesh->indices, GL_STATIC_DRAW);
 	}
 
 	if (newMesh->normals != nullptr)
 	{
 		//Normals buffer
-		glGenBuffers(1, (GLuint*)&(newMesh->buffersId[Mesh::normal]));
-		glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[Mesh::normal]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * newMesh->buffersSize[Mesh::normal] * 3, newMesh->normals, GL_STATIC_DRAW);
+		glGenBuffers(1, (GLuint*)&(newMesh->buffersId[ResourceMesh::normal]));
+		glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[ResourceMesh::normal]);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * newMesh->buffersSize[ResourceMesh::normal] * 3, newMesh->normals, GL_STATIC_DRAW);
 	}
 
 	if (newMesh->textureCoords != nullptr)
 	{
-		glGenBuffers(1, (GLuint*)&newMesh->buffersId[Mesh::texture]);
-		glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[Mesh::texture]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * newMesh->buffersSize[Mesh::texture] * 2, newMesh->textureCoords, GL_STATIC_DRAW);
+		glGenBuffers(1, (GLuint*)&newMesh->buffersId[ResourceMesh::texture]);
+		glBindBuffer(GL_ARRAY_BUFFER, newMesh->buffersId[ResourceMesh::texture]);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * newMesh->buffersSize[ResourceMesh::texture] * 2, newMesh->textureCoords, GL_STATIC_DRAW);
 	}
 
 }
@@ -352,33 +374,71 @@ void ModuleRenderer3D::SwitchColorMaterial()
 		glDisable(GL_COLOR_MATERIAL);
 }
 
-void ModuleRenderer3D::CreateAABB(const AABB& box, const Color& color)
-{
-	aabb.push_back(RenderBox<AABB>(&box, color));
-}
+//void ModuleRenderer3D::CreateAABB(const AABB& box, const Color& color)
+//{
+//	aabb.push_back(RenderBox<AABB>(&box, color));
+//}
+//
+//void ModuleRenderer3D::CreateOBB(const OBB& box, const Color& color)
+//{
+//	obb.push_back(RenderBox<OBB>(&box, color));
+//}
 
-void ModuleRenderer3D::CreateOBB(const OBB& box, const Color& color)
+void ModuleRenderer3D::DrawBB(ResourceMesh* mesh)
 {
-	obb.push_back(RenderBox<OBB>(&box, color));
-}
-
-void ModuleRenderer3D::DrawBB()
-{
-	glDisable(GL_LIGHTING);
+	float3 corners[8];
+	mesh->aabb.GetCornerPoints(corners);
 	glBegin(GL_LINES);
+	//Between-planes right
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[7]);
+	glVertex3fv((GLfloat*)&corners[3]);
 
-	for (uint i = 0; i < aabb.size(); i++)
-	{
-		Gizmos::DrawWireBox(*aabb[i].box, aabb[i].color);
-	}
-	aabb.clear();
+	//Between-planes left
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[2]);
+	glVertex3fv((GLfloat*)&corners[6]);
 
-	for (uint i = 0; i < obb.size(); i++)
-	{
-		Gizmos::DrawWireBox(*obb[i].box, obb[i].color);
-	}
-	obb.clear();
+	//Far plane horizontal
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[6]);
+	glVertex3fv((GLfloat*)&corners[7]);
+
+	//Near plane horizontal
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[3]);
+	glVertex3fv((GLfloat*)&corners[2]);
+
+	//Near plane vertical
+	glVertex3fv((GLfloat*)&corners[1]);
+	glVertex3fv((GLfloat*)&corners[3]);
+	glVertex3fv((GLfloat*)&corners[0]);
+	glVertex3fv((GLfloat*)&corners[2]);
+
+	//Far plane vertical
+	glVertex3fv((GLfloat*)&corners[5]);
+	glVertex3fv((GLfloat*)&corners[7]);
+	glVertex3fv((GLfloat*)&corners[4]);
+	glVertex3fv((GLfloat*)&corners[6]);
 
 	glEnd();
-	glEnable(GL_LIGHTING);
+}
+
+void ModuleRenderer3D::DrawScenePlane(int size)
+{
+	glLineWidth(1.0f);
+	glBegin(GL_LINES);
+
+	for (int i = -size; i <= size; i++)
+	{
+		glVertex3d(i, 0, -size);
+		glVertex3d(i, 0, size);
+		glVertex3d(size, 0, i);
+		glVertex3d(-size, 0, i);
+	}
+	glEnd();
 }

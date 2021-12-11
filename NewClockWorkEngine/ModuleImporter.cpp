@@ -1,16 +1,24 @@
 #include "Globals.h"
 #include "Application.h"
+#include "timer.h"
 #include "ModuleImporter.h"
 #include "ModuleMaterial.h"
 #include "ModuleMesh.h"
 #include "ModuleTransform.h"
 #include "GameObject.h"
+#include "FileSystem.h" 
+#include "ModuleSceneIntro.h"
+
+#include "Resource.h"
+#include "ResourceMesh.h"
+#include "ResourceMaterial.h"
 
 #include "Assimp/include/cimport.h"
 #include "Assimp/include/scene.h"
 #include "Assimp/include/postprocess.h"
 #include "Assimp/include/cfileio.h"
 
+#include "MathGeoLib/src/MathGeoLib.h"
 #include "Devil/Include/IL/ilut.h"
 #include "Devil/Include/IL/ilu.h"
 #include "Devil/Include/IL/il.h"
@@ -22,28 +30,30 @@
 
 
 
-std::vector<Mesh*> Importer::MeshImporter::Import(const char* file)
+std::vector<ResourceMesh*> Importer::MeshImporter::Import(const char* file)
 {
-    //aiImportFileFromMemory
+    
+    Timer* timeImporting = new Timer();
+
     const aiScene* scene = aiImportFile(file, aiProcessPreset_TargetRealtime_MaxQuality);
-    std::vector<Mesh*> ret;
+    std::vector<ResourceMesh*> ret;
 
     if (scene != nullptr && scene->HasMeshes())
     {
-        // Use scene->mNumMeshes to iterate on scene->mMeshes array
+       
         for (int i = 0; i < scene->mNumMeshes; i++)
         {
-            Mesh* newMesh = new Mesh();
+            ResourceMesh* newMesh = new ResourceMesh();
 
-            newMesh->buffersSize[Mesh::vertex] = scene->mMeshes[i]->mNumVertices;
-            newMesh->vertices = new float[newMesh->buffersSize[Mesh::vertex] * 3];
-            memcpy(newMesh->vertices, scene->mMeshes[i]->mVertices, sizeof(float) * newMesh->buffersSize[Mesh::vertex] * 3);
-            LOG("New mesh with %d vertices", newMesh->buffersSize[Mesh::vertex]);
+            newMesh->buffersSize[ResourceMesh::vertex] = scene->mMeshes[i]->mNumVertices;
+            newMesh->vertices = new float[newMesh->buffersSize[ResourceMesh::vertex] * 3];
+            memcpy(newMesh->vertices, scene->mMeshes[i]->mVertices, sizeof(float) * newMesh->buffersSize[ResourceMesh::vertex] * 3);
+            LOG("New mesh with %d vertices", newMesh->buffersSize[ResourceMesh::vertex]);
 
             if (scene->mMeshes[i]->HasFaces())
             {
-                newMesh->buffersSize[Mesh::index] = scene->mMeshes[i]->mNumFaces * 3;
-                newMesh->indices = new uint[newMesh->buffersSize[Mesh::index]];
+                newMesh->buffersSize[ResourceMesh::index] = scene->mMeshes[i]->mNumFaces * 3;
+                newMesh->indices = new uint[newMesh->buffersSize[ResourceMesh::index]];
                 for (uint f = 0; f < scene->mMeshes[i]->mNumFaces; ++f)
                 {
                     if (scene->mMeshes[i]->mFaces[f].mNumIndices != 3)
@@ -59,17 +69,18 @@ std::vector<Mesh*> Importer::MeshImporter::Import(const char* file)
 
             if (scene->mMeshes[i]->HasNormals())
             {
-                newMesh->buffersSize[Mesh::normal] = scene->mMeshes[i]->mNumVertices;
-                newMesh->normals = new float[newMesh->buffersSize[Mesh::normal] * 3];
-                memcpy(newMesh->normals, scene->mMeshes[i]->mNormals, sizeof(float) * newMesh->buffersSize[Mesh::normal] * 3);
+                newMesh->buffersSize[ResourceMesh::normal] = scene->mMeshes[i]->mNumVertices;
+                newMesh->normals = new float[newMesh->buffersSize[ResourceMesh::normal] * 3];
+                memcpy(newMesh->normals, scene->mMeshes[i]->mNormals, sizeof(float) * newMesh->buffersSize[ResourceMesh::normal] * 3);
             }
+
 
             if (scene->mMeshes[i]->HasTextureCoords(0))
             {
-                newMesh->buffersSize[Mesh::texture] = scene->mMeshes[i]->mNumVertices;
+                newMesh->buffersSize[ResourceMesh::texture] = scene->mMeshes[i]->mNumVertices;
                 newMesh->textureCoords = new float[scene->mMeshes[i]->mNumVertices * 2];
 
-                for (int j = 0; j < newMesh->buffersSize[Mesh::texture]; j++)
+                for (int j = 0; j < newMesh->buffersSize[ResourceMesh::texture]; j++)
                 {
                     newMesh->textureCoords[j * 2] = scene->mMeshes[i]->mTextureCoords[0][j].x;
                     newMesh->textureCoords[j * 2 + 1] = scene->mMeshes[i]->mTextureCoords[0][j].y;
@@ -77,7 +88,7 @@ std::vector<Mesh*> Importer::MeshImporter::Import(const char* file)
             }
 
             newMesh->aabb.SetNegativeInfinity();
-            newMesh->aabb.Enclose((float3*)newMesh->vertices, newMesh->buffersSize[Mesh::vertex]);
+            newMesh->aabb.Enclose((float3*)newMesh->vertices, newMesh->buffersSize[ResourceMesh::vertex]);
 
             App->renderer3D->GenerateBuffers(newMesh);
 
@@ -92,15 +103,74 @@ std::vector<Mesh*> Importer::MeshImporter::Import(const char* file)
     {
         LOG("(ERROR) Error loading scene %s", file);
     }
+
+    delete timeImporting;
+
     return ret;
 }
 
-void Importer::MeshImporter::Save(const Mesh mesh)
+void Importer::MeshImporter::LoadNodeMesh(const aiScene* scene, const aiNode* node, std::vector<ResourceMesh*>& meshes)
 {
-    uint sizes[4] = { mesh.buffersSize[Mesh::vertex] ,mesh.buffersSize[Mesh::index], mesh.buffersSize[Mesh::normal], mesh.buffersSize[Mesh::texture] };
+    for (int i = 0; i < node->mNumMeshes; i++)
+    {
+        ResourceMesh* newMesh = new ResourceMesh();
 
-    uint size = sizeof(sizes) + sizeof(uint) * mesh.buffersSize[Mesh::index] + sizeof(float) * mesh.buffersSize[Mesh::vertex] * 3
-        + sizeof(float) * mesh.buffersSize[Mesh::normal] * 3 + sizeof(float) * mesh.buffersSize[Mesh::texture] * 2;
+        newMesh->buffersSize[ResourceMesh::vertex] = scene->mMeshes[node->mMeshes[i]]->mNumVertices;
+        newMesh->vertices = new float[newMesh->buffersSize[ResourceMesh::vertex] * 3];
+        memcpy(newMesh->vertices, scene->mMeshes[node->mMeshes[i]]->mVertices, sizeof(float) * newMesh->buffersSize[ResourceMesh::vertex] * 3);
+        LOG("New mesh with %d vertices", newMesh->buffersSize[ResourceMesh::vertex]);
+
+        if (scene->mMeshes[node->mMeshes[i]]->HasFaces())
+        {
+            newMesh->buffersSize[ResourceMesh::index] = scene->mMeshes[node->mMeshes[i]]->mNumFaces * 3;
+            newMesh->indices = new uint[newMesh->buffersSize[ResourceMesh::index]];
+            for (uint f = 0; f < scene->mMeshes[node->mMeshes[i]]->mNumFaces; ++f)
+            {
+                if (scene->mMeshes[node->mMeshes[i]]->mFaces[f].mNumIndices != 3)
+                {
+                    LOG("WARNING, geometery face with != 3 indices!");
+                   
+                }
+                else
+                {
+                    memcpy(&newMesh->indices[f * 3], scene->mMeshes[node->mMeshes[i]]->mFaces[f].mIndices, 3 * sizeof(uint));
+                }
+            }
+        }
+
+        if (scene->mMeshes[node->mMeshes[i]]->HasNormals())
+        {
+            newMesh->buffersSize[ResourceMesh::normal] = scene->mMeshes[node->mMeshes[i]]->mNumVertices;
+            newMesh->normals = new float[newMesh->buffersSize[ResourceMesh::normal] * 3];
+            memcpy(newMesh->normals, scene->mMeshes[node->mMeshes[i]]->mNormals, sizeof(float) * newMesh->buffersSize[Mesh::normal] * 3);
+        }
+
+        if (scene->mMeshes[node->mMeshes[i]]->HasTextureCoords(0))
+        {
+            newMesh->buffersSize[ResourceMesh::texture] = scene->mMeshes[node->mMeshes[i]]->mNumVertices;
+            newMesh->textureCoords = new float[scene->mMeshes[node->mMeshes[i]]->mNumVertices * 2];
+
+            for (int j = 0; j < newMesh->buffersSize[ResourceMesh::texture]; j++)
+            {
+                newMesh->textureCoords[j * 2] = scene->mMeshes[node->mMeshes[i]]->mTextureCoords[0][j].x;
+                newMesh->textureCoords[j * 2 + 1] = scene->mMeshes[node->mMeshes[i]]->mTextureCoords[0][j].y;
+            }
+        }
+
+        App->renderer3D->GenerateBuffers(newMesh); //Crashes
+
+        meshes.push_back(newMesh);
+    }
+}
+
+uint64 Importer::MeshImporter::Save(const ResourceMesh mesh)
+{
+    Timer* timeSaving = new Timer();
+
+    uint sizes[4] = { mesh.buffersSize[ResourceMesh::vertex] ,mesh.buffersSize[ResourceMesh::index], mesh.buffersSize[Mesh::normal], mesh.buffersSize[Mesh::texture] };
+
+    uint size = sizeof(sizes) + sizeof(uint) * mesh.buffersSize[ResourceMesh::index] + sizeof(float) * mesh.buffersSize[Mesh::vertex] * 3
+        + sizeof(float) * mesh.buffersSize[ResourceMesh::normal] * 3 + sizeof(float) * mesh.buffersSize[ResourceMesh::texture] * 2;
 
     char* fileBuffer = new char[size];
     char* cursor = fileBuffer;
@@ -115,23 +185,39 @@ void Importer::MeshImporter::Save(const Mesh mesh)
     cursor += bytes;
 
     //vertices
-    bytes = sizeof(uint) * mesh.buffersSize[Mesh::vertex] * 3;
+    bytes = sizeof(uint) * mesh.buffersSize[ResourceMesh::vertex] * 3;
     memcpy(cursor, mesh.indices, bytes);
     cursor += bytes;
 
     //normals
-    bytes = sizeof(uint) * mesh.buffersSize[Mesh::normal] * 3;
+    bytes = sizeof(uint) * mesh.buffersSize[ResourceMesh::normal] * 3;
     memcpy(cursor, mesh.indices, bytes);
     cursor += bytes;
 
     //TextureCoords
-    bytes = sizeof(uint) * mesh.buffersSize[Mesh::texture] * 2;
+    bytes = sizeof(uint) * mesh.buffersSize[ResourceMesh::texture] * 2;
     memcpy(cursor, mesh.indices, bytes);
     cursor += bytes;
+
+    int id = rand() % 50;
+    char tmp[5];
+    sprintf(tmp, "%d", id);
+    std::string fileName = "Library/Meshes/";
+    fileName += tmp;
+
+    LOG("Saved mesh in id: %s", fileName.c_str());
+
+    App->filesystem->Save(fileName.c_str(), fileBuffer, size);
+
+    LOG("Time spent saving Mesh: %d ms", timeSaving->Read());
+
+    return id;
 }
 
-void Importer::MeshImporter::Load(const char* fileBuffer, Mesh* mesh)
+void Importer::MeshImporter::Load(const char* fileBuffer, ResourceMesh* mesh)
 {
+    Timer* timeLoading = new Timer();
+
     const char* cursor = fileBuffer;
 
     uint sizes[4];
@@ -139,32 +225,32 @@ void Importer::MeshImporter::Load(const char* fileBuffer, Mesh* mesh)
     memcpy(sizes, cursor, bytes);
     cursor += bytes;
 
-    mesh->buffersSize[Mesh::index] = sizes[0];
-    mesh->buffersSize[Mesh::vertex] = sizes[1];
-    mesh->buffersSize[Mesh::normal] = sizes[2];
-    mesh->buffersSize[Mesh::texture] = sizes[3];
+    mesh->buffersSize[ResourceMesh::index] = sizes[0];
+    mesh->buffersSize[ResourceMesh::vertex] = sizes[1];
+    mesh->buffersSize[ResourceMesh::normal] = sizes[2];
+    mesh->buffersSize[ResourceMesh::texture] = sizes[3];
 
     //Indices
-    bytes = sizeof(uint) * mesh->buffersSize[Mesh::index];
-    mesh->indices = new uint[mesh->buffersSize[Mesh::index]];
+    bytes = sizeof(uint) * mesh->buffersSize[ResourceMesh::index];
+    mesh->indices = new uint[mesh->buffersSize[ResourceMesh::index]];
     memcpy(mesh->indices, cursor, bytes);
     cursor += bytes;
 
     //Vertices
-    bytes = sizeof(float) * mesh->buffersSize[Mesh::vertex] * 3;
-    mesh->vertices = new float[mesh->buffersSize[Mesh::vertex] * 3];
+    bytes = sizeof(float) * mesh->buffersSize[ResourceMesh::vertex] * 3;
+    mesh->vertices = new float[mesh->buffersSize[ResourceMesh::vertex] * 3];
     memcpy(mesh->vertices, cursor, bytes);
     cursor += bytes;
 
     //Normals
-    bytes = sizeof(float) * mesh->buffersSize[Mesh::normal] * 3;
-    mesh->normals = new float[mesh->buffersSize[Mesh::normal] * 3];
+    bytes = sizeof(float) * mesh->buffersSize[ResourceMesh::normal] * 3;
+    mesh->normals = new float[mesh->buffersSize[ResourceMesh::normal] * 3];
     memcpy(mesh->normals, cursor, bytes);
     cursor += bytes;
 
     //Texture Coords
-    bytes = sizeof(float) * mesh->buffersSize[Mesh::texture] * 2;
-    mesh->textureCoords = new float[mesh->buffersSize[Mesh::texture] * 2];
+    bytes = sizeof(float) * mesh->buffersSize[ResourceMesh::texture] * 2;
+    mesh->textureCoords = new float[mesh->buffersSize[ResourceMesh::texture] * 2];
     memcpy(mesh->normals, cursor, bytes);
     cursor += bytes;
 }
@@ -178,9 +264,9 @@ void Importer::TextureImp::InitDevil()
     ilutRenderer(ILUT_OPENGL);
 }
 
-Material* Importer::TextureImp::Import(const char* path)
+ResourceMaterial* Importer::TextureImp::Import(const char* path)
 {
-    Material* newTexture = new Material;
+    ResourceMaterial* newMaterial = new ResourceMaterial();
     uint i;
 
     ilGenImages(1, &i);
@@ -196,10 +282,10 @@ Material* Importer::TextureImp::Import(const char* path)
 
         if (ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE))
         {
-            newTexture->id = CreateTexture(ilGetData(), ilGetInteger(IL_IMAGE_WIDTH), ilGetInteger(IL_IMAGE_HEIGHT), ilGetInteger(IL_IMAGE_FORMAT));
-            newTexture->height = ilGetInteger(IL_IMAGE_HEIGHT);
-            newTexture->width = ilGetInteger(IL_IMAGE_WIDTH);
-            newTexture->path = path;
+            newMaterial->SetId(CreateTexture(ilGetData(), ilGetInteger(IL_IMAGE_WIDTH), ilGetInteger(IL_IMAGE_HEIGHT), ilGetInteger(IL_IMAGE_FORMAT)));
+            newMaterial->SetHeight(ilGetInteger(IL_IMAGE_HEIGHT));
+            newMaterial->SetWidth(ilGetInteger(IL_IMAGE_WIDTH));
+            newMaterial->SetPath(path);
 
             LOG("Successfully loaded Texture from: %s", path);
         }
@@ -215,7 +301,7 @@ Material* Importer::TextureImp::Import(const char* path)
 
 
 
-    return newTexture;
+    return newMaterial;
 }
 
 uint Importer::TextureImp::CreateTexture(const void* data, uint width, uint height, uint format)
@@ -237,4 +323,148 @@ uint Importer::TextureImp::CreateTexture(const void* data, uint width, uint heig
     glBindTexture(GL_TEXTURE_2D, 0);
 
     return id;
+}
+
+void Importer::SceneImporter::Import(const char* file) //Load buffer with .fbx scene
+{
+    char* buffer;
+    uint byteSize = App->filesystem->Load(file, &buffer);
+
+    if (byteSize > 0)
+    {
+        const aiScene* scene = aiImportFileFromMemory(buffer, byteSize, aiProcessPreset_TargetRealtime_MaxQuality, nullptr);
+        const aiNode* rootNode = scene->mRootNode;
+
+        ProcessAiNode(scene, rootNode, App->scene_intro->rootObject, file); //Process node tree
+
+        LOG("Finished importing: %s", file);
+    }
+    else
+    {
+        LOG("(ERROR) Could not load .fbx file");
+    }
+}
+
+void Importer::SceneImporter::ProcessAiNode(const aiScene* scene, const aiNode* node, GameObject* parentObject, const char* file) //Load meshes, materials, textures, transforms
+{
+    GameObject* newGameObject;
+
+    float3 position = { 0,0,0 };
+    float3 scale = { 0,0,0 };
+    Quat rotation = Quat::identity;
+
+    while (strstr(node->mName.C_Str(), "_$AssimpFbx$_") != nullptr)
+    {
+        aiVector3D _position = { 0,0,0 };
+        aiVector3D _scale = { 0,0,0 };
+        aiQuaternion _rotation;
+
+        node->mTransformation.Decompose(_scale, _rotation, _position);
+
+        position.x += _position.x;
+        position.y += _position.y;
+        position.z += _position.z;
+
+        scale.x += _scale.x;
+        scale.y += _scale.y;
+        scale.z += _scale.z;
+
+        rotation.x += _rotation.x;
+        rotation.y += _rotation.y;
+        rotation.z += _rotation.z;
+        rotation.w += _rotation.w;
+
+        node = node->mChildren[0];
+    }
+
+    if (node->mParent == NULL)
+    {
+        std::string name;
+        App->filesystem->SplitFilePath(file, nullptr, &name);
+        newGameObject = new GameObject(App->scene_intro->rootObject, name.c_str());
+    }
+    else
+    {
+        aiString nodeName = node->mName;
+        newGameObject = new GameObject(parentObject, nodeName.C_Str());
+    }
+
+    LoadTransform(node, newGameObject);
+
+    if (node->mNumMeshes > 0)
+    {
+        LoadMeshes(scene, node, newGameObject);
+    }
+
+    LoadMaterial(scene, node, newGameObject, file);
+
+    //Add object
+    parentObject->children.push_back(newGameObject);
+    App->scene_intro->game_objects.push_back(newGameObject);
+
+
+    //Iterate children
+    for (int i = 0; i < node->mNumChildren; i++)
+    {
+        ProcessAiNode(scene, node->mChildren[i], newGameObject, file);
+    }
+}
+
+void Importer::SceneImporter::LoadTransform(const aiNode* node, GameObject* newGameObject)
+{
+    aiVector3D position;
+    aiVector3D scale;
+    aiQuaternion rotation;
+
+    node->mTransformation.Decompose(scale, rotation, position);
+
+    float3 _position = { position.x, position.y, position.z };
+    float3 _scale = { scale.x, scale.y, scale.z };
+    Quat _rotation = { rotation.x,rotation.y,rotation.z,rotation.w };
+
+    newGameObject->transform->SetLocalTransform(_position, _scale, _rotation);
+}
+
+void Importer::SceneImporter::LoadMeshes(const aiScene* scene, const aiNode* node, GameObject* newGameObject)
+{
+    std::vector<ResourceMesh*> meshes;
+
+    Importer::MeshImporter::LoadNodeMesh(scene, node, meshes);
+
+    for (int i = 0; i < meshes.size(); i++)
+    {
+        newGameObject->AddComponent(new ModuleMesh(newGameObject, "", meshes[i]));
+    }
+}
+void Importer::SceneImporter::LoadMaterial(const aiScene* scene, const aiNode* node, GameObject* newGameObject, const char* file)
+{
+    for (int i = 0; i < node->mNumMeshes; i++)
+    {
+        ResourceMaterial* material;
+        uint index = scene->mMeshes[node->mMeshes[i]]->mMaterialIndex;
+        aiString path;
+
+        if (index >= 0)
+        {
+            if (scene->mMaterials[index]->GetTexture(aiTextureType_DIFFUSE, 0, &path) == AI_SUCCESS)
+            {
+                std::string fileName, extension;
+                App->filesystem->SplitFilePath(path.C_Str(), nullptr, &fileName, &extension);
+
+                fileName += "." + extension;
+                fileName = "Assets" + fileName;
+
+                LOG("Adding texture to %s", newGameObject->GetName());
+
+                material = Importer::TextureImp::Import(fileName.c_str());
+
+                newGameObject->AddComponent(new ModuleMaterial(newGameObject, fileName.c_str(), material));
+            }
+            else
+            {
+                LOG("(ERROR) Failed loading node texture: %s in node %s", path.C_Str(), node->mName.C_Str());
+            }
+        }
+
+    }
 }

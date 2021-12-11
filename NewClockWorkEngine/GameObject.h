@@ -3,9 +3,10 @@
 #include <iostream>
 #include <string>
 #include "Imgui/include/imgui.h"
-#include "MathGeoLib/include/MathGeoLib.h"
+#include "MathGeoLib/src/MathGeoLib.h"
+#include "ModuleComponent.h"
 
-class ModuleComponent;
+
 class ModuleTransform;
 class ModuleMaterial;
 class ModuleMesh;
@@ -14,13 +15,14 @@ enum class ComponentType;
 class GameObject
 {
 public:
-	GameObject(char* name);
-	GameObject(GameObject* parent, char* name);
+	GameObject(const char* name);
+	GameObject(GameObject* parent, const char* name);
 	~GameObject();
 
 	void Update();
 	void CleanUp();
 	const char* GetName();
+	void SetName(const char* name);
 	void Enable();
 	void Disable();
 	bool IsActive();
@@ -28,7 +30,7 @@ public:
 	template<typename CTemplate>
 	const CTemplate* GetComponent() const
 	{
-		ComponentType type = CTemplate::GetType();
+		ModuleComponent::ComponentType type = CTemplate::GetType();
 		for (int i = 0; i < components.size(); i++)
 		{
 			if (type == components[i]->GetType())
@@ -41,10 +43,11 @@ public:
 	ModuleComponent* AddComponent(ModuleComponent* component);
 	ModuleMesh* GetComponentMesh();
 	ModuleTransform* GetComponentTransform();
-	void DeleteComponent(ComponentType type);
+	void DeleteComponent(ModuleComponent::ComponentType type);
 	std::vector<ModuleComponent*> GetComponents()const;
-	bool HasComponentType(ComponentType type);
+	bool HasComponentType(ModuleComponent::ComponentType type);
 	void UpdateBoundingBoxes();
+	void UpdatedTransform();
 
 
 private:	

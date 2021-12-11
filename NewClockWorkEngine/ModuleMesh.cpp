@@ -10,7 +10,8 @@
 #include "ModuleComponent.h"
 #include "GameObject.h"
 #include "ModuleRenderer3D.h"
-
+#include "ResourceMesh.h"
+#include "Resource.h"
 
 #include "SDL/include/SDL_opengl.h"
 #include <gl/GL.h>
@@ -25,7 +26,7 @@ ModuleMesh::ModuleMesh(GameObject* owner) : ModuleComponent(ComponentType::Mesh,
 
 }
 
-ModuleMesh::ModuleMesh(GameObject* owner, char* path, Mesh* mesh = nullptr) : ModuleComponent(ComponentType::Mesh, owner), mesh(mesh), path(path)
+ModuleMesh::ModuleMesh(GameObject* owner, char* path, ResourceMesh* mesh = nullptr) : ModuleComponent(ComponentType::Mesh, owner), mesh(mesh), path(path)
 {
 }
 
@@ -60,16 +61,18 @@ void ModuleMesh::DrawMesh()
 	if (!this->active)
 		return;
 
-	if (owner->material != nullptr)
+	//LOG("Drawing %s mesh", owner->GetName());
+
+	if (owner->GetComponent<ModuleMaterial>() != nullptr)
 	{
-		if (owner->material->IsEnabled())
+		if (owner->GetComponent<ModuleMaterial>()->IsEnabled())
 		{
-			App->renderer3D->DrawMesh(mesh, owner->transform->GetTransform(), owner->material->GetTexture()->id, drawVertexNormals);
+			App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), owner->GetComponent<ModuleMaterial>()->GetTexture(), drawVertexNormals);
 			return;
 		}
 	}
 
-	App->renderer3D->DrawMesh(mesh, owner->transform->GetTransform(), 0, drawVertexNormals);
+	App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), nullptr, drawVertexNormals);
 }
 
 char* ModuleMesh::GetPath()const
@@ -86,7 +89,7 @@ const OBB& ModuleMesh::GetOBB() const
 {
 	return obb;
 }
-Mesh* ModuleMesh::GetMesh() const
+ResourceMesh* ModuleMesh::GetMesh() const
 {
 	return mesh;
 }

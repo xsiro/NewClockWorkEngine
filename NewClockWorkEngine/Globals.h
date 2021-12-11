@@ -39,3 +39,10 @@ enum update_status
 #define VSYNC true
 #define TITLE "NewClockWork Engine"
 #define ORGANIZATION "UPC"
+
+#define LIBRARY_PATH ""
+#define FOLDERS_PATH ""
+#define MESHES_PATH ""
+#define MATERIALS_PATH ""
+#define TEXTURES_PATH ""
+#define SCENES_PATH ""

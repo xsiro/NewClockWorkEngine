@@ -19,10 +19,10 @@ public:
 
 
 	bool CleanUp();
-	void CreateGameObject(char* name, char* meshPath, char* texturePath);
+	GameObject* CreateGameObject(char* name, char* meshPath = "", char* texturePath = "", bool isRoot = false);
 	void SetSelectedObject(GameObject* object);
 
-
+	GameObject* rootObject;
 	GameObject* selected = nullptr;
 	std::vector<GameObject*> game_objects;
 	bool drawBB = false;

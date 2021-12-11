@@ -11,6 +11,7 @@ Application::Application() : debug(false), dt(0.16f)
 	camera = new ModuleCamera3D(this);
 	gui = new ModuleGui(this);
 	filesystem = new FileSystem(this);
+	resourcemanager = new ModuleResourceM();
 	
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order

@@ -5,22 +5,22 @@
 #include "ModuleComponent.h"
 
 class ModuleComponent;
-struct Material;
+struct ResourceMaterial;
 
 class ModuleMaterial : public ModuleComponent
 {
 public:
 
 	ModuleMaterial(GameObject* owner);
-	ModuleMaterial(GameObject* owner, char* path, Material* mesh);;
+	ModuleMaterial(GameObject* owner, const char* path, ResourceMaterial* mesh);;
 	~ModuleMaterial();
 	void Update() override;
 	void CleanUp() override;
 	void DrawInspector() override;
 
-	char* GetPath()const;
-	Material* GetTexture() const;
-	bool IsEnabled();
+	const char* GetPath()const;
+	ResourceMaterial* GetTexture() const;
+	bool IsEnabled() const;
 	void SwitchEnabledTexture();
 
 	static inline ComponentType GetType() { return ComponentType::Material; };
@@ -28,8 +28,8 @@ public:
 
 private:
 
-	Material* material = nullptr;
-	char* path = "";
+	ResourceMaterial* material = nullptr;
+	const char* path = "";
 	bool drawTexture = true;
 
 };

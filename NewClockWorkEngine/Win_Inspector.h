@@ -1,6 +1,5 @@
 #include "Window.h"
-
-
+#include <vector>
 class Win_Inspector : public Window
 {
 public:
