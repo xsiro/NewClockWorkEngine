@@ -84,7 +84,7 @@ void Application::PrepareUpdate()
 	frame_count++;
 	last_sec_frame_count++;
 
-	dt = (float)frame_time.Read();
+	dt = (float)frame_time.Read() / 1000.0f;
 	frame_time.Start();
 
 	if (!GameMode || GamePaused)
