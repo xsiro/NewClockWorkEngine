@@ -81,8 +81,17 @@ bool Application::Init()
 // ---------------------------------------------
 void Application::PrepareUpdate()
 {
-	dt = (float)ms_timer.Read() / 1000.0f;
-	ms_timer.Start();
+	frame_count++;
+	last_sec_frame_count++;
+
+	dt = (float)frame_time.Read();
+	frame_time.Start();
+
+	if (!GameMode || GamePaused)
+		Game_dt = 0.0f;
+	else
+		Game_dt = dt;
+	Game_dt *= GameSpeed;
 }
 
 // ---------------------------------------------
@@ -163,6 +172,38 @@ void Application::AddModule(Module* mod)
 	list_modules.push_back(mod);
 }
 
+void Application::PlayGame()
+{
+	if (!GameMode)
+	{
+		GameMode = true;
+	}
+}
+
+void Application::PauseGame()
+{
+	if (GameMode)
+	{
+		GamePaused = true;
+	}
+}
+
+void Application::ResumeGame()
+{
+	if (GameMode && GamePaused)
+	{
+		GamePaused = false;
+	}
+}
+
+void Application::StopPlay()
+{
+	if (GameMode)
+	{
+		GameMode = false;
+		GamePaused = false;
+	}
+}
 int Application::CPUCount()
 {
 	return SDL_GetCPUCount();
