@@ -1,6 +1,9 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleCamera3D.h"
+#include "GameObject.h"
+#include "ModuleComponent.h"
+#include "ModuleCamera.h"
 
 ModuleCamera3D::ModuleCamera3D(bool start_enabled) : Module(start_enabled)
 {
@@ -20,11 +23,25 @@ ModuleCamera3D::~ModuleCamera3D()
 // -----------------------------------------------------------------
 bool ModuleCamera3D::Start()
 {
+	currentCamera = new ModuleCamera(nullptr);
+
+	cameraMoveSpeed = 7.5f;
+	cameraRotateSpeed = 60.f;
+
+	SetCurrentCamera(currentCamera);
+	SetCullingCamera(currentCamera);
+
+	currentCamera->Setposition(float3(0, 5, -5));
+
 	LOG("Setting up the camera");
 	bool ret = true;
 
+	mainCameraObject = App->scene_intro->CreateGameObject("MainCameraObject", App->scene_intro->rootObject);
+	mainCameraObject->AddComponent(currentCamera);
+
 	return ret;
 }
+
 
 // -----------------------------------------------------------------
 bool ModuleCamera3D::CleanUp()
@@ -168,4 +185,20 @@ void ModuleCamera3D::CalculateViewMatrix()
 {
 	ViewMatrix = mat4x4(X.x, Y.x, Z.x, 0.0f, X.y, Y.y, Z.y, 0.0f, X.z, Y.z, Z.z, 0.0f, -dot(X, Position), -dot(Y, Position), -dot(Z, Position), 1.0f);
 	ViewMatrixInverse = inverse(ViewMatrix);
+}
+
+void ModuleCamera3D::SetCurrentCamera(ModuleCamera* newCamera)
+{
+	currentCamera->isCurrentCamera = false;
+	currentCamera = newCamera;
+	currentCamera->isCurrentCamera = true;
+}
+
+void ModuleCamera3D::SetCullingCamera(ModuleCamera* newCamera)
+{
+	if (cullingCamera)
+		cullingCamera->isCullingCamera = false;
+
+	cullingCamera = newCamera;
+	cullingCamera->isCullingCamera = true;
 }

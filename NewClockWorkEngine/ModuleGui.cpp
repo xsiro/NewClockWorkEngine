@@ -160,19 +160,19 @@ void ModuleGui::Draw()
 			{
 				if (ImGui::MenuItem("Cube", " ", console->active)) 
 				{ 
-					App->scene_intro->CreateGameObject("Cube Primitive", "Assets/Primitives/Cube.FBX", "");
+					Importer::SceneImporter::Import("Assets/Primitives/Cube.FBX");
 				}
 				if (ImGui::MenuItem("Cylinder", " ", console->active))
 				{
-					App->scene_intro->CreateGameObject("Cylinder Primitive", "Assets/Primitives/Cylinder.FBX", ""); 
+					Importer::SceneImporter::Import("Assets/Primitives/Cylinder.FBX");
 				}
 				if (ImGui::MenuItem("Sphere", " ", console->active)) 
 				{ 
-					App->scene_intro->CreateGameObject("Sphere Primitive", "Assets/Primitives/Sphere.FBX", "");
+					Importer::SceneImporter::Import("Assets/Primitives/Sphere.FBX");
 				}
 				if (ImGui::MenuItem("Plane", " ", console->active))
 				{ 
-					App->scene_intro->CreateGameObject("Plane Primitive", "Assets/Primitives/Plane.FBX", ""); 
+					Importer::SceneImporter::Import("Assets/Primitives/Plane.FBX");
 				}
 				ImGui::EndMenu();
 			}

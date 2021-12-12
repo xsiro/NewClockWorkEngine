@@ -5,6 +5,7 @@
 #include "ModuleGui.h"
 #include "imgui.h"
 #include "ModuleMesh.h"
+#include "ModuleTransform.h"
 #include "ModuleMaterial.h"
 #include "GameObject.h"
 #include "FileSystem.h"
@@ -13,6 +14,7 @@
 
 ModuleSceneIntro::ModuleSceneIntro(bool start_enabled) : Module(start_enabled)
 {
+	rootObject = CreateGameObject("rootObject", nullptr, true);
 }
 
 ModuleSceneIntro::~ModuleSceneIntro()
@@ -26,8 +28,6 @@ bool ModuleSceneIntro::Start()
 
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
-
-	rootObject = CreateGameObject("rootObject", "", "", true);
 
 	Importer::SceneImporter::Import("Assets/street/Street environment_V01.FBX");
 	return ret;
@@ -64,54 +64,56 @@ update_status ModuleSceneIntro::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
-GameObject* ModuleSceneIntro::CreateGameObject(char* name, char* meshPath, char* texturePath, bool isRoot)
+GameObject* ModuleSceneIntro::CreateGameObject(char* name, GameObject* parent, bool isRoot)
 {
-	GameObject* newGameObject = nullptr;
+	GameObject* newGameObject;
+	uint repeats = GetNameRepeats(name);
+
 	if (isRoot)
 	{
-		newGameObject = new GameObject(nullptr, name);
-		return newGameObject;
+		newGameObject = new GameObject(nullptr, "Root Object");
+	}
+	else
+	{
+
+		std::string finalName = name;
+		if (repeats > 0)
+			finalName += "(" + std::to_string(repeats) + ")";
+
+		newGameObject = new GameObject(parent, finalName.c_str());
+
+		if (strcmp(newGameObject->GetName(), "aniTest") == 0)
+		{
+			newGameObject->transform->SetPosition(float3(0.1, 0.1, 0.1));
+		}
 	}
 
-	if (meshPath != "")
+	game_objects.push_back(newGameObject);
+
+	return newGameObject;
+}
+
+uint ModuleSceneIntro::GetNameRepeats(const char* name)
+{
+	uint repeats = 0;
+	for (std::vector<GameObject*>::iterator item = game_objects.begin(); item != game_objects.end(); item++)
 	{
-		std::vector<ResourceMesh*> meshes = Importer::MeshImporter::Import(meshPath);
-
-		if (meshes.size() == 0)
+		//get rid of the (n)
+		std::string str2;
+		std::string str = (*item)->GetName();
+		if (str.find("(") == std::string::npos)
 		{
-			LOG("(ERROR) No meshes found in %s", meshPath);
-			
-		}
-
-		newGameObject = new GameObject(rootObject, name);
-		game_objects.push_back(newGameObject);
-		rootObject->children.push_back(newGameObject);
-
-		if (meshes.size() == 1)
-		{
-			newGameObject->AddComponent(new ModuleMesh(newGameObject, meshPath, meshes.front()));
-			if (texturePath != "")
-				newGameObject->AddComponent(new ModuleMaterial(game_objects.back(), texturePath, Importer::TextureImp::Import(texturePath)));
+			str2 = str;
 		}
 		else
 		{
-			std::vector<ResourceMesh*>::iterator item = meshes.begin();
-			for (; item != meshes.end(); ++item)
-			{
-				GameObject* childGameObject = new GameObject(newGameObject, name);
-				ModuleMesh* newComp = new ModuleMesh(childGameObject, meshPath, (*item));
-
-				childGameObject->AddComponent((ModuleComponent*)newComp);
-
-				if (texturePath != "")
-					childGameObject->AddComponent(new ModuleMaterial(game_objects.back(), texturePath, Importer::TextureImp::Import(texturePath)));
-
-				game_objects.push_back(childGameObject);
-				newGameObject->children.push_back(childGameObject);
-			}
+			str2 = str.substr(0, str.find_last_of("("));
 		}
+
+		if (strcmp(name, str2.c_str()) == 0)
+			repeats += 1;
 	}
-	return newGameObject;
+	return repeats;
 }
 
 void ModuleSceneIntro::SetSelectedObject(GameObject* object)

@@ -1,5 +1,5 @@
 #include "ModuleComponent.h"
-//#include "Config.h"
+#include "Config.h"
 #include "Application.h"
 #include "GameObject.h"
 
@@ -51,7 +51,7 @@ void ModuleCamera::CleanUp()
 //	node->AddBool("Is Current Camera", isCurrentCamera);
 //	node->AddBool("Is Culling Camera", isCullingCamera);
 //}
-
+//
 //void ModuleCamera::Load(JsonNode* node)
 //{
 //	if (node->GetBool("Is Current Camera"))
@@ -155,4 +155,47 @@ float ModuleCamera::GetVerticalFov()const
 float ModuleCamera::GetHorizontalFov()const
 {
 	return frustum.HorizontalFov();
+}
+
+void ModuleCamera::DrawInspector()
+{
+	ImGuiInputTextFlags flags = ImGuiInputTextFlags_ReadOnly;
+
+	if (ImGui::CollapsingHeader("Camera"))
+	{
+		float3 pos = this->GetPos();
+		if (ImGui::DragFloat3("Camera Position", (float*)&pos, 0.5))
+		{
+			this->Setposition(pos);
+		}
+
+		float nearPlane = this->GetNearPlaneDistance();
+		if (ImGui::DragFloat("Near Plane Distance", &nearPlane, 0.5f, 0.f))
+		{
+			this->SetNearPlane(nearPlane);
+		}
+
+		float farPlane = this->GetFarPlaneDistance();
+		if (ImGui::DragFloat("Far Plane Distance", &farPlane, 0.5f, 0.1f))
+		{
+			this->SetFarPlane(farPlane);
+		}
+
+		float verticalFov = this->GetVerticalFov();
+		if (ImGui::DragFloat("Vertical Fov", &verticalFov, 0.1f, 30.f, 120.f))
+		{
+			this->SetVerticalFov(verticalFov);
+		}
+
+		ImGui::Checkbox("Culling", &this->cull);
+		if (ImGui::Button("Set As Current Camera"))
+		{
+			App->camera->SetCurrentCamera(this);
+		}
+
+		if (ImGui::Button("Set As Culling Camera"))
+		{
+			App->camera->SetCullingCamera(this);
+		}
+	}
 }

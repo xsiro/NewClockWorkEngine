@@ -1,4 +1,3 @@
-#pragma once
 
 #include "MathGeoLib/src/Geometry/Plane.h"
 #include "MathGeoLib/src/Geometry/Frustum.h"
@@ -14,11 +13,12 @@ public:
 
 	void Update()override;
 	void CleanUp() override;
+	void DrawInspector() override;
 	//void OnPlay() override {};
 	//void OnStop() override {};
 
-	//void Serialize(JsonNode* node)override;
-	//void Load(JsonNode* node)override;
+	/*void Serialize(JsonNode* node)override;
+	void Load(JsonNode* node)override;*/
 
 	static inline ModuleComponent::ComponentType GetType() { return ModuleComponent::ComponentType::Camera; };
 

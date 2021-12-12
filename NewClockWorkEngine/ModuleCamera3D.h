@@ -3,6 +3,9 @@
 #include "Globals.h"
 #include "glmath.h"
 
+class ModuleCamera;
+class GameObject;
+
 class ModuleCamera3D : public Module
 {
 public:
@@ -17,12 +20,21 @@ public:
 	void LookAt(const vec3 &Spot);
 	void Move(const vec3 &Movement);
 	float* GetViewMatrix();
+	void SetCurrentCamera(ModuleCamera* newCamera);
+	void SetCullingCamera(ModuleCamera* newCamera);
 
 private:
 
 	void CalculateViewMatrix();
 
 public:
+
+	GameObject* mainCameraObject = nullptr;		//Object holding mainCamera
+	ModuleCamera* cullingCamera = nullptr;		//Camera to be used outside Play Mode
+	ModuleCamera* currentCamera = nullptr;		//Camera currently being used, modify this camera to move
+
+	float cameraMoveSpeed = 1;
+	float cameraRotateSpeed = 1;
 	
 	vec3 X, Y, Z, Position, Reference;
 	Color background;

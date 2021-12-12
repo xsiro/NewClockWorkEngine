@@ -24,7 +24,8 @@ public:
 
 	bool drawBB = false;
 
-	GameObject* CreateGameObject(char* name, char* meshPath = "", char* texturePath = "", bool isRoot = false);
+	GameObject* CreateGameObject(char* name, GameObject* parent = nullptr, bool isRoot = false);
+	uint GetNameRepeats(const char* name);
 	GameObject* rootObject;
 	GameObject* selected = nullptr;
 
