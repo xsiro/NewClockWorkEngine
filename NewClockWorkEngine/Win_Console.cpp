@@ -3,6 +3,7 @@
 #include "imgui_internal.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"
+#include "Application.h"
 #include "Globals.h"
 
 Win_Console::Win_Console(bool _active) : Window(_active)
@@ -28,6 +29,8 @@ void Win_Console::Draw()
 			{
 				ImGui::TextUnformatted(logs[i]);
 			}
+			if (ImGui::IsWindowHovered())
+				App->gui->mouseHovered = true;
 			ImGui::End();
 	}
 }

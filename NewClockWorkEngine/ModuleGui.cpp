@@ -85,6 +85,13 @@ update_status ModuleGui::PreUpdate(float dt)
 	return  UPDATE_CONTINUE;
 }
 
+update_status ModuleGui::PostUpdate(float dt)
+{
+	mouseHovered = false;
+
+	return UPDATE_CONTINUE;
+}
+
 void ModuleGui::Draw()
 {
 	ImGuiIO io = ImGui::GetIO();
@@ -310,4 +317,9 @@ bool ModuleGui::GetCheck()
 bool ModuleGui::GetWireframe()
 {
 	return inspector->wireframe;
+}
+
+bool ModuleGui::IsMouseHovering()
+{
+	return mouseHovered;
 }

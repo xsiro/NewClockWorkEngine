@@ -70,6 +70,8 @@ void Win_Inspector::Draw()
 		}
 	}
 
+	if (ImGui::IsWindowHovered())
+		App->gui->mouseHovered = true;
 	ImGui::End();
 
 	

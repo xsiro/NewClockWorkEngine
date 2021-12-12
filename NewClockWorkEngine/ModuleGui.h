@@ -29,6 +29,7 @@ public:
 	bool Start();
 
 	update_status PreUpdate(float dt);
+	update_status PostUpdate(float dt);
 
 	bool CleanUp();
 
@@ -45,6 +46,7 @@ public:
 	bool GetCheck();
 	bool GetWireframe();
 	bool Save(ConfigNode* config) override;
+	bool IsMouseHovering();
 
 public:
 
@@ -59,6 +61,7 @@ public:
 	bool cylinder;
 	bool sphere;
 	bool showmaterial;
+	bool mouseHovered = false;
 
 	ImVec4 clear_color;
 	ImVec2 mouseScenePosition;

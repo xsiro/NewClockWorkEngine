@@ -9,6 +9,7 @@
 #include <vector>
 
 struct Mesh;
+class ModuleCamera;
 
 template <typename Box>
 struct RenderBox
@@ -47,12 +48,12 @@ public:
 	void SwitchLighting();
 	void SwitchTexture2d();
 	void SwitchColorMaterial();
-	void CreateAABB(const AABB& box, const Color& color);
-	void CreateOBB(const OBB& box, const Color& color);
+	bool IsObjectInScreen(GameObject* gameObject);
 
 	void DrawScenePlane(int size);
 
 	void DrawBox(float3* corners);
+	void DrawLine(float3 a, float3 b);
 
 public:
 

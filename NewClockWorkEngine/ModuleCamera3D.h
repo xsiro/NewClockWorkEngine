@@ -2,6 +2,9 @@
 #include "Module.h"
 #include "Globals.h"
 #include "glmath.h"
+#include "MathGeoLib/src/Math/float4x4.h"
+#include "MathGeoLib/src/Math/float3.h"
+#include "MathGeoLib/src/Geometry/LineSegment.h"
 
 class ModuleCamera;
 class GameObject;
@@ -22,6 +25,10 @@ public:
 	float* GetViewMatrix();
 	void SetCurrentCamera(ModuleCamera* newCamera);
 	void SetCullingCamera(ModuleCamera* newCamera);
+	void SetPosition(float3 newPosition);
+	void RaycastSelect();
+	void CheckIntersetions(LineSegment* selectRay);
+	void RotateCameraStatic();
 
 private:
 

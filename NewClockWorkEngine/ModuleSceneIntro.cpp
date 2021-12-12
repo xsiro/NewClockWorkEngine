@@ -7,6 +7,8 @@
 #include "ModuleMesh.h"
 #include "ModuleTransform.h"
 #include "ModuleMaterial.h"
+#include "ModuleCamera.h"
+#include "ModuleCamera3D.h"
 #include "GameObject.h"
 #include "FileSystem.h"
 #include "ModuleImporter.h"
@@ -26,8 +28,7 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
-	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
-	App->camera->LookAt(vec3(0, 0, 0));
+	App->camera->SetPosition(float3(0, 5, -5));
 
 	Importer::SceneImporter::Import("Assets/street/Street environment_V01.FBX");
 	return ret;

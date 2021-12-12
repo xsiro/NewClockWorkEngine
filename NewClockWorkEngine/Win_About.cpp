@@ -84,6 +84,9 @@ void Win_About::Draw()
 		ImGui::Text("LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,");
 		ImGui::Text("OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN ");
 		ImGui::Text("THE SOFTWARE.");
+
+		if (ImGui::IsWindowHovered())
+			App->gui->mouseHovered = true;
 		ImGui::End();
 	}
 	

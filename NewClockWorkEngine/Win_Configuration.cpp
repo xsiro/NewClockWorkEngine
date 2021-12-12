@@ -220,6 +220,8 @@ void Win_Configuration::Draw()
 
 	}
 
+	if (ImGui::IsWindowHovered())
+		App->gui->mouseHovered = true;
 	ImGui::End();
 }
 

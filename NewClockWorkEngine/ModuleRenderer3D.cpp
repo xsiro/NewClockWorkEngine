@@ -12,6 +12,7 @@
 #include "ModuleGui.h"
 #include "ModuleComponent.h"
 #include "ModuleMaterial.h"
+#include "ModuleCamera.h"
 #include "GameObject.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleTransform.h"
@@ -153,10 +154,10 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 
 	glMatrixMode(GL_MODELVIEW);
 
-	glLoadMatrixf(App->camera->GetViewMatrix());
+	glLoadMatrixf(App->camera->currentCamera->GetViewMatrix());
 
 	// light 0 on cam pos
-	lights[0].SetPos(App->camera->Position.x, App->camera->Position.y, App->camera->Position.z);
+	lights[0].SetPos(App->camera->currentCamera->GetPos().x, App->camera->currentCamera->GetPos().y, App->camera->currentCamera->GetPos().z);
 
 	for (uint i = 0; i < MAX_LIGHTS; ++i)
 		lights[i].Render();
@@ -166,6 +167,17 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glLoadMatrixf((GLfloat*)&App->camera->currentCamera->frustum.ProjectionMatrix().Transposed());
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+
+	glStencilMask(0xFF);
+	glStencilFunc(GL_ALWAYS, 0, 0xFF);
+
 	App->gui->Draw();
 
 	SDL_GL_SwapWindow(App->window->window);
@@ -186,19 +198,26 @@ void ModuleRenderer3D::OnResize(int width, int height)
 {
 	glViewport(0, 0, width, height);
 
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	ProjectionMatrix = perspective(60.0f, (float)width / (float)height, 0.125f, 512.0f);
-	glLoadMatrixf(&ProjectionMatrix);
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
+	if (App->camera->currentCamera != nullptr)
+		App->camera->currentCamera->SetAspectRatio(((float)width / (float)height));
 }
 
 
 void ModuleRenderer3D::DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals, bool drawBoundingBox, GameObject* gameObject)
-
 {
+	glStencilMask(0x00);
+
+	bool doStencil = false;
+	if (gameObject == App->scene_intro->selected && gameObject != nullptr) //Stencil selection
+	{
+		doStencil = true;
+		glStencilFunc(GL_ALWAYS, 1, 0xFF);
+		glStencilMask(0xFF);
+	}
+
+	if (!IsObjectInScreen(gameObject) && App->camera->currentCamera->cull)
+		return;
+
 	wireframeMode == false ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : (glPolygonMode(GL_FRONT_AND_BACK, GL_LINE));
 
 	glPushMatrix();
@@ -392,6 +411,22 @@ void ModuleRenderer3D::DrawScenePlane(int size)
 	glEnd();
 }
 
+void ModuleRenderer3D::DrawLine(float3 a, float3 b)
+{
+	glDisable(GL_LIGHTING);
+	glColor4f(0, 1, 0, 1);
+	glLineWidth(2.0f);
+	glBegin(GL_LINES);
+
+	glVertex3d(a.x, a.y, a.z);
+	glVertex3d(b.x, b.y, b.z);
+
+	glEnd();
+	glColor4f(1, 1, 1, 1);
+	glLineWidth(1.0f);
+	SwitchLighting();
+}
+
 void ModuleRenderer3D::DrawBox(float3* corners)
 {
 	glDisable(GL_LIGHTING);
@@ -439,4 +474,29 @@ void ModuleRenderer3D::DrawBox(float3* corners)
 	glColor4f(1, 1, 1, 1);
 
 	SwitchLighting();
+}
+
+bool ModuleRenderer3D::IsObjectInScreen(GameObject* gameObject)
+{
+	float3 corners[8];
+	gameObject->aabb.GetCornerPoints(corners); // get the corners of the box into the corners array
+
+	for (int plane = 0; plane < 6; ++plane) {
+
+		int iInCount = 8;
+		int iPtIn = 1;
+
+		for (int i = 0; i < 8; ++i) {
+			// test this point against the planes
+			if (App->camera->cullingCamera->planes[plane].IsOnPositiveSide(corners[i])) { //<-- “IsOnPositiveSide” from MathGeoLib
+				iPtIn = 0;
+				--iInCount;
+			}
+		}
+		// were all the points outside of plane p?
+		if (iInCount == 0)
+			return(false);
+	}
+	// we must be partly in then otherwise
+	return(true);
 }

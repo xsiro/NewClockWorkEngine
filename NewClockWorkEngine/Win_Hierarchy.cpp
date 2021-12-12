@@ -42,6 +42,8 @@ void Win_Hierarchy::Draw()
 	for (; item != App->scene_intro->rootObject->children.end(); ++item)
 		GameObjectsHierarchy((*item));
 
+	if (ImGui::IsWindowHovered())
+		App->gui->mouseHovered = true;
 	ImGui::End();
 }
 
