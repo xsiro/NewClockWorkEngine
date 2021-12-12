@@ -450,7 +450,7 @@ void Importer::SceneImporter::LoadMaterial(const aiScene* scene, const aiNode* n
                 App->filesystem->SplitFilePath(path.C_Str(), nullptr, &fileName, &extension);
 
                 fileName += "." + extension;
-                fileName = "Assets/Textures" + fileName;
+                fileName = "Assets/Textures/" + fileName;
 
                 LOG("Adding texture to %s", newGameObject->GetName());
 
