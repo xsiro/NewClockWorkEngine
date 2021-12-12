@@ -41,7 +41,7 @@ ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module(start_enabled), 
 {
 	SetCullface = true;
 	SetColormaterial = true;
-	SetLighting = false;
+	SetLighting = true;
 	SetDepthtest = true;
 	SetTexture2D = true;
 	wireframeMode = false;
@@ -130,6 +130,7 @@ bool ModuleRenderer3D::Init()
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_TEXTURE_2D);
+		glEnable(GL_LIGHTING);
 		lights[0].Active(true);
 
 		glEnable(GL_BLEND);
@@ -140,6 +141,7 @@ bool ModuleRenderer3D::Init()
 
 	CreateChekerTexture();
 	Importer::TextureImp::InitDevil();
+
 
 	return ret;
 }
@@ -389,9 +391,11 @@ void ModuleRenderer3D::DrawScenePlane(int size)
 	}
 	glEnd();
 }
+
 void ModuleRenderer3D::DrawBox(float3* corners)
 {
 	glDisable(GL_LIGHTING);
+	
 
 	glBegin(GL_LINES);
 
@@ -435,5 +439,4 @@ void ModuleRenderer3D::DrawBox(float3* corners)
 	glColor4f(1, 1, 1, 1);
 
 	SwitchLighting();
-
 }

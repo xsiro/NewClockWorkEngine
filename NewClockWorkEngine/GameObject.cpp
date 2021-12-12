@@ -25,6 +25,7 @@ GameObject::~GameObject()
 
 void GameObject::Update() 
 {
+	UpdateBoundingBoxes();
 	if (!components.empty())
 	{
 		std::vector<ModuleComponent*>::iterator item = components.begin();
@@ -208,11 +209,15 @@ void GameObject::UpdateBoundingBoxes()
 {
 	if (HasComponentType(ModuleComponent::ComponentType::Mesh))
 	{
-		obb = GetComponent<ModuleMesh>()->GetMesh()->aabb;
-		obb.Transform(transform->GetGlobalTransform());
+		ResourceMesh* mesh = GetComponent<ModuleMesh>()->GetMesh();
+		if (mesh != nullptr)
+		{
+			obb = mesh->aabb;
+			obb.Transform(transform->GetGlobalTransform());
 
-		aabb.SetNegativeInfinity();
-		aabb.Enclose(obb);
+			aabb.SetNegativeInfinity();
+			aabb.Enclose(obb);
+		}
 	}
 }
 

@@ -84,8 +84,7 @@ std::vector<ResourceMesh*> Importer::MeshImporter::Import(const char* file)
                 }
             }
 
-            newMesh->aabb.SetNegativeInfinity();
-            newMesh->aabb.Enclose((float3*)newMesh->vertices, newMesh->buffersSize[ResourceMesh::vertex]);
+            
 
             App->renderer3D->GenerateBuffers(newMesh);
 
@@ -153,6 +152,9 @@ void Importer::MeshImporter::LoadNodeMesh(const aiScene* scene, const aiNode* no
                 newMesh->textureCoords[j * 2 + 1] = scene->mMeshes[node->mMeshes[i]]->mTextureCoords[0][j].y;
             }
         }
+
+        newMesh->aabb.SetNegativeInfinity();
+        newMesh->aabb.Enclose((float3*)newMesh->vertices, newMesh->buffersSize[ResourceMesh::vertex]);
 
         App->renderer3D->GenerateBuffers(newMesh); 
 
