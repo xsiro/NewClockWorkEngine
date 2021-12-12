@@ -7,6 +7,8 @@ struct aiNode;
 struct aiScene;
 class ResourceMaterial;
 class ResourceMesh;
+class ConfigNode;
+class ModuleComponent;
 
 struct Material
 {
@@ -80,9 +82,9 @@ namespace Importer
 		const aiNode* LoadTransform(const aiNode* node, GameObject* newGameObject);
 		void LoadMeshes(const aiScene* scene, const aiNode* node, GameObject* newGameObject);
 		void LoadMaterial(const aiScene* scene, const aiNode* node, GameObject* newGameObject, const char* file);
-		uint64 Save();
 
-		void Load();
+		uint64 SaveScene(ConfigNode* config, std::vector<GameObject*> gameObjects);
+		void SaveComponent(ConfigNode* node, ModuleComponent* component);
 
 	}
 }

@@ -40,6 +40,9 @@
     <Filter Include="Sources\Modules\Resources">
       <UniqueIdentifier>{d403ed7c-f1a7-4c24-bb8f-f924ec1c58ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dependencies\Parson">
+      <UniqueIdentifier>{4ab372e8-0411-4ff6-a2a0-d40cceec53fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -186,7 +189,6 @@
     <ClInclude Include="MathGeoLib\src\MathGeoLibFwd.h">
       <Filter>Dependencies\MathGeoLib</Filter>
     </ClInclude>
-
     <ClInclude Include="ModuleResourceM.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
@@ -198,10 +200,15 @@
     </ClInclude>
     <ClInclude Include="ResourceMesh.h">
       <Filter>Sources\Modules\Resources</Filter>
-</ClInclude>
+    </ClInclude>
     <ClInclude Include="Gizmos.h">
       <Filter>Sources\Containers</Filter>
-
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Sources\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="parson\parson.h">
+      <Filter>Dependencies\Parson</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -307,7 +314,6 @@
     <ClCompile Include="Win_Inspector.cpp">
       <Filter>Sources\Modules\Window</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleResourceM.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
@@ -319,10 +325,15 @@
     </ClCompile>
     <ClCompile Include="ResourceMesh.cpp">
       <Filter>Sources\Modules\Resources</Filter>
-</ClCompile>
+    </ClCompile>
     <ClCompile Include="Gizmos.cpp">
       <Filter>Sources\Containers</Filter>
-
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Sources\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="parson\parson.c">
+      <Filter>Dependencies\Parson</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -10,6 +10,7 @@
 #include "GameObject.h"
 #include "ModuleComponent.h"
 #include "ModuleSceneIntro.h"
+#include "config.h"
 
 #include "Window.h"
 #include "Win_Inspector.h"
@@ -96,6 +97,10 @@ void ModuleGui::Draw()
 			{
 				App->ExitApp();
 
+			}
+			if (ImGui::MenuItem("Save"))
+			{
+				App->scene_intro->SaveScene();
 			}
 			ImGui::EndMenu();
 		}
@@ -213,7 +218,12 @@ bool ModuleGui::CleanUp()
 	return true;
 }
 
+bool ModuleGui::Save(ConfigNode* config)
+{
+	LOG("saved editor");
 
+	return true;
+}
 
 update_status ModuleGui::Dock(bool* p_open)
 {

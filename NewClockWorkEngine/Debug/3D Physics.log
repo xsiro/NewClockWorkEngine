@@ -1,10 +1,8 @@
-﻿  ModuleRenderer3D.cpp
-D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
-D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
-D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
-D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
-D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(374,6): warning C4551: la llamada a la función no tiene lista de argumentos
-  3D Physics.vcxproj -> D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
+﻿  Application.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(240,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe

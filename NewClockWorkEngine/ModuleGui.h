@@ -44,7 +44,8 @@ public:
 	bool GetFL();
 	bool GetCheck();
 	bool GetWireframe();
-	
+	bool Save(ConfigNode* config) override;
+
 public:
 
 	bool scroll;

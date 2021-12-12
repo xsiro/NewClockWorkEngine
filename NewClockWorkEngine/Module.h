@@ -1,6 +1,7 @@
 #pragma once
 #include "Globals.h"
 
+class ConfigNode;
 
 class Module
 {
@@ -44,5 +45,10 @@ public:
 	virtual bool CleanUp() 
 	{ 
 		return true; 
+	}
+
+	virtual bool Save(ConfigNode* config)
+	{
+		return true;
 	}
 };

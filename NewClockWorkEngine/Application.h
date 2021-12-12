@@ -18,7 +18,7 @@
 #include "FileSystem.h"
 #include "ModuleResourceM.h"
 #include "Brofiler/Brofiler.h"
-
+#include "Config.h"
 
 
 
@@ -73,7 +73,7 @@ public:
 	void ExitApp();
 	void SetFRLimit(uint max_framerate);
 	int GameMaxFPS = 60;
-
+	void ToSave();
 
 
 private:
@@ -82,7 +82,7 @@ private:
 	void AddModule(Module* mod);
 	void PrepareUpdate();
 	void FinishUpdate();
-
+	void Save();
 
 public:
 	int	miliseconds;
@@ -94,6 +94,7 @@ public:
 	Uint32 frames;
 	bool closewindow;
 	bool debug;
+	bool toSave;
 
 	float Game_dt = 0.0f;
 	float GameSpeed = 1.0f;
