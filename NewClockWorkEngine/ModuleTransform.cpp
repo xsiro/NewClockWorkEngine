@@ -3,7 +3,7 @@
 #include "Globals.h"
 #include "GameObject.h"
 #include "ModuleComponent.h"
-
+#include "Config.h"
 
 ModuleTransform::ModuleTransform(GameObject* owner) : ModuleComponent(ComponentType::Transform, owner)
 {
@@ -70,6 +70,25 @@ void ModuleTransform::SetEulerRotation(float3 euler_angles)
 	rotation = rotation * quaternion_rotation;
 	eulerRotation = euler_angles;
 	UpdateLocalTransform();
+}
+
+void ModuleTransform::OnSave(ConfigNode* node)
+{
+	ConfigArray _position = node->InitArray("Position");
+	_position.AddNumber(position.x);
+	_position.AddNumber(position.y);
+	_position.AddNumber(position.z);
+
+	ConfigArray _scale = node->InitArray("Scale");
+	_scale.AddNumber(scale.x);
+	_scale.AddNumber(scale.y);
+	_scale.AddNumber(scale.z);
+
+	ConfigArray _rotation = node->InitArray("Rotation");
+	_rotation.AddNumber(rotation.x);
+	_rotation.AddNumber(rotation.y);
+	_rotation.AddNumber(rotation.z);
+	_rotation.AddNumber(rotation.w);
 }
 
 float4x4 ModuleTransform::GetTransform() const

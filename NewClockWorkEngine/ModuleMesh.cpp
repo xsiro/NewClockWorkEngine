@@ -12,6 +12,7 @@
 #include "ModuleRenderer3D.h"
 #include "ResourceMesh.h"
 #include "Resource.h"
+#include "Config.h"
 
 #include "SDL/include/SDL_opengl.h"
 #include <gl/GL.h>
@@ -76,6 +77,11 @@ void ModuleMesh::DrawMesh()
 	}
 
 	App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), nullptr, drawVertexNormals, drawAABB, owner);
+}
+
+void ModuleMesh::OnSave(ConfigNode* node)
+{
+	
 }
 
 char* ModuleMesh::GetPath()const

@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "ModuleComponent.h"
 #include "ResourceMaterial.h"
+#include "Config.h"
 
 #include "SDL/include/SDL_opengl.h"
 #include "glew.h"
@@ -47,6 +48,11 @@ void ModuleMaterial::DrawInspector()
 		ImGui::Text("Texture width: %d", material->GetWidth());
 		if (ImGui::Checkbox("DrawTexture", &drawTexture)) {}
 	}
+}
+
+void ModuleMaterial::OnSave(ConfigNode* node)
+{
+
 }
 
 const char* ModuleMaterial::GetPath()const
