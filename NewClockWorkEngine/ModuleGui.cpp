@@ -85,6 +85,18 @@ update_status ModuleGui::PreUpdate(float dt)
 	return  UPDATE_CONTINUE;
 }
 
+
+update_status ModuleGui::Update(float dt)
+{
+	if (config->changeFPSlimit)
+	{
+		config->SetFRLimit(config->max_fps);
+	}
+
+	return UPDATE_CONTINUE;
+}
+
+
 update_status ModuleGui::PostUpdate(float dt)
 {
 	mouseHovered = false;

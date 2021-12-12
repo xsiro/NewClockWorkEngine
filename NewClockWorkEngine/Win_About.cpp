@@ -35,7 +35,7 @@ void Win_About::Draw()
 		glGetIntegerv(GL_MINOR_VERSION, &minor);
 
 		ImGui::Text("ClockWorkEngine v0.1");
-		ImGui::Text("ClockWorkEngine is developed by Daniel Ruiz, Alex Lopez & Pol Cortes");
+		ImGui::Text("ClockWorkEngine is developed by Daniel Ruiz & Alex Lopez");
 		ImGui::Text("This engine has been coded in C++");
 		ImGui::Text("Libraries used: ");
 		ImVec4 color(1.0f, 0.0f, 0.0f, 1.0f);
@@ -65,7 +65,7 @@ void Win_About::Draw()
 		ImGui::Text("");
 		ImGui::Text("MIT License");
 		ImGui::Text("");
-		ImGui::Text("Copyright (c) 2021 [Daniel Ruiz, Alex Lopez & Pol Cortes]");
+		ImGui::Text("Copyright (c) 2021 [Daniel Ruiz & Alex Lopez]");
 		ImGui::Text("");
 		ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
 		ImGui::Text("of this software and associated documentation files (the 'Software'), to deal");

@@ -1,6 +1,7 @@
 #include "Window.h"
 #include "ImGui.h"
 #include <vector>
+#include "Globals.h"
 
 
 #define LOG_LENGTH 50
@@ -17,6 +18,8 @@ public:
 	void CleanUp() override;
 
 	void AddLogFPS(float fps, float ms);
+	uint GetFR() const;
+	void SetFRLimit(uint max_framerate);
 
 	bool changeFPSlimit = false;
 	bool changeTitleName = false;

@@ -29,7 +29,7 @@ Win_Configuration::~Win_Configuration()
 
 void Win_Configuration::Init()
 {
-	
+	max_fps = GetFR();
 }
 
 void Win_Configuration::CleanUp()
@@ -92,15 +92,14 @@ void Win_Configuration::Draw()
 		ImVec4 color(1.0f, 0.0f, 1.0f, 1.0f);
 		int mfps = 1000 / App->max_ms;
 
-		if (ImGui::SliderInt("Max FPS", &mfps, 10, 120)) App->max_ms = 1000 / mfps;
+		if (ImGui::SliderInt("Max FPS", &max_fps, 0, 140))
+		{
+			changeFPSlimit = true;
+		}
 
-		ImGui::Text("Limit Framerate: ");
+		ImGui::Text("Limit Framerate:");
 		ImGui::SameLine();
-		ImGui::TextColored(color, "%i", fps);
-		fps_log.erase(fps_log.begin());
-		fps_log.push_back(App->contFPS);
-		ms_log.erase(ms_log.begin());
-		ms_log.push_back(App->dt * 1000);
+		ImGui::TextColored(color, "%i", max_fps);
 
 		char title[25];
 		sprintf_s(title, 25, "Framerate %.1f", fps_log[fps_log.size() - 1]);
@@ -224,4 +223,21 @@ void Win_Configuration::Draw()
 		App->gui->mouseHovered = true;
 	ImGui::End();
 }
+
+uint Win_Configuration::GetFR() const
+{
+	if (App->miliseconds > 0)
+		return (uint)((1.0f / (float)App->miliseconds) * 1000.0f);
+	else
+		return 0;
+}
+
+void Win_Configuration::SetFRLimit(uint max_framerate)
+{
+	if (max_framerate > 0)
+		App->miliseconds = 1000 / max_framerate;
+	else
+		App->miliseconds = 0;
+}
+
 
