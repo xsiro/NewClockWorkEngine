@@ -1,10 +1,505 @@
 ﻿  Application.cpp
-
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(240,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-  3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
-
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(240,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  Color.cpp
+  Config.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  FileSystem.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  The contents of <filesystem> are available only with C++17 or later.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.cpp(230,20): warning C4018: '<': no coinciden signed/unsigned
+  GameObject.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(41,21): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(212): message : Vea la referencia a la creación de una instancia de la función plantilla "const CTemplate *GameObject::GetComponent<ModuleMesh>(void) const" que se está compilando
+          with
+          [
+              CTemplate=ModuleMesh
+          ]
+  Gizmos.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  glmath.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(12,13): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(27,17): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(43,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(53,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(53,26): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(72,13): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(87,17): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(103,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(600,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(618,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(618,33): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(758,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(778,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\glmath.cpp(778,33): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_opengl3.cpp
+  imgui_impl_sdl.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  Light.cpp
+  log.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Main.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  GJK.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(197,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(198,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(203,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(204,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  GJK2D.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  LCG.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Generando código...
+  Compilando...
+  SAT.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  AABB.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB.cpp(1207,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Capsule.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Capsule.cpp(457,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Capsule.cpp(479,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Circle.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Circle.cpp(257,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Circle2D.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Circle2D.cpp(292,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Frustum.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Frustum.cpp(1117,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Line.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Line.cpp(363,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  LineSegment.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(197,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(198,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(203,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(204,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\LineSegment.cpp(459,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  LineSegment2D.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\LineSegment2D.cpp(512,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  OBB.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(197,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(198,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(203,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(204,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\OBB.cpp(2810,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  PBVolume.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Plane.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Plane.cpp(920,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Plane.cpp(939,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Polygon.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Polyhedron.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(197,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(198,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(203,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(204,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\vector(840,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\vector(808): message : al compilar la función del miembro clase plantilla "std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,const unsigned int,const _Ty &)"
+          with
+          [
+              _Ty=std::vector<int,std::allocator<int>>
+          ]
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Polyhedron.cpp(2135): message : Vea la referencia a la creación de una instancia de la función plantilla "std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,const unsigned int,const _Ty &)" que se está compilando
+          with
+          [
+              _Ty=std::vector<int,std::allocator<int>>
+          ]
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Polyhedron.cpp(354): message : Vea la referencia a la creación de una instancia de clase plantilla "std::vector<std::vector<int,std::allocator<int>>,std::allocator<std::vector<int,std::allocator<int>>>>" que se está compilando
+  Ray.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Ray.cpp(368,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Sphere.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Sphere.cpp(1382,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Sphere.cpp(1402,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Triangle.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(197,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(198,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(203,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(204,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Triangle.cpp(1956,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Triangle2D.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Triangle2D.cpp(1699,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  TriangleMesh.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  BitOps.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Generando código...
+  Compilando...
+  Callstack.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  float2.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float2.cpp(219,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  float3.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float3.cpp(216,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  float3x3.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float3x3.cpp(1397,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float3x3.cpp(1425,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  float3x4.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float3x4.cpp(1545,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float3x4.cpp(1576,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  float4.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4.cpp(508,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  float4d.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(197,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(198,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(203,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(204,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.cpp(35,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  float4x4.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4x4.cpp(1998,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4x4.cpp(2034,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  grisu3_cpp.cpp
+  MathFunc.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\MathFunc.cpp(639,18): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\MathFunc.cpp(656,11): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  MathLog.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  MathOps.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  MiniFloat.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Polynomial.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Quat.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\Quat.cpp(792,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\Quat.cpp(802,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  SSEMath.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  TransformOps.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\TransformOps.cpp(77,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\TransformOps.cpp(293,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Clock.cpp
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+D:\Program Files\Visual Studio\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  ModuleCamera.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  ModuleCamera3D.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Generando código...
+  Compilando...
+  ModuleComponent.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  ModuleGui.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  ModuleImporter.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(42,27): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(81,35): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(111,23): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(150,31): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(204,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(376,23): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(404,27): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(384,17): warning C4101: 'currentNode': variable local sin referencia
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(469,23): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(476,23): warning C4018: '<': no coinciden signed/unsigned
+  ModuleInput.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleInput.cpp(95,8): warning C4101: 'dropped_file': variable local sin referencia
+  ModuleMaterial.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+  ModuleMesh.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(41,21): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(65): message : Vea la referencia a la creación de una instancia de la función plantilla "const CTemplate *GameObject::GetComponent<ModuleMaterial>(void) const" que se está compilando
+          with
+          [
+              CTemplate=ModuleMaterial
+          ]
+  ModuleRenderer3D.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(374,6): warning C4551: la llamada a la función no tiene lista de argumentos
+  ModuleResourceM.cpp
+  ModuleSceneIntro.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+  ModuleTransform.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  ModuleWindow.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Primitive.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(198,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(199,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(199,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(208,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(209,53): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(209,36): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(217,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(219,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(219,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(220,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(220,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  Resource.cpp
+  ResourceMaterial.cpp
+  ResourceMesh.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Timer.cpp
+  Window.cpp
+  Win_About.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Win_Hierarchy.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Win_Configuration.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(93,12): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(95,71): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(101,24): warning C4244: 'argumento': conversión de 'int' a 'const _Ty'; posible pérdida de datos
+          with
+          [
+              _Ty=float
+          ]
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(64,45): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(123,50): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+  Generando código...
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleSceneIntro.cpp(130): warning C4700: se utilizó la variable local 'sceneNode' sin inicializar
+  Compilando...
+  Win_Console.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Console.cpp(37,20): warning C4018: '<': no coinciden signed/unsigned
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Console.cpp(56,20): warning C4018: '<': no coinciden signed/unsigned
+  Win_Inspector.cpp
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Generando código...
+  grisu3.c
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\grisu3.c(323,4): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\grisu3.c(348,10): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\grisu3.c(365,10): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  parson.c
+  Generando código...
+  3D Physics.vcxproj -> D:\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
