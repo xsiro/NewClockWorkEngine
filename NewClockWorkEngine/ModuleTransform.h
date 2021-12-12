@@ -6,6 +6,7 @@
 #include "MathGeoLib/src/MathGeoLib.h"
 
 class ModuleComponent;
+class ConfigNode;
 
 class ModuleTransform : public ModuleComponent
 {
@@ -34,7 +35,7 @@ public:
 	void UpdatedTransform(float4x4 parentGlobalTransform);
 	void RecalculateEuler();
 	void UpdateLocalTransform();
-
+	void OnSave(ConfigNode* node);
 	float4x4 GetGlobalTransform()const;
 
 private:

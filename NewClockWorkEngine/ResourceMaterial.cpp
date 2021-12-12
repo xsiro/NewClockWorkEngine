@@ -26,6 +26,7 @@ void ResourceMaterial::SetWidth(uint width)
 	this->width = width;
 }
 
+
 void ResourceMaterial::SetPath(const char* path)
 {
 	this->path = path;

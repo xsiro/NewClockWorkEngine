@@ -14,6 +14,7 @@ public:
 	void SetHeight(uint height);
 	void SetWidth(uint width);
 	void SetPath(const char* path);
+	void SetTexture(ResourceMaterial* texture);
 
 	uint GetId() const;
 	uint GetHeight() const;

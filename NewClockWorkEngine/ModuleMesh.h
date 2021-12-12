@@ -9,6 +9,7 @@
 class GameObject;
 class ResourceMesh;
 class ModuleComponent;
+class ConfigNode;
 
 typedef unsigned int GLuint;
 typedef unsigned char GLubyte;
@@ -24,7 +25,7 @@ public:
 	void Update() override;
 	void CleanUp() override;
 	void DrawInspector() override;
-
+	void OnSave(ConfigNode* node);
 	ResourceMesh* GetMesh() const;
 
 	static inline ComponentType GetType() { return ComponentType::Mesh; };

@@ -6,6 +6,7 @@
 
 class ModuleComponent;
 struct ResourceMaterial;
+class ConfigNode;
 
 class ModuleMaterial : public ModuleComponent
 {
@@ -18,6 +19,7 @@ public:
 	void Update() override;
 	void CleanUp() override;
 	void DrawInspector() override;
+	void OnSave(ConfigNode* node);
 
 	const char* GetPath()const;
 

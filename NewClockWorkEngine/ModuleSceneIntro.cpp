@@ -128,15 +128,15 @@ void ModuleSceneIntro::SetSelectedObject(GameObject* object)
 
 void ModuleSceneIntro::SaveScene()
 {
-	ConfigNode* sceneNode;
+	ConfigNode sceneNode;
 
-	uint64 id = Importer::SceneImporter::SaveScene(sceneNode, game_objects);
+	uint64 id = Importer::SceneImporter::SaveScene(&sceneNode, game_objects);
 
 	std::string path = "Library/Scenes/";
 	std::string idString = std::to_string(id);
 	path += idString + ".scene";
 
 	char* buffer;
-	uint size = sceneNode->Serialize(&buffer); 
+	uint size = sceneNode.Serialize(&buffer); 
 	App->filesystem->Save(path.c_str(), buffer, size);
 }
