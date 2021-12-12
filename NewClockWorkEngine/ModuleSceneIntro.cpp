@@ -32,7 +32,7 @@ bool ModuleSceneIntro::Start()
 	rootObject = CreateGameObject("rootObject", "", "", true);
 
 	CreateGameObject("BakerHouse", "Assets/BakerHouse.fbx", "Assets/Baker_house.png");
-	Importer::SceneImporter::Import("Assets/BakerHouse.fbx");
+	Importer::SceneImporter::Import("Assets/street/Street environment_V01.FBX");
 	return ret;
 }
 
