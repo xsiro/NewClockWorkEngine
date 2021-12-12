@@ -250,7 +250,7 @@ void ModuleRenderer3D::DrawMesh(ResourceMesh* mesh, float4x4 transform, Resource
 		DrawVertexNormals(mesh,transform);
 	}
 
-	if (App->scene_intro->drawBB)
+	if (drawBoundingBox || App->scene_intro->drawBB)
 	{
 		if (gameObject != nullptr)
 

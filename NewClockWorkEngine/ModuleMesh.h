@@ -41,6 +41,7 @@ private:
 	ResourceMesh* mesh = nullptr;
 	char* path = nullptr;
 	bool drawVertexNormals = false;
+	bool drawAABB = false;
 
 
 public:

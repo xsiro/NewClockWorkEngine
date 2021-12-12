@@ -53,6 +53,7 @@ void  ModuleMesh::DrawInspector()
 		ImGui::Text("Vertices: %d", mesh->buffersSize[Mesh::vertex]);
 		ImGui::Checkbox("Active", &this->active);
 		ImGui::Checkbox("Draw Vertex Normals", &drawVertexNormals);
+		ImGui::Checkbox("Draw AABB", &drawAABB);
 	}
 }
 
@@ -67,14 +68,14 @@ void ModuleMesh::DrawMesh()
 		{
 
 
-			App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), owner->GetComponent<ModuleMaterial>()->GetTexture(), drawVertexNormals, owner);
+			App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), owner->GetComponent<ModuleMaterial>()->GetTexture(), drawVertexNormals, drawAABB, owner);
 
 
 			return;
 		}
 	}
 
-	App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), nullptr, drawVertexNormals, owner);
+	App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), nullptr, drawVertexNormals, drawAABB, owner);
 }
 
 char* ModuleMesh::GetPath()const
