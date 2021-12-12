@@ -1,10 +1,10 @@
-/* Copyright Jukka Jylï¿½nki
+/* Copyright Jukka Jylänki
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
 
-	   http://www.apache.org/licenses/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,9 +12,9 @@
    See the License for the specific language governing permissions and
    limitations under the License. */
 
-   /** @file MathFwd.h
-	   @author Jukka Jylï¿½nki
-	   @brief */
+/** @file MathFwd.h
+	@author Jukka Jylänki
+	@brief */
 #pragma once
 
 #include "MathBuildConfig.h"
@@ -26,8 +26,8 @@
 
 #include <stddef.h>
 
-	   // Very annoying to have to do this, but <iosfwd> doesn't have a fwddecl for std::vector,
-	   // and forward-declaring it manually is not allowed, see http://stackoverflow.com/questions/307343/forward-declare-an-stl-container
+// Very annoying to have to do this, but <iosfwd> doesn't have a fwddecl for std::vector,
+// and forward-declaring it manually is not allowed, see http://stackoverflow.com/questions/307343/forward-declare-an-stl-container
 #include <vector>
 
 // The CONST_WIN32 is a #define which resolves to 'const' on Windows, and null on other
@@ -242,7 +242,4 @@ REGISTER_POD(MATH_NS::LCG);
 REGISTER_POD(MATH_NS::float4_storage);
 REGISTER_POD(MATH_NS::Triangle_storage);
 REGISTER_POD(MATH_NS::LineSegment_storage);
-
-
 #endif
-

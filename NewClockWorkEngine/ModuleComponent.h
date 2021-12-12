@@ -11,6 +11,7 @@ public:
 	Mesh,
 	Transform,
 	Material,
+	Camera,
 	None
 	};
 	ModuleComponent(ComponentType type);
