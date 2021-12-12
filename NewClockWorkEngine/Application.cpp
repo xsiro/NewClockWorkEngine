@@ -169,9 +169,28 @@ bool Application::CleanUp()
 	return ret;
 }
 
+void Application::Save()
+{
+	ConfigNode config;
+
+	std::vector<Module*>::iterator item = list_modules.begin();
+
+		for (; item != list_modules.end(); ++item)
+		{
+			(*item)->Save(&config);
+		}
+	LOG("Succesfully saved");
+	toSave = false;
+}
+
 void Application::AddModule(Module* mod)
 {
 	list_modules.push_back(mod);
+}
+
+void Application::ToSave()
+{
+	toSave = true;
 }
 
 void Application::PlayGame()

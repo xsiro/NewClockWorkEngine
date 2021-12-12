@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "FileSystem.h" 
 #include "ModuleSceneIntro.h"
+#include "Config.h"
 
 #include "Resource.h"
 #include "ResourceMesh.h"
@@ -378,6 +379,40 @@ void Importer::SceneImporter::ProcessAiNode(const aiScene* scene, const aiNode* 
     }
 }
 
+uint64 Importer::SceneImporter::SaveScene(ConfigNode* config, std::vector<GameObject*> gameObjects)
+{
+    JSON_Value* currentNode;
+    config->rootNode = json_value_init_object(); //root
+    config->node = json_value_get_object(config->rootNode);
+
+    //gameObjects -----------------------
+    ConfigArray gameObjectsJson = config->InitArray("GameObjects");
+
+    std::vector<GameObject*>::iterator item = gameObjects.begin();
+    for (; item != gameObjects.end(); item++)
+    {
+        ConfigNode newObject = gameObjectsJson.AddNode(); //Create object in GOs array
+        ConfigArray transform = newObject.InitArray("Transform"); //Transform array
+
+        transform.AddNumber((*item)->transform->GetPosition().x);
+        transform.AddNumber((*item)->transform->GetPosition().x);
+        transform.AddNumber((*item)->transform->GetPosition().x);
+
+        //Components -----------------------
+        ConfigArray components = newObject.InitArray("Components"); //Create array in GO node
+        std::vector<ModuleComponent*> comps = (*item)->GetComponents();
+        for (int i = 0; i < comps.size(); i++)
+        {
+            ConfigNode newComponent = components.AddNode(); //Add Component object
+
+            newComponent.AddNumber("Type", (double)comps[i]->GetType());
+            SaveComponent(&newComponent, comps[i]);
+        }
+    }
+
+    return 5467;
+}
+
 const aiNode* Importer::SceneImporter::LoadTransform(const aiNode* node, GameObject* newGameObject)
 {
     aiVector3D position = { 0,0,0 };
@@ -467,4 +502,35 @@ void Importer::SceneImporter::LoadMaterial(const aiScene* scene, const aiNode* n
         }
 
     }
+}
+
+void Importer::SceneImporter::SaveComponent(ConfigNode* node, ModuleComponent* component)
+{
+    ModuleMesh* moduleMesh;
+    ModuleMaterial* moduleMaterial;
+
+    switch (component->GetType())
+    {
+    case ModuleComponent::ComponentType::Transform:
+
+
+        break;
+
+    case ModuleComponent::ComponentType::Mesh:
+
+        moduleMesh = (ModuleMesh*)component;
+
+        node->AddNumber("UID", moduleMesh->GetMesh()->GetUID());
+
+        break;
+
+    case ModuleComponent::ComponentType::Material:
+
+        moduleMaterial = (ModuleMaterial*)component;
+
+        node->AddNumber("UID", moduleMaterial->GetTexture()->GetUID());
+
+        break;
+    }
+
 }

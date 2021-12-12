@@ -9,9 +9,7 @@
 #include "GameObject.h"
 #include "FileSystem.h"
 #include "ModuleImporter.h"
-
-
-class ModuleMesh;
+#include "Config.h"
 
 ModuleSceneIntro::ModuleSceneIntro(bool start_enabled) : Module(start_enabled)
 {
@@ -31,7 +29,6 @@ bool ModuleSceneIntro::Start()
 
 	rootObject = CreateGameObject("rootObject", "", "", true);
 
-	//CreateGameObject("BakerHouse", "Assets/BakerHouse.fbx", "Assets/Baker_house.png");
 	Importer::SceneImporter::Import("Assets/street/Street environment_V01.FBX");
 	return ret;
 }
@@ -124,4 +121,19 @@ void ModuleSceneIntro::SetSelectedObject(GameObject* object)
 		selected = object;
 		LOG("Object selected: %s", selected->GetName());
 	}
+}
+
+void ModuleSceneIntro::SaveScene()
+{
+	ConfigNode* sceneNode;
+
+	uint64 id = Importer::SceneImporter::SaveScene(sceneNode, game_objects);
+
+	std::string path = "Library/Scenes/";
+	std::string idString = std::to_string(id);
+	path += idString + ".scene";
+
+	char* buffer;
+	uint size = sceneNode->Serialize(&buffer); 
+	App->filesystem->Save(path.c_str(), buffer, size);
 }

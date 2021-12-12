@@ -55,6 +55,9 @@
     <Filter Include="Dependencies\MathGeoLib\Algorithm\RAndom">
       <UniqueIdentifier>{de33addd-ed72-4482-9ec5-dfba048d30a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dependencies\Parson">
+      <UniqueIdentifier>{4ab372e8-0411-4ff6-a2a0-d40cceec53fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -191,6 +194,15 @@
     </ClInclude>
     <ClInclude Include="Path.h">
       <Filter>Sources\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\src\MathBuildConfig.h">
+      <Filter>Dependencies\MathGeoLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\src\MathGeoLib.h">
+      <Filter>Dependencies\MathGeoLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\src\MathGeoLibFwd.h">
+      <Filter>Dependencies\MathGeoLib</Filter>
     </ClInclude>
     <ClInclude Include="ModuleResourceM.h">
       <Filter>Sources\Modules</Filter>
@@ -435,6 +447,12 @@
     <ClInclude Include="MathGeoLib\src\Math\float3x3.h">
       <Filter>Dependencies\MathGeoLib\Math</Filter>
     </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Sources\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="parson\parson.h">
+      <Filter>Dependencies\Parson</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -553,6 +571,12 @@
     </ClCompile>
     <ClCompile Include="Gizmos.cpp">
       <Filter>Sources\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Sources\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="parson\parson.c">
+      <Filter>Dependencies\Parson</Filter>
     </ClCompile>
     <ClCompile Include="ModuleCamera.cpp">
       <Filter>Sources\Modules\GameObjects</Filter>

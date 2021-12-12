@@ -7,6 +7,7 @@
 #include <vector>
 
 class GameObject;
+class ConfigNode;
 
 class ModuleSceneIntro : public Module
 {
@@ -19,6 +20,7 @@ public:
 	bool CleanUp();
 
 	void SetSelectedObject(GameObject* object);
+	void SaveScene();
 
 	bool drawBB = false;
 
