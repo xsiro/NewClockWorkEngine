@@ -199,7 +199,7 @@ void ModuleRenderer3D::OnResize(int width, int height)
 void ModuleRenderer3D::DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals, bool drawBoundingBox, GameObject* gameObject)
 
 {
-	wireframeMode == false ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : (glPolygonMode(GL_FRONT_AND_BACK, GL_LINE), glColor4f(255, 255, 0, 255));
+	wireframeMode == false ? glPolygonMode(GL_FRONT_AND_BACK, GL_FILL) : (glPolygonMode(GL_FRONT_AND_BACK, GL_LINE));
 
 	glPushMatrix();
 	glMultMatrixf((float*)&transform.Transposed());

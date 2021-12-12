@@ -4,6 +4,7 @@
 #include "ModuleTransform.h"
 #include "ModuleMesh.h"
 #include "ModuleMaterial.h"
+#include "ModuleCamera.h"
 #include "imgui.h"
 #include "Application.h"
 #include "ResourceMesh.h"
@@ -89,10 +90,18 @@ ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
 	{
 	case ModuleComponent::ComponentType::Transform:
 
-		components.push_back(component);
-		transform = (ModuleTransform*)component;
+		if (!HasComponentType(ModuleComponent::ComponentType::Transform))
+		{
+			components.push_back(component);
+			transform = (ModuleTransform*)component;
+		}
+		else
+		{
+			component = GetComponent<ModuleTransform>();
+		}
 		break;
-		case ModuleComponent::ComponentType::Mesh:
+
+	case ModuleComponent::ComponentType::Mesh:
 
 		if (!HasComponentType(ModuleComponent::ComponentType::Mesh))
 		{
@@ -100,7 +109,7 @@ ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
 			//UpdateBoundingBoxes();
 		}
 		else
-			LOG("(ERROR) Error adding Mesh: Object already has Mesh");
+			component = GetComponent<ModuleMesh>();
 
 		break;
 
@@ -109,15 +118,26 @@ ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
 		if (!HasComponentType(ModuleComponent::ComponentType::Material))
 		{
 			components.push_back(component);
-			//material = (ModuleMaterial*)component;
 		}
 		else
 		{
 			DeleteComponent(ModuleComponent::ComponentType::Material);
 			components.push_back(component);
-			//material = (ModuleMaterial*)component;
 		}
 
+		break;
+
+	case ModuleComponent::ComponentType::Camera:
+
+		if (!HasComponentType(ModuleComponent::ComponentType::Camera))
+		{
+			components.push_back(component);
+		}
+		else
+		{
+			LOG("(ERROR) Error adding Camera: Object already has camera");
+			component = GetComponent<ModuleCamera>();
+		}
 		break;
 	}
 

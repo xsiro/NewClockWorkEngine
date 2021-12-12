@@ -35,7 +35,7 @@ public:
 
 	const char* GetName();
 	template<typename CTemplate>
-	const CTemplate* GetComponent() const
+	CTemplate* GetComponent()
 	{
 		ModuleComponent::ComponentType type = CTemplate::GetType();
 		for (int i = 0; i < components.size(); i++)
