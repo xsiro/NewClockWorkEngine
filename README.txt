@@ -22,11 +22,51 @@ NEW CLOCK WORK ENGINE
 
 - DRAG AND DROP import any model and texture
 
+##Inspector
+
+Transform, mesh, material and render from every game object individually
+
+- Render: wireframe, cullface, depth... and many more 
+
+- Transform: Scale, rotate or translate dragging or input
+
+- Mesh: Active, drawvertex and draw AABB (if it is activated on top menu)
+
+- Texture: Actiivation of the texture or desactivation. 
+
+##GameObjects
+
+Now game objects are imported from the Importer
+
+importer of primitives
+
+Drag and drop importer
+
+##Hierarchy
+
+- Parents with childs
+
+- Deleting gameobjects
+
+- Naming of gameobjects
+
 ## Team members
 
 - Daniel Ruiz (xSiro) --> https://github.com/xsiro
 
 - Alex Lopez (AlexLA99) --> https://github.com/AlexLA99
+
+##Resource manager
+
+(WORKING IN PROGRESS) created some modules
+
+##Custom file format
+
+##Camera
+
+Camera culling
+
+#Bounding Boxes
 
 ## Controls
 
@@ -46,9 +86,7 @@ NEW CLOCK WORK ENGINE
 
 - Shift + movement key --> doubles movement speed
 
-## Notes
-
-When you drag and drop the model will be loaded bakwards
+##Mouse picking
 
 
 https://github.com/xsiro/NewClockWorkEngine
