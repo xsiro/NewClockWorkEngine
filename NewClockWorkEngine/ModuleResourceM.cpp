@@ -7,7 +7,6 @@ ModuleResourceM::ModuleResourceM(bool start_enabled) : Module(start_enabled)
 
 }
 
-// Destructor
 ModuleResourceM::~ModuleResourceM()
 {
 

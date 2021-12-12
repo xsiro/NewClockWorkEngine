@@ -5,7 +5,6 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(221,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-  Color.cpp
   FileSystem.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
@@ -13,31 +12,21 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
   The contents of <filesystem> are available only with C++17 or later.
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.cpp(246,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\FileSystem.cpp(228,20): warning C4018: '<': no coinciden signed/unsigned
   GameObject.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(9): message : vea la declaración de 'ResourceMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(36,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(255): message : Vea la referencia a la creación de una instancia de la función plantilla "const CTemplate *GameObject::GetComponent<ModuleMesh>(void) const" que se está compilando
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(41,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.cpp(211): message : Vea la referencia a la creación de una instancia de la función plantilla "const CTemplate *GameObject::GetComponent<ModuleMesh>(void) const" que se está compilando
           with
           [
               CTemplate=ModuleMesh
           ]
-  Gizmos.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  log.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
   Main.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
@@ -67,15 +56,15 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(9): message : vea la declaración de 'ResourceMaterial'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(44,27): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(83,35): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(114,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(153,31): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(204,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(407,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(434,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(441,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(41,27): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(80,35): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(111,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(150,31): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(201,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(401,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(428,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(435,23): warning C4018: '<': no coinciden signed/unsigned
   ModuleInput.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
@@ -83,8 +72,8 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(9): message : vea la declaración de 'ResourceMaterial'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleInput.cpp(98,8): warning C4101: 'dropped_file': variable local sin referencia
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleInput.cpp(95,8): warning C4101: 'dropped_file': variable local sin referencia
   ModuleMaterial.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
@@ -92,7 +81,7 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(9): message : vea la declaración de 'ResourceMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
   ModuleMesh.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
@@ -100,9 +89,9 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(9): message : vea la declaración de 'ResourceMaterial'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(36,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(66): message : Vea la referencia a la creación de una instancia de la función plantilla "const CTemplate *GameObject::GetComponent<ModuleMaterial>(void) const" que se está compilando
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\GameObject.h(41,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMesh.cpp(64): message : Vea la referencia a la creación de una instancia de la función plantilla "const CTemplate *GameObject::GetComponent<ModuleMaterial>(void) const" que se está compilando
           with
           [
               CTemplate=ModuleMaterial
@@ -114,8 +103,9 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(9): message : vea la declaración de 'ResourceMaterial'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(392,6): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleRenderer3D.cpp(372,6): warning C4551: la llamada a la función no tiene lista de argumentos
+  ModuleResourceM.cpp
   ModuleSceneIntro.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
@@ -123,7 +113,7 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(9): message : vea la declaración de 'ResourceMaterial'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
   ModuleTransform.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
@@ -134,27 +124,8 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
-  Primitive.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(198,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(199,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(199,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(208,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(209,53): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(209,36): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(217,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(219,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(219,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(220,52): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Primitive.cpp(220,35): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  ResourceMaterial.cpp
   Win_About.cpp
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
-  Generando código...
-  Compilando...
-  Win_Hierarchy.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
@@ -175,7 +146,21 @@ C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\
           ]
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(64,45): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Configuration.cpp(123,50): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
+  Win_Hierarchy.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  Generando código...
+  Compilando...
   Win_Inspector.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Brofiler\Brofiler.h(265,1): warning C4005: 'PROFILE': redefinición de macro
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\QuadTree.h(23): message : vea la definición anterior de 'PROFILE'
+  log.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(29,1): warning C4099: 'math::AABB2D': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(28): message : vea la declaración de 'math::AABB2D'
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(110,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.

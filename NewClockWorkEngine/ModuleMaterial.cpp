@@ -14,8 +14,6 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
-
-
 ModuleMaterial::ModuleMaterial(GameObject* owner) : ModuleComponent(ComponentType::Material, owner)
 {
 
@@ -28,12 +26,14 @@ ModuleMaterial::ModuleMaterial(GameObject* owner, const char* path, ResourceMate
 
 ModuleMaterial::~ModuleMaterial()
 {
+
 }
+
 void ModuleMaterial::Update()
 {
 
 }
- 
+
 void ModuleMaterial::CleanUp()
 {
 	delete material;

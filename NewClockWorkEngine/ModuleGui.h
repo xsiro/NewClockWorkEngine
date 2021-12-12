@@ -1,5 +1,4 @@
-#ifndef __ModuleGui_H__
-#define __ModuleGui_H__
+#pragma once
 
 #include "Module.h"
 #include "Globals.h"
@@ -25,26 +24,22 @@ public:
 
 	ModuleGui( bool start_enabled = true);
 
-	// Destructor
 	ModuleGui::~ModuleGui();
 
-	// Call before first frame
 	bool Start();
 
-	// Called before all Updates
 	update_status PreUpdate(float dt);
 
-	// Called before quitting
 	bool CleanUp();
 
 
 	void Draw();
-	//Docking
-	update_status Dock(bool* p_open);
-
 	void AddWindow(Window* window);
 	void Log(char* text);
 	void LogFPS(float fps, float ms);
+	
+	update_status Dock(bool* p_open);
+
 	bool GetVL();
 	bool GetFL();
 	bool GetCheck();
@@ -64,8 +59,6 @@ public:
 	bool sphere;
 	bool showmaterial;
 
-
-
 	ImVec4 clear_color;
 	ImVec2 mouseScenePosition;
 	ImVec2 image_size;
@@ -77,12 +70,12 @@ public:
 	Win_Hierarchy* hierarchy = nullptr;
 	Win_Configuration* config = nullptr;
 
-
 private:
 
 	GameObject* object = nullptr;
+
 	std::vector<float> fps_log;
 	std::vector<float> ms_log;
 };
 
-#endif // __ModuleGui_H__
+

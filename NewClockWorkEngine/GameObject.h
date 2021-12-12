@@ -7,8 +7,6 @@
 
 #include "ModuleComponent.h"
 
-
-
 class ModuleTransform;
 class ModuleMaterial;
 class ModuleMesh;
@@ -23,12 +21,19 @@ public:
 
 	void Update();
 	void CleanUp();
-	const char* GetName();
+
 	void SetName(const char* name);
 	void Enable();
 	void Disable();
+
+	void UpdateBoundingBoxes();
+	void UpdatedTransform();
+	void DeleteComponent(ModuleComponent::ComponentType type);
+
 	bool IsActive();
-	void DrawBB(bool drawBB);
+	bool HasComponentType(ModuleComponent::ComponentType type);
+
+	const char* GetName();
 	template<typename CTemplate>
 	const CTemplate* GetComponent() const
 	{
@@ -46,23 +51,22 @@ public:
 	ModuleComponent* AddComponent(ModuleComponent* component);
 	ModuleMesh* GetComponentMesh();
 	ModuleTransform* GetComponentTransform();
-	void DeleteComponent(ModuleComponent::ComponentType type);
+	
 	std::vector<ModuleComponent*> GetComponents()const;
-	bool HasComponentType(ModuleComponent::ComponentType type);
-	void UpdateBoundingBoxes();
-	void UpdatedTransform();
-
-
+	
 private:	
 	bool active;
 	std::string name;
 	std::vector<ModuleComponent*> components;
 
 public:
+
 	ModuleTransform* transform = nullptr;
 	ModuleMaterial* material = nullptr;
+
 	GameObject* parent;
 	std::vector<GameObject*> children;
+
 	OBB obb;
 	AABB aabb;
 };

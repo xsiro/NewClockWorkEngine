@@ -3,7 +3,6 @@
 #include <vector>
 #include "MathGeoLib/src/MathGeoLib.h"
 
-
 struct aiNode;
 struct aiScene;
 class ResourceMaterial;
@@ -81,9 +80,9 @@ namespace Importer
 		void LoadTransform(const aiNode* node, GameObject* newGameObject);
 		void LoadMeshes(const aiScene* scene, const aiNode* node, GameObject* newGameObject);
 		void LoadMaterial(const aiScene* scene, const aiNode* node, GameObject* newGameObject, const char* file);
-		uint64 Save();	//Store mesh info into custom format file
+		uint64 Save();
 
-		void Load(); //Load buffer from custom format file and store into mesh
+		void Load();
 
 	}
 }

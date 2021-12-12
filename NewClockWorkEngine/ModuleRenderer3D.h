@@ -8,14 +8,15 @@
 #include "SDL.h"
 #include <vector>
 
-
 struct Mesh;
 
 template <typename Box>
 struct RenderBox
 {
 	RenderBox(const Box* box, const Color& color) : box(box), color(color)
-	{}
+	{
+	
+	}
 
 	const Box* box;
 	Color color;
@@ -39,7 +40,6 @@ public:
 	void DrawVertexNormals(ResourceMesh* mesh, float4x4 transform);
 	void GenerateBuffers(ResourceMesh* newMesh);
 
-	
 	void CreateChekerTexture();
 
 	void SwitchCullFace();
@@ -54,8 +54,6 @@ public:
 
 	void DrawBox(float3* corners);
 
-
-
 public:
 
 	bool SetDepthtest;
@@ -64,14 +62,15 @@ public:
 	bool SetColormaterial;
 	bool SetTexture2D;
 	bool SetCubemap=false;
-	//bool SetPolygonssmooth;
 	bool wireframeMode;
 
 	uint checkersId;
 	Light lights[MAX_LIGHTS];
 	SDL_GLContext context;
+
 	mat3x3 NormalMatrix;
 	mat4x4 ModelMatrix, ViewMatrix, ProjectionMatrix;
+
 	std::vector<RenderBox<AABB>> aabb;
 	std::vector<RenderBox<OBB>> obb;
 };

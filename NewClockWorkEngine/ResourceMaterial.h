@@ -1,5 +1,6 @@
 #pragma once
 #include "Resource.h"
+
 class Resource;
 
 class ResourceMaterial : public Resource
@@ -23,7 +24,7 @@ private:
 	uint width = 0;
 	uint height = 0;
 
-	uint id = 0; //Open gl texture ID
+	uint id = 0; 
 
 	const char* path = nullptr;
 

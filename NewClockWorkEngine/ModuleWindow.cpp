@@ -8,12 +8,10 @@ ModuleWindow::ModuleWindow(bool start_enabled) : Module(start_enabled)
 	screen_surface = NULL;
 }
 
-// Destructor
 ModuleWindow::~ModuleWindow()
 {
 }
 
-// Called before render is available
 bool ModuleWindow::Init()
 {
 	LOG("Init SDL window & surface");
@@ -26,12 +24,10 @@ bool ModuleWindow::Init()
 	}
 	else
 	{
-		//Create window
 		int width = SCREEN_WIDTH * SCREEN_SIZE;
 		int height = SCREEN_HEIGHT * SCREEN_SIZE;
 		Uint32 flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
 
-		//Use OpenGL 2.1
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
@@ -64,7 +60,6 @@ bool ModuleWindow::Init()
 		}
 		else
 		{
-			//Get window surface
 			screen_surface = SDL_GetWindowSurface(window);
 			
 		}
@@ -73,19 +68,15 @@ bool ModuleWindow::Init()
 	return ret;
 }
 
-// Called before quitting
 bool ModuleWindow::CleanUp()
 {
 	LOG("Destroying SDL window and quitting all SDL systems");
 
-	
-	//Destroy window
 	if(window != NULL)
 	{
 		SDL_DestroyWindow(window);
 	}
 
-	//Quit SDL subsystems
 	SDL_Quit();
 	return true;
 }
@@ -122,14 +113,6 @@ void ModuleWindow::SetBorderless(bool state)
 	else if (state)
 		SDL_SetWindowBordered(window, SDL_FALSE);
 }
-
-//void ModuleWindow::SetResizable(bool state)
-//{
-//	if (state)
-//	SDL_SetWindowResizable(window, SDL_TRUE);
-//	else if (!state)
-//	SDL_SetWindowResizable(window, SDL_FALSE);
-//}
 
 void ModuleWindow::SetFullDesktop(bool state)
 {

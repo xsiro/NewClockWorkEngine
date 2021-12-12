@@ -16,15 +16,17 @@ public:
 
 	bool Start();
 	update_status Update(float dt) override;
-
-
 	bool CleanUp();
-	GameObject* CreateGameObject(char* name, char* meshPath = "", char* texturePath = "", bool isRoot = false);
+
 	void SetSelectedObject(GameObject* object);
 
+	bool drawBB = false;
+
+	GameObject* CreateGameObject(char* name, char* meshPath = "", char* texturePath = "", bool isRoot = false);
 	GameObject* rootObject;
 	GameObject* selected = nullptr;
+
 	std::vector<GameObject*> game_objects;
 
-	bool drawBB = false;
+	
 };

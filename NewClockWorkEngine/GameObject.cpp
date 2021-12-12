@@ -8,8 +8,6 @@
 #include "Application.h"
 #include "ResourceMesh.h"
 
-
-
 GameObject::GameObject(const char* name) : name(name)
 {
 	AddComponent(new ModuleTransform(this));
@@ -27,11 +25,7 @@ GameObject::~GameObject()
 
 void GameObject::Update() 
 {
-
-	//UpdateBoundingBoxes();
-
 	if (!components.empty())
-
 	{
 		std::vector<ModuleComponent*>::iterator item = components.begin();
 		for (; item != components.end(); ++item)
@@ -41,12 +35,10 @@ void GameObject::Update()
 	}
 }
 
-
-
 void GameObject::CleanUp()
 {
-
 	std::vector<ModuleComponent*>::iterator item = components.begin();
+
 	for (; item != components.end(); ++item)
 	{
 		(*item)->CleanUp();
@@ -55,41 +47,10 @@ void GameObject::CleanUp()
 
 	components.clear();
 	children.clear();
-
-
 }
-
-//
-//ModuleMesh* GameObject::GetComponentMesh()
-//{
-//	ModuleComponent* mesh = nullptr;
-//	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
-//	{
-//		if ((*i)->type == ComponentType::Mesh)
-//		{
-//			return (ModuleMesh*)*i;
-//		}
-//	}
-//	return (ModuleMesh*)mesh;
-//}
-
-//
-//ModuleTransform* GameObject::GetComponentTransform()
-//{
-//	ModuleComponent* transform = nullptr;
-//	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
-//	{
-//		if ((*i)->type == ComponentType::Transform)
-//		{
-//			return (ModuleTransform*)*i;
-//		}
-//	}
-//	return (ModuleTransform*)transform;
-//}
 
 ModuleComponent* GameObject::GetComponent(ModuleComponent::ComponentType component) 
 {
-
 	for (size_t i = 0; i < components.size(); i++)
 	{
 		if (components[i]->ReturnType() == component)
@@ -97,12 +58,10 @@ ModuleComponent* GameObject::GetComponent(ModuleComponent::ComponentType compone
 			return components[i];
 		}
 	}
-
 	return nullptr;
 }
 
 void GameObject::DeleteComponent(ModuleComponent::ComponentType type)
-
 {
 	std::vector<ModuleComponent*>::iterator item = components.begin();
 	for (; item != components.end(); ++item)
@@ -208,11 +167,7 @@ bool GameObject::IsActive()
 
 void GameObject::UpdatedTransform()
 {
-
 	transform->UpdatedTransform(parent->transform->GetGlobalTransform());
-	
-	
-	//call children's on updateTransforms
 
 	std::vector<GameObject*>::iterator child = children.begin();
 	for (; child != children.end(); ++child)
@@ -224,6 +179,7 @@ void GameObject::UpdatedTransform()
 ModuleMesh* GameObject::GetComponentMesh()
 {
 	ModuleComponent* mesh = nullptr;
+
 	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
 	{
 		if ((*i)->type == ModuleComponent::ComponentType::Mesh)
@@ -234,10 +190,10 @@ ModuleMesh* GameObject::GetComponentMesh()
 	return (ModuleMesh*)mesh;
 }
 
-
 ModuleTransform* GameObject::GetComponentTransform()
 {
 	ModuleComponent* transform = nullptr;
+
 	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
 	{
 		if ((*i)->type == ModuleComponent::ComponentType::Transform)

@@ -61,8 +61,6 @@ void ModuleMesh::DrawMesh()
 	if (!this->active)
 		return;
 
-	//LOG("Drawing %s mesh", owner->GetName());
-
 	if (owner->GetComponent<ModuleMaterial>() != nullptr)
 	{
 		if (owner->GetComponent<ModuleMaterial>()->IsEnabled())
@@ -76,11 +74,7 @@ void ModuleMesh::DrawMesh()
 		}
 	}
 
-
-
 	App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), nullptr, drawVertexNormals, owner);
-
-
 }
 
 char* ModuleMesh::GetPath()const

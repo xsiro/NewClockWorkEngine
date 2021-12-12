@@ -4,8 +4,6 @@
 
 class GameObject;
 
-
-
 class ModuleComponent
 {
 public:
@@ -23,10 +21,14 @@ public:
 	virtual void Update() = 0;
 	virtual void CleanUp() = 0;
 	virtual void DrawInspector() = 0;
+
 	void Disable();
 	void Enable();
+
 	bool IsActive();
+
 	inline ComponentType GetType() const { return type; };
+
 	ComponentType ReturnType();
 	GameObject* ReturnGameObject();
 
@@ -34,8 +36,7 @@ public:
 public:
 
 	bool active = true;
+
 	GameObject* owner = nullptr;
 	ComponentType type = ComponentType::None;
-
-
 };

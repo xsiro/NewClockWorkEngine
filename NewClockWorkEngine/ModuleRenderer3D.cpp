@@ -33,8 +33,8 @@
 
 #include <vector>
 
-#pragma comment (lib, "glu32.lib")    /* link OpenGL Utility lib     */
-#pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
+#pragma comment (lib, "glu32.lib")   
+#pragma comment (lib, "opengl32.lib") 
 #pragma comment (lib, "glew/libx86/glew32.lib")
 
 ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module(start_enabled), context()
@@ -48,17 +48,15 @@ ModuleRenderer3D::ModuleRenderer3D(bool start_enabled) : Module(start_enabled), 
 	checkersId = 0;
 }
 
-// Destructor
 ModuleRenderer3D::~ModuleRenderer3D()
-{}
+{
 
-// Called before render is available
+}
+
 bool ModuleRenderer3D::Init()
 {
 	LOG("(INIT) Creating 3D Renderer context");
 	bool ret = true;
-
-	//Create context
 	
 	context = SDL_GL_CreateContext(App->window->window);
 	if (context == NULL)
@@ -69,7 +67,7 @@ bool ModuleRenderer3D::Init()
 
 	if (ret == true)
 	{
-		//Init Glew
+
 		if (glewInit() != GLEW_OK) {
 			LOG("(ERROR) ERROR ON GLEWINIT");
 			ret = false;
@@ -77,15 +75,12 @@ bool ModuleRenderer3D::Init()
 		else
 			LOG("(INIT) Glew initialized succesfully!");
 
-		//Use Vsync
 		if (VSYNC && SDL_GL_SetSwapInterval(1) < 0)
 			LOG("Warning: Unable to set VSync! SDL Error: %s\n", SDL_GetError());
 
-		//Initialize Projection Matrix
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 
-		//Check for error
 		GLenum error = glGetError();
 		if (error != GL_NO_ERROR)
 		{
@@ -93,11 +88,9 @@ bool ModuleRenderer3D::Init()
 			ret = false;
 		}
 
-		//Initialize Modelview Matrix
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
-		//Check for error
 		error = glGetError();
 		if (error != GL_NO_ERROR)
 		{
@@ -108,10 +101,8 @@ bool ModuleRenderer3D::Init()
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 		glClearDepth(1.0f);
 
-		//Initialize clear color
 		glClearColor(0.f, 0.f, 0.f, 1.f);
 
-		//Check for error
 		error = glGetError();
 		if (error != GL_NO_ERROR)
 		{
@@ -137,7 +128,6 @@ bool ModuleRenderer3D::Init()
 		glEnable(GL_LINE);
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);
-		//glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_TEXTURE_2D);
 		lights[0].Active(true);
@@ -146,7 +136,6 @@ bool ModuleRenderer3D::Init()
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
-	// Projection matrix for
 	OnResize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	CreateChekerTexture();
@@ -155,7 +144,6 @@ bool ModuleRenderer3D::Init()
 	return ret;
 }
 
-// PreUpdate: clear buffer
 update_status ModuleRenderer3D::PreUpdate(float dt)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -174,22 +162,16 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 	return UPDATE_CONTINUE;
 }
 
-// PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {
-	//ImGui::ShowDemoWindow();
+	App->gui->Draw();
 
-	//BROFILER_CATEGORY("Draw imgui", Profiler::Color::AliceBlue)
-		App->gui->Draw();
-
-
-	//BROFILER_CATEGORY("SwapWindow", Profiler::Color::GoldenRod)
-		SDL_GL_SwapWindow(App->window->window);
+	SDL_GL_SwapWindow(App->window->window);
 
 	return UPDATE_CONTINUE;
 }
 
-// Called before quitting
+
 bool ModuleRenderer3D::CleanUp()
 {
 	LOG("Destroying 3D Renderer");
@@ -267,8 +249,6 @@ void ModuleRenderer3D::DrawMesh(ResourceMesh* mesh, float4x4 transform, Resource
 	{
 		DrawVertexNormals(mesh,transform);
 	}
-
-
 
 	if (App->scene_intro->drawBB)
 	{
@@ -395,17 +375,6 @@ void ModuleRenderer3D::SwitchColorMaterial()
 		glDisable(GL_COLOR_MATERIAL);
 }
 
-//void ModuleRenderer3D::CreateAABB(const AABB& box, const Color& color)
-//{
-//	aabb.push_back(RenderBox<AABB>(&box, color));
-//}
-//
-//void ModuleRenderer3D::CreateOBB(const OBB& box, const Color& color)
-//{
-//	obb.push_back(RenderBox<OBB>(&box, color));
-//}
-
-
 void ModuleRenderer3D::DrawScenePlane(int size)
 {
 	glLineWidth(1.0f);
@@ -423,8 +392,6 @@ void ModuleRenderer3D::DrawScenePlane(int size)
 void ModuleRenderer3D::DrawBox(float3* corners)
 {
 	glDisable(GL_LIGHTING);
-	//glColor4f(255, 255, 0, 255);
-	//mesh->aabb.GetCornerPoints(corners);
 
 	glBegin(GL_LINES);
 

@@ -10,15 +10,10 @@ public:
 
 	ModuleResourceM(bool start_enabled = true);
 
-	// Destructor
 	virtual ~ModuleResourceM();
 
 	bool Init();
 	bool CleanUp();
-
-
-
-public:
 
 };
 

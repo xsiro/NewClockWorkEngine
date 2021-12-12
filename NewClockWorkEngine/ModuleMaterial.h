@@ -14,16 +14,19 @@ public:
 	ModuleMaterial(GameObject* owner);
 	ModuleMaterial(GameObject* owner, const char* path, ResourceMaterial* mesh);;
 	~ModuleMaterial();
+
 	void Update() override;
 	void CleanUp() override;
 	void DrawInspector() override;
 
-
 	const char* GetPath()const;
+
 	ResourceMaterial* GetTexture() const;
+
 	bool IsEnabled() const;
 
 	static inline ComponentType GetType() { return ComponentType::Material; };
+	
 	void SwitchEnabledTexture();
 
 

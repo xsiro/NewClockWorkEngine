@@ -10,6 +10,7 @@ class ModuleComponent;
 class ModuleTransform : public ModuleComponent
 {
 public:
+
 	ModuleTransform(GameObject* owner);
 	~ModuleTransform();
 
@@ -32,13 +33,9 @@ public:
 	void UpdateTRS();
 	void UpdatedTransform(float4x4 parentGlobalTransform);
 	void RecalculateEuler();
-
 	void UpdateLocalTransform();
 
-	
-
 	float4x4 GetGlobalTransform()const;
-
 
 private:
 
@@ -50,9 +47,10 @@ private:
 	Quat rotation;
 
 	float3 eulerRotation;
-
 	float3 eulerRotationUi;
 	float3 positionUI;
+
 public:
+
 	bool updateTransform = false;
 };

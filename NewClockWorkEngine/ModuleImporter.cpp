@@ -28,11 +28,8 @@
 #pragma comment (lib, "Devil/libx86/ILUT.lib")
 #pragma comment (lib, "Assimp/libx86/assimp.lib")
 
-
-
 std::vector<ResourceMesh*> Importer::MeshImporter::Import(const char* file)
 {
-    
     Timer* timeImporting = new Timer();
 
     const aiScene* scene = aiImportFile(file, aiProcessPreset_TargetRealtime_MaxQuality);
@@ -157,7 +154,7 @@ void Importer::MeshImporter::LoadNodeMesh(const aiScene* scene, const aiNode* no
             }
         }
 
-        App->renderer3D->GenerateBuffers(newMesh); //Crashes
+        App->renderer3D->GenerateBuffers(newMesh); 
 
         meshes.push_back(newMesh);
     }
@@ -325,7 +322,7 @@ uint Importer::TextureImp::CreateTexture(const void* data, uint width, uint heig
     return id;
 }
 
-void Importer::SceneImporter::Import(const char* file) //Load buffer with .fbx scene
+void Importer::SceneImporter::Import(const char* file)
 {
     char* buffer;
     uint byteSize = App->filesystem->Load(file, &buffer);
@@ -335,7 +332,7 @@ void Importer::SceneImporter::Import(const char* file) //Load buffer with .fbx s
         const aiScene* scene = aiImportFileFromMemory(buffer, byteSize, aiProcessPreset_TargetRealtime_MaxQuality, nullptr);
         const aiNode* rootNode = scene->mRootNode;
 
-        ProcessAiNode(scene, rootNode, App->scene_intro->rootObject, file); //Process node tree
+        ProcessAiNode(scene, rootNode, App->scene_intro->rootObject, file);
 
         LOG("Finished importing: %s", file);
     }
@@ -345,7 +342,7 @@ void Importer::SceneImporter::Import(const char* file) //Load buffer with .fbx s
     }
 }
 
-void Importer::SceneImporter::ProcessAiNode(const aiScene* scene, const aiNode* node, GameObject* parentObject, const char* file) //Load meshes, materials, textures, transforms
+void Importer::SceneImporter::ProcessAiNode(const aiScene* scene, const aiNode* node, GameObject* parentObject, const char* file) 
 {
     GameObject* newGameObject;
 
@@ -398,12 +395,9 @@ void Importer::SceneImporter::ProcessAiNode(const aiScene* scene, const aiNode* 
 
     LoadMaterial(scene, node, newGameObject, file);
 
-    //Add object
     parentObject->children.push_back(newGameObject);
     App->scene_intro->game_objects.push_back(newGameObject);
 
-
-    //Iterate children
     for (int i = 0; i < node->mNumChildren; i++)
     {
         ProcessAiNode(scene, node->mChildren[i], newGameObject, file);

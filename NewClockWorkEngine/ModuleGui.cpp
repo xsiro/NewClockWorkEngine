@@ -27,8 +27,6 @@
 #include "glew.h"
 #include "SDL_opengl.h"
 
-
-
 ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 {
 	
@@ -50,15 +48,12 @@ ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 	AddWindow(config);
 }
 
-// Destructor
 ModuleGui::~ModuleGui()
 {
 	
 
 }
 
-
-// Called before the first frame
 bool ModuleGui::Start()
 {
 	bool ret = true;
@@ -70,9 +65,6 @@ bool ModuleGui::Start()
 
 	ImGui::StyleColorsDark();
 
-	//gl_context = SDL_GL_CreateContext(App->window->window);
-	//SDL_GL_MakeCurrent(App->window->window, gl_context);
-	
 	std::vector<Window*>::iterator item = winArray.begin();
 	for (item; item != winArray.end(); ++item)
 		(*item)->Init();
@@ -83,7 +75,6 @@ bool ModuleGui::Start()
 	return ret;
 }
 
-// Update all guis
 update_status ModuleGui::PreUpdate(float dt)
 {
 	ImGui_ImplOpenGL3_NewFrame();
@@ -92,8 +83,6 @@ update_status ModuleGui::PreUpdate(float dt)
 	Dock(dockingwindow);
 	return  UPDATE_CONTINUE;
 }
-
-// Called every frame
 
 void ModuleGui::Draw()
 {
@@ -215,16 +204,16 @@ void ModuleGui::Draw()
 
 		ImGui::EndMainMenuBar();
 	}
+
 	std::vector<Window*>::iterator item = winArray.begin();
 	for (item; item != winArray.end(); ++item)
 		(*item)->Draw();
+
 	ImGui::Render();
 
 	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
 	glClearColor(0, 0, 0, 0);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
 }
 
 bool ModuleGui::CleanUp()
@@ -300,8 +289,6 @@ update_status ModuleGui::Dock(bool* p_open)
 	return ret;
 }
 
-
-
 void ModuleGui::AddWindow(Window* window)
 {
 	winArray.push_back(window);
@@ -338,4 +325,3 @@ bool ModuleGui::GetWireframe()
 {
 	return inspector->wireframe;
 }
-

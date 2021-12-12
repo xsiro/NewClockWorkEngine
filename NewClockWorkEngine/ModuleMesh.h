@@ -6,10 +6,10 @@
 #include "ModuleImporter.h"
 #include "MathGeoLib/src/MathGeoLib.h"
 
-
 class GameObject;
 class ResourceMesh;
 class ModuleComponent;
+
 typedef unsigned int GLuint;
 typedef unsigned char GLubyte;
 
@@ -24,15 +24,18 @@ public:
 	void Update() override;
 	void CleanUp() override;
 	void DrawInspector() override;
+
 	ResourceMesh* GetMesh() const;
 
 	static inline ComponentType GetType() { return ComponentType::Mesh; };
 
 	void DrawMesh();
+
 	char* GetPath()const;
 
 	const AABB& GetAABB() const;
 	const OBB& GetOBB() const;
+
 private:
 
 	ResourceMesh* mesh = nullptr;

@@ -36,8 +36,7 @@ void ModuleTransform::Update()
 	{
 		LOG("UpdateTransform still true");
 	}
-	//transform.Decompose(position, rotation, scale);
-	//RecalculateEuler();
+	
 }
 
 void ModuleTransform::CleanUp()
@@ -60,10 +59,6 @@ void  ModuleTransform::DrawInspector()
 		if (ImGui::DragFloat3("Transform", (float*)&position)) { UpdateLocalTransform(); };
 		if (ImGui::DragFloat3("Scale", (float*)&scale)) { UpdateLocalTransform(); };
 		if (ImGui::DragFloat3("Rotation", (float*)&eulerRotationUi)) { SetEulerRotation(eulerRotationUi); };
-		//if (ImGui::InputFloat3("Transform", (float*)&position, "%.2f", flags)) { RecalculateMatrix(); };
-		//if (ImGui::InputFloat3("Scale", (float*)&scale, "%.2f", flags)) { RecalculateMatrix(); };
-		//if (ImGui::InputFloat3("Rotation", (float*)&eulerRotationUi, "%.2f")) { SetEulerRotation(eulerRotationUi); }
-	
 	}
 	
 }

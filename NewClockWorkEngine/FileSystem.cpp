@@ -14,49 +14,37 @@
 
 FileSystem::FileSystem(bool start_enabled) //: Module("FileSystem", true)
 {
-	// needs to be created before Init so other modules can use it
 	char* base_path = SDL_GetBasePath();
 	PHYSFS_init(nullptr);
 	SDL_free(base_path);
 
-	//Setting the working directory as the writing directory
+	
 	if (PHYSFS_setWriteDir(".") == 0)
 		LOG("File System error while creating write dir: %s\n", PHYSFS_getLastError());
 
-	AddPath("."); //Adding ProjectFolder (working directory)
+	AddPath(".");
 	AddPath("Assets");
 	CreateLibraryDirectories();
 }
 
-// Destructor
+
 FileSystem::~FileSystem()
 {
 	PHYSFS_deinit();
 }
 
-// Called before render is available
-bool FileSystem::Init() //Config& config
+
+bool FileSystem::Init() 
 {
 	LOG("Loading File System");
 	bool ret = true;
 
-	// Ask SDL for a write dir
-	//char* write_path = SDL_GetPrefPath(Engine->GetOrganizationName(), Engine->GetTitleName());
-
-	// Trun this on while in game mode
-	//if(PHYSFS_setWriteDir(write_path) == 0)
-	//	LOG("File System error while creating write dir: %s\n", PHYSFS_getLastError());
-
-	//SDL_free(write_path);
-
 	return ret;
 }
 
-// Called before quitting
+
 bool FileSystem::CleanUp()
 {
-	//LOG("Freeing File System subsystem");
-
 	return true;
 }
 
@@ -70,7 +58,6 @@ void FileSystem::CreateLibraryDirectories()
 	CreateDir(SCENES_PATH);
 }
 
-// Add a new zip file or folder
 bool FileSystem::AddPath(const char* path_or_zip)
 {
 	bool ret = false;
@@ -85,7 +72,6 @@ bool FileSystem::AddPath(const char* path_or_zip)
 	return ret;
 }
 
-// Check if a file exists
 bool FileSystem::Exists(const char* file) const
 {
 	return PHYSFS_exists(file) != 0;
@@ -101,7 +87,6 @@ bool FileSystem::CreateDir(const char* dir)
 	return false;
 }
 
-// Check if a file is a directory
 bool FileSystem::IsDirectory(const char* file) const
 {
 	return PHYSFS_isDirectory(file) != 0;
@@ -109,7 +94,6 @@ bool FileSystem::IsDirectory(const char* file) const
 
 const char* FileSystem::GetWriteDir() const
 {
-	//TODO: erase first annoying dot (".")
 	return PHYSFS_getWriteDir();
 }
 
@@ -159,17 +143,15 @@ PathNode FileSystem::GetAllFiles(const char* directory, std::vector<std::string>
 		std::vector<std::string> file_list, dir_list;
 		DiscoverFiles(directory, file_list, dir_list);
 
-		//Adding all child directories
 		for (uint i = 0; i < dir_list.size(); i++)
 		{
 			std::string str = directory;
 			str.append("/").append(dir_list[i]);
 			root.children.push_back(GetAllFiles(str.c_str(), filter_ext, ignore_ext));
 		}
-		//Adding all child files
+
 		for (uint i = 0; i < file_list.size(); i++)
 		{
-			//Filtering extensions
 			bool filter = true, discard = false;
 			if (filter_ext != nullptr)
 			{
@@ -285,50 +267,6 @@ void FileSystem::SplitFilePath(const char* full_path, std::string* path, std::st
 	}
 }
 
-unsigned int FileSystem::Load(const char* path, const char* file, char** buffer) const
-{
-	std::string full_path(path);
-	full_path += file;
-	return Load(full_path.c_str(), buffer);
-}
-
-// Read a whole file and put it in a new buffer
-uint FileSystem::Load(const char* file, char** buffer) const
-{
-	uint ret = 0;
-
-	PHYSFS_file* fs_file = PHYSFS_openRead(file);
-
-	if (fs_file != nullptr)
-	{
-		PHYSFS_sint32 size = (PHYSFS_sint32)PHYSFS_fileLength(fs_file);
-
-		if (size > 0)
-		{
-			*buffer = new char[size + 1];
-			uint readed = (uint)PHYSFS_read(fs_file, *buffer, 1, size);
-			if (readed != size)
-			{
-				LOG("File System error while reading from file %s: %s\n", file, PHYSFS_getLastError());
-				//RELEASE_ARRAY(buffer);
-			}
-			else
-			{
-				ret = readed;
-				//Adding end of file at the end of the buffer. Loading a shader file does not add this for some reason
-				(*buffer)[size] = '\0';
-			}
-		}
-
-		if (PHYSFS_close(fs_file) == 0)
-			LOG("File System error while closing file %s: %s\n", file, PHYSFS_getLastError());
-	}
-	else
-		LOG("File System error while opening file %s: %s\n", file, PHYSFS_getLastError());
-
-	return ret;
-}
-
 bool FileSystem::DuplicateFile(const char* file, const char* dstFolder, std::string& relativePath)
 {
 	std::string fileStr, extensionStr;
@@ -343,7 +281,7 @@ bool FileSystem::DuplicateFile(const char* file, const char* dstFolder, std::str
 
 bool FileSystem::DuplicateFile(const char* srcFile, const char* dstFile)
 {
-	//TODO: Compare performance to calling Load(srcFile) and then Save(dstFile)
+	
 	std::ifstream src;
 	src.open(srcFile, std::ios::binary);
 	bool srcOpen = src.is_open();
@@ -369,12 +307,74 @@ bool FileSystem::DuplicateFile(const char* srcFile, const char* dstFile)
 
 int close_sdl_rwops(SDL_RWops* rw)
 {
-	//RELEASE_ARRAY(rw->hidden.mem.base);
 	SDL_FreeRW(rw);
 	return 0;
 }
 
-// Save a whole buffer to disk
+bool FileSystem::Remove(const char* file)
+{
+	bool ret = false;
+
+	if (file != nullptr)
+	{
+		if (IsDirectory(file))
+		{
+			std::vector<std::string> containedFiles, containedDirs;
+			PathNode rootDirectory = GetAllFiles(file);
+
+			for (uint i = 0; i < rootDirectory.children.size(); ++i)
+				Remove(rootDirectory.children[i].path.c_str());
+		}
+
+		if (PHYSFS_delete(file) != 0)
+		{
+			LOG("File deleted: [%s]", file);
+			ret = true;
+		}
+		else
+			LOG("File System error while trying to delete [%s]: %s", file, PHYSFS_getLastError());
+	}
+
+	return ret;
+}
+
+uint64 FileSystem::GetLastModTime(const char* filename)
+{
+	return PHYSFS_getLastModTime(filename);
+}
+
+std::string FileSystem::GetUniqueName(const char* path, const char* name) const
+{
+	std::vector<std::string> files, dirs;
+	DiscoverFiles(path, files, dirs);
+
+	std::string finalName(name);
+	bool unique = false;
+
+	for (uint i = 0; i < 50 && unique == false; ++i)
+	{
+		unique = true;
+
+		if (i > 0)
+		{
+			finalName = std::string(name).append("_");
+			if (i < 10)
+				finalName.append("0");
+			finalName.append(std::to_string(i));
+		}
+
+		for (uint f = 0; f < files.size(); ++f)
+		{
+			if (finalName == files[f])
+			{
+				unique = false;
+				break;
+			}
+		}
+	}
+	return finalName;
+}
+
 uint FileSystem::Save(const char* file, const void* buffer, unsigned int size, bool append) const
 {
 	unsigned int ret = 0;
@@ -416,70 +416,43 @@ uint FileSystem::Save(const char* file, const void* buffer, unsigned int size, b
 	return ret;
 }
 
-bool FileSystem::Remove(const char* file)
+unsigned int FileSystem::Load(const char* path, const char* file, char** buffer) const
 {
-	bool ret = false;
-
-	if (file != nullptr)
-	{
-		//If it is a directory, we need to recursively remove all the files inside
-		if (IsDirectory(file))
-		{
-			std::vector<std::string> containedFiles, containedDirs;
-			PathNode rootDirectory = GetAllFiles(file);
-
-			for (uint i = 0; i < rootDirectory.children.size(); ++i)
-				Remove(rootDirectory.children[i].path.c_str());
-		}
-
-		if (PHYSFS_delete(file) != 0)
-		{
-			LOG("File deleted: [%s]", file);
-			ret = true;
-		}
-		else
-			LOG("File System error while trying to delete [%s]: %s", file, PHYSFS_getLastError());
-	}
-
-	return ret;
+	std::string full_path(path);
+	full_path += file;
+	return Load(full_path.c_str(), buffer);
 }
 
-uint64 FileSystem::GetLastModTime(const char* filename)
+uint FileSystem::Load(const char* file, char** buffer) const
 {
-	return PHYSFS_getLastModTime(filename);
-}
+	uint ret = 0;
 
-std::string FileSystem::GetUniqueName(const char* path, const char* name) const
-{
-	//TODO: modify to distinguix files and dirs?
-	std::vector<std::string> files, dirs;
-	DiscoverFiles(path, files, dirs);
+	PHYSFS_file* fs_file = PHYSFS_openRead(file);
 
-	std::string finalName(name);
-	bool unique = false;
-
-	for (uint i = 0; i < 50 && unique == false; ++i)
+	if (fs_file != nullptr)
 	{
-		unique = true;
+		PHYSFS_sint32 size = (PHYSFS_sint32)PHYSFS_fileLength(fs_file);
 
-		//Build the compare name (name_i)
-		if (i > 0)
+		if (size > 0)
 		{
-			finalName = std::string(name).append("_");
-			if (i < 10)
-				finalName.append("0");
-			finalName.append(std::to_string(i));
-		}
-
-		//Iterate through all the files to find a matching name
-		for (uint f = 0; f < files.size(); ++f)
-		{
-			if (finalName == files[f])
+			*buffer = new char[size + 1];
+			uint readed = (uint)PHYSFS_read(fs_file, *buffer, 1, size);
+			if (readed != size)
 			{
-				unique = false;
-				break;
+				LOG("File System error while reading from file %s: %s\n", file, PHYSFS_getLastError());
+			}
+			else
+			{
+				ret = readed;
+				(*buffer)[size] = '\0';
 			}
 		}
+
+		if (PHYSFS_close(fs_file) == 0)
+			LOG("File System error while closing file %s: %s\n", file, PHYSFS_getLastError());
 	}
-	return finalName;
+	else
+		LOG("File System error while opening file %s: %s\n", file, PHYSFS_getLastError());
+
+	return ret;
 }

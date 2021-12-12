@@ -36,7 +36,6 @@ bool ModuleSceneIntro::Start()
 	return ret;
 }
 
-// Load assets
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
@@ -53,17 +52,11 @@ bool ModuleSceneIntro::CleanUp()
 	return true;
 }
 
-// Update: draw background
 update_status ModuleSceneIntro::Update(float dt)
 {
-	/*Planes p(vec3(0, 1, 0));
-	p.axis = true;
-	p.Render();*/
-
 	App->renderer3D->DrawScenePlane(200);
-
-
 	rootObject->Update();
+
 	std::vector<GameObject*>::iterator item = game_objects.begin();
 	for (; item != game_objects.end(); ++item)
 	{
@@ -132,5 +125,3 @@ void ModuleSceneIntro::SetSelectedObject(GameObject* object)
 		LOG("Object selected: %s", selected->GetName());
 	}
 }
-
-
