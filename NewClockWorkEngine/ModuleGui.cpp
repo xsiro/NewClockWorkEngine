@@ -153,45 +153,21 @@ void ModuleGui::Draw()
 		{
 			if (ImGui::BeginMenu("Create GameObject"))
 			{
-				if (ImGui::MenuItem("Cube")) {
-					pyramid = false;
-					cylinder = false;
-					sphere = false;
-					cube = !cube;
-					if (cube)
-					{
-						LOG("Cube primitive created");
-					}
+				if (ImGui::MenuItem("Cube", " ", console->active)) 
+				{ 
+					App->scene_intro->CreateGameObject("Cube Primitive", "Assets/Primitives/Cube.FBX", "");
 				}
-				if (ImGui::MenuItem("Pyramid")) {
-					cube = false;
-					cylinder = false;
-					sphere = false;
-					pyramid = !pyramid;
-					if (pyramid)
-					{
-						LOG("Pyramid primitive created")
-					}
+				if (ImGui::MenuItem("Cylinder", " ", console->active))
+				{
+					App->scene_intro->CreateGameObject("Cylinder Primitive", "Assets/Primitives/Cylinder.FBX", ""); 
 				}
-				if (ImGui::MenuItem("Cylinder")) {
-					pyramid = false;
-					cube = false;
-					sphere = false;
-					cylinder = !cylinder;
-					if (cylinder)
-					{
-						LOG("Cylinder primitive created")
-					}
+				if (ImGui::MenuItem("Sphere", " ", console->active)) 
+				{ 
+					App->scene_intro->CreateGameObject("Sphere Primitive", "Assets/Primitives/Sphere.FBX", "");
 				}
-				if (ImGui::MenuItem("Sphere")) {
-					pyramid = false;
-					cylinder = false;
-					cube = false;
-					sphere = !sphere;
-					if (sphere)
-					{
-						LOG("Sphere primitive created")
-					}
+				if (ImGui::MenuItem("Plane", " ", console->active))
+				{ 
+					App->scene_intro->CreateGameObject("Plane Primitive", "Assets/Primitives/Plane.FBX", ""); 
 				}
 				ImGui::EndMenu();
 			}
