@@ -23,16 +23,22 @@ void Win_Console::Draw()
 {
 	if (!active)
 		return;
-	if (ImGui::Begin("Console", &active))
+	if (!ImGui::Begin("Console", &active))
 	{
-			for (uint i = 0; i < logs.size(); ++i)
-			{
-				ImGui::TextUnformatted(logs[i]);
-			}
-			if (ImGui::IsWindowHovered())
-				App->gui->mouseHovered = true;
 			ImGui::End();
+			return;
 	}
+	if (ImGui::Button("Delete"))
+	{
+		CleanUp();
+	}
+	for (uint i = 0; i < logs.size(); ++i)
+	{
+		ImGui::TextUnformatted(logs[i]);
+	}
+	if (ImGui::IsWindowHovered())
+		App->gui->mouseHovered = true;
+	ImGui::End();
 }
 
 void Win_Console::CleanUp()
