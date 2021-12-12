@@ -7,11 +7,9 @@
 struct PathNode
 {
 	PathNode() : path("") {};
-	//Path in reference to the first PathNode
+	
 	std::string path;
-	//Folder / file itself
 	std::string localPath;
-
 	std::vector<PathNode> children;
 
 	bool isLeaf = true;

@@ -255,7 +255,7 @@ void Importer::MeshImporter::Load(const char* fileBuffer, ResourceMesh* mesh)
 void Importer::TextureImp::InitDevil()
 {
     LOG("Initializing Devil")
-        ilInit();
+    ilInit();
     iluInit();
     ilutInit();
     ilutRenderer(ILUT_OPENGL);
@@ -450,7 +450,7 @@ void Importer::SceneImporter::LoadMaterial(const aiScene* scene, const aiNode* n
                 App->filesystem->SplitFilePath(path.C_Str(), nullptr, &fileName, &extension);
 
                 fileName += "." + extension;
-                fileName = "Assets" + fileName;
+                fileName = "Assets/Textures" + fileName;
 
                 LOG("Adding texture to %s", newGameObject->GetName());
 

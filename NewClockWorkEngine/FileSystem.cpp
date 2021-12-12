@@ -4,6 +4,7 @@
 #include "Path.h"
 
 #include "PhysFS/include/physfs.h"
+#include <direct.h>
 #include <fstream>
 #include <filesystem>
 
@@ -14,15 +15,16 @@
 
 FileSystem::FileSystem(bool start_enabled) //: Module("FileSystem", true)
 {
-	char* base_path = SDL_GetBasePath();
+	char base_path[200];
+	_getcwd(base_path, sizeof(base_path));
+
 	PHYSFS_init(nullptr);
 	SDL_free(base_path);
 
-	
-	if (PHYSFS_setWriteDir(".") == 0)
+	if (PHYSFS_setWriteDir(base_path) == 0)
 		LOG("File System error while creating write dir: %s\n", PHYSFS_getLastError());
 
-	AddPath(".");
+	AddPath(base_path);
 	AddPath("Assets");
 	CreateLibraryDirectories();
 }

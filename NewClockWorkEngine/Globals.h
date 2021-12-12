@@ -41,12 +41,12 @@ enum update_status
 #define ORGANIZATION "UPC"
 
 
-#define LIBRARY_PATH ""
-#define FOLDERS_PATH ""
-#define MESHES_PATH ""
-#define MATERIALS_PATH ""
-#define TEXTURES_PATH ""
-#define SCENES_PATH ""
+#define LIBRARY_PATH "Files/"
+#define FOLDERS_PATH "Files/"
+#define MESHES_PATH "Files/"
+#define MATERIALS_PATH "Files/"
+#define TEXTURES_PATH "Files/"
+#define SCENES_PATH "Files/"
 
 
 

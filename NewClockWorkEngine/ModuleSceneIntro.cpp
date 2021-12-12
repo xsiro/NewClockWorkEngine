@@ -31,7 +31,7 @@ bool ModuleSceneIntro::Start()
 
 	rootObject = CreateGameObject("rootObject", "", "", true);
 
-	CreateGameObject("BakerHouse", "Assets/BakerHouse.fbx", "Assets/Baker_house.png");
+	//CreateGameObject("BakerHouse", "Assets/BakerHouse.fbx", "Assets/Baker_house.png");
 	Importer::SceneImporter::Import("Assets/street/Street environment_V01.FBX");
 	return ret;
 }
@@ -55,7 +55,7 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update(float dt)
 {
 	App->renderer3D->DrawScenePlane(200);
-	rootObject->Update();
+	//rootObject->Update();
 
 	std::vector<GameObject*>::iterator item = game_objects.begin();
 	for (; item != game_objects.end(); ++item)

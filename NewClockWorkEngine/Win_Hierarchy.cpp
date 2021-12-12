@@ -31,6 +31,10 @@ void Win_Hierarchy::Draw()
 		return;
 	}
 
+	if (ImGui::Button("Delete"))
+	{
+		App->scene_intro->selected->CleanUp();
+	}
 
 	ImGuiTreeNodeFlags base_flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_SpanAvailWidth;
 
