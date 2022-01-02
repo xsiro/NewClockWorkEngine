@@ -17,6 +17,7 @@ class Win_About;
 class Win_Console;
 class Win_Configuration;
 class Win_Hierarchy;
+class Win_Play;
 
 class ModuleGui : public Module
 {
@@ -74,6 +75,7 @@ public:
 	Win_Console* console = nullptr;
 	Win_Hierarchy* hierarchy = nullptr;
 	Win_Configuration* config = nullptr;
+	Win_Play* play = nullptr;
 
 private:
 

@@ -68,7 +68,8 @@
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Glew\include;$(ProjectDir)SDL\include;$(ProjectDir)ImGuizmo;$(ProjectDir)ImGui\include;$(ProjectDir)MathGeoLib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WINDOWS_IGNORE_PACKING_MISMATCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -207,6 +208,7 @@
     <ClInclude Include="Win_Configuration.h" />
     <ClInclude Include="Win_Console.h" />
     <ClInclude Include="Win_Inspector.h" />
+    <ClInclude Include="Win_Play.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -293,6 +295,7 @@
     <ClCompile Include="Win_Configuration.cpp" />
     <ClCompile Include="Win_Console.cpp" />
     <ClCompile Include="Win_Inspector.cpp" />
+    <ClCompile Include="Win_Play.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MathGeoLib\src\Geometry\KDTree.inl" />

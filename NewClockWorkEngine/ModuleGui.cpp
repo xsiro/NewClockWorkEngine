@@ -18,6 +18,7 @@
 #include "Win_Hierarchy.h"
 #include "Win_Console.h"
 #include "Win_About.h"
+#include "Win_Play.h"
 
 #include "OpenGL.h"
 #include <stdio.h>
@@ -41,12 +42,14 @@ ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 	hierarchy = new Win_Hierarchy(true);
 	inspector = new Win_Inspector(true);
 	config = new Win_Configuration(true);
+	play = new Win_Play(true);
 
 	AddWindow(console);
 	AddWindow(inspector);
 	AddWindow(about);
 	AddWindow(hierarchy);
 	AddWindow(config);
+	AddWindow(play);
 }
 
 ModuleGui::~ModuleGui()

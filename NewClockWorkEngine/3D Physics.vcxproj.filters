@@ -453,6 +453,9 @@
     <ClInclude Include="parson\parson.h">
       <Filter>Dependencies\Parson</Filter>
     </ClInclude>
+    <ClInclude Include="Win_Play.h">
+      <Filter>Sources\Modules\Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -706,6 +709,9 @@
     </ClCompile>
     <ClCompile Include="MathGeoLib\src\Math\float3x4.cpp">
       <Filter>Dependencies\MathGeoLib\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Win_Play.cpp">
+      <Filter>Sources\Modules\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

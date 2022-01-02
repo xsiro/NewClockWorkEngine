@@ -83,17 +83,12 @@ bool Application::Init()
 // ---------------------------------------------
 void Application::PrepareUpdate()
 {
-	frame_count++;
-	last_sec_frame_count++;
+
+	playTime += play ? (float)frame_time.Read() / 1000.0f : 0;
 
 	dt = (float)frame_time.Read() / 1000.0f;
 	frame_time.Start();
 
-	if (!GameMode || GamePaused)
-		Game_dt = 0.0f;
-	else
-		Game_dt = dt;
-	Game_dt *= GameSpeed;
 }
 
 // ---------------------------------------------
@@ -125,7 +120,7 @@ update_status Application::Update()
 
 	std::vector<Module*>::iterator item = list_modules.begin();
 
-	//BROFILER_CATEGORY("Engine PreUpdate", Profiler::Color::Yellow)
+
 	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
 	{
 		ret = (*item)->PreUpdate(dt);
@@ -133,7 +128,6 @@ update_status Application::Update()
 
 	item = list_modules.begin();
 
-	//BROFILER_CATEGORY("Engine Update", Profiler::Color::Green)
 	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
 	{
 		ret = (*item)->Update(dt);
@@ -141,13 +135,11 @@ update_status Application::Update()
 
 	item = list_modules.begin();
 
-	//BROFILER_CATEGORY("Engine PostUpdate", Profiler::Color::Purple)
 	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
 	{
 		ret = (*item)->PostUpdate(dt);
 	}
 
-	//BROFILER_CATEGORY("Sleep", Profiler::Color::Blue)
 	FinishUpdate();
 
 	if (closewindow)
@@ -193,38 +185,7 @@ void Application::ToSave()
 	toSave = true;
 }
 
-void Application::PlayGame()
-{
-	if (!GameMode)
-	{
-		GameMode = true;
-	}
-}
 
-void Application::PauseGame()
-{
-	if (GameMode)
-	{
-		GamePaused = true;
-	}
-}
-
-void Application::ResumeGame()
-{
-	if (GameMode && GamePaused)
-	{
-		GamePaused = false;
-	}
-}
-
-void Application::StopPlay()
-{
-	if (GameMode)
-	{
-		GameMode = false;
-		GamePaused = false;
-	}
-}
 int Application::CPUCount()
 {
 	return SDL_GetCPUCount();
@@ -358,6 +319,24 @@ void Application::SetFRLimit(uint max_framerate)
 void Application::ExitApp()
 {
 	closewindow = true;
+}
+
+void Application::Play()
+{
+	play = true;
+	paused = false;
+}
+
+void Application::Pause()
+{
+	paused = true;
+}
+
+void Application::Stop()
+{
+	play = false;
+	paused = false;
+	playTime = 0;
 }
 
 Application* App = nullptr;
