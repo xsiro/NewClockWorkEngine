@@ -84,7 +84,8 @@ bool Application::Init()
 void Application::PrepareUpdate()
 {
 
-	playTime += play ? (float)frame_time.Read() / 1000.0f : 0;
+	playTime += play ? paused ? 0 : (float)frame_time.Read() / 1000.0f : 0;
+	playDt = play ? paused ? 0 : ((float)frame_time.Read() / 1000.0f) * timeMultiplier : 0;
 
 	dt = (float)frame_time.Read() / 1000.0f;
 	frame_time.Start();
@@ -325,6 +326,10 @@ void Application::Play()
 {
 	play = true;
 	paused = false;
+	/*for (auto item = list_modules.begin(); item != list_modules.end(); ++item)
+	{
+		(*item)->OnPlay();
+	}*/
 }
 
 void Application::Pause()

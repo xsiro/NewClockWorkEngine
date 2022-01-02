@@ -76,6 +76,11 @@ public:
 	inline float GetPlayTime()const { return playTime; };
 	inline float GetTimeMultiplier()const { return timeMultiplier; };
 
+	inline bool IsInPlayMode()const { return play; };
+
+	inline float GetDt()const { return dt; }
+	inline float GetPlayDt()const { return playDt; };
+
 private:
 
 
@@ -90,11 +95,14 @@ public:
 	int	last_ms;
 	int	last_fps;
 	float max_ms;
-	float dt;
 	Uint32 frames;
 	bool closewindow;
 	bool debug;
 	bool toSave;
+	float	playDt = 0;	//This dt effects objects in Play mode
+	float	dt = 0;		//independent App dt
+	float	frameCap = 0;
+	int		frameCount = 0;
 
 private:
 	bool play = false;

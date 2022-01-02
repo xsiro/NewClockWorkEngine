@@ -31,6 +31,8 @@ bool ModuleSceneIntro::Start()
 	App->camera->SetPosition(float3(0, 5, -5));
 
 	Importer::SceneImporter::Import("Assets/street/Street environment_V01.FBX");
+	Importer::SceneImporter::Import("Assets/Skull.obj");
+	
 	return ret;
 }
 
