@@ -456,6 +456,12 @@
     <ClInclude Include="Win_Play.h">
       <Filter>Sources\Modules\Window</Filter>
     </ClInclude>
+    <ClInclude Include="AudioListener.h">
+      <Filter>Sources\Modules\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSource.h">
+      <Filter>Sources\Modules\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -712,6 +718,12 @@
     </ClCompile>
     <ClCompile Include="Win_Play.cpp">
       <Filter>Sources\Modules\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioListener.cpp">
+      <Filter>Sources\Modules\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSource.cpp">
+      <Filter>Sources\Modules\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

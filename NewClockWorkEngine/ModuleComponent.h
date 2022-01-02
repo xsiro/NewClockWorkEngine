@@ -12,6 +12,8 @@ public:
 	Transform,
 	Material,
 	Camera,
+	Audio_source,
+	Audio_listener,
 	None
 	};
 	ModuleComponent(ComponentType type);
@@ -37,7 +39,8 @@ public:
 public:
 
 	bool active = true;
-
+	unsigned int ID;
+	bool toDelete;
 	GameObject* owner = nullptr;
 	ComponentType type = ComponentType::None;
 };

@@ -5,6 +5,8 @@
 #include "ModuleMesh.h"
 #include "ModuleMaterial.h"
 #include "ModuleCamera.h"
+#include "AudioListener.h"
+#include "AudioSource.h"
 #include "imgui.h"
 #include "Application.h"
 #include "ResourceMesh.h"
@@ -139,7 +141,34 @@ ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
 			component = GetComponent<ModuleCamera>();
 		}
 		break;
+
+	case ModuleComponent::ComponentType::Audio_listener:
+
+		if (!HasComponentType(ModuleComponent::ComponentType::Audio_listener))
+		{
+			components.push_back(component);
+		}
+		else
+		{
+			DeleteComponent(ModuleComponent::ComponentType::Audio_listener);
+			components.push_back(component);
+		}
+		break;
+
+	case ModuleComponent::ComponentType::Audio_source:
+
+		if (!HasComponentType(ModuleComponent::ComponentType::Audio_source))
+		{
+			components.push_back(component);
+		}
+		else
+		{
+			DeleteComponent(ModuleComponent::ComponentType::Audio_source);
+			components.push_back(component);
+		}
+		break;
 	}
+
 
 	return component;
 }

@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="AudioListener.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="FileSystem.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="MathGeoLib\src\Math\TransformOps.h" />
     <ClInclude Include="MathGeoLib\src\Math\vec2d.h" />
     <ClInclude Include="MathGeoLib\src\Time\Clock.h" />
+    <ClInclude Include="AudioSource.h" />
     <ClInclude Include="ModuleCamera.h" />
     <ClInclude Include="ModuleResourceM.h" />
     <ClInclude Include="parson\parson.h" />
@@ -212,6 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="AudioListener.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="FileSystem.cpp" />
@@ -270,6 +273,7 @@
     <ClCompile Include="MathGeoLib\src\Math\SSEMath.cpp" />
     <ClCompile Include="MathGeoLib\src\Math\TransformOps.cpp" />
     <ClCompile Include="MathGeoLib\src\Time\Clock.cpp" />
+    <ClCompile Include="AudioSource.cpp" />
     <ClCompile Include="ModuleCamera.cpp" />
     <ClCompile Include="ModuleCamera3D.cpp" />
     <ClCompile Include="ModuleComponent.cpp" />
