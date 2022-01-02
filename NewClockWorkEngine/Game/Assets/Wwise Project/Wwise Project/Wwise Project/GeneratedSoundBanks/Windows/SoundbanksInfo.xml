@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="134">
+	<RootPaths>
+		<ProjectRoot>C:\Users\PCCom\Documents\GitHub\VeryRealEngine\Wwise Project\Wwise Project\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\PCCom\Documents\GitHub\VeryRealEngine\Wwise Project\Wwise Project\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\PCCom\Documents\GitHub\VeryRealEngine\Wwise Project\Wwise Project\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\PCCom\Documents\GitHub\VeryRealEngine\Wwise Project\Wwise Project\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="1408270550" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\MyMusicBank</ObjectPath>
+			<ShortName>MyMusicBank</ShortName>
+			<Path>MyMusicBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3072587112" Name="First30" ObjectPath="\Events\Default Work Unit\First30"/>
+				<Event Id="4288538553" Name="Fish_Dynamic" ObjectPath="\Events\Default Work Unit\Fish_Dynamic"/>
+				<Event Id="136683592" Name="Penguin_Static" ObjectPath="\Events\Default Work Unit\Penguin_Static"/>
+				<Event Id="1360140010" Name="Persona_Reverb" ObjectPath="\Events\Default Work Unit\Persona_Reverb"/>
+				<Event Id="1541101740" Name="Second30" ObjectPath="\Events\Default Work Unit\Second30"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="8072839" Language="SFX">
+					<ShortName>Thomas_Song.wav</ShortName>
+					<Path>SFX\Thomas_Song_10C4C929.wem</Path>
+				</File>
+				<File Id="72865198" Language="SFX">
+					<ShortName>Tiburon tema de sonido.wav</ShortName>
+					<Path>SFX\Tiburon tema de sonido_10C4C929.wem</Path>
+				</File>
+				<File Id="196623566" Language="SFX">
+					<ShortName>Penguin.wav</ShortName>
+					<Path>SFX\Penguin_10C4C929.wem</Path>
+				</File>
+				<File Id="301909818" Language="SFX">
+					<ShortName>Doom_Music.wav</ShortName>
+					<Path>SFX\Doom_Music_10C4C929.wem</Path>
+				</File>
+				<File Id="811359318" Language="SFX">
+					<ShortName>Persona 5 .wav</ShortName>
+					<Path>SFX\Persona 5 _10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

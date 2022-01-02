@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{34031BC9-B108-466E-8ECB-64B79300784F}" SchemaVersion="94">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{34031BC9-B108-466E-8ECB-64B79300784F}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="MyMusicBank" ID="{37E42406-8186-4C14-9EB1-07CBBF7565C0}">
+					<ObjectInclusionList>
+						<ObjectRef Name="First30" ID="{CE19546D-BFF7-467F-84BA-145233F18DA3}" WorkUnitID="{BB2AF831-CF08-41A8-941C-E1134A593FDA}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Fish_Dynamic" ID="{C755B386-D3B7-4744-BAF9-7D9679CDFC93}" WorkUnitID="{BB2AF831-CF08-41A8-941C-E1134A593FDA}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Penguin_Static" ID="{61434076-7717-480C-9994-97B9BDCF7DC8}" WorkUnitID="{BB2AF831-CF08-41A8-941C-E1134A593FDA}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Second30" ID="{4D83284B-E6EE-4B77-BADD-A8964AEBE4F3}" WorkUnitID="{BB2AF831-CF08-41A8-941C-E1134A593FDA}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

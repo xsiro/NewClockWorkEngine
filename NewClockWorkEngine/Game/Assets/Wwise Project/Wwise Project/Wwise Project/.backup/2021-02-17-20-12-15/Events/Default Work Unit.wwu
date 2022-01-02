@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{BB2AF831-CF08-41A8-941C-E1134A593FDA}" SchemaVersion="94">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{BB2AF831-CF08-41A8-941C-E1134A593FDA}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="First30" ID="{CE19546D-BFF7-467F-84BA-145233F18DA3}">
+					<ChildrenList>
+						<Action Name="" ID="{541ADCA2-7D49-474D-9584-EC305113A3FB}" ShortID="276676993">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Doom_Music" ID="{15832CFC-F38A-4739-9984-05E9B6668B04}" WorkUnitID="{552AFFBB-6AB6-41F9-958D-D9681943028C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Second30" ID="{4D83284B-E6EE-4B77-BADD-A8964AEBE4F3}">
+					<ChildrenList>
+						<Action Name="" ID="{43334038-436B-4EB4-AECE-D04800B60842}" ShortID="123496325">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Thomas_Song" ID="{B5BFBFB3-492B-44DD-B454-869668CA7963}" WorkUnitID="{552AFFBB-6AB6-41F9-958D-D9681943028C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Penguin_Static" ID="{61434076-7717-480C-9994-97B9BDCF7DC8}">
+					<ChildrenList>
+						<Action Name="" ID="{233A16EC-7196-4024-AD83-E7729B2459C0}" ShortID="118562693">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Penguin" ID="{8C50961B-7E76-4FFE-9B36-194143B18F6E}" WorkUnitID="{552AFFBB-6AB6-41F9-958D-D9681943028C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Fish_Dynamic" ID="{C755B386-D3B7-4744-BAF9-7D9679CDFC93}">
+					<ChildrenList>
+						<Action Name="" ID="{21E95243-4EB8-4FA3-A246-A12DC14AA235}" ShortID="427481488">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tiburon tema de sonido" ID="{0DD9ECE9-8E10-40C8-9654-60732AFF6F6B}" WorkUnitID="{552AFFBB-6AB6-41F9-958D-D9681943028C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
