@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{552AFFBB-6AB6-41F9-958D-D9681943028C}" SchemaVersion="94">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{552AFFBB-6AB6-41F9-958D-D9681943028C}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Doom_Music" ID="{15832CFC-F38A-4739-9984-05E9B6668B04}" ShortID="722182946">
+					<PropertyList>
+						<Property Name="Highpass" Type="int16">
+							<RTPCList>
+								<RTPC Name="" ID="{9B476380-756A-4A50-862B-C73E1A95FE34}" ShortID="51612744">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="High_Pass" ID="{BA1B8C75-796F-45EF-A387-C35D09DC0752}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{F57E9A96-0999-4AD1-99A9-5D9F45496FD3}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>100</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="InitialDelay" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{AF434880-51DB-42EF-99B0-F2D5039015FC}" ShortID="445396429">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Low_Pass" ID="{4B8C0597-820F-4AA0-BCAC-A8690A34BC1E}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{20B7EB4D-9233-4FF0-B189-A91E1D6CA48D}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="1"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-3600</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>3600</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<RTPCList>
+								<RTPC Name="" ID="{9EC0EA52-2099-4850-A65F-A52FC7E6017F}" ShortID="91063706">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Low_Pass" ID="{4B8C0597-820F-4AA0-BCAC-A8690A34BC1E}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{C497F1DD-C9E9-4ADA-ABE1-139B2060B433}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>100</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C093B2A5-EDEE-4D17-8F16-06831D6D71BF}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{42FBB9F4-CC04-4CC0-959D-27BEE7109A2E}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Doom_Music" ID="{94ECDD6F-9A10-40CF-AFBC-80D6EE0E4E8A}" ShortID="301909818">
+							<Language>SFX</Language>
+							<AudioFile>Doom_Music.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Doom_Music" ID="{94ECDD6F-9A10-40CF-AFBC-80D6EE0E4E8A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Thomas_Song" ID="{B5BFBFB3-492B-44DD-B454-869668CA7963}" ShortID="345365067">
+					<PropertyList>
+						<Property Name="Highpass" Type="int16">
+							<RTPCList>
+								<RTPC Name="" ID="{07A42698-6D08-426D-B59B-6C6EAF249C2F}" ShortID="137431158">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="High_Pass" ID="{BA1B8C75-796F-45EF-A387-C35D09DC0752}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{2D8DE7CC-AF5B-4156-845D-F584A6854B01}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>100</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<RTPCList>
+								<RTPC Name="" ID="{12DB6F3E-4A16-4065-8BD4-E7639FAF7015}" ShortID="33204494">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Low_Pass" ID="{4B8C0597-820F-4AA0-BCAC-A8690A34BC1E}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{06ED2091-F240-41A6-A574-1834AE83EDB8}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>100</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<RTPCList>
+								<RTPC Name="" ID="{8B26D4A8-0B73-4B7A-B4E4-DF2AC947EA43}" ShortID="621954625">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Pitch" ID="{EEC2683A-7B80-4EBA-B15B-E538B1BA1AEF}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{E076E3AA-9C29-43EA-B8EE-BE10D71416CB}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-4800</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>4800</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C093B2A5-EDEE-4D17-8F16-06831D6D71BF}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{42FBB9F4-CC04-4CC0-959D-27BEE7109A2E}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Thomas_Song" ID="{D0BE841D-F266-4146-BBDC-6BD1654CA12B}" ShortID="8072839">
+							<Language>SFX</Language>
+							<AudioFile>Thomas_Song.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Thomas_Song" ID="{D0BE841D-F266-4146-BBDC-6BD1654CA12B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Penguin" ID="{8C50961B-7E76-4FFE-9B36-194143B18F6E}" ShortID="723607862">
+					<PropertyList>
+						<Property Name="Highpass" Type="int16">
+							<RTPCList>
+								<RTPC Name="" ID="{1EDF070C-2369-4F04-84CD-1DA928AA6A01}" ShortID="584151370">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="High_Pass" ID="{BA1B8C75-796F-45EF-A387-C35D09DC0752}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{65EA4E60-6433-4942-9667-9C1DCEA9F642}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>100</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<RTPCList>
+								<RTPC Name="" ID="{71793859-F935-4B94-8736-CFF6D22C6361}" ShortID="811184602">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Low_Pass" ID="{4B8C0597-820F-4AA0-BCAC-A8690A34BC1E}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{04D8BC05-F987-4327-88ED-E951FE5D5FB5}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>100</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<RTPCList>
+								<RTPC Name="" ID="{6DFDE426-43E1-4F13-B565-0232DF2003AC}" ShortID="966850573">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Pitch" ID="{EEC2683A-7B80-4EBA-B15B-E538B1BA1AEF}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{FEFC5232-412E-4605-BE22-43DFF5476A49}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-4800</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>4800</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="SpeakerPanning" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C093B2A5-EDEE-4D17-8F16-06831D6D71BF}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{42FBB9F4-CC04-4CC0-959D-27BEE7109A2E}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Penguin" ID="{D4559001-22A3-4613-9056-AEBD11538480}" ShortID="196623566">
+							<Language>SFX</Language>
+							<AudioFile>Penguin.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<PositioningInfo>
+						<Panner Name="" ID="{5B482157-6C6F-487D-BDCB-50B230EEBB3D}">
+							<PropertyList>
+								<Property Name="PanX" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{7E566391-C4A8-4A5D-8BF8-580173251FB7}" ShortID="522917432">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Penguin_Panning_Sides" ID="{FF65E8F2-9B13-464D-BC5D-0368247E2BE1}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{742511C3-FE41-4CA0-B3D6-C015C256728D}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="1"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>2</XPos>
+														<YPos>200</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+						</Panner>
+					</PositioningInfo>
+					<ActiveSourceList>
+						<ActiveSource Name="Penguin" ID="{D4559001-22A3-4613-9056-AEBD11538480}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Tiburon tema de sonido" ID="{0DD9ECE9-8E10-40C8-9654-60732AFF6F6B}" ShortID="755641314">
+					<PropertyList>
+						<Property Name="Highpass" Type="int16">
+							<RTPCList>
+								<RTPC Name="" ID="{101BD8A0-213A-4053-9B23-66993ADC18A0}" ShortID="468501076">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="High_Pass" ID="{BA1B8C75-796F-45EF-A387-C35D09DC0752}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{0F0DC769-729C-4C9D-A105-4F72BEA36862}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>100</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<RTPCList>
+								<RTPC Name="" ID="{11CEA5A0-35C5-46EE-B585-E959F1BD5657}" ShortID="18062997">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Low_Pass" ID="{4B8C0597-820F-4AA0-BCAC-A8690A34BC1E}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{27979AFD-86B5-45F5-BEF9-6C3109F16330}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-100</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>100</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+								<RTPC Name="" ID="{175E08C6-6CB2-48A0-A98D-7877D53B4323}" ShortID="695866152">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Fish_Position" ID="{FF89B46E-190E-4064-BFF0-DD8BCEC93BFD}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{AD8A99D3-F233-44B2-964B-0A01D7801464}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>1</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>59</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<RTPCList>
+								<RTPC Name="" ID="{57CB706B-27C4-4DB5-BB31-2DFEAC2FFB7A}" ShortID="882902856">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Pitch" ID="{EEC2683A-7B80-4EBA-B15B-E538B1BA1AEF}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{1FCEA8D3-9A81-4E70-B0BD-F3CEA18115B3}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>-100</XPos>
+												<YPos>-4800</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>4800</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="SpeakerPanning" Type="int16" Value="1"/>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C093B2A5-EDEE-4D17-8F16-06831D6D71BF}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{42FBB9F4-CC04-4CC0-959D-27BEE7109A2E}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Tiburon tema de sonido" ID="{58444716-20F9-4E3C-A6CC-A2DFC8EC19EA}" ShortID="72865198">
+							<Language>SFX</Language>
+							<AudioFile>Tiburon tema de sonido.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<PositioningInfo>
+						<Panner Name="" ID="{9564856D-6F21-4200-9408-25338620C69A}">
+							<PropertyList>
+								<Property Name="PanX" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{48766FA3-3D15-49D3-8BC1-227E2290B01B}" ShortID="969003102">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Fish_Panning_Sides" ID="{19637FCD-A0D1-4928-ACE7-B031A94AB883}" WorkUnitID="{6CC1744D-B22C-4A39-B478-9314A92594D1}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{B60E70BB-7B38-4EE1-906E-DE5C79EEF94D}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="1"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>2</XPos>
+														<YPos>200</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+						</Panner>
+					</PositioningInfo>
+					<ActiveSourceList>
+						<ActiveSource Name="Tiburon tema de sonido" ID="{58444716-20F9-4E3C-A6CC-A2DFC8EC19EA}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

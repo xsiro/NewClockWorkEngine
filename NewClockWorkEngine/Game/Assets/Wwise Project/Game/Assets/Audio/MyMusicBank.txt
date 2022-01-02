@@ -1,0 +1,17 @@
+Event	ID	Name			Wwise Object Path	Notes
+	136683592	Penguin_Static			\Default Work Unit\Penguin_Static	
+	1541101740	Second30			\Default Work Unit\Second30	
+	3072587112	First30			\Default Work Unit\First30	
+	4288538553	Fish_Dynamic			\Default Work Unit\Fish_Dynamic	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	2112570640	Fish_Panning_Sides			\Default Work Unit\Fish_Panning_Sides	
+	2339924995	Fish_Position			\Default Work Unit\Fish_Position	
+	3026993492	Penguin_Panning_Sides			\Default Work Unit\Penguin_Panning_Sides	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	8072839	Thomas_Song	C:\Users\PCCom\Documents\GitHub\VeryRealEngine\Wwise Project\Wwise Project\Wwise Project\.cache\Windows\SFX\Thomas_Song_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Thomas_Song		28856384
+	72865198	Tiburon tema de sonido	C:\Users\PCCom\Documents\GitHub\VeryRealEngine\Wwise Project\Wwise Project\Wwise Project\.cache\Windows\SFX\Tiburon tema de sonido_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tiburon tema de sonido		18824948
+	196623566	Penguin	C:\Users\PCCom\Documents\GitHub\VeryRealEngine\Wwise Project\Wwise Project\Wwise Project\.cache\Windows\SFX\Penguin_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Penguin		12787776
+	301909818	Doom_Music	C:\Users\PCCom\Documents\GitHub\VeryRealEngine\Wwise Project\Wwise Project\Wwise Project\.cache\Windows\SFX\Doom_Music_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doom_Music		67133504
+

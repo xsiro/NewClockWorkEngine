@@ -1,0 +1,1 @@
+Usamos Static CRT o no? segun las instrucciones deberiamos (usamos /MT /MTd en el engine), pero entonces no hay .dlls
