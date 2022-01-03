@@ -1,4 +1,5 @@
 #include "AudioSource.h"
+#include "ModuleComponent.h"
 #include "imgui.h" //On Editor usage. TODO: cant this be done in another way to not have this here?
 #include <string>
 
@@ -10,7 +11,7 @@ AudioSource::~AudioSource()
 {
 }
 
-void AudioSource::OnEditor()
+void AudioSource::DrawInspector()
 {
 	bool activeAux = active;
 

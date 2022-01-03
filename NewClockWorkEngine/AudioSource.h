@@ -10,7 +10,7 @@ public:
 	AudioSource(GameObject* owner, unsigned int ID);
 	~AudioSource();
 
-	void OnEditor();
+	void DrawInspector() override;
 
 private:
 

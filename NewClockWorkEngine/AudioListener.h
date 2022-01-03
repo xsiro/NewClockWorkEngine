@@ -10,7 +10,7 @@ public:
 	AudioListener(GameObject* owner, unsigned int ID);
 	~AudioListener();
 
-	void OnEditor();
+	void DrawInspector() override;
 
 private:
 

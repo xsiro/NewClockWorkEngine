@@ -508,6 +508,8 @@ void Importer::SceneImporter::SaveComponent(ConfigNode* node, ModuleComponent* c
 {
     ModuleMesh* moduleMesh;
     ModuleMaterial* moduleMaterial;
+    AudioListener* listener;
+    AudioSource* source;
 
     switch (component->GetType())
     {
@@ -529,6 +531,18 @@ void Importer::SceneImporter::SaveComponent(ConfigNode* node, ModuleComponent* c
         moduleMaterial = (ModuleMaterial*)component;
 
         node->AddNumber("UID", moduleMaterial->GetTexture()->GetUID());
+
+        break;
+
+    case ModuleComponent::ComponentType::Audio_listener:
+
+        listener = (AudioListener*)component;
+
+        break;
+
+    case ModuleComponent::ComponentType::Audio_source:
+
+        source = (AudioSource*)component;
 
         break;
     }

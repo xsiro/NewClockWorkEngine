@@ -7,6 +7,8 @@ struct aiNode;
 struct aiScene;
 class ResourceMaterial;
 class ResourceMesh;
+class AudioSource;
+class AudioListener;
 class ConfigNode;
 class ModuleComponent;
 
