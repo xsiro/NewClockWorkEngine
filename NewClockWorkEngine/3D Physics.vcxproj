@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="AudioListener.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="FileSystem.h" />
@@ -215,6 +216,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="AudioListener.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="FileSystem.cpp" />
