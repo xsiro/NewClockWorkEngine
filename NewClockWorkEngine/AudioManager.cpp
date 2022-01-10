@@ -1,38 +1,39 @@
 #include "AudioManager.h"
 
-#include "Wwise/AK/SoundEngine/Common/AkTypes.h"
+#include <AK/SoundEngine/Common/AkTypes.h>
 
-#include "Wwise/AK/SoundEngine/Common/AkMemoryMgr.h"                  // Memory Manager interface
-#include "Wwise/AK/SoundEngine/Common/AkModule.h"                     // Default memory manager
+#include <AK/SoundEngine/Common/AkMemoryMgr.h>                  // Memory Manager interface
+#include <AK/SoundEngine/Common/AkModule.h>                     // Default memory manager
 
 
-#include "Wwise/AK/SoundEngine/Common/IAkStreamMgr.h"                 // Streaming Manager
-#include "Wwise/AK/Tools/Common/AkPlatformFuncs.h"                    // Thread defines
+#include <AK/SoundEngine/Common/IAkStreamMgr.h>                 // Streaming Manager
+#include <AK/Tools/Common/AkPlatformFuncs.h>                    // Thread defines
 //#include <AK/SoundEngine/Win32/AkFilePackageLowLevelIOBlocking.h>// Sample low-level I/O implementation
-#include "Wwise/AK/SoundEngine/Win32/AkDefaultIOHookBlocking.h"
-#include "Wwise/AK/SoundEngine/Win32/AkFileHelpers.h"
+#include <AK/SoundEngine/Win32/AkDefaultIOHookBlocking.h>
+#include <AK/SoundEngine/Win32/AkFileHelpers.h>
 
 
-#include "Wwise/AK/SoundEngine/Common/AkDefaultLowLevelIODispatcher.h"
-#include "Wwise/AK/SoundEngine/Common/AkFileLocationBase.h"
-#include "Wwise/AK/SoundEngine/Common/AkFilePackage.h"
-#include "Wwise/AK/SoundEngine/Common/AkFilePackageLowLevelIO.h"
-#include "Wwise/AK/SoundEngine/Common/AkFilePackageLUT.h"
-#include "Wwise/AK/SoundEngine/Common/AkMultipleFileLocation.h"
+#include <AK/SoundEngine/Common/AkDefaultLowLevelIODispatcher.h>
+#include <AK/SoundEngine/Common/AkFileLocationBase.h>
+#include <AK/SoundEngine/Common/AkFilePackage.h>
+#include <AK/SoundEngine/Common/AkFilePackageLowLevelIO.h>
+#include <AK/SoundEngine/Common/AkFilePackageLUT.h>
+#include <AK/SoundEngine/Common/AkMultipleFileLocation.h>
 //End of TODO
 
-#include "Wwise/AK/SoundEngine/Common/AkSoundEngine.h"                // Sound engine
+#include <AK/SoundEngine/Common/AkSoundEngine.h>                // Sound engine
 
-#include "Wwise/AK/MusicEngine/Common/AkMusicEngine.h"                // Music Engine
+#include <AK/MusicEngine/Common/AkMusicEngine.h>                // Music Engine
 
-#include "Wwise/AK/SpatialAudio/Common/AkSpatialAudio.h"              // Spatial Audio
+#include <AK/SpatialAudio/Common/AkSpatialAudio.h>              // Spatial Audio
+
 
 
 
 // Include for communication between Wwiseand the game -- Not needed in the release version
 #ifndef AK_OPTIMIZED
 
-#include "Wwise/AK/Comm/AkCommunication.h"
+#include <AK/Comm/AkCommunication.h>
 
 #endif // AK_OPTIMIZED
 

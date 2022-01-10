@@ -68,8 +68,8 @@
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)Glew\include;$(ProjectDir)SDL\include;$(ProjectDir)ImGuizmo;$(ProjectDir)ImGui\include;$(ProjectDir)MathGeoLib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WINDOWS_IGNORE_PACKING_MISMATCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)Glew\include;$(ProjectDir)SDL\include;$(ProjectDir)ImGuizmo;$(ProjectDir)ImGui\include;$(ProjectDir)Wwise;$(ProjectDir)MathGeoLib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WINDOWS_IGNORE_PACKING_MISMATCH;AK_OPTIMIZED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
