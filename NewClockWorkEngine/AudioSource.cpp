@@ -1,6 +1,6 @@
 #include "AudioSource.h"
 #include "ModuleComponent.h"
-#include "imgui.h" //On Editor usage. TODO: cant this be done in another way to not have this here?
+#include "Imgui/include/imgui.h" //On Editor usage. TODO: cant this be done in another way to not have this here?
 #include <string>
 
 AudioSource::AudioSource(GameObject* owner, unsigned int ID) :ModuleComponent(ComponentType::Audio_source, owner)

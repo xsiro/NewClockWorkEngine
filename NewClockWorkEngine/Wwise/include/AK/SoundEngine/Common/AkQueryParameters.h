@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 // AkQueryParameters.h
@@ -43,11 +43,11 @@ the specific language governing permissions and limitations under the License.
 struct AkPositioningInfo
 {
 	AkReal32			fCenterPct;			///< Center % [0..1]
-	AkSpeakerPanningType	pannerType;		///< Speaker panning type: type of panning logic when object is not 3D spatialized.
-	Ak3DPositionType	e3dPositioningType;	///< 3D position type: defines what acts as the emitter position for computing spatialization against the listener. 
-	bool				bHoldEmitterPosAndOrient;   ///< Hold emitter position and orientation values when starting playback.
-	Ak3DSpatializationMode e3DSpatializationMode; ///< Spatialization mode
-	bool				bEnableAttenuation;	///< Attenuation parameter set is active.
+	AkPannerType	    pannerType;			///< Positioning Type (2D, 3D)
+	AkPositionSourceType posSourceType;		///< Positioning source (GameDef or UserDef)
+	bool				bUpdateEachFrame;   ///< Update at each frame (valid only with game-defined)
+	bool				bUseSpatialization; ///< Use spatialization
+	bool				bUseAttenuation;	///< Use attenuation parameter set
 
 	bool				bUseConeAttenuation; ///< Use the cone attenuation
 	AkReal32			fInnerAngle;		///< Inner angle
@@ -81,15 +81,13 @@ namespace AK
 		/// Query namespace
 		/// \remarks The functions in this namespace are thread-safe, unless stated otherwise.
 		///
-		/// \akwarning
-		/// Unless noted otherwise in the function definition that it will not acquire the main audio lock, the functions in this namespace 
+		/// \warning Unless noted otherwise in the function definition that it will not acquire the main audio lock, the functions in this namespace 
 		/// might stall for several milliseconds before returning (as they cannot execute while the 
 		/// main sound engine thread is busy). They should therefore not be called from any 
 		/// game critical thread, such as the main game loop.
 		///
-		/// There might be a significant delay between a Sound Engine call (such as PostEvent) and
+		/// \warning There might be a significant delay between a Sound Engine call (such as PostEvent) and
 		/// the information being reflected in a Query (such as GetIsGameObjectActive). 
-		/// \endakwarning
 
 		namespace Query
 		{
@@ -112,14 +110,13 @@ namespace AK
 			/// @name Listeners
 			//@{
 
-			/// Get a game object's listeners.  
+			/// Get a game object's active listeners.
 			/// \return AK_Success if succeeded, or AK_IDNotFound if the game object was not registered
 			/// \sa 
-			/// - \ref soundengine_listeners
-			AK_EXTERNAPIFUNC( AKRESULT, GetListeners )(
-				AkGameObjectID in_GameObjectID,				///< Source game object identifier
-				AkGameObjectID* out_ListenerObjectIDs,		///< Pointer to an array of AkGameObjectID's.  Will be populated with the IDs of the listeners of in_GameObjectID. Pass NULL to querry the size required.
-				AkUInt32& oi_uNumListeners					///< Pass in the the available number of elements in the array 'out_ListenerObjectIDs'. After return, the number of valid elements filled in the array.
+			/// - \ref soundengine_listeners_multi_assignobjects
+			AK_EXTERNAPIFUNC( AKRESULT, GetActiveListeners )(
+				AkGameObjectID in_GameObjectID,				///< Game object identifier
+				AkUInt32& out_ruListenerMask				///< Bitmask representing the active listeners (LSB = Listener 0, set to 1 means active)
 				);
 
 			/// Get a listener's position.
@@ -127,7 +124,7 @@ namespace AK
 			/// \sa 
 			/// - \ref soundengine_listeners_settingpos
 			AK_EXTERNAPIFUNC( AKRESULT, GetListenerPosition )( 
-				AkGameObjectID in_uIndex, 						///< Listener index (0: first listener, 7: 8th listener)
+				AkUInt32 in_uIndex, 						///< Listener index (0: first listener, 7: 8th listener)
 				AkListenerPosition& out_rPosition			///< Position set
 				);
 
@@ -157,7 +154,7 @@ namespace AK
 			/// and can receive the Global Value if there was no GameObject specific value, and even the 
 			/// default value is there was no Global value either.
 			/// \sa 
-			/// - GetRTPCValue
+			/// - \ref GetRTPCValue
 			enum RTPCValue_type
 			{
 				RTPCValue_Default,		///< The value is the Default RTPC.
@@ -179,7 +176,7 @@ namespace AK
 			/// \return AK_Success if succeeded, AK_IDNotFound if the game object was not registered, or AK_Fail if the RTPC value could not be obtained
 			/// \sa 
 			/// - \ref soundengine_rtpc
-			/// - RTPCValue_type
+			/// - \ref RTPCValue_type
 			AK_EXTERNAPIFUNC(AKRESULT, GetRTPCValue)(
 				AkRtpcID in_rtpcID, 				///< ID of the RTPC
 				AkGameObjectID in_gameObjectID,		///< Associated game object ID, ignored if io_rValueType is RTPCValue_Global.
@@ -202,7 +199,7 @@ namespace AK
 			/// \return AK_Success if succeeded, AK_IDNotFound if the game object was not registered or the rtpc name could not be found, or AK_Fail if the RTPC value could not be obtained
 			/// \sa 
 			/// - \ref soundengine_rtpc
-			/// - RTPCValue_type
+			/// - \ref RTPCValue_type
 			AK_EXTERNAPIFUNC(AKRESULT, GetRTPCValue)(
 				const wchar_t* in_pszRtpcName,		///< String name of the RTPC
 				AkGameObjectID in_gameObjectID,		///< Associated game object ID, ignored if io_rValueType is RTPCValue_Global.
@@ -225,7 +222,7 @@ namespace AK
 			/// \return AK_Success if succeeded, AK_IDNotFound if the game object was not registered or the rtpc name could not be found, or AK_Fail if the RTPC value could not be obtained
 			/// \sa 
 			/// - \ref soundengine_rtpc
-			/// - RTPCValue_type
+			/// - \ref RTPCValue_type
 			AK_EXTERNAPIFUNC(AKRESULT, GetRTPCValue)(
 				const char* in_pszRtpcName,			///< String name of the RTPC
 				AkGameObjectID in_gameObjectID,		///< Associated game object ID, ignored if io_rValueType is RTPCValue_Global.
@@ -302,7 +299,9 @@ namespace AK
 			//@{
 
 			/// Get the environmental ratios used by the specified game object.
+			/// The array size cannot exceed AK_MAX_AUX_PER_OBJ.
 			/// To clear the game object's environments, in_uNumEnvValues must be 0.
+			/// \aknote The actual maximum number of environments in which a game object can be is AK_MAX_AUX_PER_OBJ. \endaknote
 			/// \sa 
 			/// - \ref soundengine_environments
 			/// - \ref soundengine_environments_dynamic_aux_bus_routing
@@ -312,9 +311,10 @@ namespace AK
 			AK_EXTERNAPIFUNC( AKRESULT, GetGameObjectAuxSendValues )( 
 				AkGameObjectID		in_gameObjectID,		///< Associated game object ID
 				AkAuxSendValue*		out_paAuxSendValues,	///< Variable-size array of AkAuxSendValue structures
-																///< (it may be NULL if no aux send must be set)
+																///< (it may be NULL if no aux send must be set, and its size 
+																///< cannot exceed AK_MAX_AUX_PER_OBJ)
 				AkUInt32&			io_ruNumSendValues		///< The number of Auxilliary busses at the pointer's address
-															///< (it must be 0 if no aux bus is set)
+															///< (it must be 0 if no aux bus is set, and can not exceed AK_MAX_AUX_PER_OBJ)
 				);
 
 			/// Get the environmental dry level to be used for the specified game object
@@ -327,8 +327,7 @@ namespace AK
 			/// - \ref soundengine_environments_id_vs_string
 			/// \return AK_Success if succeeded, or AK_IDNotFound if the game object was not registered
 			AK_EXTERNAPIFUNC( AKRESULT, GetGameObjectDryLevelValue )( 
-				AkGameObjectID		in_EmitterID,			///< Associated emitter game object ID
-				AkGameObjectID		in_ListenerID,			///< Associated listener game object ID
+				AkGameObjectID		in_gameObjectID,		///< Associated game object ID
 				AkReal32&			out_rfControlValue		///< Dry level control value, ranging from 0.0f to 1.0f
 															///< (0.0f stands for 0% dry, while 1.0f stands for 100% dry)
 				);
@@ -339,8 +338,8 @@ namespace AK
 			/// - \ref soundengine_environments
 			/// \return AK_Success if succeeded, AK_IDNotFound if the game object was not registered
 			AK_EXTERNAPIFUNC( AKRESULT, GetObjectObstructionAndOcclusion )(  
-				AkGameObjectID in_EmitterID,			///< Associated game object ID
-				AkGameObjectID in_ListenerID,			///< Listener object ID
+				AkGameObjectID in_ObjectID,			///< Associated game object ID
+				AkUInt32 in_uListener,				///< Listener index (0: first listener, 7: 8th listener)
 				AkReal32& out_rfObstructionLevel,		///< ObstructionLevel: [0.0f..1.0f]
 				AkReal32& out_rfOcclusionLevel			///< OcclusionLevel: [0.0f..1.0f]
 				);
@@ -351,6 +350,7 @@ namespace AK
 			/// \aknote It is possible to call QueryAudioObjectIDs with io_ruNumItems = 0 to get the total size of the
 			/// structure that should be allocated for out_aObjectInfos. \endaknote
 			/// \return AK_Success if succeeded, AK_IDNotFound if the eventID cannot be found, AK_InvalidParameter if out_aObjectInfos is NULL while io_ruNumItems > 0
+			/// or AK_UnknownObject if the event contains an unknown audio object, 
 			/// or AK_PartialSuccess if io_ruNumItems was set to 0 to query the number of available items.
 			AK_EXTERNAPIFUNC( AKRESULT, QueryAudioObjectIDs )(
 				AkUniqueID in_eventID,				///< Event ID
@@ -363,6 +363,7 @@ namespace AK
 			/// \aknote It is possible to call QueryAudioObjectIDs with io_ruNumItems = 0 to get the total size of the
 			/// structure that should be allocated for out_aObjectInfos. \endaknote
 			/// \return AK_Success if succeeded, AK_IDNotFound if the event name cannot be found, AK_InvalidParameter if out_aObjectInfos is NULL while io_ruNumItems > 0
+			/// or AK_UnknownObject if the event contains an unknown audio object, 
 			/// or AK_PartialSuccess if io_ruNumItems was set to 0 to query the number of available items.
 			AK_EXTERNAPIFUNC( AKRESULT, QueryAudioObjectIDs )(
 				const wchar_t* in_pszEventName,		///< Event name
@@ -375,6 +376,7 @@ namespace AK
 			/// \aknote It is possible to call QueryAudioObjectIDs with io_ruNumItems = 0 to get the total size of the
 			/// structure that should be allocated for out_aObjectInfos. \endaknote
 			/// \return AK_Success if succeeded, AK_IDNotFound if the event name cannot be found, AK_InvalidParameter if out_aObjectInfos is NULL while io_ruNumItems > 0
+			/// or AK_UnknownObject if the event contains an unknown audio object, 
 			/// or AK_PartialSuccess if io_ruNumItems was set to 0 to query the number of available items.
 			AK_EXTERNAPIFUNC( AKRESULT, QueryAudioObjectIDs )(
 				const char* in_pszEventName,		///< Event name
@@ -394,15 +396,15 @@ namespace AK
 			/// Being active means that either a sound is playing or pending to be played using this game object.
 			/// The caller is responsible for calling Term() on the list when the list is not required anymore
 			/// \sa 
-			/// - GetActiveGameObjects
-			typedef AkArray<AkGameObjectID, AkGameObjectID> AkGameObjectsList;
+			/// - \ref GetActiveGameObjects
+			typedef AkArray<AkGameObjectID, AkGameObjectID, ArrayPoolDefault, 32> AkGameObjectsList;
 
 			/// Fill the provided list with all the game object IDs that are currently active in the sound engine.
 			/// The function may be used to avoid updating game objects positions that are not required at the moment.
 			/// After calling this function, the list will contain the list of all game objects that are currently active in the sound engine.
 			/// Being active means that either a sound is playing or pending to be played using this game object.
 			/// \sa 
-			/// - AkGameObjectsList
+			/// - \ref AkGameObjectsList
 			AK_EXTERNAPIFUNC( AKRESULT, GetActiveGameObjects )( 
 				AkGameObjectsList& io_GameObjectList	///< returned list of active game objects.
 				);
@@ -437,7 +439,7 @@ namespace AK
 			/// List passed to GetMaxRadius.
 			/// \sa 
 			/// - \ref AK::SoundEngine::Query::GetMaxRadius
-			typedef AkArray<GameObjDst, const GameObjDst&> AkRadiusList;
+			typedef AkArray<GameObjDst, const GameObjDst&, ArrayPoolDefault, 32> AkRadiusList;
 
 			/// Returns the maximum distance used in attenuations associated to all sounds currently playing.
 			/// This may be used for example by the game to know if some processing need to be performed on the game side, that would not be required
@@ -474,7 +476,7 @@ namespace AK
 			/// \endaknote
 			///
 			/// \sa 
-			/// - AkRadiusList
+			/// - \ref AkRadiusList
 			AK_EXTERNAPIFUNC( AKRESULT, GetMaxRadius )(
 				AkRadiusList & io_RadiusList	///< List that will be filled with AK::SoundEngine::Query::GameObjDst objects.
 				);
@@ -487,7 +489,7 @@ namespace AK
 			///
 			/// \return
 			/// - A negative number if the game object specified is not playing.
-			/// - 0, if the game object was only associated to sounds playing using no distance attenuation.
+			/// - 0, if the game object was only associated to sounds playing using no distance attenuation ( like 2D sounds ).
 			/// - A positive number represents the maximum of all the distance attenuations playing on this game object.
 			///
 			/// \aknote 
@@ -498,7 +500,7 @@ namespace AK
 			/// \endaknote
 			///
 			/// \sa 
-			/// - \ref AK::SoundEngine::SetScalingFactor
+			/// - \ref AK::SoundEngine::SetAttenuationScalingFactor
 			AK_EXTERNAPIFUNC( AkReal32, GetMaxRadius )(
 				AkGameObjectID in_GameObjId ///< Game object ID
 				);
@@ -532,7 +534,6 @@ namespace AK
 				);
 
 			/// Get the value of a custom property of integer or boolean type.
-			/// \return AK_PartialSuccess if the object was found but no matching custom property was found on this object. Note that it could mean this value is the default value. 
 			AK_EXTERNAPIFUNC( AKRESULT, GetCustomPropertyValue )(
 				AkUniqueID in_ObjectID,			///< Object ID, this is the 32bit ShortID of the AudioFileSource or Sound object found in the .wwu XML file. At runtime it can only be retrieved by the AK_Duration callback when registered with PostEvent(), or by calling Query::QueryAudioObjectIDs() to get all the shortIDs associated with an event.
 				AkUInt32 in_uPropID,			///< Property ID of your custom property found under the Custom Properties tab of the Wwise project settings.
@@ -540,7 +541,6 @@ namespace AK
 				);
 
 			/// Get the value of a custom property of real type.
-			/// \return AK_PartialSuccess if the object was found but no matching custom property was found on this object. Note that it could mean this value is the default value.
 			AK_EXTERNAPIFUNC( AKRESULT, GetCustomPropertyValue )(
 				AkUniqueID in_ObjectID,			///< Object ID, this is the 32bit ShortID of the AudioFileSource or Sound object found in the .wwu XML file. At runtime it can only be retrieved by the AK_Duration callback when registered with PostEvent(), or by calling Query::QueryAudioObjectIDs() to get all the shortIDs associated with an event.
 				AkUInt32 in_uPropID,			///< Property ID of your custom property found under the Custom Properties tab of the Wwise project settings.

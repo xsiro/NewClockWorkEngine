@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -34,4 +34,8 @@ the specific language governing permissions and limitations under the License.
 /// <br><b>Wwise plugin name:</b>  Auro Headphone
 /// <br><b>Library file:</b> AuroHeadphoneFX.lib
 
+#if (defined AK_WIN && (!defined( AK_USE_METRO_API ) || _MSC_VER >= 1900)) || defined AK_PS4 || defined AK_XBOXONE || defined AK_ANDROID
+
 AK_STATIC_LINK_PLUGIN(AuroHeadphoneFX);
+#endif
+

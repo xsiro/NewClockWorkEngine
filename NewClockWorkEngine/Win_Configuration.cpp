@@ -1,7 +1,7 @@
 
 #include "Win_Configuration.h"
 #include "OpenGl.h"
-#include "ImGui.h"
+#include "imgui/include/ImGui.h"
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "Color.h"

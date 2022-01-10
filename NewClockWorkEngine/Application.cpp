@@ -11,6 +11,7 @@ Application::Application() : debug(false), dt(0.16f)
 	camera = new ModuleCamera3D(this);
 	gui = new ModuleGui(this);
 	filesystem = new FileSystem(this);
+	audioManager = new AudioManager(this);
 
 	resourcemanager = new ModuleResourceM();
 	
@@ -24,6 +25,7 @@ Application::Application() : debug(false), dt(0.16f)
 	AddModule(input);
 	AddModule(gui);
 	AddModule(filesystem);
+	AddModule(audioManager);
 
 	// Scenes
 	AddModule(scene_intro);

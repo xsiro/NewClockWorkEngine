@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -33,4 +33,7 @@ the specific language governing permissions and limitations under the License.
 /// <br><b>Wwise plugin name:</b>  Wwise Pitch Shifter
 /// <br><b>Library file:</b> AkPitchShifterFX.lib
 
+
+#if !defined AK_3DS && !defined AK_VITA_HW
 AK_STATIC_LINK_PLUGIN(AkPitchShifterFX)
+#endif

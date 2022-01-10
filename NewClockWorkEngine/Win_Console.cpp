@@ -1,8 +1,8 @@
 #include "Win_Console.h"
-#include "imgui.h"
-#include "imgui_internal.h"
-#include "imgui_impl_opengl3.h"
-#include "imgui_impl_sdl.h"
+#include "imgui/include/imgui.h"
+#include "imgui/include/imgui_internal.h"
+#include "imgui/include/imgui_impl_opengl3.h"
+#include "imgui/include/imgui_impl_sdl.h"
 #include "Application.h"
 #include "Globals.h"
 

@@ -21,20 +21,24 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 #ifndef _AK_PLATFORM_FUNCS_H_
 #define _AK_PLATFORM_FUNCS_H_
 
 #include "malloc.h"
-#include <AK/Tools/Common/AkAssert.h>
-#include <AK/SoundEngine/Common/AkAtomic.h>
+#include "../../Tools/Common/AkAssert.h"
+#include "../../SoundEngine/Common/AkTypes.h"
 #include <windows.h>
 //#define AK_ENABLE_PERF_RECORDING
 #if defined(AK_ENABLE_PERF_RECORDING)
 #include <stdio.h>
+#endif
+
+#ifdef AK_USE_THREAD_EMULATION
+	#include <AK/Tools/Win32/ThreadEmulation.h>
 #endif
 
 #if defined(_WIN64)
@@ -50,11 +54,7 @@ the specific language governing permissions and limitations under the License.
 struct AkThreadProperties
 {
     int                 nPriority;		///< Thread priority
-#ifdef AK_WIN_UNIVERSAL_APP
-	PROCESSOR_NUMBER    processorNumber;///< Ideal processor (passed to SetThreadIdealProcessorEx)
-#else
-	AkUInt32            dwAffinityMask;	///< Affinity mask
-#endif
+    AkUInt32            dwAffinityMask;	///< Affinity mask
 	AkUInt32			uStackSize;		///< Thread stack size.
 };
 
@@ -77,11 +77,13 @@ namespace AK
 #define AK_GET_THREAD_ROUTINE_PARAMETER_PTR(type) reinterpret_cast<type*>( AK_THREAD_ROUTINE_PARAMETER )
 #define AK_RETURN_THREAD_OK                     0x00000000
 #define AK_RETURN_THREAD_ERROR                  0x00000001
-#define AK_DEFAULT_STACK_SIZE					(128*1024)
+#if defined AK_CPU_X86_64
+#define AK_DEFAULT_STACK_SIZE					(65536)
+#else
+#define AK_DEFAULT_STACK_SIZE                   (32768)
+#endif
 #define AK_THREAD_PRIORITY_NORMAL				THREAD_PRIORITY_NORMAL
 #define AK_THREAD_PRIORITY_ABOVE_NORMAL			THREAD_PRIORITY_ABOVE_NORMAL
-#define AK_THREAD_PRIORITY_TIME_CRITICAL		THREAD_PRIORITY_TIME_CRITICAL
-#define AK_THREAD_MODE_BACKGROUND_BEGIN			THREAD_MODE_BACKGROUND_BEGIN
 
 // NULL objects
 #define AK_NULL_THREAD                          NULL
@@ -106,7 +108,7 @@ namespace AKPLATFORM
 	/// Platform Independent Helper
 	inline AKRESULT AkCreateEvent( AkEvent & out_event )
     {
-#ifdef AK_USE_UWP_API
+#ifdef AK_USE_METRO_API
 		out_event = CreateEventEx(nullptr, nullptr, 0, STANDARD_RIGHTS_ALL|EVENT_MODIFY_STATE);
 #else
 		out_event = ::CreateEvent( NULL,					// No security attributes
@@ -129,7 +131,7 @@ namespace AKPLATFORM
 	/// Platform Independent Helper
 	inline void AkWaitForEvent( AkEvent & in_event )
 	{
-#ifdef AK_USE_UWP_API
+#ifdef AK_USE_METRO_API
 #ifdef AK_ENABLE_ASSERTS
 		DWORD dwWaitResult = 
 #endif // AK_ENABLE_ASSERTS
@@ -146,24 +148,45 @@ namespace AKPLATFORM
 		AKVERIFY( ::SetEvent( in_event ) );
 	}
 
-	// Virtual Memory
-	// ------------------------------------------------------------------
+	
+	// Atomic Operations
+    // ------------------------------------------------------------------
 
-#ifdef AK_WIN_UNIVERSAL_APP
-	AkForceInline void* AllocVM(size_t size, size_t* /*extra*/)
+	/// Platform Independent Helper
+	inline AkInt32 AkInterlockedIncrement(AkAtomic32 * pValue)
 	{
-		return VirtualAllocFromApp(NULL, size, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
-	}
-#else
-	AkForceInline void* AllocVM(size_t size, size_t* /*extra*/)
-	{
-		return VirtualAlloc(NULL, size, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+		return InterlockedIncrement( pValue );
 	}
 
+	/// Platform Independent Helper
+	inline AkInt32 AkInterlockedDecrement(AkAtomic32 * pValue)
+	{
+		return InterlockedDecrement( pValue );
+	}
+
+#ifdef AK_CPU_X86_64
+	inline bool AkInterlockedCompareExchange( volatile AkAtomic64* io_pDest, AkInt64 in_newValue, AkInt64 in_expectedOldVal )
+	{
+		return _InterlockedCompareExchange64(io_pDest, in_newValue, in_expectedOldVal) == in_expectedOldVal;
+	}
 #endif
-	AkForceInline void FreeVM(void* address, size_t size, size_t /*extra*/, size_t release)
+
+	inline bool AkInterlockedCompareExchange(volatile AkAtomic32* io_pDest, AkInt32 in_newValue, AkInt32 in_expectedOldVal)
 	{
-		VirtualFree(address, release ? 0 : size, release ? MEM_RELEASE : MEM_DECOMMIT);
+		return InterlockedCompareExchange(io_pDest, in_newValue, in_expectedOldVal) == in_expectedOldVal;
+	}
+
+#if defined AK_CPU_X86 || defined AK_CPU_ARM
+	inline bool AkInterlockedCompareExchange(volatile AkAtomicPtr* io_pDest, AkIntPtr in_newValue, AkIntPtr in_expectedOldVal)
+	{
+		return InterlockedCompareExchange((volatile LONG_PTR*)io_pDest, (LONG_PTR)in_newValue, (LONG_PTR)in_expectedOldVal) == in_expectedOldVal;
+	}
+#endif		
+
+	//Ensure that all write operations are complete.  Necessary only on platforms that don't garentee the order of writes.
+	inline void AkMemoryBarrier() 
+	{
+		_ReadWriteBarrier();
 	}
 
     // Threads
@@ -197,18 +220,16 @@ namespace AKPLATFORM
 	{
 		out_threadProperties.nPriority = AK_THREAD_PRIORITY_NORMAL;
 		out_threadProperties.uStackSize= AK_DEFAULT_STACK_SIZE;
-#ifdef AK_WIN_UNIVERSAL_APP
-		out_threadProperties.processorNumber.Group = 0;
-		out_threadProperties.processorNumber.Number = MAXIMUM_PROCESSORS;
-		out_threadProperties.processorNumber.Reserved = 0;
-#else
 		out_threadProperties.dwAffinityMask = 0;
-#endif
 	}
 
 	/// Set the name of a thread: see http://msdn.microsoft.com/en-us/library/xcb2z8hs.aspx
 	inline void AkSetThreadName( DWORD in_dwThreadID, LPCSTR in_szThreadName )
 	{
+#if defined AK_USE_THREAD_EMULATION
+		UNREFERENCED_PARAMETER( in_dwThreadID );
+		UNREFERENCED_PARAMETER( in_szThreadName );
+#else
 		const DWORD MS_VC_EXCEPTION=0x406D1388;
 
 #pragma pack(push,8)
@@ -235,6 +256,7 @@ namespace AKPLATFORM
 		__except(EXCEPTION_CONTINUE_EXECUTION)
 		{
 		}
+#endif
 	}
 
 	/// Platform Independent Helper
@@ -247,9 +269,15 @@ namespace AKPLATFORM
     {
 		AKASSERT( out_pThread != NULL );
 		AKASSERT( (in_threadProperties.nPriority >= THREAD_PRIORITY_LOWEST && in_threadProperties.nPriority <= THREAD_PRIORITY_HIGHEST)
-			|| ( in_threadProperties.nPriority == THREAD_PRIORITY_TIME_CRITICAL )
-			|| ( in_threadProperties.nPriority == THREAD_MODE_BACKGROUND_BEGIN ) );
+			|| ( in_threadProperties.nPriority == THREAD_PRIORITY_TIME_CRITICAL ) );
 
+#ifdef AK_USE_THREAD_EMULATION
+		UNREFERENCED_PARAMETER( in_threadProperties );
+		UNREFERENCED_PARAMETER( in_szThreadName );
+       *out_pThread = AK::ThreadEmulation::CreateThread( pStartRoutine,                   // Thread start routine
+                                       pParams,                         // Thread function parameter
+                                       0 );								// Creation flags: create running
+#else
 		DWORD dwThreadID;
         *out_pThread = ::CreateThread( NULL,							// No security attributes
                                        in_threadProperties.uStackSize,	// StackSize (0 uses system default)
@@ -269,30 +297,19 @@ namespace AKPLATFORM
         AkSetThreadName( dwThreadID, in_szThreadName );
 
 		// Set properties.
-		if ( !::SetThreadPriority( *out_pThread, in_threadProperties.nPriority ) &&
-			 in_threadProperties.nPriority != THREAD_MODE_BACKGROUND_BEGIN )
+		if ( !::SetThreadPriority( *out_pThread, in_threadProperties.nPriority ) )
         {
-            AKASSERT( !"Failed setting thread priority" );
+            AKASSERT( !"Failed setting IO thread priority" );
 			AkCloseThread( out_pThread );
             return;
         }
-#ifdef AK_WIN_UNIVERSAL_APP
-		if ( in_threadProperties.processorNumber.Number != MAXIMUM_PROCESSORS)
+		if ( in_threadProperties.dwAffinityMask )
         {
-			if ( !SetThreadIdealProcessorEx( *out_pThread, const_cast<PPROCESSOR_NUMBER>(&in_threadProperties.processorNumber), NULL) )
+			if ( !::SetThreadAffinityMask( *out_pThread, in_threadProperties.dwAffinityMask ) )
             {
-                AKASSERT( !"Failed setting thread ideal processor" );
+                AKASSERT( !"Failed setting IO thread affinity mask" );
 				AkCloseThread( out_pThread );
             }
-		}
-#else
-		if (in_threadProperties.dwAffinityMask)
-		{
-			if (!::SetThreadAffinityMask(*out_pThread, in_threadProperties.dwAffinityMask))
-			{
-				AKASSERT(!"Failed setting thread affinity mask");
-				AkCloseThread(out_pThread);
-			}
 		}
 #endif
 	}
@@ -302,7 +319,7 @@ namespace AKPLATFORM
     {
         AKASSERT( in_pThread );
         AKASSERT( *in_pThread );
-#ifdef AK_USE_UWP_API
+#ifdef AK_USE_METRO_API
         ::WaitForSingleObjectEx( *in_pThread, INFINITE, FALSE );
 #else
         ::WaitForSingleObject( *in_pThread, INFINITE );
@@ -318,7 +335,11 @@ namespace AKPLATFORM
 	/// Platform Independent Helper
     inline void AkSleep( AkUInt32 in_ulMilliseconds )
     {
+#ifdef AK_USE_THREAD_EMULATION
+		AK::ThreadEmulation::Sleep( in_ulMilliseconds );
+#else
 		::Sleep( in_ulMilliseconds );
+#endif
     }
 
 	// Optimized memory functions
@@ -356,7 +377,7 @@ namespace AKPLATFORM
 	{
         AkInt64 iFreq;
         PerformanceFrequency( &iFreq );
-		AK::g_fFreqRatio = (AkReal32)((AkReal64)iFreq / 1000);
+        AK::g_fFreqRatio = (AkReal32)( iFreq / 1000 );
 	}
 
 	/// Returns a time range in milliseconds, using the sound engine's updated count->milliseconds ratio.
@@ -365,15 +386,12 @@ namespace AKPLATFORM
         return ( in_iNow - in_iStart ) / AK::g_fFreqRatio;
     }
 
-	/// String conversion helper. If io_pszAnsiString is null, the function returns the required size.
+	/// String conversion helper
 	inline AkInt32 AkWideCharToChar( const wchar_t*	in_pszUnicodeString,
 									 AkUInt32	in_uiOutBufferSize,
 									 char*	io_pszAnsiString )
 	{
-		if(!io_pszAnsiString)
-			return WideCharToMultiByte(CP_UTF8, 0, in_pszUnicodeString, -1, NULL, 0, NULL, NULL);
-
-		int iWritten = ::WideCharToMultiByte(CP_UTF8,																	// code page
+		int iWritten = ::WideCharToMultiByte(CP_ACP,																	// code page
 									0,																		// performance and mapping flags
 									in_pszUnicodeString,													// wide-character string
 									(int)AkMin( ( (AkUInt32)wcslen( in_pszUnicodeString )), in_uiOutBufferSize-1 ),	// number of chars in string : -1 = NULL terminated string.
@@ -390,7 +408,7 @@ namespace AKPLATFORM
 									 AkUInt32		in_uiOutBufferSize,
 									 void*			io_pvUnicodeStringBuffer )
 	{
-		return ::MultiByteToWideChar(	CP_UTF8,							// code page
+		return ::MultiByteToWideChar(	CP_ACP,								// code page
 										0,									// performance and mapping flags
 										in_pszAnsiString,					// wide-character string
 										-1,									// number of chars in string : -1 = NULL terminated string.
@@ -445,7 +463,7 @@ namespace AKPLATFORM
 	#define AkAlloca( _size_ ) _alloca( _size_ )
 
 	/// Output a debug message on the console
-#if ! defined(AK_OPTIMIZED)
+#if ! ( defined(AK_USE_METRO_API) || defined(AK_OPTIMIZED) )
 	inline void OutputDebugMsg( const wchar_t* in_pszMsg )
 	{
 		OutputDebugStringW( in_pszMsg );
@@ -532,17 +550,6 @@ namespace AKPLATFORM
 	{
 		return ( wcscmp( in_pszString1,  in_pszString2 ) );
 	}
-
-	/// Compare two NULL-terminated AkOSChar strings up to the specified count of characters.
-	/// \return
-	/// - \< 0 if in_pszString1 \< in_pszString2
-	/// -    0 if the two strings are identical
-	/// - \> 0 if in_pszString1 \> in_pszString2
-	/// \remark The comparison is case-sensitive
-	inline int OsStrNCmp(  const AkOSChar* in_pszString1, const AkOSChar* in_pszString2, size_t in_MaxCountSize)
-	{
-		return wcsncmp(in_pszString1, in_pszString2, in_MaxCountSize);
-	}
 	
 	#define AK_UTF16_TO_WCHAR(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::SafeStrCpy(		in_pdDest, in_pSrc, in_MaxSize )
 	#define AK_WCHAR_TO_UTF16(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::SafeStrCpy(		in_pdDest, in_pSrc, in_MaxSize )
@@ -553,8 +560,6 @@ namespace AKPLATFORM
 
 	// Use with AkOSChar.
 	#define AK_PATH_SEPARATOR	(L"\\")
-	#define AK_LIBRARY_PREFIX	(L"")
-	#define AK_DYNAMIC_LIBRARY_EXTENSION	(L".dll")
 
 	#if defined(AK_ENABLE_PERF_RECORDING)
 	
@@ -586,16 +591,12 @@ namespace AKPLATFORM
 			}																														\
 			AKPLATFORM::g_uAkPerfRecExecCount++;
 	#endif // AK_ENABLE_PERF_RECORDING
-
-#if (defined(AK_CPU_X86_64) || defined(AK_CPU_X86))
-	/// Support to fetch the CPUID for the platform. Only valid for X86 targets
-	/// \remark Note that IAkProcessorFeatures should be preferred to fetch this data
-	/// as it will have already translated the feature bits into AK-relevant enums
-	inline void CPUID(AkUInt32 in_uLeafOpcode, AkUInt32 in_uSubLeafOpcode, unsigned int out_uCPUFeatures[4])
-	{
-		__cpuidex((int*)out_uCPUFeatures, in_uLeafOpcode, in_uSubLeafOpcode);
-	}
-#endif
 }
+
+#ifdef AK_ENABLE_INSTRUMENT
+	#ifdef AK_XBOXONE
+		#include <AK/Tools/XBoxOne/AkInstrument.h>
+	#endif
+#endif
 
 #endif  // _AK_PLATFORM_FUNCS_H_

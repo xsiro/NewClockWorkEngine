@@ -22,12 +22,12 @@
 
 #include "OpenGL.h"
 #include <stdio.h>
-#include "imgui.h"
-#include "imgui_internal.h"
-#include "imgui_impl_opengl3.h"
-#include "imgui_impl_sdl.h"
-#include "glew.h"
-#include "SDL_opengl.h"
+#include "imgui/include/imgui.h"
+#include "imgui/include/imgui_internal.h"
+#include "imgui/include/imgui_impl_opengl3.h"
+#include "imgui/include/imgui_impl_sdl.h"
+#include "Glew/include/glew.h"
+#include "SDL/include/SDL_opengl.h"
 
 ModuleGui::ModuleGui(bool start_enabled) : Module(start_enabled)
 {

@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -34,10 +34,7 @@ the specific language governing permissions and limitations under the License.
 #include <string.h>
 #include <wchar.h>
 #include <unistd.h>
-#include <sys/mman.h>
-#ifndef AK_QNX
 #include <sys/syscall.h>
-#endif
 #include <stdlib.h>
 
 #define AK_POSIX_NO_ERR 0
@@ -64,6 +61,11 @@ namespace AK
     extern AkReal32 g_fFreqRatio;
 }
 
+#ifdef AK_NACL
+#define sched_get_priority_max( _a ) 0
+#define sched_get_priority_min( _a ) 0
+#endif
+
 //-----------------------------------------------------------------------------
 // Defines for POSIX (Mac, iOS, Android)
 //-----------------------------------------------------------------------------
@@ -74,7 +76,7 @@ namespace AK
 #define AK_RETURN_THREAD_OK                     0x00000000
 #define AK_RETURN_THREAD_ERROR                  0x00000001
 
-#define AK_DEFAULT_STACK_SIZE                   (128*1024)
+#define AK_DEFAULT_STACK_SIZE                   (65536)
 
 
 #define AK_THREAD_DEFAULT_SCHED_POLICY			SCHED_FIFO
@@ -143,21 +145,6 @@ namespace AKPLATFORM
 		AKVERIFY( sem_post( &in_event ) == AK_POSIX_NO_ERR );
 	}
 #endif	
-
-	// Virtual Memory
-	// ------------------------------------------------------------------
-	AkForceInline void* AllocVM(size_t size, size_t* /*extra*/)
-	{
-		void* ptr = mmap(0, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
-		return ( ( ptr == MAP_FAILED ) || !ptr ) ? NULL : ptr;
-	}
-
-	AkForceInline void FreeVM(void* address, size_t size, size_t /*extra*/, size_t release)
-	{
-		if ( release )
-			munmap( address, release );
-	}
-
     // Threads
     // ------------------------------------------------------------------
 
@@ -214,6 +201,7 @@ namespace AKPLATFORM
 		
 		AKVERIFY(!pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE));
 		
+#ifndef AK_NACL		
 		// Try to set the thread policy
 		int sched_policy = in_threadProperties.uSchedPolicy;
 		if( pthread_attr_setschedpolicy( &attr, sched_policy )  )
@@ -237,6 +225,7 @@ namespace AKPLATFORM
 			schedParam.sched_priority = in_threadProperties.nPriority;
 			AKVERIFY( !pthread_attr_setschedparam( &attr, &schedParam ));
 		}
+#endif
 #ifdef AK_APPLE
 		int inherit;
 		pthread_attr_getinheritsched(&attr, &inherit );
@@ -303,7 +292,7 @@ namespace AKPLATFORM
 	{
         AkInt64 iFreq;
         PerformanceFrequency( &iFreq );
-        AK::g_fFreqRatio = (AkReal32)((AkReal64)iFreq / 1000);
+        AK::g_fFreqRatio = (AkReal32)( iFreq / 1000 );
 	}
 
 	/// Returns a time range in milliseconds, using the sound engine's updated count->milliseconds ratio.
@@ -465,29 +454,9 @@ namespace AKPLATFORM
 		return ( strcmp( in_pszString1,  in_pszString2 ) );
 	}
 
-	/// Compare two NULL-terminated AkOSChar strings up to the specified count of characters.
-	/// \return
-	/// - \< 0 if in_pszString1 \< in_pszString2
-	/// -    0 if the two strings are identical
-	/// - \> 0 if in_pszString1 \> in_pszString2
-	/// \remark The comparison is case-sensitive
-	inline int OsStrNCmp( const AkOSChar* in_pszString1, const AkOSChar* in_pszString2, size_t in_MaxCountSize )
-	{
-		return ( strncmp(in_pszString1, in_pszString2, in_MaxCountSize) );
-	}
-
 	// Use with AkOSChar.
-#ifndef AK_PATH_SEPARATOR
 	#define AK_PATH_SEPARATOR	("/")
-#endif
-
-#ifndef AK_LIBRARY_PREFIX
-	#define AK_LIBRARY_PREFIX	("lib")
-#endif
-
-#ifndef AK_DYNAMIC_LIBRARY_EXTENSION
-	#define AK_DYNAMIC_LIBRARY_EXTENSION	(".so")
-#endif
+	
 }
 
 #pragma GCC visibility pop

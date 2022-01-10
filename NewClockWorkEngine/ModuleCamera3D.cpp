@@ -5,7 +5,7 @@
 #include "ModuleComponent.h"
 #include "ModuleCamera.h"
 #include <map>
-#include "SDL.h"
+#include "SDL/include/SDL.h"
 
 ModuleCamera3D::ModuleCamera3D(bool start_enabled) : Module(start_enabled)
 {

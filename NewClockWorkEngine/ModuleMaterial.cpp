@@ -1,6 +1,6 @@
 #include "Application.h"
 #include "ModuleMaterial.h"
-#include "imgui.h"
+#include "imgui/include/imgui.h"
 #include "Globals.h"
 #include "ModuleImporter.h"
 #include "ModuleRenderer3D.h"
@@ -11,7 +11,7 @@
 #include "Config.h"
 
 #include "SDL/include/SDL_opengl.h"
-#include "glew.h"
+#include "glew/include/glew.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
 

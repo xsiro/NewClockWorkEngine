@@ -1,16 +1,75 @@
-
-﻿  ModuleImporter.cpp
+﻿  Application.cpp
 C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleMaterial.h(8,24): warning C4099: 'ResourceMaterial': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.h(8): message : vea la declaración de 'ResourceMaterial'
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(42,27): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(81,35): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(111,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(150,31): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(204,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(376,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(404,27): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(384,17): warning C4101: 'currentNode': variable local sin referencia
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(469,23): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\ModuleImporter.cpp(476,23): warning C4018: '<': no coinciden signed/unsigned
-  3D Physics.vcxproj -> C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Debug\NewClockWork Engine.exe
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Application.cpp(204,20): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  AudioManager.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackage.h(87,26): error C2065: 'AkMemID_FilePackage': identificador no declarado
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.h(225): message : Vea la referencia a la creación de una instancia de la función plantilla "T_PACKAGE *CAkFilePackage::Create<CAkDiskPackage>(const AkOSChar *,AkUInt32,AkUInt32,AkUInt32 &,AkUInt8 *&)" que se está compilando
+          with
+          [
+              T_PACKAGE=CAkDiskPackage
+          ]
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(170,18): error C2039: "pPackage": no es un miembro de "AkFileDesc"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\include\AK\SoundEngine\Common\AkStreamMgrModule.h(97): message : vea la declaración de 'AkFileDesc'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(154): message : al compilar la función del miembro clase plantilla "AKRESULT CAkFilePackageLowLevelIO<CAkDefaultIOHookBlocking,CAkDiskPackage>::Open(AkFileID,AkOpenMode,AkFileSystemFlags *,bool &,AkFileDesc &)"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Win32\AkFilePackageLowLevelIOBlocking.h(37): message : Vea la referencia a la creación de una instancia de clase plantilla "CAkFilePackageLowLevelIO<CAkDefaultIOHookBlocking,CAkDiskPackage>" que se está compilando
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(191,18): error C2039: "pPackage": no es un miembro de "AkFileDesc"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\include\AK\SoundEngine\Common\AkStreamMgrModule.h(97): message : vea la declaración de 'AkFileDesc'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(107,19): error C2039: "pPackage": no es un miembro de "AkFileDesc"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\include\AK\SoundEngine\Common\AkStreamMgrModule.h(97): message : vea la declaración de 'AkFileDesc'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(87): message : al compilar la función del miembro clase plantilla "AKRESULT CAkFilePackageLowLevelIO<CAkDefaultIOHookBlocking,CAkDiskPackage>::Open(const AkOSChar *,AkOpenMode,AkFileSystemFlags *,bool &,AkFileDesc &)"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(126,19): error C2039: "pPackage": no es un miembro de "AkFileDesc"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\include\AK\SoundEngine\Common\AkStreamMgrModule.h(97): message : vea la declaración de 'AkFileDesc'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(218,15): error C2039: "pPackage": no es un miembro de "AkFileDesc"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\include\AK\SoundEngine\Common\AkStreamMgrModule.h(97): message : vea la declaración de 'AkFileDesc'
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(213): message : al compilar la función del miembro clase plantilla "AKRESULT CAkFilePackageLowLevelIO<CAkDefaultIOHookBlocking,CAkDiskPackage>::Close(AkFileDesc &)"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl(219,15): error C2039: "pPackage": no es un miembro de "AkFileDesc"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Wwise\include\AK\SoundEngine\Common\AkStreamMgrModule.h(97): message : vea la declaración de 'AkFileDesc'
+  Color.cpp
+  imgui_tables.cpp
+  GJK.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(197,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(198,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(203,3): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\float4d.h(204,10): warning C4244: 'argumento': conversión de 'const double' a 'float'; posible pérdida de datos
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  GJK2D.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Triangle2D.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\Triangle2D.cpp(1699,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  TriangleMesh.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  Clock.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(411,1): warning C4530: Se ha utilizado el controlador de excepciones de C++, pero la semántica de desenredo no está habilitada. Especifique /EHsc
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\ostream(404): message : al compilar la función del miembro clase plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)"
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(126): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(double)" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\istream(703): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_ostream<char,std::char_traits<char>>" que se está compilando
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\sstream(515): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_iostream<char,std::char_traits<char>>" que se está compilando
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Math\assume.h(113): message : Vea la referencia a la creación de una instancia de clase plantilla "std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>" que se está compilando
+  AudioSource.cpp
+  Window.cpp
+  Win_Play.cpp
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\MathGeoLib\src\Geometry\AABB2D.h(135,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\druiz\OneDrive\Documentos\GitHub\NewClockWorkEngine\NewClockWorkEngine\Win_Play.cpp(59,5): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+  Generando código...

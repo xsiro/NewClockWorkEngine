@@ -5,7 +5,7 @@
 #include "Light.h"
 #include "ModuleImporter.h"
 #include "MathGeoLib/src/MathGeoLib.h"
-#include "SDL.h"
+#include "SDL/include/SDL.h"
 #include <vector>
 
 struct Mesh;

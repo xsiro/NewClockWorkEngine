@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 #ifndef _AK_SOUNDENGINE_AKDYNAMICSEQUENCE_H
@@ -83,7 +83,7 @@ namespace AK
 			/// - AK::SoundEngine::DynamicSequence::LockPlaylist
 			/// - AK::SoundEngine::DynamicSequence::UnlockPlaylist
 			class Playlist
-				: public AkArray<PlaylistItem, const PlaylistItem&>
+				: public AkArray<PlaylistItem, const PlaylistItem&, ArrayPoolDefault, 4>
 			{
 			public:
 				/// Enqueue an Audio Node.
@@ -186,26 +186,6 @@ namespace AK
 			/// Break specified Dynamic Sequence.  The sequence will stop after the current item.
 			AK_EXTERNAPIFUNC( AKRESULT, Break )(
 				AkPlayingID in_playingID						///< AkPlayingID returned by DynamicSequence::Open
-				);
-
-			/// Seek inside specified Dynamic Sequence.
-			/// It is only possible to seek in the first item of the sequence.
-			/// If you seek past the duration of the first item, it will be skipped and an error will reported in the Capture Log and debug output. 
-			/// All the other items in the sequence will continue to play normally.
-			AK_EXTERNAPIFUNC( AKRESULT, Seek )(
-				AkPlayingID in_playingID,						///< AkPlayingID returned by DynamicSequence::Open
-				AkTimeMs in_iPosition,							///< Position into the the sound, in milliseconds
-				bool in_bSeekToNearestMarker					///< Snap to the marker nearest to the seek position.
-				);
-
-			/// Seek inside specified Dynamic Sequence.
-			/// It is only possible to seek in the first item of the sequence.
-			/// If you seek past the duration of the first item, it will be skipped and an error will reported in the Capture Log and debug output.
-			/// All the other items in the sequence will continue to play normally.
-			AK_EXTERNAPIFUNC(AKRESULT, Seek)(
-				AkPlayingID in_playingID,						///< AkPlayingID returned by DynamicSequence::Open
-				AkReal32 in_fPercent,							///< Position into the the sound, in percentage of the whole duration.
-				bool in_bSeekToNearestMarker					///< Snap to the marker nearest to the seek position.
 				);
 
 			/// Get pause times.

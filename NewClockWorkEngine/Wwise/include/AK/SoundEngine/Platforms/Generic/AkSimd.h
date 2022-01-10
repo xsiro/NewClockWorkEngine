@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 // AkSimd.h
@@ -49,24 +49,11 @@ typedef struct { AkReal32 m_data[2]; } AKSIMD_V2F32;		///< Vector of 2 32-bit fl
 typedef struct { AkReal32 m_data[4]; } AKSIMD_V4F32;		///< Vector of 4 32-bit floats
 typedef AKSIMD_V4UI32	AKSIMD_V4COND;						///< Vector of 4 comparison results
 
-#pragma pack(push,1)
-typedef struct { AkInt32 m_data[4]; }  AKSIMD_V4I32_UNALIGNED;		///< Unaligned Vector of 4 32-bit signed integers
-typedef struct { AkUInt32 m_data[4]; } AKSIMD_V4UI32_UNALIGNED;		///< Unaligned Vector of 4 32-bit signed integers
-typedef struct { AkReal32 m_data[2]; } AKSIMD_V2F32_UNALIGNED;		///< Unaligned Vector of 2 32-bit floats
-typedef struct { AkReal32 m_data[4]; } AKSIMD_V4F32_UNALIGNED;		///< Unaligned Vector of 4 32-bit floats
-#pragma pack(pop)
 
-//@}
-////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////
-/// @name Platform specific defines for prefetching
-//@{
-
-#define AKSIMD_ARCHCACHELINESIZE	(32)				///< Assumed cache line width for architectures on this platform
-#define AKSIMD_ARCHMAXPREFETCHSIZE	(512) 				///< Use this to control how much prefetching maximum is desirable (assuming 8-way cache)		
-/// Cross-platform memory prefetch of effective address assuming non-temporal data
-#define AKSIMD_PREFETCHMEMORY( __offset__, __add__ )
+typedef struct { AkInt32 m_data[4]; }  __attribute__((__packed__)) AKSIMD_V4I32_UNALIGNED;		///< Unaligned Vector of 4 32-bit signed integers
+typedef struct { AkUInt32 m_data[4]; } __attribute__((__packed__)) AKSIMD_V4UI32_UNALIGNED;		///< Unaligned Vector of 4 32-bit signed integers
+typedef struct { AkReal32 m_data[2]; } __attribute__((__packed__)) AKSIMD_V2F32_UNALIGNED;		///< Unaligned Vector of 2 32-bit floats
+typedef struct { AkReal32 m_data[4]; } __attribute__((__packed__)) AKSIMD_V4F32_UNALIGNED;		///< Unaligned Vector of 4 32-bit floats
 
 //@}
 ////////////////////////////////////////////////////////////////////////
@@ -222,7 +209,7 @@ AkForceInline AKSIMD_V4F32 AKSIMD_CONVERT_V4I32_TO_V4F32( const AKSIMD_V4I32& in
 	return vector;
 }
 // _mm_cvtps_epi32
-AkForceInline AKSIMD_V4I32 AKSIMD_TRUNCATE_V4F32_TO_V4I32( const AKSIMD_V4F32& in_from )
+AkForceInline AKSIMD_V4I32 AKSIMD_CONVERT_V4F32_TO_V4I32( const AKSIMD_V4F32& in_from )
 {
 	AKSIMD_V4I32 vector;
 	vector.m_data[0] = (AkInt32)in_from.m_data[0];
@@ -288,77 +275,6 @@ AkForceInline AKSIMD_V4UI32 AKSIMD_CMPLE_V4F32( const AKSIMD_V4F32& in_vec1, con
 	return vector;
 }
 
-AkForceInline AKSIMD_V4F32 AKSIMD_GTEQ_V4F32(const AKSIMD_V4F32& in_vec1, const AKSIMD_V4F32& in_vec2)
-{
-	AKSIMD_V4F32 vector;
-
-	vector.m_data[0] = (AkReal32)((in_vec1.m_data[0] >= in_vec2.m_data[0]) ? 0xffffffff : 0x0);
-	vector.m_data[1] = (AkReal32)((in_vec1.m_data[1] >= in_vec2.m_data[1]) ? 0xffffffff : 0x0);
-	vector.m_data[2] = (AkReal32)((in_vec1.m_data[2] >= in_vec2.m_data[2]) ? 0xffffffff : 0x0);
-	vector.m_data[3] = (AkReal32)((in_vec1.m_data[3] >= in_vec2.m_data[3]) ? 0xffffffff : 0x0);
-
-	return vector;
-}
-
-AkForceInline AKSIMD_V4F32 AKSIMD_GT_V4F32(const AKSIMD_V4F32& in_vec1, const AKSIMD_V4F32& in_vec2)
-{
-	AKSIMD_V4F32 vector;
-
-	vector.m_data[0] = (AkReal32)((in_vec1.m_data[0] > in_vec2.m_data[0]) ? 0xffffffff : 0x0);
-	vector.m_data[1] = (AkReal32)((in_vec1.m_data[1] > in_vec2.m_data[1]) ? 0xffffffff : 0x0);
-	vector.m_data[2] = (AkReal32)((in_vec1.m_data[2] > in_vec2.m_data[2]) ? 0xffffffff : 0x0);
-	vector.m_data[3] = (AkReal32)((in_vec1.m_data[3] > in_vec2.m_data[3]) ? 0xffffffff : 0x0);
-
-	return vector;
-}
-
-AkForceInline AKSIMD_V4F32 AKSIMD_LTEQ_V4F32(const AKSIMD_V4F32& in_vec1, const AKSIMD_V4F32& in_vec2)
-{
-	AKSIMD_V4F32 vector;
-
-	vector.m_data[0] = (AkReal32)((in_vec1.m_data[0] <= in_vec2.m_data[0]) ? 0xffffffff : 0x0);
-	vector.m_data[1] = (AkReal32)((in_vec1.m_data[1] <= in_vec2.m_data[1]) ? 0xffffffff : 0x0);
-	vector.m_data[2] = (AkReal32)((in_vec1.m_data[2] <= in_vec2.m_data[2]) ? 0xffffffff : 0x0);
-	vector.m_data[3] = (AkReal32)((in_vec1.m_data[3] <= in_vec2.m_data[3]) ? 0xffffffff : 0x0);
-
-	return vector;
-}
-
-AkForceInline AKSIMD_V4F32 AKSIMD_LT_V4F32(const AKSIMD_V4F32& in_vec1, const AKSIMD_V4F32& in_vec2)
-{
-	AKSIMD_V4F32 vector;
-
-	vector.m_data[0] = (AkReal32)((in_vec1.m_data[0] < in_vec2.m_data[0]) ? 0xffffffff : 0x0);
-	vector.m_data[1] = (AkReal32)((in_vec1.m_data[1] < in_vec2.m_data[1]) ? 0xffffffff : 0x0);
-	vector.m_data[2] = (AkReal32)((in_vec1.m_data[2] < in_vec2.m_data[2]) ? 0xffffffff : 0x0);
-	vector.m_data[3] = (AkReal32)((in_vec1.m_data[3] < in_vec2.m_data[3]) ? 0xffffffff : 0x0);
-
-	return vector;
-}
-
-AkForceInline AKSIMD_V4F32 AKSIMD_EQ_V4F32(const AKSIMD_V4F32& in_vec1, const AKSIMD_V4F32& in_vec2)
-{
-	AKSIMD_V4F32 vector;
-
-	vector.m_data[0] = (AkReal32)((in_vec1.m_data[0] == in_vec2.m_data[0]) ? 0xffffffff : 0x0);
-	vector.m_data[1] = (AkReal32)((in_vec1.m_data[1] == in_vec2.m_data[1]) ? 0xffffffff : 0x0);
-	vector.m_data[2] = (AkReal32)((in_vec1.m_data[2] == in_vec2.m_data[2]) ? 0xffffffff : 0x0);
-	vector.m_data[3] = (AkReal32)((in_vec1.m_data[3] == in_vec2.m_data[3]) ? 0xffffffff : 0x0);
-
-	return vector;
-}
-
-AkForceInline AKSIMD_V4F32 AKSIMD_XOR_V4F32( const AKSIMD_V4F32& in_vec1, const AKSIMD_V4F32& in_vec2 )
-{
-	AKSIMD_V4F32 vector;
-	
-	vector.m_data[0] = (AkReal32)(((AkUInt32)in_vec1.m_data[0]) ^ ((AkUInt32)in_vec2.m_data[0]));
-	vector.m_data[1] = (AkReal32)(((AkUInt32)in_vec1.m_data[1]) ^ ((AkUInt32)in_vec2.m_data[1]));
-	vector.m_data[2] = (AkReal32)(((AkUInt32)in_vec1.m_data[2]) ^ ((AkUInt32)in_vec2.m_data[2]));
-	vector.m_data[3] = (AkReal32)(((AkUInt32)in_vec1.m_data[3]) ^ ((AkUInt32)in_vec2.m_data[3]));
-	
-	return vector;
-}
 
 AkForceInline AKSIMD_V4I32 AKSIMD_SHIFTLEFT_V4I32( AKSIMD_V4I32 in_vector, int in_shiftBy)
 {
@@ -367,16 +283,6 @@ AkForceInline AKSIMD_V4I32 AKSIMD_SHIFTLEFT_V4I32( AKSIMD_V4I32 in_vector, int i
 	in_vector.m_data[2] <<= in_shiftBy;
 	in_vector.m_data[3] <<= in_shiftBy;
 	
-	return in_vector;
-}
-
-AkForceInline AKSIMD_V4I32 AKSIMD_SHIFTRIGHT_V4I32( AKSIMD_V4I32 in_vector, int in_shiftBy)
-{
-	in_vector.m_data[0] = (AkInt32)((AkUInt32)in_vector.m_data[0] >> in_shiftBy);
-	in_vector.m_data[1] = (AkInt32)((AkUInt32)in_vector.m_data[1] >> in_shiftBy);
-	in_vector.m_data[2] = (AkInt32)((AkUInt32)in_vector.m_data[2] >> in_shiftBy);
-	in_vector.m_data[3] = (AkInt32)((AkUInt32)in_vector.m_data[3] >> in_shiftBy);
-
 	return in_vector;
 }
 
@@ -435,18 +341,6 @@ AkForceInline AKSIMD_V4F32 AKSIMD_ADD_V4F32( const AKSIMD_V4F32& in_vec1, const 
 	vector.m_data[1] = in_vec1.m_data[1] + in_vec2.m_data[1];
 	vector.m_data[2] = in_vec1.m_data[2] + in_vec2.m_data[2];
 	vector.m_data[3] = in_vec1.m_data[3] + in_vec2.m_data[3];
-	
-	return vector;
-}
-
-AkForceInline AKSIMD_V4F32 AKSIMD_DIV_V4F32( const AKSIMD_V4F32& in_vec1, const AKSIMD_V4F32& in_vec2 ) 
-{
-	AKSIMD_V4F32 vector;
-	
-	vector.m_data[0] = in_vec1.m_data[0] / in_vec2.m_data[0];
-	vector.m_data[1] = in_vec1.m_data[1] / in_vec2.m_data[1];
-	vector.m_data[2] = in_vec1.m_data[2] / in_vec2.m_data[2];
-	vector.m_data[3] = in_vec1.m_data[3] / in_vec2.m_data[3];
 	
 	return vector;
 }
@@ -571,10 +465,10 @@ AkForceInline AKSIMD_V2F32 AKSIMD_MAX_V2F32( const AKSIMD_V2F32& in_vec1, const 
 AkForceInline AKSIMD_V4F32 AKSIMD_ABS_V4F32( const AKSIMD_V4F32& in_vec1 )
 {
 	AKSIMD_V4F32 vector;
-	vector.m_data[0] = fabsf(in_vec1.m_data[0]);
-	vector.m_data[1] = fabsf(in_vec1.m_data[1]);
-	vector.m_data[2] = fabsf(in_vec1.m_data[2]);
-	vector.m_data[3] = fabsf(in_vec1.m_data[3]);
+	vector.m_data[0] = fabs(in_vec1.m_data[0]);
+	vector.m_data[1] = fabs(in_vec1.m_data[1]);
+	vector.m_data[2] = fabs(in_vec1.m_data[2]);
+	vector.m_data[3] = fabs(in_vec1.m_data[3]);
 	return vector;
 }
 
@@ -592,33 +486,21 @@ AkForceInline AKSIMD_V4F32 AKSIMD_NEG_V4F32( const AKSIMD_V4F32& in_vec1 )
 AkForceInline AKSIMD_V4F32 AKSIMD_SQRT_V4F32( const AKSIMD_V4F32& in_vec )
 {
 		AKSIMD_V4F32 vCompare;
-		AKSIMD_GETELEMENT_V4F32(vCompare,0) = sqrtf( AKSIMD_GETELEMENT_V4F32(in_vec,0) );
-		AKSIMD_GETELEMENT_V4F32(vCompare,1) = sqrtf( AKSIMD_GETELEMENT_V4F32(in_vec,1) );
-		AKSIMD_GETELEMENT_V4F32(vCompare,2) = sqrtf( AKSIMD_GETELEMENT_V4F32(in_vec,2) );
-		AKSIMD_GETELEMENT_V4F32(vCompare,3) = sqrtf( AKSIMD_GETELEMENT_V4F32(in_vec,3) );
+		AKSIMD_GETELEMENT_V4F32(vCompare,0) = sqrt( AKSIMD_GETELEMENT_V4F32(in_vec,0) );
+		AKSIMD_GETELEMENT_V4F32(vCompare,1) = sqrt( AKSIMD_GETELEMENT_V4F32(in_vec,1) );
+		AKSIMD_GETELEMENT_V4F32(vCompare,2) = sqrt( AKSIMD_GETELEMENT_V4F32(in_vec,2) );
+		AKSIMD_GETELEMENT_V4F32(vCompare,3) = sqrt( AKSIMD_GETELEMENT_V4F32(in_vec,3) );
 
 		//AKSIMD_V4F32 res = vrecpeq_f32( vrsqrteq_f32( in_vec ) );
 
 		return vCompare /*res*/;
 }
 
-/// Vector reciprocal square root approximation 1/sqrt(a), or equivalently, sqrt(1/a)
-AkForceInline AKSIMD_V4F32 AKSIMD_RSQRT_V4F32(const AKSIMD_V4F32& in_vec)
-{
-	AKSIMD_V4F32 vCompare;
-	AKSIMD_GETELEMENT_V4F32(vCompare, 0) = 1.f / sqrtf(AKSIMD_GETELEMENT_V4F32(in_vec, 0));
-	AKSIMD_GETELEMENT_V4F32(vCompare, 1) = 1.f / sqrtf(AKSIMD_GETELEMENT_V4F32(in_vec, 1));
-	AKSIMD_GETELEMENT_V4F32(vCompare, 2) = 1.f / sqrtf(AKSIMD_GETELEMENT_V4F32(in_vec, 2));
-	AKSIMD_GETELEMENT_V4F32(vCompare, 3) = 1.f / sqrtf(AKSIMD_GETELEMENT_V4F32(in_vec, 3));
-
-	return vCompare;
-}
-
 AkForceInline AKSIMD_V2F32 AKSIMD_SQRT_V2F32( const AKSIMD_V2F32& in_vec )
 {
 	AKSIMD_V2F32 vCompare;
-	AKSIMD_GETELEMENT_V4F32(vCompare,0) = sqrtf( AKSIMD_GETELEMENT_V4F32(in_vec,0) );
-	AKSIMD_GETELEMENT_V4F32(vCompare,1) = sqrtf( AKSIMD_GETELEMENT_V4F32(in_vec,1) );
+	AKSIMD_GETELEMENT_V4F32(vCompare,0) = sqrt( AKSIMD_GETELEMENT_V4F32(in_vec,0) );
+	AKSIMD_GETELEMENT_V4F32(vCompare,1) = sqrt( AKSIMD_GETELEMENT_V4F32(in_vec,1) );
 	
 	//AKSIMD_V4F32 res = vrecpeq_f32( vrsqrteq_f32( in_vec ) );
 	
@@ -714,14 +596,14 @@ AkForceInline AKSIMD_V4I32 AKSIMD_PACKS_V4I32( const AKSIMD_V4I32& in_vec1, cons
 	AKSIMD_V4I32 vector;
 	AkInt16 *pDest = (AkInt16*)&vector;
 	
-	pDest[0] = (AkInt16)AkClamp((AkInt16)in_vec1.m_data[0], -32768, 32767);
-	pDest[1] = (AkInt16)AkClamp((AkInt16)in_vec1.m_data[1], -32768, 32767);
-	pDest[2] = (AkInt16)AkClamp((AkInt16)in_vec1.m_data[2], -32768, 32767);
-	pDest[3] = (AkInt16)AkClamp((AkInt16)in_vec1.m_data[3], -32768, 32767);
-	pDest[4] = (AkInt16)AkClamp((AkInt16)in_vec2.m_data[0], -32768, 32767);
-	pDest[5] = (AkInt16)AkClamp((AkInt16)in_vec2.m_data[1], -32768, 32767);
-	pDest[6] = (AkInt16)AkClamp((AkInt16)in_vec2.m_data[2], -32768, 32767);
-	pDest[7] = (AkInt16)AkClamp((AkInt16)in_vec2.m_data[3], -32768, 32767);
+	pDest[0] = AkClamp( in_vec1.m_data[0], -32768, 32767);
+	pDest[1] = AkClamp( in_vec1.m_data[1], -32768, 32767);	
+	pDest[2] = AkClamp( in_vec1.m_data[2], -32768, 32767);	
+	pDest[3] = AkClamp( in_vec1.m_data[3], -32768, 32767);
+	pDest[4] = AkClamp( in_vec2.m_data[0], -32768, 32767);
+	pDest[5] = AkClamp( in_vec2.m_data[1], -32768, 32767);
+	pDest[6] = AkClamp( in_vec2.m_data[2], -32768, 32767);
+	pDest[7] = AkClamp( in_vec2.m_data[3], -32768, 32767);
 	
 	return vector;
 }
@@ -781,9 +663,6 @@ AkForceInline AKSIMD_V4I32 AKSIMD_PACKS_V4I32( const AKSIMD_V4I32& in_vec1, cons
 /// Swap the 2 lower floats with the 2 higher floats.	
 #define AKSIMD_SHUFFLE_CDAB( __a__ ) AKSIMD_SHUFFLE_V4F32( (__a__), (__a__), AKSIMD_SHUFFLE(1,0,3,2));
 
-/// Barrel-shift all floats by one.
-#define AKSIMD_SHUFFLE_BCDA( __a__ ) AKSIMD_SHUFFLE_V4F32( (__a__), (__a__), AKSIMD_SHUFFLE(0,3,2,1))
-
  /// Duplicates the odd items into the even items (d c b a -> d d b b )
 #define AKSIMD_DUP_ODD(__vv) AKSIMD_SHUFFLE_V4F32(__vv, __vv, AKSIMD_SHUFFLE(3,3,1,1))
 
@@ -804,20 +683,19 @@ AkForceInline AKSIMD_V4I32 AKSIMD_PACKS_V4I32( const AKSIMD_V4I32& in_vec1, cons
 #define AKSIMD_STOREVEC AKSIMD_STORE_V4F32
 
 /// Faked in-place vector horizontal add. 
-/// \akwarning
-/// Don't expect this to be very efficient.
-/// \endakwarning
-static AkForceInline AKSIMD_V4F32 AKSIMD_HORIZONTALADD_V4F32( AKSIMD_V4F32 vVec )
+/// \akwarning 
+/// Don't expect this to be very efficient. 
+/// /endakwarning
+static AkForceInline void AKSIMD_HORIZONTALADD( AKSIMD_V4F32 & vVec )
 {   
-	AKSIMD_V4F32 vAb = AKSIMD_SHUFFLE_V4F32(vVec, vVec, 0xB1);
-	AKSIMD_V4F32 vHaddAb = AKSIMD_ADD_V4F32(vVec, vAb);
-	AKSIMD_V4F32 vHaddCd = AKSIMD_SHUFFLE_V4F32(vHaddAb, vHaddAb, 0x4E);
-	AKSIMD_V4F32 vHaddAbcd = AKSIMD_ADD_V4F32(vHaddAb, vHaddCd);
-	return vHaddAbcd;
+	AKSIMD_V4F32 vHighLow = AKSIMD_MOVEHL_V4F32(vVec, vVec);
+	vVec = AKSIMD_ADD_V4F32(vVec, vHighLow);
+	vHighLow = AKSIMD_SHUFFLE_V4F32(vVec, vVec, 0x55);
+	vVec = AKSIMD_ADD_V4F32(vVec, vHighLow);
 } 
 
 /// Cross-platform SIMD multiplication of 2 complex data elements with interleaved real and imaginary parts
-static AkForceInline AKSIMD_V4F32 AKSIMD_COMPLEXMUL_V4F32( const AKSIMD_V4F32 vCIn1, const AKSIMD_V4F32 vCIn2 )
+static AkForceInline AKSIMD_V4F32 AKSIMD_COMPLEXMUL( const AKSIMD_V4F32 vCIn1, const AKSIMD_V4F32 vCIn2 )
 {
 	static const AKSIMD_V4F32 vSign = { 1.f, -1.f, 1.f, -1.f }; 
 
@@ -832,33 +710,6 @@ static AkForceInline AKSIMD_V4F32 AKSIMD_COMPLEXMUL_V4F32( const AKSIMD_V4F32 vC
 }
 
 #define AKSIMD_SPLAT_V4F32(var, idx) AKSIMD_SHUFFLE_V4F32(var,var, AKSIMD_SHUFFLE(idx,idx,idx,idx))
-
-#define AK_SIGN_BIT( val ) (((AkUInt32)val) >> 31)
-
-static AkForceInline int AKSIMD_MASK_V4F32( const AKSIMD_V4F32& in_vec )
-{
-	return AK_SIGN_BIT(in_vec.m_data[0]) | AK_SIGN_BIT(in_vec.m_data[1]) << 1 | AK_SIGN_BIT(in_vec.m_data[2]) << 2 |  AK_SIGN_BIT(in_vec.m_data[3]) << 3;
-}
-
-static AkForceInline AKSIMD_V4F32 AKSIMD_RECIP_V4F32(const AKSIMD_V4F32 &v)
-{
-	AKSIMD_V4F32 r;
-	r.m_data[0] = 1.f / v.m_data[0];
-	r.m_data[1] = 1.f / v.m_data[1];
-	r.m_data[2] = 1.f / v.m_data[2];
-	r.m_data[3] = 1.f / v.m_data[3];
-	return r;
-}
-
-static AkForceInline AKSIMD_V4F32 AKSIMD_CEIL_V4F32(const AKSIMD_V4F32 & x)
-{
-	AKSIMD_V4F32 r;
-	r.m_data[0] = ceil(x.m_data[0]);
-	r.m_data[1] = ceil(x.m_data[1]);
-	r.m_data[2] = ceil(x.m_data[2]);
-	r.m_data[3] = ceil(x.m_data[3]);
-	return r;
-}
 
 #endif //_AKSIMD_GENERIC_H_
 

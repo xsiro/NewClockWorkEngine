@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 /// \file 
@@ -31,7 +31,7 @@ the specific language governing permissions and limitations under the License.
 #ifndef _IAK_STREAM_MGR_H_
 #define _IAK_STREAM_MGR_H_
 
-#include <AK/SoundEngine/Common/AkMemoryMgr.h>
+#include "../../SoundEngine/Common/AkMemoryMgr.h"
 
 //-----------------------------------------------------------------------------
 // Defines. 
@@ -83,12 +83,13 @@ struct AkFileSystemFlags
 	AkFileSystemFlags()
 		: uCacheID( AK_INVALID_FILE_ID ) {}
 
-	AkFileSystemFlags( AkUInt32 in_uCompanyID, AkUInt32 in_uCodecID, AkUInt32 in_uCustomParamSize, void * in_pCustomParam, bool in_bIsLanguageSpecific, AkFileID in_uCacheID )
+	AkFileSystemFlags( AkUInt32 in_uCompanyID, AkUInt32 in_uCodecID, AkUInt32 in_uCustomParamSize, void * in_pCustomParam, bool in_bIsLanguageSpecific, bool in_bIsFromRSX, AkFileID in_uCacheID )
 		: uCompanyID( in_uCompanyID )
 		, uCodecID( in_uCodecID )
 		, uCustomParamSize( in_uCustomParamSize )
 		, pCustomParam( in_pCustomParam )
 		, bIsLanguageSpecific( in_bIsLanguageSpecific )
+		, bIsFromRSX( in_bIsFromRSX )
 		, uCacheID( in_uCacheID ) 
 		, uNumBytesPrefetch( 0 ) {}
 
@@ -97,6 +98,7 @@ struct AkFileSystemFlags
     AkUInt32            uCustomParamSize;   ///< Size of the custom parameter
     void *              pCustomParam;       ///< Custom parameter
     bool                bIsLanguageSpecific;///< True when the file location depends on language
+	bool				bIsFromRSX;			///< True if the "RSX" option is checked in the sound's streaming properties
 	bool                bIsAutomaticStream;	///< True when the file is opened to be used as an automatic stream. Note that you don't need to set it. 
 											///< If you pass an AkFileSystemFlags to IAkStreamMgr CreateStd|Auto(), it will be set internally to the correct value.
 	AkFileID			uCacheID;			///< Cache ID for caching system used by automatic streams. The user is responsible for guaranteeing unicity of IDs. 
@@ -144,8 +146,6 @@ struct AkAutoStmBufSettings
 
 /// \name Profiling structures.
 //@{
-
-#pragma pack(push, 4)
 
 /// Device descriptor.
 struct AkDeviceDesc
@@ -209,9 +209,6 @@ struct AkStreamData
 	AkReal32			fEstimatedThroughput;		///< Estimated throughput heuristic
 	bool				bActive;			///< True if this stream has been active (that is, was ready for I/O or had at least one pending I/O transfer, uncached or not) in the previous frame
 };
-
-#pragma pack(pop)
-
 //@}
 
 namespace AK
@@ -220,9 +217,7 @@ namespace AK
     //@{
     
     /// Profiling interface of streams.
-	/// \akwarning
-	/// The functions in this interface are not thread-safe, unless stated otherwise.
-	/// \endakwarning
+	/// \warning The functions in this interface are not thread-safe, unless stated otherwise.
     class IAkStreamProfile
     {
     protected:
@@ -258,9 +253,7 @@ namespace AK
 
 
     /// Profiling interface of high-level I/O devices.
-	/// \akwarning
-	/// The functions in this interface are not thread-safe, unless stated otherwise.
-	/// \endakwarning
+	/// \warning The functions in this interface are not thread-safe, unless stated otherwise.
     class IAkDeviceProfile
     {
     protected:
@@ -316,9 +309,7 @@ namespace AK
     };
 
     /// Profiling interface of the Stream Manager.
-	/// \akwarning
-	/// The functions in this interface are not thread-safe, unless stated otherwise.
-	/// \endakwarning
+	/// \warning The functions in this interface are not thread-safe, unless stated otherwise.
     class IAkStreamMgrProfile
     {
     protected:
@@ -359,9 +350,7 @@ namespace AK
 
     /// Interface of standard streams. Used as a handle to a standard stream. Has methods for 
     /// stream control. Obtained through the Stream Manager's AK::IAkStreamMgr::CreateStd() method.
-	/// \akwarning
-	/// The functions in this interface are not thread-safe, unless stated otherwise.
-	/// \endakwarning
+	/// \warning The functions in this interface are not thread-safe, unless stated otherwise.
     class IAkStdStream
     {
     protected:
@@ -483,13 +472,6 @@ namespace AK
 		/// - \ref streamingdevicemanager
         virtual AkStmStatus GetStatus() = 0;  
 
-        /// Block and wait for a pending read to finish, and return the current status of the stream.
-        /// This will return immediately if the status is not pending.
-        /// \return The stream status.
-		/// \sa
-		/// - \ref streamingdevicemanager
-        virtual AkStmStatus WaitForPendingOperation() = 0;
-
         //@}
     };
 
@@ -497,9 +479,7 @@ namespace AK
     /// Interface of automatic streams. It is used as a handle to a stream, 
     /// I/O operations are triggered from here. 
     /// Obtained through the Stream Manager's AK::IAkStreamMgr::CreateAuto() method.
-	/// \akwarning
-	/// The functions in this interface are not thread-safe, unless stated otherwise.
-	/// \endakwarning
+	/// \warning The functions in this interface are not thread-safe, unless stated otherwise.
 	/// \sa
 	/// - \ref streamingdevicemanager
     class IAkAutoStream 
@@ -550,18 +530,6 @@ namespace AK
 		virtual AKRESULT  SetMinimalBufferSize(
 			AkUInt32		in_uMinBufferSize	///< Minimum buffer size that can be handed out to client.
 			) = 0;
-
-		/// Set the minimum size to buffer ahead in an automated stream.
-		///
-		/// This function was made available to allow systems that cannot only rely on AkAutoStmHeuristics::fThroughput to predict what will be the best target size of an automatic stream.
-		/// The system will predict the minimum size to buffer and will consider this value as the minimal size to be the target.
-		/// \sa
-		/// - AkAutoStmBufSettings
-		/// - \ref streamingdevicemanager
-		/// - \ref AkAutoStmHeuristics
-		virtual AKRESULT  SetMinTargetBufferSize(
-			AkUInt32		in_uMinTargetBufferSize	///< Minimum size to buffer ahead in an automated stream. (in bytes)
-		) = 0;
 
         /// Give the stream a name (appears in the Wwise profiler).
 		/// \sa
@@ -679,9 +647,7 @@ namespace AK
 
 
     /// Interface of the Stream Manager.
-	/// \akwarning
-	/// The functions in this interface are not thread-safe, unless stated otherwise.
-	/// \endakwarning
+	/// \warning The functions in this interface are not thread-safe, unless stated otherwise.
     class IAkStreamMgr
     {
     protected:
@@ -776,22 +742,10 @@ namespace AK
 			bool						in_bSyncOpen		///< If true, force the Stream Manager to open file synchronously. Otherwise, it is left to its discretion.
             ) = 0;
 
-		/// Create an automatic stream (in-memory buffer overload).
-		/// \return AK_Success if the stream was created successfully
-		/// \remarks The stream needs to be started explicitly with IAkAutoStream::Start().
-		/// \sa
-		/// - \ref streamingdevicemanager
-		virtual AKRESULT CreateAuto(
-			void *                      in_pBuffer,         ///< Pointer to the memory area containing stream data
-			AkUInt64                    in_uSize,           ///< Size of the memory area containing stream data
-			const AkAutoStmHeuristics & in_heuristics,      ///< Streaming heuristics
-			IAkAutoStream *&            out_pStream         ///< Returned interface to an automatic stream. If the function does not return AK_Success, this pointer is left untouched.
-			) = 0;
-
 		/// Start streaming the first "in_pFSFlags->uNumBytesPrefetch" bytes of the file with id "in_fileID" into cache.  The stream will be scheduled only after
 		/// all regular streams (not file caching streams) are serviced.  The file will stay cached until either the UnpinFileInCache is called,
 		/// or the limit as set by uMaxCachePinnedBytes is reached and another higher priority file (in_uPriority) needs the space.  
-		/// \remarks PinFileInCache()/UnpinFileInCache()/UpdateCachingPriority() are typically not used directly, but instead used via the AK::SoundEngine::PinEventInStreamCache() API. 
+		/// /remarks PinFileInCache()/UnpinFileInCache()/UpdateCachingPriority() are typically not used directly, but instead used via the AK::SoundEngine::PinEventInStreamCache() API. 
 		///		Using PinFileInCache() directly does not allow users to take advantage of sound bank data.  The file and the number of bytes they wish to cache must be explicitly specified.
 		/// 
 		/// \sa
@@ -808,7 +762,7 @@ namespace AK
 		/// Un-pin a file that has been previouly pinned into cache.  This function must be called once for every call to PinFileInCache() with the same file id.
 		/// The file may still remain in stream cache after this is called, until the memory is reused by the streaming memory manager in accordance with to its 
 		/// cache management algorithm.
-		/// \remarks PinFileInCache()/UnpinFileInCache()/UpdateCachingPriority() are typically not used directly, but instead used via the AK::SoundEngine::PinEventInStreamCache() API. 
+		/// /remarks PinFileInCache()/UnpinFileInCache()/UpdateCachingPriority() are typically not used directly, but instead used via the AK::SoundEngine::PinEventInStreamCache() API. 
 		///		Using UnpinFileInCache() directly does not allow users to take advantage of sound bank data.  The file must be explicitly specified.
 		/// \sa
 		/// - \ref streamingdevicemanager
@@ -821,7 +775,7 @@ namespace AK
 		
 		/// Update the priority of the caching stream.  Higher priority streams will be serviced before lower priority caching streams, and will be more likely to stay in 
 		/// memory if the cache pin limit as set by "uMaxCachePinnedBytes" is reached.
-		/// \remarks PinFileInCache()/UnpinFileInCache()/UpdateCachingPriority() are typically not used directly, but instead used via the AK::SoundEngine::PinEventInStreamCache() API. 
+		/// /remarks PinFileInCache()/UnpinFileInCache()/UpdateCachingPriority() are typically not used directly, but instead used via the AK::SoundEngine::PinEventInStreamCache() API. 
 		///		Using UpdateCachingPriority() directly does not allow users to take advantage of sound bank data.  The file must be explicitly specified.
 		/// \sa
 		/// - \ref streamingdevicemanager
@@ -841,12 +795,6 @@ namespace AK
 			AkReal32& out_fPercentBuffered,					///< Percentage of buffer full (out of 100)
 			bool& out_bCacheFull							///< Set to true if the rest of the buffer can not fit into the cache-pinned memory limit.
 			) = 0;
-
-		/// Make a memory stream point to a new area in memory, otherwise keeping the exact same state.
-		virtual AKRESULT RelocateMemoryStream(
-			IAkAutoStream * in_pStream,                     ///< The stream to relocate. Must be a stream created with the memory overload of CreateAutoStm.
-			AkUInt8 * in_pNewStart                          ///< The new area in memory to point to
-		) = 0;
 
 		//@}
 

@@ -18,6 +18,7 @@
 #include "FileSystem.h"
 #include "ModuleResourceM.h"
 #include "Brofiler/Brofiler.h"
+#include "AudioManager.h"
 #include "Config.h"
 
 
@@ -33,6 +34,7 @@ public:
 	ModuleGui* gui;
 	FileSystem* filesystem;
 	ModuleResourceM* resourcemanager;
+	AudioManager* audioManager;
 
 private:
 

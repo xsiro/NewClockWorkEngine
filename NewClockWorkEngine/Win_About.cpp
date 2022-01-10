@@ -1,12 +1,12 @@
 #include "Win_About.h"
 #include "OpenGL.h"
 #include <stdio.h>
-#include "imgui.h"
-#include "imgui_internal.h"
-#include "imgui_impl_opengl3.h"
-#include "imgui_impl_sdl.h"
-#include "glew.h"
-#include "SDL_opengl.h"
+#include "imgui/include/imgui.h"
+#include "imgui/include/imgui_internal.h"
+#include "imgui/include/imgui_impl_opengl3.h"
+#include "imgui/include/imgui_impl_sdl.h"
+#include "glew/include/glew.h"
+#include "sdl/include/SDL.h"
 #include "Globals.h"
 #include "Application.h"
 

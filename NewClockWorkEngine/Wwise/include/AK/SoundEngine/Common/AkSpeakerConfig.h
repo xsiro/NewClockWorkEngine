@@ -21,14 +21,14 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 #ifndef _AK_SPEAKERCONFIG_H_
 #define _AK_SPEAKERCONFIG_H_
 
-#include <AK/SoundEngine/Common/AkTypes.h>
+#include "../../SoundEngine/Common/AkTypes.h"
 
 /// Standard speakers (channel mask):
 #define AK_SPEAKER_FRONT_LEFT				0x1		///< Front left speaker bit mask
@@ -69,10 +69,10 @@ the specific language governing permissions and limitations under the License.
 #define AK_SPEAKER_SETUP_6POINT1		(AK_SPEAKER_SETUP_6			| AK_SPEAKER_LOW_FREQUENCY)	///< 6.1 setup channel mask
 #define AK_SPEAKER_SETUP_7				(AK_SPEAKER_SETUP_6			| AK_SPEAKER_FRONT_CENTER)	///< 7.0 setup channel mask
 #define AK_SPEAKER_SETUP_7POINT1		(AK_SPEAKER_SETUP_7			| AK_SPEAKER_LOW_FREQUENCY)	///< 7.1 setup channel mask
-#define AK_SPEAKER_SETUP_SURROUND		(AK_SPEAKER_SETUP_STEREO	| AK_SPEAKER_BACK_CENTER)	///< Legacy surround setup channel mask
+#define AK_SPEAKER_SETUP_SURROUND		(AK_SPEAKER_SETUP_STEREO	| AK_SPEAKER_BACK_CENTER)	///< Wii surround setup channel mask
 
 // Note. DPL2 does not really have 4 channels, but it is used by plugins to differentiate from stereo setup.
-#define AK_SPEAKER_SETUP_DPL2			(AK_SPEAKER_SETUP_4)		///< Legacy DPL2 setup channel mask
+#define AK_SPEAKER_SETUP_DPL2			(AK_SPEAKER_SETUP_4)		///< Wii DPL2 setup channel mask
 
 #define AK_SPEAKER_SETUP_HEIGHT_4		(AK_SPEAKER_HEIGHT_FRONT_LEFT | AK_SPEAKER_HEIGHT_FRONT_RIGHT	| AK_SPEAKER_HEIGHT_BACK_LEFT | AK_SPEAKER_HEIGHT_BACK_RIGHT)	///< 4 speaker height layer.
 #define AK_SPEAKER_SETUP_HEIGHT_5		(AK_SPEAKER_SETUP_HEIGHT_4 | AK_SPEAKER_HEIGHT_FRONT_CENTER)																	///< 5 speaker height layer.
@@ -177,6 +177,8 @@ the specific language governing permissions and limitations under the License.
 //
 
 #define AK_SPEAKER_SETUP_0_1		( AK_SPEAKER_LOW_FREQUENCY )							//0.1
+#define AK_SPEAKER_SETUP_1_0		( AK_SPEAKER_FRONT_LEFT )								//1.0 (L)
+#define AK_SPEAKER_SETUP_1_1		( AK_SPEAKER_FRONT_LEFT	| AK_SPEAKER_LOW_FREQUENCY )	//1.1 (L)
 
 #define AK_SPEAKER_SETUP_1_0_CENTER	( AK_SPEAKER_FRONT_CENTER )							//1.0 (C)
 #define AK_SPEAKER_SETUP_1_1_CENTER ( AK_SPEAKER_FRONT_CENTER	| AK_SPEAKER_LOW_FREQUENCY )	//1.1 (C)
@@ -210,18 +212,21 @@ the specific language governing permissions and limitations under the License.
 #define AK_VOICE_MAX_NUM_CHANNELS				(6)							///< Legacy: Platform supports up to 5.1 configuration.
 #define AK_STANDARD_MAX_NUM_CHANNELS			(AK_VOICE_MAX_NUM_CHANNELS)	///< Legacy: Platform supports 5.1
 #elif defined(AK_REARCHANNELS)
-#define AK_SPEAKER_SETUP_DEFAULT_PLANE	(AK_SPEAKER_SETUP_4 | AK_SPEAKER_FRONT_CENTER)		///< All speakers on the plane, supported on this platform.
-#define AK_VOICE_MAX_NUM_CHANNELS		(4)										///< Legacy: Platform supports up to 4.0 configuration.
-#define AK_SUPPORTED_STANDARD_CHANNEL_MASK	(AK_SPEAKER_SETUP_DEFAULT_PLANE)	///< Most complete speaker configuration supported on this platform.
+#ifdef AK_WII
+#define AK_SPEAKER_SETUP_DEFAULT_PLANE	(AK_SPEAKER_SETUP_DPL2 | AK_SPEAKER_FRONT_CENTER)	///< All speakers on the plane, supported on this platform.
+#define AK_VOICE_MAX_NUM_CHANNELS		(2)							///< Legacy: Platform supports up to stereo configuration.
 #else
+#define AK_SPEAKER_SETUP_DEFAULT_PLANE	(AK_SPEAKER_SETUP_4 | AK_SPEAKER_FRONT_CENTER)		///< All speakers on the plane, supported on this platform.
+#define AK_VOICE_MAX_NUM_CHANNELS		(4)							///< Legacy: Platform supports up to 4.0 configuration.
+#endif
+#define AK_SUPPORTED_STANDARD_CHANNEL_MASK	(AK_SPEAKER_SETUP_DEFAULT_PLANE)	///< Most complete speaker configuration supported on this platform.
+#else 
 #define AK_SPEAKER_SETUP_DEFAULT_PLANE			(AK_SPEAKER_SETUP_STEREO | AK_SPEAKER_FRONT_CENTER)	///< All speakers on the plane, supported on this platform.
 #define AK_SUPPORTED_STANDARD_CHANNEL_MASK		(AK_SPEAKER_SETUP_STEREO)	///< Most complete speaker configuration supported on this platform.
 #define AK_VOICE_MAX_NUM_CHANNELS				(2)							///< Legacy: Platform supports up to stereo configuration.
 #define AK_STANDARD_MAX_NUM_CHANNELS			(AK_VOICE_MAX_NUM_CHANNELS)	///< Legacy: Platform supports stereo.
 
 #endif
-
-#define AK_MAX_AMBISONICS_ORDER	(5)
 
 // Helpers.
 inline void AK_SPEAKER_SETUP_FIX_LEFT_TO_CENTER( AkUInt32 &io_uChannelMask )
@@ -313,7 +318,7 @@ static inline AkChannelMask ChannelMaskFromNumChannels( unsigned int in_uNumChan
 	return uChannelMask;
 }
 
-/// Converts a channel bit to a channel index (in Wwise pipeline ordering - LFE at the end), given a channel mask in_uChannelMask.
+/// Converts a channel it to a channel index (in Wwise pipeline ordering - LFE at the end), given a channel mask in_uChannelMask.
 /// \return Channel index.
 static inline AkUInt8 ChannelBitToIndex(AkChannelMask in_uChannelBit, AkChannelMask in_uChannelMask)
 {
@@ -322,7 +327,7 @@ static inline AkUInt8 ChannelBitToIndex(AkChannelMask in_uChannelBit, AkChannelM
 #endif
 	if (in_uChannelBit == AK_SPEAKER_LOW_FREQUENCY)
 		return ChannelMaskToNumChannels(in_uChannelMask) - 1;
-	return ChannelMaskToNumChannels(in_uChannelMask & ~AK_SPEAKER_LOW_FREQUENCY & (in_uChannelBit - 1)); // Count all channels prior this one except the LFE
+	return ChannelMaskToNumChannels(in_uChannelMask & ((in_uChannelBit & ~AK_SPEAKER_LOW_FREQUENCY) - 1));
 }
 
 /// Returns true when the LFE channel is present in a given channel configuration.

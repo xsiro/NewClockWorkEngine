@@ -21,14 +21,14 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 #ifndef _AKLOCK_H_
 #define _AKLOCK_H_
 
-#include <AK/SoundEngine/Common/AkTypes.h>
+#include "../../SoundEngine/Common/AkTypes.h"
 #include <windows.h>	//For CRITICAL_SECTION
 
 //-----------------------------------------------------------------------------
@@ -40,7 +40,7 @@ public:
     /// Constructor
 	CAkLock() 
     {
-#ifdef AK_USE_UWP_API
+#ifdef AK_USE_METRO_API
         ::InitializeCriticalSectionEx( &m_csLock, 0, 0 );
 #else
         ::InitializeCriticalSection( &m_csLock );

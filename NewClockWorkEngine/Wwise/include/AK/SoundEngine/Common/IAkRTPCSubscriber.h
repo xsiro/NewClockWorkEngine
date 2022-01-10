@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 // IAkRTPCSubscriber.h
@@ -33,16 +33,14 @@ the specific language governing permissions and limitations under the License.
 #ifndef _IAK_RTPC_SUBSCRIBER_H_
 #define _IAK_RTPC_SUBSCRIBER_H_
 
-#include <AK/SoundEngine/Common/AkTypes.h>
+#include "../../SoundEngine/Common/AkTypes.h"
 
 namespace AK
 {   
 	/// Real-Time Parameter Control Subscriber interface.
 	/// This interface must be implemented by every AK::IAkPluginParam implementation, allowing
 	/// real-time editing with Wwise and in-game RTPC control.
-	/// \akwarning
-	/// The functions in this interface are not thread-safe, unless stated otherwise.
-	/// \endakwarning
+	/// \warning The functions in this interface are not thread-safe, unless stated otherwise.
 	/// \sa
 	/// - AK::IAkPluginParam
 	class IAkRTPCSubscriber

@@ -21,8 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2019.2.8  Build: 7432
-  Copyright (c) 2006-2020 Audiokinetic Inc.
+  Version: v2016.2.1  Build: 5995
+  Copyright (c) 2006-2016 Audiokinetic Inc.
 *******************************************************************************/
 
 /// \file 
@@ -32,13 +32,13 @@ the specific language governing permissions and limitations under the License.
 
 #pragma once
 
-#if defined( NN_NINTENDO_SDK )
+#if defined( NN_PLATFORM_CTR )
 
-	#include <AK/SoundEngine/Platforms/NX/AkTypes.h>
+	#include <AK/SoundEngine/Platforms/3DS/AkTypes.h>
 
-#elif defined( _GAMING_XBOX )
-
-	#include <AK/SoundEngine/Platforms/GX/AkTypes.h>
+#elif _XBOX_VER >= 200 // Check Xbox before WIN32 because WIN32 might also be defined in some cases in Xbox 360 projects
+ 
+	#include <AK/SoundEngine/Platforms/XBox360/AkTypes.h>
 
 #elif defined( _XBOX_ONE )
 
@@ -46,27 +46,35 @@ the specific language governing permissions and limitations under the License.
 
 #elif defined( _WIN32 ) || defined ( _WIN64 ) || defined( WINAPI_FAMILY )
 
-	#include <AK/SoundEngine/Platforms/Windows/AkTypes.h>
+	#include "SoundEngine/Platforms/Windows/AkTypes.h"
 
 #elif defined( __APPLE__ )
 
 	#include <AK/SoundEngine/Platforms/Mac/AkTypes.h>
+
+#elif defined (__PPU__) || defined (__SPU__)
+
+	#include <AK/SoundEngine/Platforms/PS3/AkTypes.h>
+
+#elif defined( CAFE ) || defined( RVL_OS )
+
+	#include <AK/SoundEngine/Platforms/WiiFamily/AkTypes.h>
+
+#elif defined( __SCE__ ) && defined( __arm__ )
+
+	#include <AK/SoundEngine/Platforms/Vita/AkTypes.h>
 	
 #elif defined( __ORBIS__ )
 
 	#include <AK/SoundEngine/Platforms/PS4/AkTypes.h>
-	
-#elif defined( __LUMIN__ )
-
-	#include <AK/SoundEngine/Platforms/Lumin/AkTypes.h>
 
 #elif defined( __ANDROID__ )
 
 	#include <AK/SoundEngine/Platforms/Android/AkTypes.h>
 
-#elif defined( __ggp__ )
+#elif defined( __native_client__ )
 
-	#include <AK/SoundEngine/Platforms/GGP/AkTypes.h>
+	#include <AK/SoundEngine/Platforms/nacl/AkTypes.h>
 
 #elif defined( __linux__ )
 
@@ -79,14 +87,6 @@ the specific language governing permissions and limitations under the License.
 #elif defined( __QNX__ )
 
 	#include <AK/SoundEngine/Platforms/QNX/AkTypes.h>
-
-#elif defined(__has_include)
-
-#if __has_include("AK/SoundEngine/Platforms/Pellegrino/AkTypes.h")
-
-	#include "AK/SoundEngine/Platforms/Pellegrino/AkTypes.h"
-
-#endif
 
 #else
 
