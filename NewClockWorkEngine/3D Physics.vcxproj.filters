@@ -468,6 +468,9 @@
     <ClInclude Include="wwise_libraries.h">
       <Filter>Sources\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkFileHelpers.h">
+      <Filter>Sources\Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">

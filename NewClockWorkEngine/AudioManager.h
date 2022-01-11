@@ -1,12 +1,6 @@
-#ifndef __MODULE_AUDIO_MANAGER__
-#define __MODULE_AUDIO_MANAGER__
-
-
-
+#pragma once
 #include "Module.h"
 #include "Globals.h"
-
-
 
 class AudioManager :public Module
 {
@@ -19,11 +13,6 @@ public:
 	update_status Update(float dt) override;
 	bool CleanUp();
 
-private:
 
 };
 
-
-
-
-#endif // !__MODULE_AUDIO_MANAGER__
