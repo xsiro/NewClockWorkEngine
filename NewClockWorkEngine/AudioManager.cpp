@@ -21,7 +21,7 @@ bool AudioManager::Init()
 
 	if (AK::MemoryMgr::Init(&memSettings) != AK_Success)
 	{
-		LOG("[error]Could not create the memory manager.");
+		assert("[error]Could not create the memory manager.");
 
 		return false;
 
