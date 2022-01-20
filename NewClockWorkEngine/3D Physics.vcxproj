@@ -213,7 +213,22 @@
     <ClInclude Include="Win_Console.h" />
     <ClInclude Include="Win_Inspector.h" />
     <ClInclude Include="Win_Play.h" />
+    <ClInclude Include="Wwise\AK\AkPlatforms.h" />
+    <ClInclude Include="Wwise\AK\AkWwiseSDKVersion.h" />
+    <ClInclude Include="Wwise\AK\Comm\AkCommunication.h" />
+    <ClInclude Include="Wwise\AK\IBytes.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkDefaultLowLevelIODispatcher.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFileLocationBase.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackage.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackageLUT.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkMultipleFileLocation.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkDefaultIOHookBlocking.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkDefaultIOHookDeferred.h" />
     <ClInclude Include="Wwise\low_level_IO\Win32\AkFileHelpers.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkFilePackageLowLevelIOBlocking.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkFilePackageLowLevelIODeferred.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\stdafx.h" />
     <ClInclude Include="wwise_libraries.h" />
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +320,14 @@
     <ClCompile Include="Win_Console.cpp" />
     <ClCompile Include="Win_Inspector.cpp" />
     <ClCompile Include="Win_Play.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkDefaultLowLevelIODispatcher.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFileLocationBase.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFilePackage.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFilePackageLUT.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkMultipleFileLocation.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Win32\AkDefaultIOHookBlocking.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Win32\AkDefaultIOHookDeferred.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Win32\stdafx.cpp" />
     <ClCompile Include="wwise_libraries.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -315,6 +338,8 @@
     <None Include="MathGeoLib\src\Geometry\TriangleMesh_IntersectRay_SSE.inl" />
     <None Include="MathGeoLib\src\Math\float2.inl" />
     <None Include="MathGeoLib\src\Math\Matrix.inl" />
+    <None Include="Wwise\AK\AkWwiseSDKVersion.cs" />
+    <None Include="Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

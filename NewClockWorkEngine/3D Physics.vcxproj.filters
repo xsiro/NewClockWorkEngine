@@ -58,6 +58,9 @@
     <Filter Include="Dependencies\Parson">
       <UniqueIdentifier>{4ab372e8-0411-4ff6-a2a0-d40cceec53fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Wwise">
+      <UniqueIdentifier>{dadf303d-3119-4750-86e5-37e1c65de3bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -468,8 +471,53 @@
     <ClInclude Include="wwise_libraries.h">
       <Filter>Sources\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="Wwise\AK\AkPlatforms.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\AK\AkWwiseSDKVersion.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\AK\IBytes.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\AK\Comm\AkCommunication.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkFilePackageLowLevelIODeferred.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Win32\stdafx.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkDefaultIOHookBlocking.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkDefaultIOHookDeferred.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
     <ClInclude Include="Wwise\low_level_IO\Win32\AkFileHelpers.h">
-      <Filter>Sources\Tools</Filter>
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkFilePackageLowLevelIOBlocking.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Common\AkDefaultLowLevelIODispatcher.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFileLocationBase.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackage.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackageLUT.h">
+      <Filter>Sources\Wwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Wwise\low_level_IO\Common\AkMultipleFileLocation.h">
+      <Filter>Sources\Wwise</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -740,6 +788,30 @@
     <ClCompile Include="wwise_libraries.cpp">
       <Filter>Sources\Tools</Filter>
     </ClCompile>
+    <ClCompile Include="Wwise\low_level_IO\Win32\stdafx.cpp">
+      <Filter>Sources\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Wwise\low_level_IO\Win32\AkDefaultIOHookBlocking.cpp">
+      <Filter>Sources\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Wwise\low_level_IO\Win32\AkDefaultIOHookDeferred.cpp">
+      <Filter>Sources\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Wwise\low_level_IO\Common\AkDefaultLowLevelIODispatcher.cpp">
+      <Filter>Sources\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFileLocationBase.cpp">
+      <Filter>Sources\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFilePackage.cpp">
+      <Filter>Sources\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFilePackageLUT.cpp">
+      <Filter>Sources\Wwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Wwise\low_level_IO\Common\AkMultipleFileLocation.cpp">
+      <Filter>Sources\Wwise</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="MathGeoLib\src\Geometry\KDTree.inl">
@@ -762,6 +834,12 @@
     </None>
     <None Include="MathGeoLib\src\Math\float2.inl">
       <Filter>Dependencies\MathGeoLib\Math</Filter>
+    </None>
+    <None Include="Wwise\AK\AkWwiseSDKVersion.cs">
+      <Filter>Sources\Wwise</Filter>
+    </None>
+    <None Include="Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl">
+      <Filter>Sources\Wwise</Filter>
     </None>
   </ItemGroup>
 </Project>
