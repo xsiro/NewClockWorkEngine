@@ -26,6 +26,47 @@ GameObject::~GameObject()
 	
 }
 
+void GameObject::GameInit()
+{
+	for (int i = 0; i < components.size(); i++)
+	{
+
+		components[i]->GameInit();
+
+	}
+	for (int i = 0; i < children.size(); i++)
+	{
+
+		children[i]->GameInit();
+
+	}
+}
+
+void GameObject::GameUpdate(float gameDt)
+{
+	if (active)
+	{
+
+		for (int i = 0; i < components.size(); i++)
+		{
+			if (components[i]->IsActive())
+			{
+				components[i]->GameUpdate(gameDt);
+			}
+		}
+
+
+
+		for (int i = 0; i < children.size(); i++)
+		{
+			if (children[i]->active)
+			{
+				children[i]->GameUpdate(gameDt);
+			}
+		}
+	}
+}
+
 void GameObject::Update() 
 {
 	UpdateBoundingBoxes();

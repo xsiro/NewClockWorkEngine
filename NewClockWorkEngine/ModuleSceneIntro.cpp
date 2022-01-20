@@ -36,6 +36,22 @@ bool ModuleSceneIntro::Start()
 	return ret;
 }
 
+bool ModuleSceneIntro::GameInit()
+{
+	if (rootObject)
+		rootObject->GameInit();
+	return true;
+}
+
+update_status ModuleSceneIntro::GameUpdate(float gameDt)
+{
+
+	if (rootObject)
+		rootObject->GameUpdate(gameDt);
+
+	return UPDATE_CONTINUE;
+}
+
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");

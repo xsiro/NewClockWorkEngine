@@ -17,13 +17,15 @@ public:
 	None
 	};
 	ModuleComponent(ComponentType type);
-	ModuleComponent(ComponentType type, GameObject* owner);
+	ModuleComponent(ComponentType type, GameObject* owner, unsigned int ID = 0);
 	~ModuleComponent();
 
 	
 	virtual void Update() = 0;
+	virtual bool GameUpdate(float dt);
 	virtual void CleanUp() = 0;
 	virtual void DrawInspector() = 0;
+	virtual bool GameInit();
 
 	void Disable();
 	void Enable();

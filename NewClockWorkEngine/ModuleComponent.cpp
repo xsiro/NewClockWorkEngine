@@ -7,7 +7,7 @@ ModuleComponent::ModuleComponent(ComponentType type) : type(type)
 
 }
 
-ModuleComponent::ModuleComponent(ComponentType type, GameObject* owner) : owner(owner), type(type)
+ModuleComponent::ModuleComponent(ComponentType type, GameObject* owner, unsigned int ID) : owner(owner), type(type)
 {
 
 }
@@ -20,6 +20,16 @@ ModuleComponent::~ModuleComponent()
 
 void ModuleComponent::Update() {
 
+}
+
+bool ModuleComponent::GameUpdate(float dt)
+{
+	return true;
+}
+
+bool ModuleComponent::GameInit()
+{
+	return true;
 }
 
 void ModuleComponent::Enable() 

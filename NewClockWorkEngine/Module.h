@@ -42,6 +42,12 @@ public:
 		return UPDATE_CONTINUE;
 	}
 
+	virtual update_status GameUpdate(float dt)
+	{
+		return UPDATE_CONTINUE;
+	}
+
+
 	virtual bool CleanUp() 
 	{ 
 		return true; 

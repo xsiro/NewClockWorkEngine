@@ -1,15 +1,49 @@
 #include "AudioListener.h"
 #include "ModuleComponent.h"
+#include "Application.h"
+#include "AudioManager.h"
 #include "imgui/include/imgui.h" 
 #include <string>
 
-AudioListener::AudioListener(GameObject* owner, unsigned int ID) :ModuleComponent(ComponentType::Audio_listener, owner)
+AudioListener::AudioListener(GameObject* owner, unsigned int ID) :ModuleComponent(ComponentType::Audio_listener, owner, ID), isListener(false)
 {
 }
 
 AudioListener::~AudioListener()
 {
+	if (App != nullptr && App->audioManager->activeListener == this)
+	{
+		App->audioManager->activeListener = nullptr;
+	}
 }
+
+void AudioListener::SetAsListener(bool newState)
+{
+	if (newState != isListener)
+	{
+
+		if (newState)
+		{
+			if (App->audioManager->activeListener != nullptr)
+			{
+				App->audioManager->activeListener->SetAsListener(false);
+			}
+			App->audioManager->activeListener = this;
+		}
+		else if (App->audioManager->activeListener == this)
+		{
+			App->audioManager->activeListener = nullptr;
+		}
+
+		isListener = newState;
+	}
+}
+
+bool AudioListener::GetIsListener() const
+{
+	return isListener;
+}
+
 
 void AudioListener::DrawInspector()
 {
@@ -38,6 +72,15 @@ void AudioListener::DrawInspector()
 			ImGui::Separator();
 			ImGui::Indent();
 			//TODO actual Component code here
+
+			ImGui::Spacing();
+			ImGui::Spacing();
+
+			bool listenerAux = isListener;
+			if (ImGui::Checkbox("Is Current Listener##ListenerCheckbox", &listenerAux))
+			{
+				SetAsListener(listenerAux);
+			}
 
 			ImGui::Separator();
 			ImGui::Unindent();

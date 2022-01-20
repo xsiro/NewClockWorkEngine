@@ -16,7 +16,9 @@ public:
 	~ModuleSceneIntro();
 
 	bool Start();
+	bool GameInit();
 	update_status Update(float dt) override;
+	update_status GameUpdate(float gameDt)override;
 	bool CleanUp();
 
 	void SetSelectedObject(GameObject* object);

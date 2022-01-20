@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{6CC1744D-B22C-4A39-B478-9314A92594D1}" SchemaVersion="94">
+	<GameParameters>
+		<WorkUnit Name="Default Work Unit" ID="{6CC1744D-B22C-4A39-B478-9314A92594D1}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="Fish_Position" ID="{FF89B46E-190E-4064-BFF0-DD8BCEC93BFD}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Penguin_Panning_Sides" ID="{FF65E8F2-9B13-464D-BC5D-0368247E2BE1}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="1"/>
+						<Property Name="Max" Type="Real64" Value="2"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Penguin_Panning_Fronts" ID="{64A0A1A9-9710-44B3-9B83-189CB5127C25}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="1"/>
+						<Property Name="Max" Type="Real64" Value="2"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Fish_Panning_Sides" ID="{19637FCD-A0D1-4928-ACE7-B031A94AB883}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="1"/>
+						<Property Name="Max" Type="Real64" Value="2"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Fish_Panning_Fronts" ID="{CB5CAD72-EE36-48F4-B2A1-0B18937371A1}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="1"/>
+						<Property Name="Max" Type="Real64" Value="2"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Pitch" ID="{EEC2683A-7B80-4EBA-B15B-E538B1BA1AEF}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Min" Type="Real64" Value="-100"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Low_Pass" ID="{4B8C0597-820F-4AA0-BCAC-A8690A34BC1E}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Min" Type="Real64" Value="-100"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="High_Pass" ID="{BA1B8C75-796F-45EF-A387-C35D09DC0752}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Min" Type="Real64" Value="-100"/>
+					</PropertyList>
+				</GameParameter>
+			</ChildrenList>
+		</WorkUnit>
+	</GameParameters>
+</WwiseDocument>

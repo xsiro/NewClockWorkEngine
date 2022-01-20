@@ -2,15 +2,20 @@
 #include <assert.h>
 #include "wwise_libraries.h"
 #include "Wwise/low_level_IO/Win32/AkFilePackageLowLevelIOBlocking.h"
+#include "Application.h"
+#include "ModuleGui.h"
+#include "GameObject.h"
 
 CAkFilePackageLowLevelIOBlocking g_lowLevelIO;
 
 AudioManager::AudioManager(bool start_enabled) :Module(start_enabled)
 {
+	activeListener = nullptr;
 }
 
 AudioManager::~AudioManager()
 {
+	activeListener = nullptr;
 }
 
 bool AudioManager::Init()
@@ -121,7 +126,30 @@ bool AudioManager::Init()
 	}
 
 #endif // AK_OPTIMIZED
+	g_lowLevelIO.SetBasePath(AKTEXT("Assets/wwise/PhoebusWwise/WwiseProject/Windows/"));
+	AK::StreamMgr::SetCurrentLanguage(AKTEXT("English(US)"));
+	// Load banks synchronously (from file name).
 
+	AkBankID bankID; // Not used. These banks can be unloaded with their file name.
+
+	AKRESULT eResult = AK::SoundEngine::LoadBank("Init.bnk", bankID);
+
+	//assert(eResult != AK_Success);
+
+	eResult = AK::SoundEngine::LoadBank("Main.bnk", bankID);
+	return true;
+}
+
+bool AudioManager::Start()
+{
+	AkGameObjectID id = App->scene_intro->rootObject->ID;
+
+	// Register the main listener. //TODO this will change in the near future, also for now the main listener is also the player
+	AK::SoundEngine::RegisterGameObj(id);
+	// Set one listener as the default.
+	AK::SoundEngine::SetDefaultListeners(&id, 1);
+
+	AK::SoundEngine::PostEvent("destroyed_turret", App->scene_intro->rootObject->ID);
 	return true;
 }
 
@@ -130,8 +158,18 @@ update_status AudioManager::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
+update_status AudioManager::GameUpdate(float dt)
+{
+	// Process bank requests, events, positions, RTPC, etc.
+	AK::SoundEngine::RenderAudio();
+
+	return UPDATE_CONTINUE;
+}
+
 bool AudioManager::CleanUp()
 {
+	AK::SoundEngine::UnregisterAllGameObj();
+
 #ifndef AK_OPTIMIZED
 	AK::Comm::Term();
 

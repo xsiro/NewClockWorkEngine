@@ -15,12 +15,15 @@ enum class ComponentType;
 class GameObject
 {
 public:
+	unsigned int ID;
 	GameObject(const char* name);
 	GameObject(GameObject* parent, const char* name);
 	~GameObject();
 
 	void Update();
 	void CleanUp();
+	void GameUpdate(float gameDt);
+	void GameInit();
 
 	void SetName(const char* name);
 	void Enable();
