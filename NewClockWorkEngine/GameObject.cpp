@@ -1,29 +1,45 @@
-#pragma once
 #include "GameObject.h"
-#include "ModuleComponent.h"
+#include "Component.h"
 #include "ModuleTransform.h"
 #include "ModuleMesh.h"
 #include "ModuleMaterial.h"
+#include "ModuleControl.h"
+#include "ModuleReverbZone.h"
 #include "ModuleCamera.h"
-#include "AudioListener.h"
 #include "AudioSource.h"
-#include "imgui/include/imgui.h"
+#include "AudioListener.h"
 #include "Application.h"
-#include "ResourceMesh.h"
+#include "imgui/imgui.h"
 
-GameObject::GameObject(const char* name) : name(name)
+#include "MathGeoLib/include/MathGeoLib.h"
+
+
+int GameObject::numberOfObjects = 0;
+
+
+GameObject::GameObject(GameObject* parent, std::string name, float4x4 transform, bool showAABB, bool isLocalTrans) :name(name), transform(nullptr), focused(false), selected(false), displayBoundingBox(showAABB)
 {
-	AddComponent(new ModuleTransform(this));
+	App->scene->AddObjName(this->name);
+	this->parent = parent;
+	isActive = true;
+	bbHasToUpdate = true;
+	if (parent)
+	{
+		parent->children.push_back(this);
+	}
+	this->transform = new ModuleTransform(this, transform, 0, isLocalTrans);
+	components.push_back(this->transform);
+
+	numberOfObjects++;
+
+	globalAABB.SetNegativeInfinity();
+	globalOBB.SetNegativeInfinity();
+
+	this->ID = App->renderer3D->seed.Int(); //begone T H O T
 }
 
-GameObject::GameObject(GameObject* parent = nullptr, const char* name = "Object") : parent(parent), name(name)
+void GameObject::Awake()
 {
-	AddComponent(new ModuleTransform(this));
-}
-
-GameObject::~GameObject()
-{
-	
 }
 
 void GameObject::GameInit()
@@ -42,9 +58,52 @@ void GameObject::GameInit()
 	}
 }
 
+
+void GameObject::Update(float dt)
+{
+	for (int i = 0; i < components.size(); i++)
+	{
+		if (components[i]->toDelete)
+		{
+			delete components[i];
+			components[i] = nullptr;
+			components.erase(components.begin() + i);
+			i--;
+		}
+	}
+
+	if (isActive)
+	{
+
+		for (int i = 0; i < components.size(); i++)
+		{
+			if (components[i]->IsActive())
+			{
+				components[i]->Update(dt);
+			}
+		}
+
+
+
+		for (int i = 0; i < children.size(); i++)
+		{
+			if (children[i]->isActive)
+			{
+				children[i]->Update(dt);
+			}
+		}
+
+		if (bbHasToUpdate)
+		{
+			UpdateBoundingBox();
+		}
+		DrawGameObject();
+	}
+}
+
 void GameObject::GameUpdate(float gameDt)
 {
-	if (active)
+	if (isActive)
 	{
 
 		for (int i = 0; i < components.size(); i++)
@@ -59,7 +118,7 @@ void GameObject::GameUpdate(float gameDt)
 
 		for (int i = 0; i < children.size(); i++)
 		{
-			if (children[i]->active)
+			if (children[i]->isActive)
 			{
 				children[i]->GameUpdate(gameDt);
 			}
@@ -67,248 +126,409 @@ void GameObject::GameUpdate(float gameDt)
 	}
 }
 
-void GameObject::Update() 
+GameObject::~GameObject()
 {
-	UpdateBoundingBoxes();
-	if (!components.empty())
+	App->scene->RemoveName(name);
+
+	numberOfObjects--;
+
+	for (int i = 0; i < components.size(); i++)
 	{
-		std::vector<ModuleComponent*>::iterator item = components.begin();
-		for (; item != components.end(); ++item)
+		if (components[i] != transform)
 		{
-			(*item)->Update();
+			delete components[i];
+			components[i] = nullptr;
 		}
 	}
-}
-
-void GameObject::CleanUp()
-{
-	std::vector<ModuleComponent*>::iterator item = components.begin();
-
-	for (; item != components.end(); ++item)
-	{
-		(*item)->CleanUp();
-		delete (*item);
-	}
-
 	components.clear();
+
+	if (transform != nullptr)//This wont be needed as transform is deleted from the component vector
+		delete transform;
+
+	transform = nullptr;
+
+	while (!children.empty())
+	{
+		GameObject* child = children.back();
+		children.pop_back();
+		delete child;
+	}
 	children.clear();
+
+	RemoveMyselfFromParent();
+
+	if (App)
+		App->scene->RemoveGameObjFromSelected(this);
+
 }
 
-ModuleComponent* GameObject::GetComponent(ModuleComponent::ComponentType component) 
+void GameObject::RemoveChildren(GameObject* toRemove)
 {
-	for (size_t i = 0; i < components.size(); i++)
+	std::vector<GameObject*>::iterator iterator = children.begin();
+
+	for (iterator; iterator != children.end(); iterator++)
 	{
-		if (components[i]->ReturnType() == component)
+		if (*iterator == toRemove)
 		{
-			return components[i];
+
+			children.erase(iterator);
+
+			break;
 		}
+
 	}
-	return nullptr;
+
 }
 
-void GameObject::DeleteComponent(ModuleComponent::ComponentType type)
+void GameObject::ChangeParent(GameObject* newParent)
 {
-	std::vector<ModuleComponent*>::iterator item = components.begin();
-	for (; item != components.end(); ++item)
+	RemoveMyselfFromParent();
+	//newParent->children
+
+	if (newParent == nullptr)
 	{
-		if ((*item)->ReturnType() == type)
-		{
-			components.erase(item);
-			return;
+		parent = App->scene->root;
+	}
+	else
+	{
+		parent = newParent;
+	}
 
-		}
+	parent->children.push_back(this);
+
+	ModuleTransform* transform = GetComponent<ModuleTransform>();
+	transform->UpdateLocalMat();
+	UpdateChildTransforms();
+
+}
+
+void GameObject::RemoveMyselfFromParent()
+{
+	if (parent)
+	{
+		parent->RemoveChildren(this);
 	}
 }
 
-std::vector<ModuleComponent*> GameObject::GetComponents()const
+Component* GameObject::CreateComponent(ComponentType type, unsigned int compID)
 {
-	return components;
-}
-
-ModuleComponent* GameObject::AddComponent(ModuleComponent* component)
-{
-	ModuleComponent::ComponentType type = component->ReturnType();
-
+	Component* ret = nullptr;
+	//TODO add diferent components here
 	switch (type)
 	{
-	case ModuleComponent::ComponentType::Transform:
-
-		if (!HasComponentType(ModuleComponent::ComponentType::Transform))
-		{
-			components.push_back(component);
-			transform = (ModuleTransform*)component;
-		}
-		else
-		{
-			component = GetComponent<ModuleTransform>();
-		}
+	case ComponentType::MESH:
+		ret = new ModuleMesh(this, compID);
+		break;
+	case ComponentType::MATERIAL:
+		//only one instance of material for a certain gameObj
+		if (GetComponent<ModuleMaterial>() == nullptr)
+			ret = new ModuleMaterial(this, compID);
+		break;
+	case ComponentType::CAMERA:
+		//only one instance of camera for a certain gameObj
+		if (GetComponent<ModuleCamera>() == nullptr)
+			ret = new ModuleCamera(this, compID);
+		break;
+	case ComponentType::AUDIO_LISTENER:
+		//only one instance of a listener for a certain gameObj
+		if (GetComponent<AudioListener>() == nullptr)
+			ret = new AudioListener(this, compID);
+		break;
+	case ComponentType::AUDIO_SOURCE:
+		//only one instance of a audio source for a certain gameObj
+		if (GetComponent<AudioSource>() == nullptr)
+			ret = new AudioSource(this, compID);
+		break;
+	case ComponentType::CONTROL:
+		if (GetComponent<ModuleControl>() == nullptr)
+			ret = new ModuleControl(this, compID);
+		break;
+	case ComponentType::REVERB_ZONE:
+		if (GetComponent<ModuleReverbZone>() == nullptr)
+			ret = new ModuleReverbZone(this, compID);
 		break;
 
-	case ModuleComponent::ComponentType::Mesh:
-
-		if (!HasComponentType(ModuleComponent::ComponentType::Mesh))
-		{
-			components.push_back(component);
-			//UpdateBoundingBoxes();
-		}
-		else
-			component = GetComponent<ModuleMesh>();
-
-		break;
-
-	case ModuleComponent::ComponentType::Material:
-
-		if (!HasComponentType(ModuleComponent::ComponentType::Material))
-		{
-			components.push_back(component);
-		}
-		else
-		{
-			DeleteComponent(ModuleComponent::ComponentType::Material);
-			components.push_back(component);
-		}
-
-		break;
-
-	case ModuleComponent::ComponentType::Camera:
-
-		if (!HasComponentType(ModuleComponent::ComponentType::Camera))
-		{
-			components.push_back(component);
-		}
-		else
-		{
-			LOG("(ERROR) Error adding Camera: Object already has camera");
-			component = GetComponent<ModuleCamera>();
-		}
-		break;
-
-	case ModuleComponent::ComponentType::Audio_listener:
-
-		if (!HasComponentType(ModuleComponent::ComponentType::Audio_listener))
-		{
-			components.push_back(component);
-		}
-		else
-		{
-			DeleteComponent(ModuleComponent::ComponentType::Audio_listener);
-			components.push_back(component);
-		}
-		break;
-
-	case ModuleComponent::ComponentType::Audio_source:
-
-		if (!HasComponentType(ModuleComponent::ComponentType::Audio_source))
-		{
-			components.push_back(component);
-		}
-		else
-		{
-			DeleteComponent(ModuleComponent::ComponentType::Audio_source);
-			components.push_back(component);
-		}
+	default:
 		break;
 	}
 
 
-	return component;
-}
-
-bool GameObject::HasComponentType(ModuleComponent::ComponentType type)
-{
-	bool ret = false;
-	std::vector<ModuleComponent*>::iterator item = components.begin();
-	for (; item != components.end(); ++item)
+	if (ret)
 	{
-		if ((*item)->ReturnType() == type)
-		{
-			ret = true;
-			return ret;
-		}
+		components.push_back(ret);
 	}
 
 	return ret;
 }
 
-const char* GameObject::GetName()
+std::string GameObject::GetName()
 {
-	return name.c_str();
+	return this->name;
 }
 
-void GameObject::SetName(const char* name)
+//recursive function that returns false if some game object from which this inherits is not active 
+bool GameObject::IsParentActive()
 {
-	this->name = name;
-}
+	if (!isActive)
+		return false;
 
-void GameObject::Enable()
-{
-	active = true;
-}
-
-void GameObject::Disable()
-{
-	active = false;
-}
-
-bool GameObject::IsActive()
-{
-	return active;
-}
-
-
-void GameObject::UpdatedTransform()
-{
-	transform->UpdatedTransform(parent->transform->GetGlobalTransform());
-
-	std::vector<GameObject*>::iterator child = children.begin();
-	for (; child != children.end(); ++child)
+	if (parent)
 	{
-		(*child)->UpdatedTransform();
+		return parent->IsParentActive();
 	}
+
+	return isActive;
 }
 
-ModuleMesh* GameObject::GetComponentMesh()
+void GameObject::GetChildWithID(unsigned int ID, GameObject*& childOut)//Note that child out must be nullptr at the start
 {
-	ModuleComponent* mesh = nullptr;
-
-	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
+	if (this->ID == ID)
 	{
-		if ((*i)->type == ModuleComponent::ComponentType::Mesh)
-		{
-			return (ModuleMesh*)*i;
-		}
+		childOut = this;
 	}
-	return (ModuleMesh*)mesh;
-}
-
-ModuleTransform* GameObject::GetComponentTransform()
-{
-	ModuleComponent* transform = nullptr;
-
-	for (std::vector<ModuleComponent*>::iterator i = components.begin(); i != components.end(); i++)
+	else
 	{
-		if ((*i)->type == ModuleComponent::ComponentType::Transform)
+		for (int i = 0; i < children.size(); i++)
 		{
-			return (ModuleTransform*)*i;
-		}
-	}
-	return (ModuleTransform*)transform;
-}
-
-void GameObject::UpdateBoundingBoxes()
-{
-	if (HasComponentType(ModuleComponent::ComponentType::Mesh))
-	{
-		ResourceMesh* mesh = GetComponent<ModuleMesh>()->GetMesh();
-		if (mesh != nullptr)
-		{
-			obb = mesh->aabb;
-			obb.Transform(transform->GetGlobalTransform());
-
-			aabb.SetNegativeInfinity();
-			aabb.Enclose(obb);
+			if (childOut == nullptr)
+			{
+				children[i]->GetChildWithID(ID, childOut);
+			}
 		}
 	}
 }
 
+void GameObject::UpdateChildTransforms()
+{
+	GetComponent<ModuleTransform>()->UpdateGlobalMat();
+	bbHasToUpdate = true;
+	for (int i = 0; i < children.size(); i++)
+	{
+		children[i]->UpdateChildTransforms();
+	}
+}
 
+void GameObject::UpdateBoundingBox()
+{
+	ModuleMesh* mesh = GetComponent <ModuleMesh>(); //TODO for now we will only make it that the first mesh draws the bounding box, add support for multiple boundingboxes (if more than 1 mesh)
+
+	if (mesh != nullptr)
+	{
+		globalOBB = mesh->GetAABB();
+		globalOBB.Transform(GetComponent< ModuleTransform>()->GetGlobalTransform());
+
+		globalAABB.SetNegativeInfinity();
+		globalAABB.Enclose(globalOBB);
+	}
+	else
+	{
+		globalAABB.SetNegativeInfinity();
+		globalAABB.SetFromCenterAndSize(transform->GetGlobalPosition(), float3(1, 1, 1));
+		globalOBB = globalAABB;
+	}
+
+
+
+	bbHasToUpdate = false;
+}
+
+void GameObject::GetObjAndAllChilds(std::vector<GameObject*>& childs)
+{
+	childs.push_back(this);
+
+	for (int i = 0; i < children.size(); i++)
+	{
+		children[i]->GetObjAndAllChilds(childs);
+	}
+
+
+}
+
+AABB GameObject::GetWorldAABB() const
+{
+	return globalAABB;
+}
+
+void GameObject::DrawOnEditorAllComponents()
+{
+	if (ImGui::BeginChild("Object name window", ImVec2(0.0f, 30.0f)))
+	{
+		ImGui::Separator();
+		ImGui::Spacing();
+
+		ImGui::Checkbox(" ", &isActive);
+		if (ImGui::IsItemHovered())
+		{
+			ImGui::BeginTooltip();
+			ImGui::Text("Active");
+			ImGui::EndTooltip();
+		}
+
+
+		ImGui::SameLine();
+		ImGui::SetCursorPosX(ImGui::GetCursorPosX() - 10);
+		char* auxName = (char*)name.c_str();
+		std::string oldName = name;
+		if (ImGui::InputText("Object Name", auxName, 100))
+		{
+			name = auxName;
+			name.shrink_to_fit();
+			if (name.empty())
+			{
+				name = "Untitled";
+			}
+			App->scene->ChangeObjName(oldName, name);
+		}
+	}
+	ImGui::EndChild();
+	//ImGui::Text("My name is %s", name.c_str());
+	ImGui::Separator();
+	ImGui::Spacing();
+
+
+	for (int i = 0; i < this->components.size(); i++)
+	{
+		components[i]->OnEditor();
+
+	}
+
+	ImGui::Spacing();
+	ImGui::Spacing();
+	ImGui::Spacing();
+	ImGui::Separator();
+	ImGui::Separator();
+
+	int buttonWidth = 150;
+	float wWidth = ImGui::GetWindowWidth();
+	ImVec2 cursPos = ImGui::GetCursorPos();
+	cursPos.x = cursPos.x + (wWidth * 0.5f) - (buttonWidth * 0.5f); //60 is half button width
+	ImGui::SetCursorPos(cursPos);
+
+	if (ImGui::Button("Add Component##objComponent", ImVec2(buttonWidth, 20)))
+	{
+		ImGui::OpenPopup("AddComponent##Popup");
+
+	}
+	ImGui::SameLine();
+	if (ImGui::BeginPopup("AddComponent##Popup"))
+	{
+		ImGui::Text("Select New Component to Add");
+		ImGui::Separator();
+
+		//TODO this can be made pretty in the future
+		if (GetComponent<ModuleMesh>() == nullptr)//support multiple meshes in the future?
+		{
+			if (ImGui::Selectable("Mesh Component##addComponent"))
+				CreateComponent(ComponentType::MESH);
+		}
+		if (GetComponent<ModuleMaterial>() == nullptr)
+		{
+			if (ImGui::Selectable("Material Component##addComponent"))
+				CreateComponent(ComponentType::MATERIAL);
+		}
+		if (GetComponent<ModuleCamera>() == nullptr)
+		{
+			if (ImGui::Selectable("Camera Component##addComponent"))
+				CreateComponent(ComponentType::CAMERA);
+		}
+		if (GetComponent<AudioListener>() == nullptr)
+		{
+			if (ImGui::Selectable("Audio Listener Component##addComponent"))
+				CreateComponent(ComponentType::AUDIO_LISTENER);
+		}
+		if (GetComponent<AudioSource>() == nullptr)
+		{
+			if (ImGui::Selectable("Audio Source Component##addComponent"))
+				CreateComponent(ComponentType::AUDIO_SOURCE);
+		}
+		if (GetComponent<ModuleControl>() == nullptr)
+		{
+			if (ImGui::Selectable("Control Component##addComponent"))
+				CreateComponent(ComponentType::CONTROL);
+		}
+		if (GetComponent<ModuleReverbZone>() == nullptr)
+		{
+			if (ImGui::Selectable("ReverbZone Component##addComponent"))
+				CreateComponent(ComponentType::REVERB_ZONE);
+		}
+
+
+
+		ImGui::EndPopup();
+	}
+}
+
+std::vector<Component*> GameObject::GetAllComponents()
+{
+	return this->components;
+}
+
+void GameObject::DrawGameObject()
+{
+	std::vector<float3> aabbVec;
+	GetPointsFromAABB(globalAABB, aabbVec);
+
+	if (App->renderer3D->IsInsideFrustum(aabbVec))
+	{
+
+
+		std::vector<ModuleMesh*>meshes = GetComponents<ModuleMesh>();
+
+		ModuleMaterial* mat = GetComponent<ModuleMaterial>();
+		if (mat != nullptr && !mat->IsActive())
+		{
+			mat = nullptr;
+		}
+
+		for (int i = 0; i < meshes.size(); i++)
+		{
+			if (meshes[i]->IsActive() && meshes[i]->GetMesh() != nullptr)
+			{
+				App->renderer3D->AddMeshToDraw(meshes[i], mat, transform->GetGlobalTransform(), selected);
+			}
+
+		}
+
+
+	}
+
+	if (App->scene->root != this && (App->renderer3D->displayAABBs || (displayBoundingBox && (focused || selected))))
+	{
+		Color c = Color(1.0f, 1.0f, 1.0f, 1.0f);
+		if (focused)
+			c = Color FOCUSED_COLOR;
+		else if (selected)
+			c = Color SELECTED_COLOR;
+
+		App->renderer3D->AddBoxToDraw(aabbVec, c);
+	}
+
+	ModuleCamera* cam = GetComponent<ModuleCamera>();
+	if (cam && cam->IsActive())
+	{
+		std::vector<float3> vec;
+		cam->GetFrustumPoints(vec);
+		Color c = Color(1.0f, 1.0f, 1.0f, 1.0f);
+		if (cam->GetIsCulling())
+			c = Color(0.0f, 0.75f, 0.75f, 1.0f);
+
+		App->renderer3D->AddBoxToDraw(vec, c);
+	}
+}
+
+//Takes an aabb and fills empty vector with its points
+void GameObject::GetPointsFromAABB(AABB& aabb, std::vector<float3>& emptyVector)
+{
+	float3* frustrumPoints = new float3[8];
+	memset(frustrumPoints, NULL, sizeof(float3) * 8);
+	aabb.GetCornerPoints(frustrumPoints);
+
+	emptyVector.clear();
+
+	for (int i = 0; i < 8; i++)
+	{
+		emptyVector.push_back(frustrumPoints[i]);
+	}
+	delete[]frustrumPoints;
+	frustrumPoints = nullptr;
+}

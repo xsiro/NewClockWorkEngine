@@ -1,36 +1,52 @@
 #pragma once
-#include "MathGeoLib/src/MathGeoLib.h"
-#include "Resource.h"
+#include<vector>
+#include "Resources.h"
 
-class Resource;
+enum class MeshDrawMode
+{
+	DRAW_MODE_BOTH, 
+	DRAW_MODE_FILL,
+	DRAW_MODE_WIRE
+};
+enum class NormalDrawMode
+{
+	NORMAL_MODE_NONE,
+	NORMAL_MODE_VERTEX,
+	NORMAL_MODE_FACES,
+	NORMAL_MODE_BOTH
+};
 
 class ResourceMesh : public Resource
 {
 public:
 
-	ResourceMesh();
+	ResourceMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::vector<float> normals, std::vector<float> texCoords,unsigned int UID);
+	ResourceMesh(std::vector<float> vertices, std::vector<unsigned int> indices, std::vector<float> normals, std::vector<float> smoothedNormals, std::vector<float> texCoords, unsigned int UID);
+	ResourceMesh(unsigned int UID);
+	ResourceMesh(const ResourceMesh& other);
 	~ResourceMesh();
 
-
-	enum Buffers
-	{
-		index,
-		vertex,
-		normal,
-		texture,
-		maxBuffers
-	};
+	//void Draw();
+	void GenerateSmoothedNormals();
+	void GenerateBuffers();
+	void FreeBuffers();
+	bool UnloadFromMemory()override;
+private:
+	
 
 public:
-	uint buffersId[ResourceMesh::maxBuffers];
-	uint buffersSize[ResourceMesh::maxBuffers];
 
-	uint* indices = nullptr;
-	float* vertices = nullptr;
-	float* normals = nullptr;
-	float* textureCoords = nullptr;
+	unsigned int idIndex; 
+	std::vector<unsigned int> indices;
 
-	const char* path;
+	unsigned int idVertex; 
+	std::vector<float> vertices;
 
-	AABB aabb;
+	unsigned int idNormals;
+	std::vector<float> normals;
+
+	std::vector<float> smoothedNormals;
+	unsigned int idTexCoords; 
+	std::vector<float> texCoords;
+
 };

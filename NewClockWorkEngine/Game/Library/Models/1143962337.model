@@ -1,0 +1,2469 @@
+{
+    "GameObjects": [
+        {
+            "ID": 101403308,
+            "ParentUID": 1435539522,
+            "Name": "Street environment_V01 File",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 457808042,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 595996506,
+            "ParentUID": 101403308,
+            "Name": "Sky001_$AssimpFbx$_Translation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                18.153732299804688,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                58.960910797119141,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1020958579,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1388522368,
+            "ParentUID": 595996506,
+            "Name": "Sky001_$AssimpFbx$_PreRotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                18.153732299804688,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                58.960910797119141,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 2046515937,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1293678991,
+            "ParentUID": 1388522368,
+            "Name": "Sky001_$AssimpFbx$_PostRotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                18.153732299804688,
+                0,
+                -0.99999988079071045,
+                1.1920928244535389e-07,
+                0,
+                0,
+                -1.1920928244535389e-07,
+                -0.99999988079071045,
+                58.960910797119141,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 38945405,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 205965754,
+            "ParentUID": 1293678991,
+            "Name": "Sky001",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                18.153732299804688,
+                0,
+                -0.99999988079071045,
+                1.1920928244535389e-07,
+                0,
+                0,
+                -1.1920928244535389e-07,
+                -0.99999988079071045,
+                58.960910797119141,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 784677647,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 566434772,
+            "ParentUID": 101403308,
+            "Name": "Dummy001_$AssimpFbx$_PreRotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 193716892,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1077746402,
+            "ParentUID": 566434772,
+            "Name": "Dummy001_$AssimpFbx$_Rotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1339412823,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 634743162,
+            "ParentUID": 1077746402,
+            "Name": "Dummy001",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1760877231,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 936324734,
+            "ParentUID": 634743162,
+            "Name": "City_building_004",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -41.47589111328125,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                1.2525379133876413e-06,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -21.014097213745117,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 793448215,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 998201129,
+                    "Active": true,
+                    "ResourceID": 75847988,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1042501542,
+                    "Active": true,
+                    "ResourceID": 791156437,
+                    "ResourceName": "building03_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1797834387,
+            "ParentUID": 634743162,
+            "Name": "City_building_001",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                17.707164764404297,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                1.4073756346988375e-06,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -20.053274154663086,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1495037923,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 943491932,
+                    "Active": true,
+                    "ResourceID": 2097968222,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1769486983,
+                    "Active": true,
+                    "ResourceID": 342122134,
+                    "ResourceName": "Building_V02_C",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1456356260,
+            "ParentUID": 634743162,
+            "Name": "City_building_007",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                16.010492324829102,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                7.240862487378763e-07,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -37.493282318115234,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 906349641,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1686268002,
+                    "Active": true,
+                    "ResourceID": 1545333157,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1028553046,
+                    "Active": true,
+                    "ResourceID": 294238474,
+                    "ResourceName": "building_016_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1178408384,
+            "ParentUID": 634743162,
+            "Name": "City_building_008",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                -0.99999994039535522,
+                0,
+                40.979995727539063,
+                5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                -9.6322037279605865e-07,
+                -0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                -18.270822525024414,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1049406351,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1652336123,
+                    "Active": true,
+                    "ResourceID": 856492444,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 889216887,
+                    "Active": true,
+                    "ResourceID": 330289621,
+                    "ResourceName": "building_025_c",
+                    "Color R": 0.58823531866073608,
+                    "Color G": 0.58823531866073608,
+                    "Color B": 0.58823531866073608,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 609265963,
+            "ParentUID": 634743162,
+            "Name": "Line002",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                -2.1597719192504883,
+                -5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                1.1049736770019081e-07,
+                0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                -1.8538380861282349,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 510314111,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 608614479,
+                    "Active": true,
+                    "ResourceID": 604832752,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 348803502,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.27058824896812439,
+                    "Color G": 0.27058824896812439,
+                    "Color B": 0.27058824896812439,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 994728906,
+            "ParentUID": 634743162,
+            "Name": "Plane001",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                0.99663525819778442,
+                0,
+                0,
+                -0.02860260009765625,
+                0,
+                5.7853249302297627e-08,
+                0.99663519859313965,
+                1.5516334883614036e-09,
+                0,
+                -0.97061640024185181,
+                5.9404090535508658e-08,
+                -0.026032088324427605,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 303532466,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1968516170,
+                    "Active": true,
+                    "ResourceID": 1201676616,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1952887324,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.30980393290519714,
+                    "Color G": 0.45490199327468872,
+                    "Color B": 0.058823533356189728,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 603343886,
+            "ParentUID": 634743162,
+            "Name": "City_building_010",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                -0.99999994039535522,
+                0,
+                25.154010772705078,
+                5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                -1.4783572623855434e-06,
+                -0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                39.153717041015625,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 483725340,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 624551886,
+                    "Active": true,
+                    "ResourceID": 682017475,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1825454397,
+                    "Active": true,
+                    "ResourceID": 1986295212,
+                    "ResourceName": "building 01_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1176300752,
+            "ParentUID": 634743162,
+            "Name": "City_building_011",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                30.134540557861328,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                7.240862487378763e-07,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -37.493282318115234,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1878344077,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 945776647,
+                    "Active": true,
+                    "ResourceID": 1545333157,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1919840120,
+                    "Active": true,
+                    "ResourceID": 294238474,
+                    "ResourceName": "building_016_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 585507368,
+            "ParentUID": 634743162,
+            "Name": "City_building_013",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                -0.99999994039535522,
+                0,
+                -42.288055419921875,
+                5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                2.4804287477309117e-06,
+                -0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                -33.201572418212891,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1806805240,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 73880174,
+                    "Active": true,
+                    "ResourceID": 755303834,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 388259489,
+                    "Active": true,
+                    "ResourceID": 649506087,
+                    "ResourceName": "building 06_ c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1098464754,
+            "ParentUID": 634743162,
+            "Name": "City_building_014",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -1,
+                8.7422776573475858e-08,
+                0,
+                -19.439706802368164,
+                -5.2108035429403697e-15,
+                -5.9604644775390625e-08,
+                0.99999994039535522,
+                1.9110279936285224e-06,
+                8.74227694680485e-08,
+                0.99999994039535522,
+                5.9604644775390625e-08,
+                -32.061725616455078,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 637218880,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 27001270,
+                    "Active": true,
+                    "ResourceID": 259762710,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 807227545,
+                    "Active": true,
+                    "ResourceID": 791156437,
+                    "ResourceName": "building03_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 662445854,
+            "ParentUID": 634743162,
+            "Name": "City_building_016",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -1,
+                8.7422776573475858e-08,
+                0,
+                34.270423889160156,
+                -5.2108035429403697e-15,
+                -5.9604644775390625e-08,
+                0.99999994039535522,
+                -1.6463843621750129e-06,
+                8.74227694680485e-08,
+                0.99999994039535522,
+                5.9604644775390625e-08,
+                41.972743988037109,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 341868455,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 783998362,
+                    "Active": true,
+                    "ResourceID": 682017475,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 158105003,
+                    "Active": true,
+                    "ResourceID": 1986295212,
+                    "ResourceName": "building 01_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 454000904,
+            "ParentUID": 634743162,
+            "Name": "City_building_017",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                -0.99999994039535522,
+                0,
+                44.260082244873047,
+                5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                -1.4783572623855434e-06,
+                -0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                39.153717041015625,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1574722988,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1332620838,
+                    "Active": true,
+                    "ResourceID": 682017475,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 659361057,
+                    "Active": true,
+                    "ResourceID": 1986295212,
+                    "ResourceName": "building 01_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 440180497,
+            "ParentUID": 634743162,
+            "Name": "City_building_022",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -1,
+                -3.8941436741879443e-07,
+                0,
+                -20.831323623657227,
+                2.321090504043069e-14,
+                -5.9604644775390625e-08,
+                0.99999994039535522,
+                -1.6347461269106134e-06,
+                -3.89414338997085e-07,
+                0.99999994039535522,
+                5.9604644775390625e-08,
+                27.426486968994141,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 765711125,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1214738947,
+                    "Active": true,
+                    "ResourceID": 979841523,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1286726580,
+                    "Active": true,
+                    "ResourceID": 1847611795,
+                    "ResourceName": "building05 _c",
+                    "Color R": 0.58823531866073608,
+                    "Color G": 0.58823531866073608,
+                    "Color B": 0.58823531866073608,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1990247165,
+            "ParentUID": 634743162,
+            "Name": "City_building_023",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                42.130641937255859,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                7.240862487378763e-07,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -37.493282318115234,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 910891575,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 910519084,
+                    "Active": true,
+                    "ResourceID": 1545333157,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1826855018,
+                    "Active": true,
+                    "ResourceID": 294238474,
+                    "ResourceName": "building_016_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 212551186,
+            "ParentUID": 634743162,
+            "Name": "City_building_024",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -1,
+                -8.7422776573475858e-08,
+                0,
+                -20.572771072387695,
+                5.2108035429403697e-15,
+                -5.9604644775390625e-08,
+                0.99999994039535522,
+                -0.069191887974739075,
+                -8.74227694680485e-08,
+                0.99999994039535522,
+                5.9604644775390625e-08,
+                -43.060825347900391,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 606730956,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1863792676,
+                    "Active": true,
+                    "ResourceID": 856492444,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1705493115,
+                    "Active": true,
+                    "ResourceID": 330289621,
+                    "ResourceName": "building_025_c",
+                    "Color R": 0.58823531866073608,
+                    "Color G": 0.58823531866073608,
+                    "Color B": 0.58823531866073608,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1791099195,
+            "ParentUID": 634743162,
+            "Name": "City_building_026",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -1,
+                -8.7422776573475858e-08,
+                0,
+                31.51188850402832,
+                5.2108035429403697e-15,
+                -5.9604644775390625e-08,
+                0.99999994039535522,
+                -9.8025896022591041e-07,
+                -8.74227694680485e-08,
+                0.99999994039535522,
+                5.9604644775390625e-08,
+                16.446014404296875,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1617833138,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 184124746,
+                    "Active": true,
+                    "ResourceID": 581142181,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 619052323,
+                    "Active": true,
+                    "ResourceID": 1847611795,
+                    "ResourceName": "building05 _c",
+                    "Color R": 0.58823531866073608,
+                    "Color G": 0.58823531866073608,
+                    "Color B": 0.58823531866073608,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1240141367,
+            "ParentUID": 634743162,
+            "Name": "City_building_028",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                13.38798999786377,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                -2.9503021323762368e-06,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                33.755035400390625,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1192467940,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 302084272,
+                    "Active": true,
+                    "ResourceID": 1723646472,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1101745841,
+                    "Active": true,
+                    "ResourceID": 890725893,
+                    "ResourceName": "Building_V01_C",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 533175179,
+            "ParentUID": 634743162,
+            "Name": "Object010",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -2.5033531188964844,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                9.4180381893238518e-07,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -15.800845146179199,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 826292715,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 934298764,
+                    "Active": true,
+                    "ResourceID": 1107873921,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1682064461,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.58823531866073608,
+                    "Color G": 0.58823531866073608,
+                    "Color B": 0.58823531866073608,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 907392993,
+            "ParentUID": 634743162,
+            "Name": "City_building_030",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                -42.807239532470703,
+                -5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                -3.4319391488679685e-06,
+                0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                41.835559844970703,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 431601077,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1081121854,
+                    "Active": true,
+                    "ResourceID": 1723646472,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1630253631,
+                    "Active": true,
+                    "ResourceID": 890725893,
+                    "ResourceName": "Building_V01_C",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 24742364,
+            "ParentUID": 634743162,
+            "Name": "City_building_031",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                -34.679481506347656,
+                -5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                -3.4319391488679685e-06,
+                0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                41.835559844970703,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1082332607,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 306239150,
+                    "Active": true,
+                    "ResourceID": 1723646472,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 458214734,
+                    "Active": true,
+                    "ResourceID": 890725893,
+                    "ResourceName": "Building_V01_C",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1432222383,
+            "ParentUID": 634743162,
+            "Name": "City_building_032",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -29.478403091430664,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                1.2525379133876413e-06,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -21.014097213745117,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 498419629,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 793829339,
+                    "Active": true,
+                    "ResourceID": 75847988,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1700754974,
+                    "Active": true,
+                    "ResourceID": 791156437,
+                    "ResourceName": "building03_c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1139841552,
+            "ParentUID": 634743162,
+            "Name": "City_building_033",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -32.361495971679688,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                3.0269345643318957e-06,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -42.370418548583984,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 308716568,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 945484201,
+                    "Active": true,
+                    "ResourceID": 120104642,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 886809977,
+                    "Active": true,
+                    "ResourceID": 649506087,
+                    "ResourceName": "building 06_ c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1345526498,
+            "ParentUID": 634743162,
+            "Name": "City_building_034",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -1.1920928955078125e-07,
+                0.99999994039535522,
+                0,
+                16.049516677856445,
+                -5.9604641222676946e-08,
+                -7.1054273576010019e-15,
+                0.99999994039535522,
+                -9.9521184893092141e-07,
+                0.99999988079071045,
+                1.1920928244535389e-07,
+                5.9604644775390625e-08,
+                16.696882247924805,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 442557467,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1516151471,
+                    "Active": true,
+                    "ResourceID": 1651442911,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 717861500,
+                    "Active": true,
+                    "ResourceID": 1847611795,
+                    "ResourceName": "building05 _c",
+                    "Color R": 0.58823531866073608,
+                    "Color G": 0.58823531866073608,
+                    "Color B": 0.58823531866073608,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1775661419,
+            "ParentUID": 634743162,
+            "Name": "City_building_035",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                13.38798999786377,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                -3.3703645385685377e-06,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                40.802513122558594,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1996058516,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1280028997,
+                    "Active": true,
+                    "ResourceID": 1723646472,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 622416931,
+                    "Active": true,
+                    "ResourceID": 890725893,
+                    "ResourceName": "Building_V01_C",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1359154757,
+            "ParentUID": 634743162,
+            "Name": "City_building_036",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                -31.216331481933594,
+                -5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                2.4804287477309117e-06,
+                0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                -33.201572418212891,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1364123985,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1141399336,
+                    "Active": true,
+                    "ResourceID": 755303834,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 2025781715,
+                    "Active": true,
+                    "ResourceID": 649506087,
+                    "ResourceName": "building 06_ c",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1177098333,
+            "ParentUID": 634743162,
+            "Name": "City_building_037",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -1,
+                -3.8941436741879443e-07,
+                0,
+                -20.317693710327148,
+                2.321090504043069e-14,
+                -5.9604644775390625e-08,
+                0.99999994039535522,
+                -9.6342614597233478e-07,
+                -3.89414338997085e-07,
+                0.99999994039535522,
+                5.9604644775390625e-08,
+                16.163606643676758,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 960263290,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 639588626,
+                    "Active": true,
+                    "ResourceID": 979929998,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 726310201,
+                    "Active": true,
+                    "ResourceID": 1847611795,
+                    "ResourceName": "building05 _c",
+                    "Color R": 0.58823531866073608,
+                    "Color G": 0.58823531866073608,
+                    "Color B": 0.58823531866073608,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 367427381,
+            "ParentUID": 634743162,
+            "Name": "City_building_038",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -1.1920928955078125e-07,
+                0.99999994039535522,
+                0,
+                -41.649002075195313,
+                -5.9604641222676946e-08,
+                -7.1054273576010019e-15,
+                0.99999994039535522,
+                -9.8320208508084761e-07,
+                0.99999988079071045,
+                1.1920928244535389e-07,
+                5.9604644775390625e-08,
+                16.495391845703125,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1792551559,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1983973184,
+                    "Active": true,
+                    "ResourceID": 298409215,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 48868224,
+                    "Active": true,
+                    "ResourceID": 1847611795,
+                    "ResourceName": "building05 _c",
+                    "Color R": 0.58823531866073608,
+                    "Color G": 0.58823531866073608,
+                    "Color B": 0.58823531866073608,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1580539021,
+            "ParentUID": 634743162,
+            "Name": "City_building_039",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                -42.807239532470703,
+                -5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                -2.7648632112686755e-06,
+                0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                30.643886566162109,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 640526256,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1645108761,
+                    "Active": true,
+                    "ResourceID": 1723646472,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 224220483,
+                    "Active": true,
+                    "ResourceID": 890725893,
+                    "ResourceName": "Building_V01_C",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1766422125,
+            "ParentUID": 634743162,
+            "Name": "City_building_040",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                0,
+                -34.679481506347656,
+                -5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                -2.7648632112686755e-06,
+                0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                30.643886566162109,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 395616900,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 128751876,
+                    "Active": true,
+                    "ResourceID": 1723646472,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 237616418,
+                    "Active": true,
+                    "ResourceID": 890725893,
+                    "ResourceName": "Building_V01_C",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 246893575,
+            "ParentUID": 634743162,
+            "Name": "City_building_041",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                -0.99999994039535522,
+                0,
+                30.695278167724609,
+                5.9604641222676946e-08,
+                3.5527136788005009e-15,
+                0.99999994039535522,
+                1.5003213320596842e-06,
+                -0.99999988079071045,
+                -5.9604641222676946e-08,
+                5.9604644775390625e-08,
+                -21.612644195556641,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1026104737,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 518474487,
+                    "Active": true,
+                    "ResourceID": 2097968222,
+                    "ResourceName": "Untitled Mesh"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1807120651,
+                    "Active": true,
+                    "ResourceID": 342122134,
+                    "ResourceName": "Building_V02_C",
+                    "Color R": 0.58799999952316284,
+                    "Color G": 0.58799999952316284,
+                    "Color B": 0.58799999952316284,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1794179527,
+            "ParentUID": 101403308,
+            "Name": "Camera001_$AssimpFbx$_Translation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -78.312431335449219,
+                0,
+                1,
+                0,
+                45.251216888427734,
+                0,
+                0,
+                1,
+                -97.031112670898438,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1513051551,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 998060185,
+            "ParentUID": 1794179527,
+            "Name": "Camera001_$AssimpFbx$_PreRotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -78.312431335449219,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                45.251216888427734,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -97.031112670898438,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 703627462,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1874856506,
+            "ParentUID": 998060185,
+            "Name": "Camera001_$AssimpFbx$_Rotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -0.77714574337005615,
+                0.18399538099765778,
+                -0.60182219743728638,
+                -78.312431335449219,
+                -3.7510424988340674e-08,
+                0.95630466938018799,
+                0.2923714816570282,
+                45.251216888427734,
+                0.62932044267654419,
+                0.22721520066261292,
+                -0.74318814277648926,
+                -97.031112670898438,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 535193636,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 2046584914,
+            "ParentUID": 1874856506,
+            "Name": "Camera001",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -0.77714574337005615,
+                0.18399538099765778,
+                -0.60182219743728638,
+                -78.312431335449219,
+                -3.7510424988340674e-08,
+                0.95630466938018799,
+                0.2923714816570282,
+                45.251216888427734,
+                0.62932044267654419,
+                0.22721520066261292,
+                -0.74318814277648926,
+                -97.031112670898438,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1069900129,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 448714230,
+            "ParentUID": 101403308,
+            "Name": "Camera001.Target_$AssimpFbx$_Translation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -28.132621765136719,
+                0,
+                1,
+                0,
+                20.873329162597656,
+                0,
+                0,
+                1,
+                -35.064212799072266,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 2039037865,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 226059047,
+            "ParentUID": 448714230,
+            "Name": "Camera001.Target_$AssimpFbx$_PreRotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -28.132621765136719,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                20.873329162597656,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -35.064212799072266,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1967257553,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1492403354,
+            "ParentUID": 226059047,
+            "Name": "Camera001.Target_$AssimpFbx$_Rotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -0.77714574337005615,
+                0.18399539589881897,
+                -0.60182243585586548,
+                -28.132621765136719,
+                -3.751043564648171e-08,
+                0.95630472898483276,
+                0.29237145185470581,
+                20.873329162597656,
+                0.62932062149047852,
+                0.22721531987190247,
+                -0.74318814277648926,
+                -35.064212799072266,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1033772272,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1193683944,
+            "ParentUID": 1492403354,
+            "Name": "Camera001.Target",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -0.77714574337005615,
+                0.18399539589881897,
+                -0.60182243585586548,
+                -28.132621765136719,
+                -3.751043564648171e-08,
+                0.95630472898483276,
+                0.29237145185470581,
+                20.873329162597656,
+                0.62932062149047852,
+                0.22721531987190247,
+                -0.74318814277648926,
+                -35.064212799072266,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1895802791,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1295703579,
+            "ParentUID": 101403308,
+            "Name": "Spot001_$AssimpFbx$_Translation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -66.721267700195313,
+                0,
+                1,
+                0,
+                141.93412780761719,
+                0,
+                0,
+                1,
+                6.2041376622801181e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 488793921,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 370792815,
+            "ParentUID": 1295703579,
+            "Name": "Spot001_$AssimpFbx$_PreRotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                -66.721267700195313,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                141.93412780761719,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                6.2041376622801181e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1696745971,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1789653351,
+            "ParentUID": 370792815,
+            "Name": "Spot001_$AssimpFbx$_Rotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.90459394454956055,
+                -0.42627441883087158,
+                -66.721267700195313,
+                -8.9406967163085938e-08,
+                0.42627438902854919,
+                0.904593825340271,
+                141.93412780761719,
+                0.99999994039535522,
+                2.5407935311250185e-08,
+                1.1352263840080923e-07,
+                6.2041376622801181e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 912616033,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1733489109,
+            "ParentUID": 1789653351,
+            "Name": "Spot001_$AssimpFbx$_PostRotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.42627444863319397,
+                0.90459388494491577,
+                -66.721267700195313,
+                -8.9406967163085938e-08,
+                -0.90459376573562622,
+                0.42627441883087158,
+                141.93412780761719,
+                0.99999994039535522,
+                -1.1352263129538187e-07,
+                2.5407940640320703e-08,
+                6.2041376622801181e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 209971,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 819690135,
+            "ParentUID": 1733489109,
+            "Name": "Spot001",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                5.9604644775390625e-08,
+                0.42627444863319397,
+                0.90459388494491577,
+                -66.721267700195313,
+                -8.9406967163085938e-08,
+                -0.90459376573562622,
+                0.42627441883087158,
+                141.93412780761719,
+                0.99999994039535522,
+                -1.1352263129538187e-07,
+                2.5407940640320703e-08,
+                6.2041376622801181e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 931294379,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 577546758,
+            "ParentUID": 101403308,
+            "Name": "Spot001.Target_$AssimpFbx$_Translation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                28.890945434570313,
+                0,
+                1,
+                0,
+                -60.963882446289063,
+                0,
+                0,
+                1,
+                -2.6648158382158726e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 980797677,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 949451072,
+            "ParentUID": 577546758,
+            "Name": "Spot001.Target_$AssimpFbx$_PreRotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                28.890945434570313,
+                0,
+                5.9604644775390625e-08,
+                0.99999994039535522,
+                -60.963882446289063,
+                0,
+                -0.99999994039535522,
+                5.9604644775390625e-08,
+                -2.6648158382158726e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 65652528,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 2017605177,
+            "ParentUID": 949451072,
+            "Name": "Spot001.Target_$AssimpFbx$_Rotation",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                28.890945434570313,
+                0,
+                0.99999988079071045,
+                -1.7881392011531716e-07,
+                -60.963882446289063,
+                0,
+                1.7881392011531716e-07,
+                0.99999988079071045,
+                -2.6648158382158726e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 454751031,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 1603786157,
+            "ParentUID": 2017605177,
+            "Name": "Spot001.Target",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                28.890945434570313,
+                0,
+                0.99999988079071045,
+                -1.7881392011531716e-07,
+                -60.963882446289063,
+                0,
+                1.7881392011531716e-07,
+                0.99999988079071045,
+                -2.6648158382158726e-06,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 811779936,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        }
+    ]
+} 

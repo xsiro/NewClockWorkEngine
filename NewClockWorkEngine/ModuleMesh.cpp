@@ -1,104 +1,374 @@
-#include "Globals.h"
-#include "Application.h"
-#include "glew/include/glew.h"
 #include "ModuleMesh.h"
-#include "ModuleMaterial.h"
-#include "ModuleTransform.h"
-#include "imgui/include/imgui.h"
-#include "ModuleGui.h"
-#include "ModuleImporter.h"
-#include "ModuleComponent.h"
-#include "GameObject.h"
-#include "ModuleRenderer3D.h"
+#include "imgui/imgui.h" 
 #include "ResourceMesh.h"
-#include "Resource.h"
-#include "Config.h"
+#include <string>
+#include "MathGeoLib/include/Geometry/AABB.h"
+#include "Application.h"
+#include "ModuleResourceManager.h"
+#include "GameObject.h"
 
-#include "SDL/include/SDL_opengl.h"
-#include <gl/GL.h>
-#include <gl/GLU.h>
-
-#pragma comment (lib, "glu32.lib") 
-#pragma comment (lib, "opengl32.lib")
-#pragma comment (lib, "glew/libx86/glew32.lib")
-
-ModuleMesh::ModuleMesh(GameObject* owner) : ModuleComponent(ComponentType::Mesh, owner)
-{
-
-}
-
-ModuleMesh::ModuleMesh(GameObject* owner, char* path, ResourceMesh* mesh = nullptr) : ModuleComponent(ComponentType::Mesh, owner), mesh(mesh), path(path)
+ModuleMesh::ModuleMesh(GameObject* owner, unsigned int ID) :Component(ComponentType::MESH, owner, ID), resourceID(0),
+normalVertexSize(1.0f), normalFaceSize(1.0f), normalDrawMode(0), meshDrawMode(0), temporalRMesh(nullptr)
 {
 }
 
 ModuleMesh::~ModuleMesh()
 {
 
-}
-
-void ModuleMesh::Update()
-{
-	DrawMesh();
-}
-
-void ModuleMesh::CleanUp()
-{
-	delete mesh;
-}
-
-void  ModuleMesh::DrawInspector()
-{
-	if (ImGui::CollapsingHeader("Mesh"))
+	if (resourceID != 0)
 	{
-		ImGui::Text("Path: %s", path);
-		ImGui::Text("Vertices: %d", mesh->buffersSize[Mesh::vertex]);
-		ImGui::Checkbox("Active", &this->active);
-		ImGui::Checkbox("Draw Vertex Normals", &drawVertexNormals);
-		ImGui::Checkbox("Draw AABB", &drawAABB);
+		App->rManager->StopUsingResource(resourceID);
+		resourceID = 0;
 	}
+
+	DeleteTemporalMesh();
+
+	normalVertexSize = 0;
+	normalFaceSize = 0;
+	normalDrawMode = 0;
+	meshDrawMode = 0;
+
+	localAABB.SetNegativeInfinity();
 }
 
-void ModuleMesh::DrawMesh()
+void ModuleMesh::SetNewResource(unsigned int resourceUID)
 {
-	if (!this->active)
-		return;
 
-	if (owner->GetComponent<ModuleMaterial>() != nullptr)
+	if (resourceID != 0)
 	{
-		if (owner->GetComponent<ModuleMaterial>()->IsEnabled())
+		App->rManager->StopUsingResource(resourceID);
+	}
+
+	ResourceMesh* r = (ResourceMesh*)App->rManager->RequestNewResource(resourceUID);
+	if (r != nullptr)
+	{
+
+		resourceID = resourceUID;
+		localAABB.SetNegativeInfinity();
+		localAABB.Enclose((float3*)r->vertices.data(), r->vertices.size() / 3); 
+		if (owner != nullptr)
 		{
+			owner->bbHasToUpdate = true;
+		}
+
+	}
+	else
+	{
+		resourceID = 0;
+		LOG("[error] the resource with ID:%i, given to this component doesn't exist", resourceUID);
+	}
 
 
-			App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), owner->GetComponent<ModuleMaterial>()->GetTexture(), drawVertexNormals, drawAABB, owner);
 
+}
 
-			return;
+ResourceMesh* ModuleMesh::GetMesh()
+{
+	if (resourceID != 0)
+	{
+		ResourceMesh* m = (ResourceMesh*)App->rManager->RequestExistingResource(resourceID);
+		if (m == nullptr)
+		{
+			resourceID = 0;
+		}
+		else
+		{
+			return m;
 		}
 	}
 
-	App->renderer3D->DrawMesh(mesh, owner->transform->GetGlobalTransform(), nullptr, drawVertexNormals, drawAABB, owner);
+	return nullptr;
 }
 
-void ModuleMesh::OnSave(ConfigNode* node)
+unsigned int ModuleMesh::GetResourceID()
 {
-	
+	return resourceID;
 }
 
-char* ModuleMesh::GetPath()const
+void ModuleMesh::OnEditor()
 {
-	return path;
+
+	bool activeAux = active;
+
+	std::string headerName = "Mesh";
+	std::string suffixLabel = "##Mesh";
+	std::string actualname;
+	suffixLabel += std::to_string(ID);
+	if (!activeAux)headerName += " (not active)";
+
+
+	ImGuiTreeNodeFlags headerFlags = ImGuiTreeNodeFlags_DefaultOpen;
+
+	if (!activeAux)ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.1f, 0.1f, 0.1f, 1.0f));
+
+	if (ImGui::CollapsingHeader(headerName.c_str(), headerFlags))
+	{
+		if (!activeAux)ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.75f, 0.75f, 0.75f, 0.8f));
+
+		ImGui::Spacing();
+
+
+		actualname = "IS ACTIVE" + suffixLabel + "Checkbox";
+		ImGui::Checkbox(actualname.c_str(), &active);
+
+		ResourceMesh* mesh = nullptr;
+		mesh = GetMesh();
+
+		std::string meshNameDisplay = "No Selected Mesh";
+		unsigned int myResourceID = 0;
+		if (mesh != nullptr)
+		{
+			meshNameDisplay = mesh->GetName();
+			myResourceID = mesh->GetUID();
+		}
+		std::vector<Resource*> allLoadedMeshes;
+		App->rManager->GetAllResourcesOfType(ResourceType::MESH, allLoadedMeshes);
+
+		actualname = "Used Mesh" + suffixLabel;
+		if (ImGui::BeginCombo(actualname.c_str(), meshNameDisplay.c_str(), ImGuiComboFlags_PopupAlignLeft))
+		{
+			actualname = "NONE" + suffixLabel;
+			const bool noneSelected = (mesh == nullptr);
+			if (ImGui::Selectable(actualname.c_str(), noneSelected))
+			{
+				if (mesh != nullptr)
+				{
+					App->rManager->StopUsingResource(resourceID);
+					resourceID = 0;
+					myResourceID = 0;
+					mesh == nullptr;
+				}
+			}
+
+
+			if (noneSelected)
+				ImGui::SetItemDefaultFocus();
+
+			for (int n = 0; n < allLoadedMeshes.size(); n++)
+			{
+				std::string name = allLoadedMeshes[n]->GetName();
+				name += suffixLabel;
+				name += "List";
+				name += std::to_string(n);
+				const bool isMeshselected = (myResourceID == allLoadedMeshes[n]->GetUID());
+				if (ImGui::Selectable(name.c_str(), isMeshselected))
+				{
+					SetNewResource(allLoadedMeshes[n]->GetUID());
+				}
+
+				if (ImGui::IsItemHovered())
+				{
+					ImGui::BeginTooltip();
+
+					std::string count = std::to_string(allLoadedMeshes[n]->referenceCount);
+					std::string ID = std::to_string(allLoadedMeshes[n]->GetUID());
+					std::string assetPath = allLoadedMeshes[n]->GetAssetFile();
+					std::string libPath = allLoadedMeshes[n]->GetLibraryFile();
+
+					ImGui::Text("ID: %s", ID.c_str());
+					ImGui::Text("References: %s", count.c_str());
+					ImGui::Text("Asset Path: %s", assetPath.c_str());
+					ImGui::Text("Lib Path: %s", libPath.c_str());
+
+					ImGui::EndTooltip();
+				}
+
+				if (isMeshselected)
+					ImGui::SetItemDefaultFocus();
+			}
+			ImGui::EndCombo();
+		}
+
+
+		if (ImGui::BeginDragDropTarget())
+		{
+			if (const ImGuiPayload * payload = ImGui::AcceptDragDropPayload("ResourceMesh##dragdropSource"))
+			{
+				IM_ASSERT(payload->DataSize == sizeof(unsigned int));
+				unsigned int payloadID = *(const int*)payload->Data;
+
+
+				if (payloadID != 0 && payloadID != resourceID)
+				{
+					SetNewResource(payloadID);
+				}
+
+			}
+			ImGui::EndDragDropTarget();
+
+		}
+
+		ImGui::Spacing();
+		ImGui::Separator();
+		ImGui::Indent();
+		ImGui::Spacing();
+		ImGuiComboFlags flags = ImGuiComboFlags_PopupAlignLeft;
+		const char* normalModes[] = { "NONE","VERTEX NORMALS","FACE NORMALS","ALL NORMALS" };
+		const char* normalLabel = normalModes[normalDrawMode]; 
+		actualname = "Normals" + suffixLabel;
+		if (ImGui::BeginCombo(actualname.c_str(), normalLabel, flags))
+		{
+			for (int n = 0; n < IM_ARRAYSIZE(normalModes); n++)
+			{
+				const bool is_selected = (normalDrawMode == n);
+				actualname = normalModes[n] + suffixLabel;
+				if (ImGui::Selectable(actualname.c_str(), is_selected))
+					normalDrawMode = n;
+
+				
+				if (is_selected)
+					ImGui::SetItemDefaultFocus();
+			}
+			ImGui::EndCombo();
+		}
+
+
+		if (normalDrawMode == 1 || normalDrawMode == 3)
+		{
+			actualname = "Vertex Normal Size" + suffixLabel;
+			ImGui::SliderFloat(actualname.c_str(), &normalVertexSize, 0.1f, 1.0f);
+		}
+		if (normalDrawMode == 2 || normalDrawMode == 3)
+		{
+			actualname = "Face Normal Size" + suffixLabel;
+			ImGui::SliderFloat(actualname.c_str(), &normalFaceSize, 0.1f, 1.0f);
+		}
+
+		const char* drawModes[] = { "BOTH","FILL","WIREFRAME" };
+		const char* drawLabel = drawModes[meshDrawMode]; 
+		actualname = "Draw Mode" + suffixLabel;
+		if (ImGui::BeginCombo(actualname.c_str(), drawLabel, flags))
+		{
+			for (int n = 0; n < IM_ARRAYSIZE(drawModes); n++)
+			{
+				actualname = drawModes[n] + suffixLabel;
+				const bool is_selected = (meshDrawMode == n);
+				if (ImGui::Selectable(actualname.c_str(), is_selected))
+					meshDrawMode = n;
+
+				if (is_selected)
+					ImGui::SetItemDefaultFocus();
+			}
+			ImGui::EndCombo();
+		}
+
+
+		if (mesh != nullptr)
+		{
+			ImGui::Spacing();
+			ImGui::Separator();
+
+			ImGui::Spacing();
+			ImGui::Spacing();
+
+			ImGui::Text("ID_Index: %i", mesh->idIndex);
+			ImGui::Text("ID_Vertex: %i", mesh->idVertex);
+			ImGui::Text("ID_Normals: %i", mesh->idNormals);
+			ImGui::Text("N of vertices: %i", mesh->vertices.size() / 3);
+
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
+
+			ImGui::Separator();
+			actualname = suffixLabel + "columnHeader";
+			ImGui::Columns(1, actualname.c_str(), true);
+			ImGui::Text("Mesh local AABB:");
+			actualname = suffixLabel + "columns";
+
+			ImGui::Columns(2, actualname.c_str(), true);
+			ImGui::Separator();
+			ImGui::Spacing();
+			ImGui::Text("Min Corner:");
+
+			ImGui::Text("X:%f", localAABB.minPoint.x);
+			ImGui::Text("Y:%f", localAABB.minPoint.y);
+			ImGui::Text("Z:%f", localAABB.minPoint.z);
+
+			ImGui::Spacing();
+			ImGui::NextColumn();
+			ImGui::Spacing();
+			ImGui::Text("Max Corner:");
+
+			ImGui::Text("X:%f", localAABB.maxPoint.x);
+			ImGui::Text("Y:%f", localAABB.maxPoint.y);
+			ImGui::Text("Z:%f", localAABB.maxPoint.z);
+			ImGui::Spacing();
+			ImGui::Columns(1);
+			ImGui::Separator();
+
+		}
+		else
+		{
+			ImGui::Text("Select a Mesh to show its properties");
+		}
+
+
+		ImGui::Separator();
+		ImGui::Unindent();
+
+		actualname = "Delete Mesh Component" + suffixLabel;
+		if (ImGui::BeginPopup(actualname.c_str(), ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			ImGui::Text("you are about to delete\n this component");
+			actualname = "Go ahead" + suffixLabel;
+			if (ImGui::Button(actualname.c_str()))
+			{
+				toDelete = true;
+				owner->bbHasToUpdate = true;
+			}
+
+			ImGui::SameLine();
+			actualname = "Cancel" + suffixLabel;
+			if (ImGui::Button(actualname.c_str()))
+			{
+				ImGui::CloseCurrentPopup();
+			}
+
+			ImGui::EndPopup();
+		}
+
+		float maxWidth = ImGui::GetWindowContentRegionMax().x;
+		ImGui::SetCursorPosX(maxWidth - 50);
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(1.0f, 0.25f, 0.0f, 1.0f));
+		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
+		actualname = "Delete" + suffixLabel + "component";
+		if (ImGui::Button(actualname.c_str()))
+		{
+			actualname = "Delete Mesh Component" + suffixLabel;
+			ImGui::OpenPopup(actualname.c_str());
+
+
+		}
+
+		if (!activeAux)ImGui::PopStyleColor();
+		ImGui::PopStyleColor(2);
+
+	}
+
+	if (!activeAux)ImGui::PopStyleColor();
 }
 
-const AABB& ModuleMesh::GetAABB() const
+AABB ModuleMesh::GetAABB() const
 {
-	return aabb;
+	return localAABB;
 }
 
-const OBB& ModuleMesh::GetOBB() const
+void ModuleMesh::SetTemporalMesh(ResourceMesh* newTempMesh)
 {
-	return obb;
+	temporalRMesh = newTempMesh;
 }
-ResourceMesh* ModuleMesh::GetMesh() const
+
+ResourceMesh* ModuleMesh::GetTemporalMesh()
 {
-	return mesh;
+	return temporalRMesh;
+}
+
+void ModuleMesh::DeleteTemporalMesh()
+{
+	if (temporalRMesh != nullptr)
+	{
+		delete temporalRMesh;
+		temporalRMesh = nullptr;
+	}
 }

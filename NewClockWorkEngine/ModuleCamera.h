@@ -1,61 +1,63 @@
+#ifndef __ModuleCamera__
+#define __ModuleCamera__
 
-#include "MathGeoLib/src/Geometry/Plane.h"
-#include "MathGeoLib/src/Geometry/Frustum.h"
-#include "MathGeoLib/src/Math/float4x4.h"
+#include "Component.h"
+#include "MathGeoLib/include/MathGeoLib.h"
+#include "Color.h"
 
-
-class ModuleComponent;
-
-class ModuleCamera : public ModuleComponent
+class ModuleCamera:public Component
 {
 public:
-	ModuleCamera(GameObject* owner);
 
-	void Update()override;
-	void CleanUp() override;
-	void DrawInspector() override;
-	//void OnPlay() override {};
-	//void OnStop() override {};
+	ModuleCamera(GameObject* owner,unsigned int ID,Color backgroundCol=Color(0.05f, 0.05f, 0.1f));
+	ModuleCamera(GameObject* owner, float nPlaneDist, float fPlaneDist, float foV,float aspectRatio=0.0f, Color backgroundCol = Color(0.05f, 0.05f, 0.1f));
+	~ModuleCamera();
 
-	/*void Serialize(JsonNode* node)override;
-	void Load(JsonNode* node)override;*/
+	bool Update(float dt);
 
-	static inline ModuleComponent::ComponentType GetType() { return ModuleComponent::ComponentType::Camera; };
+	void OnEditor();
 
-	//near/far planes
+	void CalcCamPosFromTransformMat(float4x4 &gTransform);
+	void CalcCamPosFromDirections(float3 pos, float3 front, float3 up);
+	float4x4 GetProjMat()const;
+	float4x4 GetViewMat()const;
 
-	void Setposition(float3 pos);
+	void SetNewAspectRatio(int width, int height);
+	void SetNewAspectRatio(float aspectRatio);
+	void SetNewFoV(float foV);
+	void SetNearPlane(float dist);
+	void SetFarPlane(float dist);
 
-	void SetNearPlane(float distance);
-	void SetFarPlane(float distance);
+	float GetNearPlaneDist()const;
+	float GetFarPlaneDist()const;
+	float GetFoV()const;
 
-	void SetVerticalFov(float verticalFov);
-	void SetHorizontalFov(float horizontalFov);
-	void SetAspectRatio(float ratio);
+	float GetAspectRatio()const;
+	float GetInvAspectRatio()const;
+	const Frustum& GetFrustum() const;
 
-	float ComputeAspectRatio(float verticalFov, float horizontalFov);
+	void GetFrustumPoints(std::vector<float3>& emptyVector);
 
-	void OnUpdateTransform(float4x4 globalTransform);
+	bool GetIsCulling()const;
+	void SetAsCullingCam(bool newState);
 
-	//get view/projection
-	float* GetViewMatrix();
+	Color GetBackgroundCol()const;
+	void SetBackgroundCol(Color c);
 
-	void UpdatePlanes();
+private:
+	void UpdateProjectionMat();
 
-	Frustum GetFrustum()const;
-	float3 GetPos()const;
-	float GetNearPlaneDistance()const;
-	float GetFarPlaneDistance()const;
-	float GetVerticalFov()const;
-	float GetHorizontalFov()const;
-
-
-public:
+private:
+	bool isCulling;
+	float nearPlaneDist;
+	float farPlaneDist;
+	float FoVx;//This is the horizontal FoV which the user changes
+	float FoVy;//Vertical FoV, the user cannot change this
+	float invAspectRatio;
 
 	Frustum frustum;
-	bool isCurrentCamera = false;
-	bool isCullingCamera = false;
-	bool cull = true;
-	Plane planes[6];
-	vec* corners;
+	Color backgroundCol;
+	float4x4 projectionMatrix;//this matrix is already transposed for use in opengl
 };
+
+#endif // !__ModuleCamera__

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}" SchemaVersion="97">
+	<GameParameters>
+		<WorkUnit Name="Default Work Unit" ID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="SourceVolume" ID="{8C63A84D-B12F-463A-8201-62774A330CEA}"/>
+				<GameParameter Name="MusicBlendParameter" ID="{F297D131-8A38-4E4F-B685-2A2D97C317E5}"/>
+				<GameParameter Name="SoundPitch" ID="{6D90C6C0-576F-48FF-85B7-91982AF9BA93}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="100"/>
+						<Property Name="Max" Type="Real64" Value="200"/>
+					</PropertyList>
+				</GameParameter>
+			</ChildrenList>
+		</WorkUnit>
+	</GameParameters>
+</WwiseDocument>

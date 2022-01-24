@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9C8835F7-33E8-4115-8ECA-9A60E74D5279}" SchemaVersion="97">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{9C8835F7-33E8-4115-8ECA-9A60E74D5279}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Anger-Mike_Koenig" ID="{70532BA3-7B6D-4F94-8279-682B306A6E33}" ShortID="437640006">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Pitch" Type="int32">
+							<RTPCList>
+								<RTPC Name="" ID="{28166A5A-FCD8-46DA-BB40-A72872A3DC47}" ShortID="195326350">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="SoundPitch" ID="{6D90C6C0-576F-48FF-85B7-91982AF9BA93}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{EAF3B38D-31C7-4530-8BB8-D49B090F78D4}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-4800</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>200</XPos>
+												<YPos>4800</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{6ABADD69-8458-4F5C-BAAC-24E2AD477E0A}" ShortID="120856053">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="SourceVolume" ID="{8C63A84D-B12F-463A-8201-62774A330CEA}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{2F827340-7021-4DF6-BA16-9228BD2758C1}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-200</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<Custom>
+								<Attenuation Name="Attenuation (Custom)" ID="{9D1BDDD0-9566-43B4-B6ED-555D343922C3}" ShortID="464745083">
+									<CurveUsageInfoList>
+										<VolumeDryUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+												<Curve Name="VolumeDry" ID="{C11E55B3-839C-4495-B0D7-F7D1C3EB72DA}">
+													<PropertyList>
+														<Property Name="Flags" Type="int32" Value="3"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>5</Flags>
+															<SegmentShape>Log3</SegmentShape>
+														</Point>
+														<Point>
+															<XPos>100</XPos>
+															<YPos>-200</YPos>
+															<Flags>37</Flags>
+														</Point>
+													</PointList>
+												</Curve>
+											</CurveUsageInfo>
+										</VolumeDryUsage>
+										<VolumeWetGameUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetGameUsage>
+										<VolumeWetUserUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetUserUsage>
+										<LowPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</LowPassFilterUsage>
+										<HighPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</HighPassFilterUsage>
+										<SpreadUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</SpreadUsage>
+										<FocusUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</FocusUsage>
+									</CurveUsageInfoList>
+								</Attenuation>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F291A319-64E0-40B5-835A-E4145AC5EA8D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{617D9A87-BCC8-475E-8299-738C47F91020}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Anger-Mike_Koenig" ID="{2903B598-2668-4D74-976B-38D56B9AC072}">
+							<Language>SFX</Language>
+							<AudioFile>Anger-Mike_Koenig.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="337157546"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Anger-Mike_Koenig" ID="{2903B598-2668-4D74-976B-38D56B9AC072}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Evil Laugh Male" ID="{D9295E5B-4CA3-4601-9D18-884636A9FDF1}" ShortID="1025753989">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Pitch" Type="int32">
+							<RTPCList>
+								<RTPC Name="" ID="{94FA0840-60D6-4AA5-B270-E1792A47945B}" ShortID="1044564457">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="SoundPitch" ID="{6D90C6C0-576F-48FF-85B7-91982AF9BA93}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{CA5FB1DB-8F35-4FBE-BDAC-02CC2AA91FE2}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-4800</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>200</XPos>
+												<YPos>4800</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{D35E480A-BD18-4A19-9DB4-00E0595BD295}" ShortID="806418281">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="SourceVolume" ID="{8C63A84D-B12F-463A-8201-62774A330CEA}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{96CECF7F-1FA3-402F-A6FE-CA4804CFC17C}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-200</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<Custom>
+								<Attenuation Name="Attenuation (Custom)" ID="{44AE020B-9BA5-47D5-AD96-474C96CF298E}" ShortID="969988064">
+									<CurveUsageInfoList>
+										<VolumeDryUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+												<Curve Name="VolumeDry" ID="{EF70A1E8-0095-4920-9B2B-BDB5441E4A10}">
+													<PropertyList>
+														<Property Name="Flags" Type="int32" Value="3"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>5</Flags>
+															<SegmentShape>Log3</SegmentShape>
+														</Point>
+														<Point>
+															<XPos>100</XPos>
+															<YPos>-200</YPos>
+															<Flags>37</Flags>
+														</Point>
+													</PointList>
+												</Curve>
+											</CurveUsageInfo>
+										</VolumeDryUsage>
+										<VolumeWetGameUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetGameUsage>
+										<VolumeWetUserUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetUserUsage>
+										<LowPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</LowPassFilterUsage>
+										<HighPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</HighPassFilterUsage>
+										<SpreadUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</SpreadUsage>
+										<FocusUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</FocusUsage>
+									</CurveUsageInfoList>
+								</Attenuation>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F291A319-64E0-40B5-835A-E4145AC5EA8D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{617D9A87-BCC8-475E-8299-738C47F91020}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Evil Laugh Male" ID="{EDF4D84D-4D15-4A0D-9D8A-3137DA62F0AE}">
+							<Language>SFX</Language>
+							<AudioFile>Evil Laugh Male.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="790410438"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Evil Laugh Male" ID="{EDF4D84D-4D15-4A0D-9D8A-3137DA62F0AE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="raven" ID="{E7157122-5691-4CC8-BC65-E3ABFBB0C833}" ShortID="376102024">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Pitch" Type="int32">
+							<RTPCList>
+								<RTPC Name="" ID="{D7F8E5BA-D98C-4040-AF8B-FF53534EA538}" ShortID="1059326846">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="SoundPitch" ID="{6D90C6C0-576F-48FF-85B7-91982AF9BA93}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{5C08B865-75A2-4B63-8087-993749E972FE}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-4800</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>200</XPos>
+												<YPos>4800</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{A38A1FCA-3C7A-49CD-8AE3-E02F10501C2A}" ShortID="428965990">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="SourceVolume" ID="{8C63A84D-B12F-463A-8201-62774A330CEA}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{A59625ED-C06D-4B7A-94EB-8C88599EA1E5}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-200</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<Custom>
+								<Attenuation Name="Attenuation (Custom)" ID="{6A09C2A4-D81A-4791-89E6-C061BDDA689B}" ShortID="993307040">
+									<CurveUsageInfoList>
+										<VolumeDryUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+												<Curve Name="VolumeDry" ID="{C13CBCD4-6B04-4127-8197-D9A0F7037C5C}">
+													<PropertyList>
+														<Property Name="Flags" Type="int32" Value="3"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>5</Flags>
+															<SegmentShape>Log3</SegmentShape>
+														</Point>
+														<Point>
+															<XPos>100</XPos>
+															<YPos>-200</YPos>
+															<Flags>37</Flags>
+														</Point>
+													</PointList>
+												</Curve>
+											</CurveUsageInfo>
+										</VolumeDryUsage>
+										<VolumeWetGameUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetGameUsage>
+										<VolumeWetUserUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetUserUsage>
+										<LowPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</LowPassFilterUsage>
+										<HighPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</HighPassFilterUsage>
+										<SpreadUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</SpreadUsage>
+										<FocusUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</FocusUsage>
+									</CurveUsageInfoList>
+								</Attenuation>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F291A319-64E0-40B5-835A-E4145AC5EA8D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{617D9A87-BCC8-475E-8299-738C47F91020}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="raven" ID="{36CD8833-7FF4-4D63-830E-1DEC6F45F346}">
+							<Language>SFX</Language>
+							<AudioFile>raven.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="239195556"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="raven" ID="{36CD8833-7FF4-4D63-830E-1DEC6F45F346}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<BlendContainer Name="MusicBlend_SH" ID="{09D402A7-60EA-46E7-845C-5A73C72D122C}" ShortID="480223178">
+					<PropertyList>
+						<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+						<Property Name="UserAuxSendVolume0" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F291A319-64E0-40B5-835A-E4145AC5EA8D}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{617D9A87-BCC8-475E-8299-738C47F91020}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Silent Hill 2 OST - Alone In The Town" ID="{73D8700E-DC4A-4BD0-9991-C70E185445A2}" ShortID="878056104">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<RTPCList>
+										<RTPC Name="" ID="{5AC3AB80-1DD7-4273-A4C8-75946C5B6A68}" ShortID="811810706">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SoundPitch" ID="{6D90C6C0-576F-48FF-85B7-91982AF9BA93}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{CC51A27C-F5FE-4CB5-85DE-69C1DBB4DCD7}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-4800</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>200</XPos>
+														<YPos>4800</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{57F6F539-74AE-4D63-9A1F-D0FCE31CBD91}" ShortID="227155753">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SourceVolume" ID="{8C63A84D-B12F-463A-8201-62774A330CEA}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{44E62A4A-56BB-49D1-840A-0B1191DBD83B}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F291A319-64E0-40B5-835A-E4145AC5EA8D}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{617D9A87-BCC8-475E-8299-738C47F91020}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Silent Hill 2 OST - Alone In The Town" ID="{47E29048-195A-4DC6-8F5E-DDF807CBF235}">
+									<Language>SFX</Language>
+									<AudioFile>Silent Hill 2 OST - Alone In The Town.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="147550508"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Silent Hill 2 OST - Alone In The Town" ID="{47E29048-195A-4DC6-8F5E-DDF807CBF235}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Silent Hill 2 OST - White Noiz" ID="{1150DD2F-9512-4114-9605-2878E51BFA08}" ShortID="607432756">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<RTPCList>
+										<RTPC Name="" ID="{BA25BCBB-3DC7-4A74-B2D5-A8E6AF2FE12D}" ShortID="279322664">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SoundPitch" ID="{6D90C6C0-576F-48FF-85B7-91982AF9BA93}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{CFEDD949-FDFD-42FA-B441-8387AC5ADCAE}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-4800</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>200</XPos>
+														<YPos>4800</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{E85F0E6B-FF01-4264-A0EF-9F097C62C739}" ShortID="376548812">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SourceVolume" ID="{8C63A84D-B12F-463A-8201-62774A330CEA}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{4CDB564B-8936-4FC6-9C3F-02A375176F55}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F291A319-64E0-40B5-835A-E4145AC5EA8D}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{617D9A87-BCC8-475E-8299-738C47F91020}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Silent Hill 2 OST - White Noiz" ID="{212AC7B8-1730-41FB-B1DC-3238861D3794}">
+									<Language>SFX</Language>
+									<AudioFile>Silent Hill 2 OST - White Noiz.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="280711671"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Silent Hill 2 OST - White Noiz" ID="{212AC7B8-1730-41FB-B1DC-3238861D3794}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<BlendTrackList>
+						<BlendTrack Name="StarWarsHaloBlend" ID="{C62B150B-5546-46EB-B3DD-66803541C68F}" ShortID="554446711">
+							<PropertyList>
+								<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="LayerCrossFadeControlInput">
+									<ObjectRef Name="MusicBlendParameter" ID="{F297D131-8A38-4E4F-B685-2A2D97C317E5}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+								</Reference>
+							</ReferenceList>
+						</BlendTrack>
+						<BlendTrack Name="SilentHIllBlend" ID="{8F11431E-6AC5-498D-99B9-42C2003CF688}" ShortID="597326624">
+							<PropertyList>
+								<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="LayerCrossFadeControlInput">
+									<ObjectRef Name="MusicBlendParameter" ID="{F297D131-8A38-4E4F-B685-2A2D97C317E5}" WorkUnitID="{9F4A64FC-DAB7-4651-BCF7-3132160F26D6}"/>
+								</Reference>
+							</ReferenceList>
+							<BlendTrackAssocList>
+								<BlendTrackAssoc>
+									<ItemRef Name="Silent Hill 2 OST - Alone In The Town" ID="{73D8700E-DC4A-4BD0-9991-C70E185445A2}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>0</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<RightEdgePos>50</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+								<BlendTrackAssoc>
+									<ItemRef Name="Silent Hill 2 OST - White Noiz" ID="{1150DD2F-9512-4114-9605-2878E51BFA08}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>45</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<RightEdgePos>99.9995</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+								<BlendTrackAssoc>
+									<ItemRef Name="Silent Hill 2 OST - Alone In The Town" ID="{73D8700E-DC4A-4BD0-9991-C70E185445A2}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>95</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<RightEdgePos>100</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+							</BlendTrackAssocList>
+						</BlendTrack>
+					</BlendTrackList>
+				</BlendContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

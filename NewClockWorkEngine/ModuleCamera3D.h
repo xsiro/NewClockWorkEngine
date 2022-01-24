@@ -1,13 +1,23 @@
-#pragma once
+#ifndef __CAMERA_3D__
+#define __CAMERA_3D__
+
+
 #include "Module.h"
 #include "Globals.h"
-#include "glmath.h"
-#include "MathGeoLib/src/Math/float4x4.h"
-#include "MathGeoLib/src/Math/float3.h"
-#include "MathGeoLib/src/Geometry/LineSegment.h"
+//#include "glmath.h"
 
-class ModuleCamera;
-class GameObject;
+//class vec3;
+//class mat4x4;
+
+
+
+
+enum class CamObjective
+{
+	REFERENCE,
+	CAMERA
+};
+
 
 class ModuleCamera3D : public Module
 {
@@ -16,38 +26,43 @@ public:
 	~ModuleCamera3D();
 
 	bool Start();
-	update_status Update(float dt);
+	update_status Update(float dt) override;
 	bool CleanUp();
 
-	void Look(const vec3 &Position, const vec3 &Reference, bool RotateAroundReference = false);
-	void LookAt(const vec3 &Spot);
-	void Move(const vec3 &Movement);
-	float* GetViewMatrix();
-	void SetCurrentCamera(ModuleCamera* newCamera);
-	void SetCullingCamera(ModuleCamera* newCamera);
-	void SetPosition(float3 newPosition);
-	void RaycastSelect();
-	void CheckIntersetions(LineSegment* selectRay);
-	void RotateCameraStatic();
+	//void Look(const vec3 &Position, const vec3 &Reference, bool RotateAroundReference = false);
+	//void LookAt(const vec3 &Spot);
+	void Move(const float3 &Movement);
+	void MoveTo(const float3& Destination,CamObjective toMove);
+	void CamZoom(int addZoomAmount);
+	//float* GetRawViewMatrix();
+	//mat4x4 GetViewMatrix();
+
+	void CreateRayFromScreenPos(float normalizedX, float normalizedY);
 
 private:
 
-	void CalculateViewMatrix();
-
+	//void CalculateViewMatrix();
+	float3 Rotate(const float3& u, float angle, const float3& v);
 public:
-
-	GameObject* mainCameraObject = nullptr;		//Object holding mainCamera
-	ModuleCamera* cullingCamera = nullptr;		//Camera to be used outside Play Mode
-	ModuleCamera* currentCamera = nullptr;		//Camera currently being used, modify this camera to move
-
-	float cameraMoveSpeed = 1;
-	float cameraRotateSpeed = 1;
 	
-	vec3 X, Y, Z, Position, Reference;
-	Color background;
-	bool free_camera = false;
-	bool rotate_camera = false;
-private:
+	float3 X, Y, Z, Position, Reference;
+	//float foV;
+	//float nearPlaneDist;
+	//float farPlaneDist;
+	//bool debugcamera;
 
-	mat4x4 ViewMatrix, ViewMatrixInverse;
+	float camSpeed;
+	float camSpeedMult;
+
+	//NEW
+	ModuleCamera* editorCam;
+	float2 lastKnowMousePos;
+	bool viewportClickRecieved;
+	bool isGizmoInteracting; //TODO too many bools, change the way the inputs to the camera are sent and recieved
+
+private:
+	float zoomLevel;
+	//mat4x4 ViewMatrix, ViewMatrixInverse;
+
 };
+#endif // !__CAMERA_3D__

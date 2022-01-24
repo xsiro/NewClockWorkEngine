@@ -1,7 +1,8 @@
 #pragma once
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleGui.h"
+#include "ModuleGUI.h"
+#include "Console.h"
 
 void log(const char file[], int line, const char* format, ...)
 {
@@ -15,10 +16,10 @@ void log(const char file[], int line, const char* format, ...)
 	va_end(ap);
 	sprintf_s(tmp_string2, 4096, "\n%s(%d) : %s", file, line, tmp_string);
 	OutputDebugString(tmp_string2);
-	
-	if (App != nullptr && !App->closewindow)
+
+
+	if (App != nullptr && App->gui->console != nullptr)
 	{
-		std::string log_text = std::string(tmp_string);
-		App->gui->Log(tmp_string2);
+		App->gui->console->AddLog(tmp_string);
 	}
 }

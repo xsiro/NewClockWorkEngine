@@ -1,37 +1,53 @@
 #pragma once
 #include "Module.h"
-#include "p2DynArray.h"
 #include "Globals.h"
-#include "Primitive.h"
-#include "imgui/include/imgui.h"
-#include <vector>
 
+#define PRIMITIVES_IN_SCENE 10
+
+class mat4x4;
 class GameObject;
-class ConfigNode;
+enum class MeshDrawMode;
 
-class ModuleSceneIntro : public Module
+class ModuleSceneIntroIntro : public Module
 {
 public:
-	ModuleSceneIntro(bool start_enabled = true);
-	~ModuleSceneIntro();
+	ModuleSceneIntroIntro(bool start_enabled = true);
+	~ModuleSceneIntroIntro();
 
-	bool Start();
+	bool Init();
 	bool GameInit();
+	bool Start();
+	update_status PreUpdate(float dt) override;
 	update_status Update(float dt) override;
 	update_status GameUpdate(float gameDt)override;
+	update_status PostUpdate(float dt) override;
 	bool CleanUp();
 
-	void SetSelectedObject(GameObject* object);
-	void SaveScene();
+	bool SetSelectedGameObject(GameObject* selected, bool addMode = false);
+	bool RemoveGameObjFromSelected(GameObject* toRemove);
 
-	bool drawBB = false;
+	std::vector<GameObject*> GetSelectedGameObject();
+	bool UpdateInfoOnSelectedGameObject();
 
-	GameObject* CreateGameObject(char* name, GameObject* parent = nullptr, bool isRoot = false);
-	uint GetNameRepeats(const char* name);
-	GameObject* rootObject;
-	GameObject* selected = nullptr;
+	void AddObjName(std::string& name); //add a name to the name vector
+	void RemoveName(std::string name);//removes a name from the name vector
+	void ChangeObjName(std::string oldName, std::string& newName); //modifies a name from the vector
 
-	std::vector<GameObject*> game_objects;
+	void TestRayHitObj(LineSegment ray);
 
+private:
+	int DoesNameExist(std::string name); //returns an index of where the current name is, defaults in -1
+	void MakeNameUnique(std::string& name); //if this object is going to have the same name as another, make it unique
+
+public:
+	GameObject* root; 
+
+	std::vector<GameObject*> selectedGameObjs;
+
+	MeshDrawMode maxSceneDrawMode;
 	
+	bool mouseActive;//checks whether the 3d scene can be interacted with the mouse (when hovering or mantaining click after hover)
+
+private:
+	std::vector<std::string> objNames;
 };

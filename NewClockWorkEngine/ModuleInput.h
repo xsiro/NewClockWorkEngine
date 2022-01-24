@@ -1,6 +1,6 @@
 #pragma once
 #include "Module.h"
-#include "Globals.h"
+//#include "Globals.h"
 
 #define MAX_MOUSE_BUTTONS 5
 
@@ -20,7 +20,8 @@ public:
 	~ModuleInput();
 
 	bool Init();
-	update_status PreUpdate(float dt);
+	update_status PreUpdate(float dt) override;
+	update_status Update(float dt) override;
 	bool CleanUp();
 
 	KEY_STATE GetKey(int id) const

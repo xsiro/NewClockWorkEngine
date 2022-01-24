@@ -1,18 +1,18 @@
 #include "Application.h"
 
-
-
-Application::Application() : debug(false), dt(0.16f)
+Application::Application() : debug(false), renderPrimitives(true), realDT(0.16f)
 {
-	window = new ModuleWindow(this);
-	input = new ModuleInput(this);
-	scene_intro = new ModuleSceneIntro(this);
-	renderer3D = new ModuleRenderer3D(this);
-	camera = new ModuleCamera3D(this);
-	gui = new ModuleGui(this);
-	filesystem = new FileSystem(this);
-	resourcemanager = new ModuleResourceM(this);
-	audioManager = new AudioManager(this);
+	window = new ModuleWindow();
+	input = new ModuleInput();
+	renderer3D = new ModuleRenderer3D();
+	gui = new ModuleGUI();
+	camera = new ModuleCamera3D();
+	scene = new ModuleSceneIntroIntro();
+	fileSystem = new ModuleFileSystem();
+	//resourceManager = new ModuleResourceManager();
+	rManager = new ModuleResourceManager();
+	audioManager = new ModuleAudioManager();
+
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
 	// They will CleanUp() in reverse order
@@ -20,133 +20,185 @@ Application::Application() : debug(false), dt(0.16f)
 	// Main Modules
 	AddModule(window);
 	AddModule(camera);
+	AddModule(fileSystem);
+	//AddModule(resourceManager);
 	AddModule(input);
-	AddModule(gui);
-	AddModule(filesystem);
-	AddModule(resourcemanager);
+	AddModule(scene);
+	AddModule(rManager);
 	AddModule(audioManager);
-
-	// Scenes
-	AddModule(scene_intro);
-
 	// Renderer last!
 	AddModule(renderer3D);
-
-	closewindow = false;
-	contFPS = 0;
-	frames = 0;
-	miliseconds = 1000 / 60;
-	last_fps = -1;
-	last_ms = -1;
+	AddModule(gui);
 }
 
 Application::~Application()
 {
-	std::vector<Module*>::iterator item = list_modules.end();
-	for (; item != list_modules.begin(); --item) {
-		delete (*item);
+	for (int i = list_modules.size() - 1; i >= 0; i--)
+	{
+		if (list_modules[i] != nullptr)
+		{
+			delete(list_modules[i]);
+			list_modules[i] = nullptr;
+		}
 	}
+	list_modules.clear();
+
 }
 
 bool Application::Init()
 {
 	bool ret = true;
-	App = this;
-	LOG("Application Start --------------");
-	// Call Init() in all modules
-	std::vector<Module*>::iterator item = list_modules.begin();
 
-	for (; item != list_modules.end() && ret == true; ++item) {
-		ret = (*item)->Init();
+	App = this;
+
+	//time related initializations
+	frameCount = 0;
+	time = 0;
+	timeScale = 1.0f;//TODO will this change from config file in the future if we start with game?
+	gameDT = 0.0f;
+	realTime = 0;
+	realDT = 0.0f;
+	gameState = GameStateEnum::STOPPED;//TODO this will change when executing the game
+	gameJustStarted = false;
+
+	// Call Init() in all modules
+	for (int i = 0; i < list_modules.size(); i++)
+	{
+		if (list_modules[i] != nullptr && ret == true)
+			ret = list_modules[i]->Init();
 	}
 
 	// After all Init calls we call Start() in all modules
-
-	LOG("Application Start --------------");
-	item = list_modules.begin();
-
-	for (; item != list_modules.end() && ret == true; ++item) {
-		ret = (*item)->Start();
+	LOG("-------------- Application Start --------------");
+	for (int i = 0; i < list_modules.size(); i++)
+	{
+		if (list_modules[i] != nullptr && ret == true)
+			ret = list_modules[i]->Start();
 	}
 
-	LOG("Engine Info-----------------------");
-	//LOG("Using Glew %s", glewGetString(GLEW_VERSION));
-	LOG("Vendor: %s", glGetString(GL_VENDOR));
-	LOG("Renderer: %s", glGetString(GL_RENDERER));
-	LOG("OpenGL version supported %s", glGetString(GL_VERSION));
-	LOG("GLSL: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
-
-
 	ms_timer.Start();
+
 	return ret;
 }
 
 // ---------------------------------------------
 void Application::PrepareUpdate()
 {
+	Uint32 msDT = ms_timer.Read();
+	realTime += msDT;
+	realDT = (float)msDT * 0.001f;
 
-	playTime += play ? paused ? 0 : (float)frame_time.Read() / 1000.0f : 0;
-	playDt = play ? paused ? 0 : ((float)frame_time.Read() / 1000.0f) * timeMultiplier : 0;
 
-	dt = (float)frame_time.Read() / 1000.0f;
-	frame_time.Start();
+	gameStateJustChanged = false;
+	GameStateEnum lastGameState = gameState;
+	ProcessGameStates(lastRelevantStateChange);
+	if (lastGameState != gameState)
+	{
+		gameStateJustChanged = true;
+	}
+	lastRelevantStateChange = GameStateEnum::UNKNOWN;
 
+	if (gameState == GameStateEnum::PLAYED || gameState == GameStateEnum::ADVANCEONE)
+	{
+		frameCount++;//when we finish a frame, add 1 to the frame count
+		if ((time + (timeScale * msDT)) < 0)
+		{
+			time = 0;
+			LOG("");
+			LOG("[error] Well, well, it seems that someone has tried to go back in time to before the creation of time iself.\nWe have tried that too, and we assure you that is not possible.");
+			LOG("[warning] We will now proceed to restore the flow of time as it should be...\nPress 'Pause' button to continue the execution of the game");
+			timeScale = 1.0f;
+			SetNewGameState(GameStateEnum::PAUSED);
+		}
+		else
+		{
+			time += (timeScale * msDT);
+		}
+		gameDT = (float)msDT * 0.001f * timeScale;
+	}
+	if (gameState == GameStateEnum::STOPPED && time != 0)
+	{
+		time = 0;
+		frameCount = 0;
+		gameDT = 0.0f;
+	}
+
+	//FPS buffer for graph display
+	fpsBuffer.push_back(1 / realDT);
+	while (fpsBuffer.size() >= MAXFPSDISPLAY)
+	{
+		fpsBuffer.erase(fpsBuffer.begin());
+	}
+	//Milliseconds buffer for graph display
+	millisecondsBuffer.push_back((float)msDT);
+	while (millisecondsBuffer.size() >= MAXFPSDISPLAY)
+	{
+		millisecondsBuffer.erase(millisecondsBuffer.begin());
+	}
+
+
+
+
+	ms_timer.Start();
 }
 
 // ---------------------------------------------
 void Application::FinishUpdate()
 {
-	++frames;
-	++contFPS;
-
-	if (fps_timer.Read() >= 1000)
-	{
-		last_fps = contFPS;
-		contFPS = 0;
-		fps_timer.Start();
-	}
-
-	last_ms = ms_timer.Read();
-
-	if (miliseconds > 0 && (last_ms < miliseconds))
-	{
-		SDL_Delay(miliseconds - last_ms);
-	}
-	gui->LogFPS((float)last_fps, (float)last_ms);
 }
+
 // Call PreUpdate, Update and PostUpdate on all modules
 update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 	PrepareUpdate();
 
-	std::vector<Module*>::iterator item = list_modules.begin();
-
-
-	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+	if (gameJustStarted)
 	{
-		ret = (*item)->PreUpdate(dt);
+		gameJustStarted = false;
+		for (int i = 0; i < list_modules.size(); i++)
+		{
+			if (list_modules[i] != nullptr && ret == true)
+			{
+				if (list_modules[i]->GameInit())//TODO consider returning an update_status instead of a bool in the game_init()
+					ret = UPDATE_CONTINUE;
+				else
+					ret = UPDATE_ERROR;
+			}
+		}
 	}
 
-	item = list_modules.begin();
 
-	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+
+
+	for (int i = 0; i < list_modules.size(); i++)
 	{
-		ret = (*item)->Update(dt);
+		if (list_modules[i] != nullptr && ret == true)
+			ret = list_modules[i]->PreUpdate(realDT);
 	}
 
-	item = list_modules.begin();
-
-	for (; item != list_modules.end() && ret == UPDATE_CONTINUE; ++item)
+	for (int i = 0; i < list_modules.size(); i++)
 	{
-		ret = (*item)->PostUpdate(dt);
+		if (list_modules[i] != nullptr && ret == true)
+			ret = list_modules[i]->Update(realDT);
+	}
+
+	if (gameState == GameStateEnum::PLAYED || gameState == GameStateEnum::ADVANCEONE)
+	{
+		for (int i = 0; i < list_modules.size(); i++)
+		{
+			if (list_modules[i] != nullptr && ret == true)
+				ret = list_modules[i]->GameUpdate(gameDT);
+		}
+	}
+
+	for (int i = 0; i < list_modules.size(); i++)
+	{
+		if (list_modules[i] != nullptr && ret == true)
+			ret = list_modules[i]->PostUpdate(realDT);
 	}
 
 	FinishUpdate();
-
-	if (closewindow)
-		ret = update_status::UPDATE_STOP;
-
 	return ret;
 }
 
@@ -154,195 +206,156 @@ bool Application::CleanUp()
 {
 	bool ret = true;
 
-	for (size_t i = 0; i < list_modules.size() && ret == true; i++)
+	for (int i = list_modules.size() - 1; i >= 0; i--)
 	{
-		ret = list_modules[i]->CleanUp();
+		if (list_modules[i] != nullptr && ret == true)
+			ret = list_modules[i]->CleanUp();
 	}
 
-
+	App = nullptr;
 	return ret;
 }
 
-void Application::Save()
+void Application::ProcessGameStates(GameStateEnum newState)
 {
-	ConfigNode config;
 
-	std::vector<Module*>::iterator item = list_modules.begin();
+	switch (gameState)
+	{
+	case GameStateEnum::STOPPED:
 
-		for (; item != list_modules.end(); ++item)
+
+		if (newState == GameStateEnum::PLAYED)
 		{
-			(*item)->Save(&config);
+			//start play clock
+			gameState = GameStateEnum::PLAYED;
+			gameJustStarted = true;
 		}
-	LOG("Succesfully saved");
-	toSave = false;
+
+
+		break;
+	case GameStateEnum::PLAYED:
+
+
+		switch (newState)
+		{
+		case GameStateEnum::STOPPED:
+			//reset & stop play clock
+			gameState = GameStateEnum::STOPPED;
+			break;
+		case GameStateEnum::PAUSED:
+			//pause play clock
+			gameState = GameStateEnum::PAUSED;
+			break;
+		case GameStateEnum::ADVANCEONE:
+			gameState = GameStateEnum::ADVANCEONE;
+			break;
+		}
+
+
+		break;
+	case GameStateEnum::PAUSED:
+
+
+		switch (newState)
+		{
+		case GameStateEnum::STOPPED:
+			//reset & stop play clock
+			gameState = GameStateEnum::STOPPED;
+			break;
+		case GameStateEnum::PLAYED:
+			//resume play clock
+			gameState = GameStateEnum::PLAYED;
+			break;
+		case GameStateEnum::ADVANCEONE:
+			//resume play clock
+			gameState = GameStateEnum::ADVANCEONE;
+			break;
+		}
+
+
+		break;
+	case GameStateEnum::ADVANCEONE:
+
+
+		//do smth
+		gameState = GameStateEnum::PAUSED;
+
+
+		break;
+	}
+
+
+}
+
+GameStateEnum Application::GetGameState() const
+{
+	return gameState;
+}
+
+void Application::SetNewGameState(GameStateEnum newState)
+{
+	if (lastRelevantStateChange != newState)
+	{
+		lastRelevantStateChange = newState;
+	}
+}
+
+Uint32 Application::GetFrameCount() const
+{
+	return frameCount;
+}
+
+float Application::GetTime() const
+{
+	return (time * 0.001f);
+}
+
+float Application::GetTimeScale() const
+{
+	return timeScale;
+}
+
+float Application::GetGameDT() const
+{
+	return gameDT;
+}
+
+float Application::GetRealTime() const
+{
+	return (realTime * 0.001f);
+}
+
+float Application::GetRealDT() const
+{
+	return realDT;
+}
+
+void Application::SetNewTimeScale(float newTimeScale)
+{
+	const float maxMinTimeScale = 5.0f;//this changes the max min time scale allowed Note:: don't enter a negative value
+
+	timeScale = max(newTimeScale, -maxMinTimeScale);
+	timeScale = min(timeScale, maxMinTimeScale);
+}
+
+bool Application::HasGameStateChanged() const
+{
+	return gameStateJustChanged;
+}
+
+bool Application::HasGameStateChanged(GameStateEnum& currentGameState)
+{
+	if (gameStateJustChanged)
+	{
+		currentGameState = gameState;
+	}
+
+	return gameStateJustChanged;
 }
 
 void Application::AddModule(Module* mod)
 {
 	list_modules.push_back(mod);
-}
-
-void Application::ToSave()
-{
-	toSave = true;
-}
-
-
-int Application::CPUCount()
-{
-	return SDL_GetCPUCount();
-}
-
-int Application::CPUCache()
-{
-	return SDL_GetCPUCacheLineSize();
-}
-
-int Application::SystemRAM()
-{
-	int TransformtoGB = SDL_GetSystemRAM() * 0.001;
-	return TransformtoGB;
-}
-void Application::RequestBrowser(const char* url)const
-{
-	ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOWNORMAL);
-}
-
-const char* Application::SystemCaps()
-{
-	Caps.clear();
-	// IF the processor has certain register it will be added to the string
-	if (SDL_Has3DNow())
-	{
-		Caps.append("3D Now, ");
-	}
-
-	if (SDL_HasAVX())
-	{
-		Caps.append("AVX, ");
-	}
-
-	if (SDL_HasAVX2())
-	{
-		Caps.append("AVX2, ");
-	}
-
-	if (SDL_HasAltiVec())
-	{
-		Caps.append("AltiVec, ");
-	}
-
-	if (SDL_HasMMX())
-	{
-		Caps.append("MMX, ");
-	}
-
-	if (SDL_HasRDTSC())
-	{
-		Caps.append("RDTSC, ");
-	}
-
-	if (SDL_HasSSE())
-	{
-		Caps.append("SSE, ");
-	}
-
-	if (SDL_HasSSE2())
-	{
-		Caps.append("SSE2, ");
-	}
-
-	if (SDL_HasSSE3())
-	{
-		Caps.append("SSE3, ");
-	}
-
-	if (SDL_HasSSE41())
-	{
-		Caps.append("SSE41, ");
-	}
-
-	if (SDL_HasSSE41())
-	{
-		Caps.append("SSE42");
-	}
-
-	return Caps.data();
-}
-
-const char* Application::Brand() {
-	return (const char*)glGetString(GL_VENDOR);
-}
-
-const char* Application::Model() {
-	return (const char*)glGetString(GL_RENDERER);
-}
-
-int Application::Budget() {
-	int budget;
-	glGetIntegerv(GL_GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX, &budget);
-	return budget / 1024;
-}
-
-int Application::Usage() {
-	int usage;
-	glGetIntegerv(GL_GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX, &usage);
-	return usage / 1024;
-}
-
-int Application::Available() {
-	int available;
-	glGetIntegerv(GL_GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX, &available);
-	return available / 1024;
-}
-
-int Application::Reserved() {
-	int reserved;
-	glGetIntegerv(GL_GPU_MEMORY_INFO_EVICTED_MEMORY_NVX, &reserved);
-	return reserved / 1024;
-}
-
-uint Application::GetFRLimit() const
-{
-	if (miliseconds > 0)
-		return (uint)((1.0f / (float)miliseconds) * 1000.0f);
-	else
-		return 0;
-}
-
-void Application::SetFRLimit(uint max_framerate)
-{
-	if (max_framerate > 0)
-		miliseconds = 1000 / max_framerate;
-	else
-		miliseconds = 0;
-}
-
-void Application::ExitApp()
-{
-	closewindow = true;
-}
-
-void Application::Play()
-{
-	play = true;
-	paused = false;
-	/*for (auto item = list_modules.begin(); item != list_modules.end(); ++item)
-	{
-		(*item)->OnPlay();
-	}*/
-}
-
-void Application::Pause()
-{
-	paused = true;
-}
-
-void Application::Stop()
-{
-	play = false;
-	paused = false;
-	playTime = 0;
 }
 
 Application* App = nullptr;

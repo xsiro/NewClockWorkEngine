@@ -1,41 +1,44 @@
 #pragma once
-#include "Globals.h"
-#include "glmath.h"
-#include <vector>
-#include "ModuleComponent.h"
 
-class ModuleComponent;
-struct ResourceMaterial;
-class ConfigNode;
+#include "Component.h"
+#include <string>
+#include "Color.h"
 
-class ModuleMaterial : public ModuleComponent
+class ResourceMaterial;
+class ModuleMaterial:public Component
 {
 public:
-
-	ModuleMaterial(GameObject* owner);
-	ModuleMaterial(GameObject* owner, const char* path, ResourceMaterial* mesh);;
+	ModuleMaterial(GameObject* owner,unsigned int ID,Color color=Color(1.0f,1.0f,1.0f));
 	~ModuleMaterial();
 
-	void Update() override;
-	void CleanUp() override;
-	void DrawInspector() override;
-	void OnSave(ConfigNode* node);
+	void SetNewResource(unsigned int resourceUID)override;
+	unsigned int GetResourceID()override;
 
-	const char* GetPath()const;
+	bool HasTexture();
+	bool HasCheckers()const;
+	unsigned int GetTextureID();
+	ResourceMaterial* GetTexture();
+	unsigned int GetCheckersID()const;
 
-	ResourceMaterial* GetTexture() const;
-
-	bool IsEnabled() const;
-
-	static inline ComponentType GetType() { return ComponentType::Material; };
-	
-	void SwitchEnabledTexture();
-
+	void OnEditor();
 
 private:
 
-	ResourceMaterial* material = nullptr;
-	const char* path = "";
-	bool drawTexture = true;
+
+	void DestroyCheckers();
+	void GenDefaultTexture();
+
+
+public:
+	bool usingCkeckers;
+
+
+	Color matCol;
+
+private:
+	unsigned int idCheckers;
+	int size = 200; 
+	unsigned int resourceID;
 
 };
+

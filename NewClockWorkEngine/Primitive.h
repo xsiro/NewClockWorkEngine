@@ -1,96 +1,33 @@
+#ifndef __PRIMITIVES_H__
+#define __PRIMITIVES_H__
 
-#pragma once
-#include "glmath.h"
-#include "Color.h"
+//#include "glmath.h" //it has to be incuded here because of the Identity Matrix
+//#include "Color.h"
+//#include "Glew/include/glew.h"
+#include <vector>
 
-enum PrimitiveTypes
+
+enum class PrimitiveTypes
 {
 	Primitive_Point,
 	Primitive_Line,
 	Primitive_Plane,
+
 	Primitive_Cube,
 	Primitive_Sphere,
-	Primitive_Cylinder
+	Primitive_Cylinder,
+	Primitive_Cone, //cyl
+	Primitive_Box,	//cyl
+	Primitive_Unknown
 };
 
-class Primitive
-{
-public:
+//Related functions to primitives, but we don't want them to be part of the class
+//=============================================
 
-	Primitive();
-
-	virtual void	Render() const;
-	virtual void	InnerRender() const;
-	void			SetPos(float x, float y, float z);
-	void			SetRotation(float angle, const vec3 &u);
-	void			Scale(float x, float y, float z);
-	PrimitiveTypes	GetType() const;
-
-public:
-	
-	Color color;
-	mat4x4 transform;
-	bool axis,wire;
-
-protected:
-	PrimitiveTypes type;
-};
-
+void SphereFillVectorsVertexAndIndex(std::vector<float> &vertices, std::vector<unsigned int> &index, float radius = 1.f, unsigned int sectors = 36, unsigned int stacks = 18);
+void CylinderFillVectorsVertexAndIndex(std::vector<float>& vertices, std::vector<unsigned int>& index, float rBase = 1, float rTop = 1, float height = 2, unsigned int sectors = 36, unsigned int stacks = 8);
+void ConeFillVectorsVertexAndIndex(std::vector<float>& vertices, std::vector<unsigned int>& indices, float rBase = 1, float height = 2, unsigned int sectors = 36, unsigned int stacks = 8);
 // ============================================
-class Cube : public Primitive
-{
-public :
-	Cube();
-	Cube(float sizeX, float sizeY, float sizeZ);
-	void InnerRender() const;
-public:
-	vec3 size;
-};
 
-// ============================================
-class Sphere : public Primitive
-{
-public:
-	Sphere();
-	Sphere(float radius);
-	void InnerRender() const;
-public:
-	float radius;
-};
+#endif // !__PRIMITIVES_H__
 
-// ============================================
-class Cylinder : public Primitive
-{
-public:
-	Cylinder();
-	Cylinder(float radius, float height);
-	void InnerRender() const;
-public:
-	float radius;
-	float height;
-};
-
-// ============================================
-class Line : public Primitive
-{
-public:
-	Line();
-	Line(float x, float y, float z);
-	void InnerRender() const;
-public:
-	vec3 origin;
-	vec3 destination;
-};
-
-// ============================================
-class Planes : public Primitive
-{
-public:
-	Planes(const vec3& normal = vec3(0, 1, 0));
-	vec3 GetNormal() const;
-protected:
-	void InnerRender() const;
-public:
-	vec3 normal;
-	
-};

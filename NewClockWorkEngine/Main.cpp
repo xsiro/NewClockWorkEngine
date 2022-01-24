@@ -6,17 +6,6 @@
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
-#pragma comment( lib, "glew/libx86/glew32.lib" )
-#pragma comment( lib, "glew/libx86/glew32s.lib" )
-
-//#ifdef _DEBUG
-//#pragma comment( lib, "MathGeoLib/libx86/Debug/MathGeoLib.lib" )
-//
-//#else
-//#pragma comment( lib, "MathGeoLib/libx86/Release/MathGeoLib.lib" )
-//
-//#endif
-
 enum main_states
 {
 	MAIN_CREATION,
@@ -26,12 +15,9 @@ enum main_states
 	MAIN_EXIT
 };
 
-//Application* App = NULL;
-std::vector<std::string> log_record;
-
 int main(int argc, char ** argv)
 {
-	LOG("Starting game '%s'...", TITLE);
+	LOG("Starting '%s'...", TITLE);
 
 	int main_return = EXIT_FAILURE;
 	main_states state = MAIN_CREATION;
@@ -53,7 +39,7 @@ int main(int argc, char ** argv)
 			LOG("-------------- Application Init --------------");
 			if (App->Init() == false)
 			{
-				LOG("Application Init exits with ERROR");
+				LOG("[error]Application Init exits with ERROR");
 				state = MAIN_EXIT;
 			}
 			else
@@ -70,7 +56,7 @@ int main(int argc, char ** argv)
 
 			if (update_return == UPDATE_ERROR)
 			{
-				LOG("Application Update exits with ERROR");
+				LOG("[error]Application Update exits with ERROR");
 				state = MAIN_EXIT;
 			}
 
@@ -84,7 +70,7 @@ int main(int argc, char ** argv)
 			LOG("-------------- Application CleanUp --------------");
 			if (App->CleanUp() == false)
 			{
-				LOG("Application CleanUp exits with ERROR");
+				LOG("[error]Application CleanUp exits with ERROR");
 			}
 			else
 				main_return = EXIT_SUCCESS;
@@ -97,7 +83,6 @@ int main(int argc, char ** argv)
 	}
 
 	delete App;
-	App = nullptr;
-	LOG("Exiting game '%s'...\n", TITLE);
+	LOG("Exiting '%s'...\n", TITLE);
 	return main_return;
 }

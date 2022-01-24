@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValidationCache Version="1" SchemaVersion="97">
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Virtual Acoustics\Default Work Unit.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Triggers\Default Work Unit.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Switches\Default Work Unit.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\States\Default Work Unit.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\SoundBanks\Default Work Unit.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Queries\Factory Queries.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Queries\Default Work Unit.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Presets\Factory Spatial Audio.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Presets\Default Work Unit.wwu" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\PhoebusWwise.wproj" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\PhoebusWwise.Adri.wsettings" DateLow="1609923352" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Modulators\Default Work Unit.wwu" DateLow="1609923350" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Mixing Sessions\Default Work Unit.wwu" DateLow="1609923350" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1609923350" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1609923350" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Game Parameters\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Events\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Effects\Factory Effects.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Effects\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Conversion Settings\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Control Surface Sessions\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Audio Devices\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Attenuations\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+	<ValidationCacheItem File="D:\adri\uni\CITEM\3r\Motors\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1609923349" DateHigh="0"/>
+</ValidationCache>

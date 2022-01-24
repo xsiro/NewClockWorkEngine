@@ -1,0 +1,463 @@
+{
+    "GameObjects": [
+        {
+            "ID": 42266960,
+            "ParentUID": 1435539522,
+            "Name": "hierarchyv2 File",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 60457480,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                }
+            ]
+        },
+        {
+            "ID": 2111291873,
+            "ParentUID": 42266960,
+            "Name": "Cube1",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 615425770,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1438303924,
+                    "Active": true,
+                    "ResourceID": 662901476,
+                    "ResourceName": "Cube"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1142516841,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.80000001192092896,
+                    "Color G": 0.80000001192092896,
+                    "Color B": 0.80000001192092896,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 737884656,
+            "ParentUID": 2111291873,
+            "Name": "Cube2",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                0.15357917547225952,
+                0.8894229531288147,
+                -0.20534756779670715,
+                2.7381343841552734,
+                0.17607049643993378,
+                0.30613952875137329,
+                0.55223894119262695,
+                2.1595699787139893,
+                0.96003526449203491,
+                -0.1984291672706604,
+                -0.068430699408054352,
+                0.033686995506286621,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1212510199,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 163831842,
+                    "Active": true,
+                    "ResourceID": 420524087,
+                    "ResourceName": "Cube.001"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 851022665,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.80000001192092896,
+                    "Color G": 0.80000001192092896,
+                    "Color B": 0.80000001192092896,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 647971238,
+            "ParentUID": 737884656,
+            "Name": "Cube3",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                0.23674143850803375,
+                0.28544563055038452,
+                -0.84811657667160034,
+                -0.062806606292724609,
+                0.49536171555519104,
+                0.42480555176734924,
+                0.062024742364883423,
+                1.9209949970245361,
+                0.71832245588302612,
+                -0.67058265209197998,
+                -0.0075039751827716827,
+                -1.4349827766418457,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 934839127,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 216588269,
+                    "Active": true,
+                    "ResourceID": 420524087,
+                    "ResourceName": "Cube.001"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1609190462,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.80000001192092896,
+                    "Color G": 0.80000001192092896,
+                    "Color B": 0.80000001192092896,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1980908996,
+            "ParentUID": 737884656,
+            "Name": "Cube4",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                0.15357917547225952,
+                0.8894229531288147,
+                -0.20534756779670715,
+                -2.8174185752868652,
+                0.17607049643993378,
+                0.30613952875137329,
+                0.55223894119262695,
+                -0.9226534366607666,
+                0.96003526449203491,
+                -0.1984291672706604,
+                -0.068430699408054352,
+                -0.49501711130142212,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 1374774559,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1465400176,
+                    "Active": true,
+                    "ResourceID": 420524087,
+                    "ResourceName": "Cube.001"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 2120035267,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.80000001192092896,
+                    "Color G": 0.80000001192092896,
+                    "Color B": 0.80000001192092896,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 458414319,
+            "ParentUID": 737884656,
+            "Name": "Cube5",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -0.60368579626083374,
+                0.88804852962493896,
+                0.43075338006019592,
+                -1.8549919128417969,
+                -0.15401323139667511,
+                -0.10055044293403625,
+                0.7184903621673584,
+                -2.2659904956817627,
+                2.8531956672668457,
+                0.13222676515579224,
+                0.22463259100914001,
+                1.3122020959854126,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 276781850,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 1508825032,
+                    "Active": true,
+                    "ResourceID": 420524087,
+                    "ResourceName": "Cube.001"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1744959867,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.80000001192092896,
+                    "Color G": 0.80000001192092896,
+                    "Color B": 0.80000001192092896,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 40499417,
+            "ParentUID": 2111291873,
+            "Name": "Cube6",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -0.40473109483718872,
+                0.74215054512023926,
+                0.53423333168029785,
+                2.7073962688446045,
+                -0.14880502223968506,
+                -0.62988734245300293,
+                0.76229846477508545,
+                -2.1947841644287109,
+                0.90224707126617432,
+                0.22902929782867432,
+                0.36537075042724609,
+                2.3906929492950439,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 2122622882,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 2111366093,
+                    "Active": true,
+                    "ResourceID": 420524087,
+                    "ResourceName": "Cube.001"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 163123603,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.80000001192092896,
+                    "Color G": 0.80000001192092896,
+                    "Color B": 0.80000001192092896,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 1192575602,
+            "ParentUID": 40499417,
+            "Name": "Cube7",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                -0.40473109483718872,
+                0.74215048551559448,
+                0.53423333168029785,
+                6.0992507934570313,
+                -0.14880502223968506,
+                -0.62988728284835815,
+                0.76229846477508545,
+                -2.0023627281188965,
+                0.90224707126617432,
+                0.22902926802635193,
+                0.36537075042724609,
+                3.7840547561645508,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 553505970,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 145742881,
+                    "Active": true,
+                    "ResourceID": 292602919,
+                    "ResourceName": "Cube.006"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 2052369673,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.80000001192092896,
+                    "Color G": 0.80000001192092896,
+                    "Color B": 0.80000001192092896,
+                    "Color A": 1
+                }
+            ]
+        },
+        {
+            "ID": 211997955,
+            "ParentUID": 42266960,
+            "Name": "Cube8",
+            "Active": true,
+            "Focused": false,
+            "Selected": false,
+            "Transform": [
+                0,
+                1,
+                0,
+                -6.6858363151550293,
+                0,
+                0,
+                1,
+                1.3300162553787231,
+                1,
+                0,
+                0,
+                -2.3077270984649658,
+                0,
+                0,
+                0,
+                1
+            ],
+            "Components": [
+                {
+                    "ComponentType": 0,
+                    "ID": 370702381,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": ""
+                },
+                {
+                    "ComponentType": 1,
+                    "ID": 2002002871,
+                    "Active": true,
+                    "ResourceID": 277948257,
+                    "ResourceName": "Cube.008"
+                },
+                {
+                    "ComponentType": 2,
+                    "ID": 1163257003,
+                    "Active": true,
+                    "ResourceID": 0,
+                    "ResourceName": "",
+                    "Color R": 0.80000001192092896,
+                    "Color G": 0.80000001192092896,
+                    "Color B": 0.80000001192092896,
+                    "Color A": 1
+                }
+            ]
+        }
+    ]
+} 

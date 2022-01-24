@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{42B593B0-F3DE-4C96-B29A-0674E1A1155C}" SchemaVersion="97">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{42B593B0-F3DE-4C96-B29A-0674E1A1155C}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{E94FE608-E18D-4AE4-93D2-BC9C1D1A33BC}">
+					<ObjectInclusionList>
+						<ObjectRef Name="ResumeObj" ID="{35D41927-2D4B-417C-948A-CEA75EB4CF0A}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SH_Blend" ID="{BDD82DAB-D62F-41B5-A220-1FF24D1AB59A}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Raven" ID="{155001DB-8038-41B9-9156-8A339F0EC587}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PauseAll" ID="{4404C1E7-056A-4237-B611-85401FBCBBB1}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StopObj" ID="{CDB6DB26-0D60-427A-BDF3-F98E2D62C9D3}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SH2" ID="{0B82FD05-319E-4561-AAC2-4354D6ACAEA5}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="ResumeAll" ID="{FED4DBFF-60FE-46FE-ADF0-CE73FB1BD87A}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Laugh" ID="{2C86EC4C-3D5F-4978-95D9-EC196833D87C}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SH1" ID="{943BC924-33DF-4C1C-A334-850CD73FAEDC}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PauseObj" ID="{2AA496AA-C2B1-4C4C-8E0C-9129E47EA418}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Anger" ID="{B946D705-CE7E-4E66-9DFC-69B9500C8871}" WorkUnitID="{D204DF30-62EE-40DC-8A3C-FB02C5B2CDF6}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

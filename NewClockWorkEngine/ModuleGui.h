@@ -1,88 +1,90 @@
 #pragma once
 
 #include "Module.h"
-#include "Globals.h"
-#include "imgui/include/imgui.h"
-
-#include "SDL/include/SDL_rect.h"
-#include "SDL/include/SDL_video.h"
-
-#include <list>
+//#include "Globals.h"
+//#include "glmath.h"
+#include "imgui/imgui.h" //ImVec2 cannot be forward declared
+//#include "Primitive.h" //wtf
+//#include <iostream> 
+#include <vector> 
 #include <string>
-#include <vector>
 
-class Window;
-class Win_Inspector;
-class Win_About;
-class Win_Console;
-class Win_Configuration;
-class Win_Hierarchy;
-class Win_Play;
+class Cnsl;
+enum class PrimitiveTypes;
 
-class ModuleGui : public Module
+
+class ModuleGUI : public Module
 {
 public:
+	ModuleGUI(bool start_enabled = true);
+	~ModuleGUI();
 
-	ModuleGui( bool start_enabled = true);
-
-	ModuleGui::~ModuleGui();
-
-	bool Start();
-
-	update_status PreUpdate(float dt);
-	update_status Update(float dt);
-	update_status PostUpdate(float dt);
-
+	bool Init();
+	update_status PreUpdate(float dt) override;
+	update_status PostUpdate(float dt) override;
 	bool CleanUp();
-
-
+	void CreateDockingSpace();
+	void OnResize(int width, int height);
 	void Draw();
-	void AddWindow(Window* window);
-	void Log(char* text);
-	void LogFPS(float fps, float ms);
-	
-	update_status Dock(bool* p_open);
 
-	bool GetVL();
-	bool GetFL();
-	bool GetCheck();
-	bool GetWireframe();
-	bool Save(ConfigNode* config) override;
-	bool IsMouseHovering();
+	void ShowExampleAppConsole(bool* p_open);
+	bool Show3DWindow();
+	void GuizmoEditTransform();
+	bool showAboutWindow();
+	bool showConfigFunc();
+	bool showQuitPopup();
+	bool ShowResourcesActive();
 
-public:
-
-	bool scroll;
-	bool show_demo_window;
-	bool mainwindow;
-	bool* dockingwindow;
-	bool texture2D;
-	bool checker;
-	bool cube;
-	bool pyramid;
-	bool cylinder;
-	bool sphere;
-	bool showmaterial;
-	bool mouseHovered = false;
-
-	ImVec4 clear_color;
-	ImVec2 mouseScenePosition;
-	ImVec2 image_size;
-
-	std::vector<Window*> winArray;
-	Win_About* about = nullptr;
-	Win_Inspector* inspector = nullptr;
-	Win_Console* console = nullptr;
-	Win_Hierarchy* hierarchy = nullptr;
-	Win_Configuration* config = nullptr;
-	Win_Play* play = nullptr;
+	void DrawDirectoryTree(const char* dir);
+	void DrawDirectoryTreeLoadScene(const char* dir);
 
 private:
 
-	GameObject* object = nullptr;
+	bool CreateBasicForm(PrimitiveTypes type, float ar1 = 0, float ar2 = 0, float ar3 = 0, float ar4 = 0, float ar = 5); //arX meaning depends on type. This saves massive amounts of code. Deal with it.
+	void CreateMeshfromPrimAndSendToScene(std::vector<float> vertices, std::vector<unsigned int> indices, std::string name = "");
+	void OpenGLOnResize(int w, int h);
 
+public:
+	bool showDemoWindow;
+	bool showConsoleWindow;
+	bool showHierarchy;
+	bool showLoadFileWindow;
+	bool showLoadScenes;
+	bool showInspector;
+	bool show3DWindow;
+	bool showAboutWindowbool;
+	bool showConfig;
+	bool showQuit;
+	bool quitAlreadyOpened;
+	bool showResourcesActive;
+	Cnsl* console;
+
+	void GetViewportRectUI(float2& screenPos, float2& size)const;
+
+private:
+	//arguments for the primitive functions (TODO this could be changed in the future, find a way to have multiple args)
+	float ar1;
+	float ar2;
+	float ar3;
+	float ar4;
+	float ar5;
+
+	//fps related business
 	std::vector<float> fps_log;
-	std::vector<float> ms_log;
+	int maxFPShown;
+
+	//flags
+	bool Vsync;
+	bool resizable;
+	bool showOnlyLoadedRes;
+	ImVec2 imgSize;
+	ImVec2 imgPos;
+	float gizmoSize;
+
+
+
+	//File explorer selected file  
+	char selectedFile[250];
+	char selectedScene[250];
+
 };
-
-

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\</ProjectRoot>
+		<SourceFilesRoot>M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="2224965401">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<IncludedAuxBusses>
+				<AuxBus Id="3744218805" Name="ReverbBus" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\ReverbBus"/>
+			</IncludedAuxBusses>
+		</SoundBank>
+		<SoundBank Id="3161908922" Language="SFX" Hash="1709623207">
+			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<IncludedEvents>
+				<Event Id="4091047182" Name="PauseAll" ObjectPath="\Events\Default Work Unit\PauseAll"/>
+				<Event Id="3853895036" Name="PauseObj" ObjectPath="\Events\Default Work Unit\PauseObj"/>
+				<Event Id="4221407847" Name="Play_Anger" ObjectPath="\Events\Default Work Unit\Play_Anger">
+					<IncludedMemoryFiles>
+						<File Id="337157546" Language="SFX">
+							<ShortName>Anger-Mike_Koenig.wav</ShortName>
+							<Path>SFX\Anger-Mike_Koenig_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2772719461" Name="Play_Laugh" ObjectPath="\Events\Default Work Unit\Play_Laugh">
+					<IncludedMemoryFiles>
+						<File Id="790410438" Language="SFX">
+							<ShortName>Evil Laugh Male.wav</ShortName>
+							<Path>SFX\Evil Laugh Male_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3487776716" Name="Play_Raven" ObjectPath="\Events\Default Work Unit\Play_Raven">
+					<IncludedMemoryFiles>
+						<File Id="239195556" Language="SFX">
+							<ShortName>raven.wav</ShortName>
+							<Path>SFX\raven_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3107574564" Name="Play_SH1" ObjectPath="\Events\Default Work Unit\Play_SH1">
+					<IncludedMemoryFiles>
+						<File Id="147550508" Language="SFX">
+							<ShortName>Silent Hill 2 OST - Alone In The Town.wav</ShortName>
+							<Path>SFX\Silent Hill 2 OST - Alone In The Town_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3107574567" Name="Play_SH2" ObjectPath="\Events\Default Work Unit\Play_SH2">
+					<IncludedMemoryFiles>
+						<File Id="280711671" Language="SFX">
+							<ShortName>Silent Hill 2 OST - White Noiz.wav</ShortName>
+							<Path>SFX\Silent Hill 2 OST - White Noiz_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="842482879" Name="Play_SH_Blend" ObjectPath="\Events\Default Work Unit\Play_SH_Blend">
+					<IncludedMemoryFiles>
+						<File Id="147550508" Language="SFX">
+							<ShortName>Silent Hill 2 OST - Alone In The Town.wav</ShortName>
+							<Path>SFX\Silent Hill 2 OST - Alone In The Town_D79FB2B7.wem</Path>
+						</File>
+						<File Id="280711671" Language="SFX">
+							<ShortName>Silent Hill 2 OST - White Noiz.wav</ShortName>
+							<Path>SFX\Silent Hill 2 OST - White Noiz_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3240900869" Name="ResumeAll" ObjectPath="\Events\Default Work Unit\ResumeAll"/>
+				<Event Id="3006999939" Name="ResumeObj" ObjectPath="\Events\Default Work Unit\ResumeObj"/>
+				<Event Id="3120493540" Name="StopObj" ObjectPath="\Events\Default Work Unit\StopObj"/>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="467158820" Name="SourceVolume" ObjectPath="\Game Parameters\Default Work Unit\SourceVolume"/>
+				<GameParameter Id="685061404" Name="SoundPitch" ObjectPath="\Game Parameters\Default Work Unit\SoundPitch"/>
+				<GameParameter Id="2275229972" Name="MusicBlendParameter" ObjectPath="\Game Parameters\Default Work Unit\MusicBlendParameter"/>
+			</GameParameters>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

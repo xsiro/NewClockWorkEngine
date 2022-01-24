@@ -1,33 +1,29 @@
-#pragma once
-#include "Resource.h"
+#ifndef __TEXTURE_H__
+#define __TEXTURE_H__
 
-class Resource;
+#include "Resources.h"
+#include <string>
 
-class ResourceMaterial : public Resource
+class ResourceMaterial:public Resource
 {
 public:
-
-	ResourceMaterial();
+	ResourceMaterial(unsigned int UID);
 	~ResourceMaterial();
 
-	void SetId(uint id);
-	void SetHeight(uint height);
-	void SetWidth(uint width);
-	void SetPath(const char* path);
-	void SetTexture(ResourceMaterial* texture);
+	void GenTextureFromName(unsigned int ilImageName);
+	void DestroyTexture();
+	unsigned int GetTextureID()const;
+	bool UnloadFromMemory()override;
 
-	uint GetId() const;
-	uint GetHeight() const;
-	uint GetWidth() const;
+public:
+	unsigned int width, height;
+	int format;
+	int depth;
+	int sizeInBytes;
+	unsigned int bpp;
 
-private:
-
-	uint width = 0;
-	uint height = 0;
-
-	uint id = 0; 
-
-	const char* path = nullptr;
-
+	unsigned int idTexture;
+	int ilImageID; //this is just for saving, after that this variable is deleted
 };
 
+#endif // !__TEXTURE_H__

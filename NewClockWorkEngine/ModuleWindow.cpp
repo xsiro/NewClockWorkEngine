@@ -2,16 +2,19 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 
+
 ModuleWindow::ModuleWindow(bool start_enabled) : Module(start_enabled)
 {
 	window = NULL;
 	screen_surface = NULL;
 }
 
+// Destructor
 ModuleWindow::~ModuleWindow()
 {
 }
 
+// Called before render is available
 bool ModuleWindow::Init()
 {
 	LOG("Init SDL window & surface");
@@ -19,16 +22,23 @@ bool ModuleWindow::Init()
 
 	if(SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		LOG("SDL_VIDEO could not initialize! SDL_Error: %s\n", SDL_GetError());
+		LOG("[error]SDL_VIDEO could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
 	else
 	{
-		int width = SCREEN_WIDTH * SCREEN_SIZE;
-		int height = SCREEN_HEIGHT * SCREEN_SIZE;
+		//Create window
+		int width = w = SCREEN_WIDTH * SCREEN_SIZE;
+		int height = h = SCREEN_HEIGHT * SCREEN_SIZE;
 		Uint32 flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
 
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+		SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+
+		//Use OpenGL 3.1
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
 		if(WIN_FULLSCREEN == true)
@@ -55,30 +65,54 @@ bool ModuleWindow::Init()
 
 		if(window == NULL)
 		{
-			LOG("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+			LOG("[error]Window could not be created! SDL_Error: %s\n", SDL_GetError());
 			ret = false;
 		}
 		else
 		{
+			//Get window surface
 			screen_surface = SDL_GetWindowSurface(window);
-			
 		}
 	}
 
 	return ret;
 }
 
+// Called before quitting
 bool ModuleWindow::CleanUp()
 {
 	LOG("Destroying SDL window and quitting all SDL systems");
 
+	//Destroy window
 	if(window != NULL)
 	{
 		SDL_DestroyWindow(window);
 	}
 
+	//Quit SDL subsystems
 	SDL_Quit();
 	return true;
+}
+
+int ModuleWindow::Width() const
+{
+	int w, h;
+	SDL_GetWindowSize(window, &w, &h);
+	return w;
+}
+
+int ModuleWindow::Height() const
+{
+	int w, h;
+	SDL_GetWindowSize(window, &w, &h);
+	return h;
+}
+
+void ModuleWindow::ResizeWindow(int w, int h)
+{
+	this->w = w;
+	this->h = h;
+	SDL_SetWindowSize(window, w, h);
 }
 
 void ModuleWindow::SetTitle(const char* title)
@@ -86,72 +120,4 @@ void ModuleWindow::SetTitle(const char* title)
 	SDL_SetWindowTitle(window, title);
 }
 
-void ModuleWindow::SetFullScreen(bool state)
-{
-	if (state != fullscreen)
-	{
-		fullscreen = state;
-		if (fullscreen == true)
-		{
-			if (SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN) != 0)
-				LOG("Could not switch to fullscreen: %s\n", SDL_GetError());
-			fullscreen_desktop = false;
-			LOG("this is a test");
-		}
-		else
-		{
-			if (SDL_SetWindowFullscreen(window, 0) != 0)
-				LOG("Could not switch to windowed: %s\n", SDL_GetError());
-		}
-	}
-}
 
-void ModuleWindow::SetBorderless(bool state)
-{
-	if (!state)
-		SDL_SetWindowBordered(window, SDL_TRUE);
-	else if (state)
-		SDL_SetWindowBordered(window, SDL_FALSE);
-}
-
-void ModuleWindow::SetFullDesktop(bool state)
-{
-	if (state)
-		SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-	else if (!state)
-		SDL_SetWindowFullscreen(window, 0);
-}
-
-float ModuleWindow::GetBrightness()
-{
-	return brightness;
-}
-
-uint ModuleWindow::GetWidth() const
-{
-	int width, height;
-	SDL_GetWindowSize(window, &width, &height);
-	return width;
-}
-
-uint ModuleWindow::GetHeight() const
-{
-	int width, height;
-	SDL_GetWindowSize(window, &width, &height);
-	return height;
-}
-
-void ModuleWindow::SetBright(float bright)
-{
-	SDL_SetWindowBrightness(window, bright);
-}
-
-void ModuleWindow::SetWidth(int width)
-{
-	SDL_SetWindowSize(window, width, GetHeight());
-}
-
-void ModuleWindow::SetHeight(int height)
-{
-	SDL_SetWindowSize(window, GetWidth(), height);
-}

@@ -2,7 +2,7 @@
 
 // Warning disabled ---
 #pragma warning( disable : 4577 ) // Warning that exceptions are disabled
-#pragma warning( disable : 4530 )
+#pragma warning( disable : 4530 ) // Warning that exceptions are disabled
 
 #include <windows.h>
 #include <stdio.h>
@@ -16,10 +16,12 @@ void log(const char file[], int line, const char* format, ...);
 #define DEGTORAD 0.0174532925199432957f
 #define RADTODEG 57.295779513082320876f
 #define HAVE_M_PI
+#define BTOGB (1073741824.0f)
+#define KBTOMB 1024.0f //To GB: (1048576.0f)
+#define BTOMB (1048576.0f)
 
 
 typedef unsigned int uint;
-typedef unsigned __int64 uint64;
 
 enum update_status
 {
@@ -29,33 +31,46 @@ enum update_status
 };
 
 // Configuration -----------
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 1024
+#define SCREEN_WIDTH 1024
+#define SCREEN_HEIGHT 768
 #define SCREEN_SIZE 1
 #define WIN_FULLSCREEN false
 #define WIN_RESIZABLE true
 #define WIN_BORDERLESS false
 #define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC true
-#define TITLE "NewClockWork Engine"
-#define ORGANIZATION "UPC"
+#define TITLE "NewClockWorkEngine"
+#define ORGANIZATION "CITM - UPC"
 
 
-#define LIBRARY_PATH "Library/"
-#define FOLDERS_PATH "Library/Folders/"
-#define MESHES_PATH "Library/Meshes/"
-#define MATERIALS_PATH "Library/Materials/"
-#define TEXTURES_PATH "Library/Textures/"
-#define SCENES_PATH "Library/Scenes/"
+#define MAXFPSDISPLAY 100 //TODO make this a configurable variable
 
 
+// Deletes an array of buffers
+#define RELEASE_ARRAY( x ) \
+    {                              \
+    if( x != NULL )              \
+	    {                            \
+      delete[] x;                \
+	  x = NULL;                    \
+	    }                            \
+                              \
+    }
 
-#define RELEASE_ARRAY( x )\
-	{\
-       if( x != nullptr )\
-       {\
-           delete[] x;\
-	       x = nullptr;\
-		 }\
-	}
+class Application;
+
+extern Application* App;
+
+//TODO change these 2 defines to const Color()?
+#define SELECTED_COLOR (0.75f, 0.25f,0.0f,1.0f) //all of selected objs
+#define FOCUSED_COLOR (1.0f, 0.5f, 0.0f, 1.0f) //focused color of last selected obj
+
+//define paths
+#define LIB_PATH "Library/"
+#define MESH_PATH "Library/Meshes/"
+#define MATERIAL_PATH "Library/Materials/"
+#define TEXTURE_PATH "Library/Textures/"
+#define SCENE_PATH "Library/Scenes/"
+#define MODEL_PATH "Library/Models/"
+
 

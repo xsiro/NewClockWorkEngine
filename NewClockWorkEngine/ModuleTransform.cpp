@@ -1,166 +1,319 @@
-#include "ModuleTransform.h"
-#include "imgui/include/imgui.h"
-#include "Globals.h"
+
 #include "GameObject.h"
-#include "ModuleComponent.h"
-#include "Config.h"
+#include "ModuleTransform.h"
+#include "imgui/imgui.h" 
+#include "Assimp/include/matrix4x4.inl"
+#include "Assimp/include/vector3.h"
+#include "MathGeoLib/include/MathGeoLib.h"
 
-ModuleTransform::ModuleTransform(GameObject* owner) : ModuleComponent(ComponentType::Transform, owner)
+#include "Globals.h" 
+
+
+ModuleTransform::ModuleTransform(GameObject* owner, float4x4 lTransform, unsigned int ID, bool isLocalTrans) :Component(ComponentType::TRANSFORM, owner, ID), localMode(true)
 {
+	if (isLocalTrans)
+	{
+		lTransformMat = lTransform;
+		gTransformMat = float4x4::identity;
+		UpdateGlobalMat();
 
-	position = float3(0.f, 0.f, 0.f);
-	scale = float3(1.f, 1.f, 1.f);
-
-	eulerRotationUi = float3(0.f, 0.f, 0.f);
-	eulerRotation = float3(0.f, 0.f, 0.f);
-	rotation = Quat::identity;
-
-	transform = float4x4::FromTRS(position, rotation, scale);
-	globalTransform = Quat::identity;
+	}
+	else
+	{
+		lTransformMat = float4x4::identity;
+		gTransformMat = lTransform;
+		UpdateLocalMat();
+	}
 }
 
 ModuleTransform::~ModuleTransform()
 {
-
 }
 
-void ModuleTransform::Update()
+float4x4 ModuleTransform::GetGlobalTransform() const
 {
+	return gTransformMat;
+}
 
-	if (updateTransform)
-	{
-		owner->UpdatedTransform();
-	}
+float4x4 ModuleTransform::GetLocalTransform() const
+{
+	return lTransformMat;
+}
 
-	if (updateTransform)
+void ModuleTransform::SetGlobalTransform(float4x4 newGTransform)
+{
+	gTransformMat = newGTransform;
+	UpdateLocalMat();
+	owner->UpdateChildTransforms();
+}
+
+void ModuleTransform::SetLocalTransform(float4x4 newLTransform)
+{
+	lTransformMat = newLTransform;
+	UpdateGlobalMat();
+	owner->UpdateChildTransforms();
+}
+
+void ModuleTransform::OnEditor()
+{
+	if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
 	{
-		LOG("UpdateTransform still true");
-	}
+		ImGui::Indent();
+		ImGui::Separator();
+
+		if (ImGui::RadioButton("LocalMode", localMode))
+		{
+			localMode = true;
+		}
+		ImGui::SameLine();
+		if (ImGui::RadioButton("GlobalMode", !localMode))
+		{
+			localMode = false;
+		}
+		ImGui::Spacing();
+
+		float v[3];
+		float3 vAux;
+
+		if (localMode == true)
+		{
+
+			vAux = lTransformMat.TranslatePart();
+			v[0] = vAux.x;
+			v[1] = vAux.y;
+			v[2] = vAux.z;
+
+			if (ImGui::DragFloat3("Position##lPos", v, 0.1f))
+			{
+				SetLocalPosition(float3(v[0], v[1], v[2]));
+			}
+			ImGui::Separator();
+
 	
-}
+			float3 euler = lTransformMat.ToEulerXYZ();
+			float4x4 auxTrans = float4x4::FromEulerXYZ(euler.x, euler.y, euler.z);
+			auxTrans.Inverse();
 
-void ModuleTransform::CleanUp()
-{
+			v[0] = RadToDeg(euler.x);
+			v[1] = RadToDeg(euler.y);
+			v[2] = RadToDeg(euler.z);
 
-}
+			if (ImGui::DragFloat3("Rotation##lRot", v, 0.01f, -360.0f, 360.0f))
+			{
+		
+				Quat q = Quat::FromEulerXYZ(DegToRad(v[0]), DegToRad(v[1]), DegToRad(v[2]));
+				lTransformMat = lTransformMat * auxTrans;
+				lTransformMat = lTransformMat * q;
+				UpdateGlobalMat();
+				owner->UpdateChildTransforms();
 
-void ModuleTransform::UpdateTRS()
-{
-	transform.Decompose(position, rotation, scale);
-	RecalculateEuler();
-}
+			}
+			ImGui::Separator();
 
-void  ModuleTransform::DrawInspector()
-{
-	if (ImGui::CollapsingHeader("Transform"))
-	{
-		ImGuiInputTextFlags flags = ImGuiInputTextFlags_EnterReturnsTrue;
 
-		if (ImGui::DragFloat3("Transform", (float*)&position)) { UpdateLocalTransform(); };
-		if (ImGui::DragFloat3("Scale", (float*)&scale)) { UpdateLocalTransform(); };
-		if (ImGui::DragFloat3("Rotation", (float*)&eulerRotationUi)) { SetEulerRotation(eulerRotationUi); };
-	}
+			vAux = GetLocalScale();
+			v[0] = vAux.x;
+			v[1] = vAux.y;
+			v[2] = vAux.z;
+
+			if (ImGui::DragFloat3("Scale##lScale", v, 0.1f, 0.01f, 1000.0f))
+			{
+
+				SetLocalScale(float3(v[0], v[1], v[2]));
+			}
+		}
+		else
+		{
+			vAux = gTransformMat.TranslatePart();
+			v[0] = vAux.x;
+			v[1] = vAux.y;
+			v[2] = vAux.z;
+
+			if (ImGui::DragFloat3("Position##gPos", v, 0.1f))
+			{
+				SetGlobalPosition(float3(v[0], v[1], v[2]));
+			}
+			ImGui::Separator();
+
 	
+			float3 euler = gTransformMat.ToEulerXYZ();
+			float4x4 auxTrans = float4x4::FromEulerXYZ(euler.x, euler.y, euler.z);
+			auxTrans.Inverse();
+
+			v[0] = RadToDeg(euler.x);
+			v[1] = RadToDeg(euler.y);
+			v[2] = RadToDeg(euler.z);
+
+			if (ImGui::DragFloat3("Rotation##gRot", v, 0.01f, -360.0f, 360.0f))
+			{
+				Quat q = Quat::FromEulerXYZ(DegToRad(v[0]), DegToRad(v[1]), DegToRad(v[2]));
+				gTransformMat = gTransformMat * auxTrans;
+				gTransformMat = gTransformMat * q;
+				UpdateLocalMat();
+				owner->UpdateChildTransforms();
+
+			}
+			ImGui::Separator();
+
+
+			vAux = GetGlobalScale();
+			v[0] = vAux.x;
+			v[1] = vAux.y;
+			v[2] = vAux.z;
+
+			if (ImGui::DragFloat3("Scale##gScale", v, 0.1f, 0.01f, 1000.0f))
+			{
+
+				SetGlobalScale(float3(v[0], v[1], v[2]));
+			}
+		}
+
+		ImGui::Separator();
+
+
+		if (ImGui::TreeNode("Local Matrix")) {
+
+			ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 1.0f, 0.0f, 1.0f));
+
+			for (int i = 0; i < 4; ++i)
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					float auxF = float(lTransformMat.v[i][j]);
+					ImGui::Text("%f", auxF);
+					if (j < 3) ImGui::SameLine();
+				}
+			}
+			ImGui::PopStyleColor();
+			ImGui::TreePop();
+		}
+
+
+		ImGui::Separator();
+		if (ImGui::TreeNode("Global Matrix")) {
+			ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 1.0f, 0.0f, 1.0f));
+
+			for (int i = 0; i < 4; ++i)
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					float auxF = float(gTransformMat.v[i][j]);
+					ImGui::Text("%f", auxF);
+					if (j < 3) ImGui::SameLine();
+				}
+			}
+			ImGui::PopStyleColor();
+			ImGui::TreePop();
+		}
+
+		ImGui::Separator();
+		ImGui::Unindent();
+	}
 }
 
-void ModuleTransform::SetEulerRotation(float3 euler_angles)
+float3 ModuleTransform::GetLocalPosition()
 {
-	float3 delta = (euler_angles - eulerRotation) * 0.0174532925199432957f;
-	Quat quaternion_rotation = Quat::FromEulerXYZ(delta.x, delta.y, delta.z);
-	rotation = rotation * quaternion_rotation;
-	eulerRotation = euler_angles;
-	UpdateLocalTransform();
+	return lTransformMat.TranslatePart();
 }
 
-void ModuleTransform::OnSave(ConfigNode* node)
+float3 ModuleTransform::GetGlobalPosition()
 {
-	ConfigArray _position = node->InitArray("Position");
-	_position.AddNumber(position.x);
-	_position.AddNumber(position.y);
-	_position.AddNumber(position.z);
-
-	ConfigArray _scale = node->InitArray("Scale");
-	_scale.AddNumber(scale.x);
-	_scale.AddNumber(scale.y);
-	_scale.AddNumber(scale.z);
-
-	ConfigArray _rotation = node->InitArray("Rotation");
-	_rotation.AddNumber(rotation.x);
-	_rotation.AddNumber(rotation.y);
-	_rotation.AddNumber(rotation.z);
-	_rotation.AddNumber(rotation.w);
+	return gTransformMat.TranslatePart();
 }
 
-float4x4 ModuleTransform::GetTransform() const
+float3 ModuleTransform::GetLocalScale()
 {
-	return transform;
+	return lTransformMat.GetScale();
 }
 
-float3 ModuleTransform::GetPosition()const
+float3 ModuleTransform::GetGlobalScale()
 {
-	return position;
+	return gTransformMat.GetScale();
 }
 
-float3 ModuleTransform::GetScale()const
+
+void ModuleTransform::SetLocalPosition(float3 newPos)
 {
-	return scale;
+	lTransformMat.SetTranslatePart(newPos);
+	UpdateGlobalMat();
+	owner->UpdateChildTransforms();
 }
 
-void ModuleTransform::SetPosition(float3 position)
-{
-	this->position = position;
-	UpdateLocalTransform();
-}
-
-void ModuleTransform::SetScale(float3 scale)
-{
-	this->scale = scale;
-	UpdateLocalTransform();
-}
-
-void ModuleTransform::SetLocalTransform(float3 position, float3 scale, Quat rotation)
-{
-	this->position = position;
-	this->scale = scale;
-	this->rotation = rotation;
-	UpdateLocalTransform();
-}
-
-void ModuleTransform::SetTransform(float3 position, float3 scale, Quat rotation)
+void ModuleTransform::SetLocalScale(float3 newScale)
 {
 
+	float3 scale = lTransformMat.GetScale();
+	float3 auxScale;
+	auxScale.x = (scale.x == 0.0f) ? newScale.x : (newScale.x / scale.x);
+	auxScale.y = (scale.y == 0.0f) ? newScale.y : (newScale.y / scale.y);
+	auxScale.z = (scale.z == 0.0f) ? newScale.z : (newScale.z / scale.z);
+	float ret = auxScale.x * auxScale.y * auxScale.z;
+	if (ret < 0) LOG("[error] scale is 0");
+
+	lTransformMat = lTransformMat * float4x4::Scale(auxScale);
+
+	UpdateGlobalMat();
+	owner->UpdateChildTransforms();
+
 }
 
-void ModuleTransform::RecalculateMatrix()
+void ModuleTransform::SetLocalRot(Quat newRot)
 {
-	transform = float4x4::FromTRS(position, rotation, scale);
+
+
+	UpdateGlobalMat();
+	owner->UpdateChildTransforms();
 }
 
-void ModuleTransform::RecalculateEuler()
+void ModuleTransform::SetGlobalPosition(float3 newPos)
 {
-	eulerRotation = rotation.ToEulerXYZ();
-	eulerRotation *= 57.295779513082320876f;
-	eulerRotationUi = eulerRotation;
+	gTransformMat.SetTranslatePart(newPos);
+	UpdateLocalMat();
+	owner->UpdateChildTransforms();
 }
 
-float4x4 ModuleTransform::GetGlobalTransform()const
+void ModuleTransform::SetGlobalScale(float3 newScale)
 {
-	return globalTransform;
+	float3 scale = gTransformMat.GetScale();
+	float3 auxScale;
+	auxScale.x = (scale.x == 0.0f) ? newScale.x : (newScale.x / scale.x);
+	auxScale.y = (scale.y == 0.0f) ? newScale.y : (newScale.y / scale.y);
+	auxScale.z = (scale.z == 0.0f) ? newScale.z : (newScale.z / scale.z);
+	float ret = auxScale.x * auxScale.y * auxScale.z;
+	if (ret < 0) LOG("[error] scale is 0");
+	gTransformMat = gTransformMat * float4x4::Scale(auxScale);
+
+	UpdateLocalMat();
+	owner->UpdateChildTransforms();
 }
 
-
-void ModuleTransform::UpdatedTransform(float4x4 parentGlobalTransform)
+void ModuleTransform::SetGlobalRot(Quat newRot)
 {
-	globalTransform = parentGlobalTransform * transform;
-	UpdateTRS();
-	LOG("Updated Transform of: %s", owner->GetName());
-	updateTransform = false;
+
+
+	UpdateLocalMat();
+	owner->UpdateChildTransforms();
 }
 
-void ModuleTransform::UpdateLocalTransform()
+void ModuleTransform::UpdateGlobalMat()
 {
-	transform = float4x4::FromTRS(position, rotation, scale);
-	updateTransform = true;
-	RecalculateEuler();
+	if (owner->parent != nullptr)
+	{
+		gTransformMat = owner->parent->GetComponent<ModuleTransform>()->GetGlobalTransform() * lTransformMat;
+	}
+	else
+		gTransformMat = lTransformMat;
 }
+
+void ModuleTransform::UpdateLocalMat()
+{
+	if (owner->parent != nullptr)
+	{
+		lTransformMat = owner->parent->GetComponent<ModuleTransform>()->GetGlobalTransform().Inverted() * gTransformMat;
+	}
+	else
+		lTransformMat = gTransformMat;
+}
+
+
 

@@ -1,116 +1,113 @@
 #pragma once
 
-#include <vector>
-#include <string>
-#include "Glew/include/glew.h"
-
 #include "Globals.h"
 #include "Timer.h"
 #include "Module.h"
-#include "Primitive.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
-#include "ModuleSceneIntro.h"
-#include "ModuleCamera3D.h"
 #include "ModuleRenderer3D.h"
-#include "ModuleGui.h"
-#include "ModuleImporter.h"
-#include "FileSystem.h"
-#include "ModuleResourceM.h"
-#include "Brofiler/Brofiler.h"
-#include "AudioManager.h"
-#include "Config.h"
+#include "ModuleGUI.h"
+#include "ModuleCamera3D.h"
+#include "ModuleSceneIntro.h"
+#include "ModuleFileSystem.h"
+#include "ModuleResourceManager.h"
+#include "ModuleAudioManager.h"
 
-
+enum class GameStateEnum
+{
+	STOPPED,
+	PLAYED,
+	PAUSED,
+	ADVANCEONE,
+	UNKNOWN
+};
 
 class Application
 {
 public:
 	ModuleWindow* window;
 	ModuleInput* input;
-	ModuleSceneIntro* scene_intro;
 	ModuleRenderer3D* renderer3D;
+	ModuleGUI* gui;
 	ModuleCamera3D* camera;
-	ModuleGui* gui;
-	FileSystem* filesystem;
-	ModuleResourceM* resourcemanager;
-	AudioManager* audioManager;
+	ModuleSceneIntroIntro* scene;
+	ModuleFileSystem* fileSystem;
+	//ModuleResourceManager* resourceManager;
+	ModuleResourceManager* rManager;
+	ModuleAudioManager* audioManager;
+
+	bool debug;
+	bool renderPrimitives;
+	std::vector<float> fpsBuffer;
+	std::vector<float> millisecondsBuffer;
 
 private:
 
-	Timer	ms_timer;
-	Timer	fps_timer;
-	Timer	frame_time;
-
 	std::vector<Module*> list_modules;
+
+
+	//clock related
+	GameStateEnum gameState;
+	GameStateEnum lastRelevantStateChange;
+	Timer	ms_timer;
+
+	//Game clock
+	Uint32 frameCount; //app graphics frames since game start
+	Uint32 time;//ms since game start (Game Clock)
+	float timeScale; //scale at which time is passing(Game Clock)
+	float gameDT; //last frame time expressed in seconds (Game Clock)
+	//Real Clock
+	Uint32 realTime;//ms since engine start(Real Time Clock)
+	float realDT; //last frame time expressed in seconds(Real Time Clock)
+
+	bool gameJustStarted;
+	bool gameStateJustChanged;//true only during the frame when the game state changes
 
 public:
 
 	Application();
 	~Application();
 
-	void RequestBrowser(const char* url)const;
-	int CPUCount();
-	int CPUCache();
-	int SystemRAM();
-	const char* SystemCaps();
-	const char* Brand();
-	const char* Model();
-	int Budget();
-	int Usage();
-	int Available();
-	int Reserved();
-	std::string Caps;
 	bool Init();
 	update_status Update();
 	bool CleanUp();
-	uint GetFRLimit() const;
-	void ExitApp();
-	void SetFRLimit(uint max_framerate);
-	int GameMaxFPS = 60;
-	void ToSave();
-	void Play();
-	void Pause();
-	void Stop();
 
-	inline void SetTimeMultiplier(float _timeMultiplier) { timeMultiplier = _timeMultiplier; };
 
-	inline float GetPlayTime()const { return playTime; };
-	inline float GetTimeMultiplier()const { return timeMultiplier; };
 
-	inline bool IsInPlayMode()const { return play; };
+	//Time & Game related==========================================
 
-	inline float GetDt()const { return dt; }
-	inline float GetPlayDt()const { return playDt; };
+	GameStateEnum GetGameState()const;
+	void SetNewGameState(GameStateEnum newState);
+	//Clock Related getters
+
+	//returns app graphics frames since game start
+	Uint32 GetFrameCount()const;
+	//returns the amount of second since game start (Game Clock)
+	float GetTime()const;
+	//returns scale at which time is passing(Game Clock)
+	float GetTimeScale()const;
+	//returns the last frame time expressed in seconds (Game Clock)
+	float GetGameDT()const;
+	//returns the amount of seconds since engine start(Real Time Clock)
+	float GetRealTime()const;
+	//returns the last frame time expressed in seconds(Real Time Clock)
+	float GetRealDT()const;
+	
+	//Clock Related Setters
+	void SetNewTimeScale(float newTimeScale);
+
+	//============================================================
+
+	//returns true if the game state has changed in the last frame
+	bool HasGameStateChanged()const;
+	//returns true if the game state has changed in the last frame, it also returns the current Game state if true
+	bool HasGameStateChanged(GameStateEnum& currentGameState);
 
 private:
 
+	void ProcessGameStates(GameStateEnum newState);
 
 	void AddModule(Module* mod);
 	void PrepareUpdate();
 	void FinishUpdate();
-	void Save();
-
-public:
-	int	miliseconds;
-	int contFPS;
-	int	last_ms;
-	int	last_fps;
-	float max_ms;
-	Uint32 frames;
-	bool closewindow;
-	bool debug;
-	bool toSave;
-	float	playDt = 0;	//This dt effects objects in Play mode
-	float	dt = 0;		//independent App dt
-	float	frameCap = 0;
-	int		frameCount = 0;
-
-private:
-	bool play = false;
-	bool paused = false;
-	float playTime = 0;
-	float timeMultiplier = 1;
 };
-extern Application* App;
-extern std::vector<std::string> log_record;

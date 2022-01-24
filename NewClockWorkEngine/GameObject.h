@@ -1,75 +1,94 @@
-#include "Globals.h"
+#ifndef __GAME_OBJECT_H__
+#define __GAME_OBJECT_H__
+
 #include <vector>
-#include <iostream>
-#include <string>
-#include "Imgui/include/imgui.h"
-#include "MathGeoLib/src/MathGeoLib.h"
 
-#include "ModuleComponent.h"
 
+#include "MathGeoLib/include/MathGeoLib.h"
+
+class Component;
 class ModuleTransform;
-class ModuleMaterial;
-class ModuleMesh;
 enum class ComponentType;
 
 class GameObject
 {
 public:
-	unsigned int ID;
-	GameObject(const char* name);
-	GameObject(GameObject* parent, const char* name);
-	~GameObject();
+	unsigned int ID; //save / load func
 
-	void Update();
-	void CleanUp();
-	void GameUpdate(float gameDt);
+	GameObject(GameObject* parent, std::string name, float4x4 transform, bool showAABB = true, bool isLocalTrans = true);
+	
+	void Awake();
 	void GameInit();
 
-	void SetName(const char* name);
-	void Enable();
-	void Disable();
+	void Update(float dt);
+	void GameUpdate(float gameDt);
 
-	void UpdateBoundingBoxes();
-	void UpdatedTransform();
-	void DeleteComponent(ModuleComponent::ComponentType type);
+	~GameObject();
 
-	bool IsActive();
-	bool HasComponentType(ModuleComponent::ComponentType type);
 
-	const char* GetName();
-	template<typename CTemplate>
-	CTemplate* GetComponent()
-	{
-		ModuleComponent::ComponentType type = CTemplate::GetType();
-		for (int i = 0; i < components.size(); i++)
-		{
-			if (type == components[i]->GetType())
-			{
-				return ((CTemplate*)components[i]);
-			}
-		}
-		return nullptr;
-	}
-	ModuleComponent* GetComponent(ModuleComponent::ComponentType component);
-	ModuleComponent* AddComponent(ModuleComponent* component);
-	ModuleMesh* GetComponentMesh();
-	ModuleTransform* GetComponentTransform();
-	
-	std::vector<ModuleComponent*> GetComponents()const;
-	
-private:	
-	bool active;
-	std::string name;
-	std::vector<ModuleComponent*> components;
 
-public:
+	void RemoveChildren(GameObject* toRemove);
 
-	ModuleTransform* transform = nullptr;
-	ModuleMaterial* material = nullptr;
+	void ChangeParent(GameObject* newParent);
+
+	void RemoveMyselfFromParent();
+
+	Component* CreateComponent(ComponentType type,unsigned int compID=0);
+
+	std::string GetName();
+
+	bool IsParentActive();
 
 	GameObject* parent;
-	std::vector<GameObject*> children;
 
-	OBB obb;
-	AABB aabb;
+	template<typename Comp>
+	Comp* GetComponent()
+	{
+		for (int i = 0; i < components.size(); i++) { Comp* c = dynamic_cast<Comp*>(components[i]);    if (c != nullptr)    return    c; }
+		return nullptr;
+	}
+
+	template<typename Comp>
+	std::vector<Comp*> GetComponents()
+	{
+		std::vector<Comp*> compVec;
+		for (int i = 0; i < components.size(); i++) { Comp* c = dynamic_cast<Comp*>(components[i]);    if (c != nullptr)   compVec.push_back(c); }
+		return compVec;
+	}
+
+	void GetChildWithID(unsigned int ID, GameObject*& childOut);
+
+	void UpdateChildTransforms();
+	void UpdateBoundingBox();
+	void GetObjAndAllChilds(std::vector<GameObject*>&childs);
+	AABB GetWorldAABB()const;
+	void DrawOnEditorAllComponents();
+	std::vector<Component*> GetAllComponents();
+private:
+	void DrawGameObject();
+	void GetPointsFromAABB(AABB&aabb,std::vector<float3>& emptyVector);
+private:
+	std::vector<Component*> components;
+	ModuleTransform* transform;
+
+
+
+	std::string name;
+
+	AABB globalAABB;
+	OBB globalOBB;
+
+public:
+	bool isActive;
+	bool focused;
+	bool selected;
+	bool displayBoundingBox;
+	bool bbHasToUpdate;
+	std::vector<GameObject*> children; //we need them public for hierarchy
+
+	static int numberOfObjects;
 };
+
+
+
+#endif // !__GAME_OBJECT_H__

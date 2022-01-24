@@ -1,10 +1,10 @@
 #include "Globals.h"
 #include "Light.h"
-#include "Glew/include/glew.h"
-//#include <gl/GL.h>
+#include <gl/GL.h>
 //#include <gl/GLU.h>
+#include "MathGeoLib/include/MathGeoLib.h"
 
-Light::Light() : ref(-1), on(false), position(0.0f, 0.0f, 0.0f)
+Light::Light() : ref(-1), on(false), position(float3(0.0f, 0.0f, 0.0f))
 {}
 
 void Light::Init()

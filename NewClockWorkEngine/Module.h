@@ -1,16 +1,11 @@
 #pragma once
 #include "Globals.h"
-
-class ConfigNode;
-
 class Module
 {
-private :
+protected:
 	bool enabled;
 
 public:
-	
-
 	Module(bool start_enabled = true) : enabled(start_enabled)
 	{}
 
@@ -20,6 +15,11 @@ public:
 	virtual bool Init() 
 	{
 		return true; 
+	}
+
+	virtual bool GameInit()
+	{
+		return true;
 	}
 
 	virtual bool Start()
@@ -47,14 +47,9 @@ public:
 		return UPDATE_CONTINUE;
 	}
 
-
 	virtual bool CleanUp() 
 	{ 
 		return true; 
 	}
 
-	virtual bool Save(ConfigNode* config)
-	{
-		return true;
-	}
 };

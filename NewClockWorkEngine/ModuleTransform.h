@@ -1,57 +1,44 @@
 #pragma once
-#pragma once
-#include "Globals.h"
-#include <vector>
-#include "ModuleComponent.h"
-#include "MathGeoLib/src/MathGeoLib.h"
+#include "Component.h"
+#include "Assimp/include/matrix4x4.h" 
+#include "MathGeoLib/include/MathGeoLib.h"
 
-class ModuleComponent;
-class ConfigNode;
-
-class ModuleTransform : public ModuleComponent
+class ModuleTransform : public Component
 {
 public:
 
-	ModuleTransform(GameObject* owner);
+	ModuleTransform(GameObject* owner, float4x4 lTransform,unsigned int ID, bool islocalTrans = true);
 	~ModuleTransform();
 
-	void Update() override;
-	void CleanUp() override;
-	void DrawInspector()override;
-
-	static inline ModuleComponent::ComponentType GetType() { return ModuleComponent::ComponentType::Transform; };
-
-	float4x4 GetTransform() const;
-	float3 GetPosition()const;
-	float3 GetScale()const;
-
-	void SetPosition(float3 position);
-	void SetScale(float3 scale);
-	void SetLocalTransform(float3 position, float3 scale, Quat rotation);
-	void SetTransform(float3 position, float3 scale, Quat rotation);
-	void RecalculateMatrix();
-	void SetEulerRotation(float3 euler_angles);
-	void UpdateTRS();
-	void UpdatedTransform(float4x4 parentGlobalTransform);
-	void RecalculateEuler();
-	void UpdateLocalTransform();
-	void OnSave(ConfigNode* node);
 	float4x4 GetGlobalTransform()const;
+	float4x4 GetLocalTransform()const;
+	void SetGlobalTransform(float4x4 newGTransform);
+	void SetLocalTransform(float4x4 newLTransform);
 
-private:
+	void OnEditor();
 
-	float4x4 transform;
-	float4x4 globalTransform;
+	float3 GetLocalPosition();
+	float3 GetGlobalPosition();
+	float3 GetLocalScale();
+	float3 GetGlobalScale();
 
-	float3 position;
-	float3 scale;
-	Quat rotation;
 
-	float3 eulerRotation;
-	float3 eulerRotationUi;
-	float3 positionUI;
+	void SetLocalPosition(float3 newPos);
+	void SetLocalScale(float3 newScale);
+	void SetLocalRot(Quat newRot);
+	void SetGlobalPosition(float3 newPos);
+	void SetGlobalScale(float3 newScale);
+	void SetGlobalRot(Quat newRot);
+
+
+	void UpdateGlobalMat();
+	void UpdateLocalMat();
 
 public:
+	bool localMode;
+private:
 
-	bool updateTransform = false;
+	float4x4 lTransformMat;
+	float4x4 gTransformMat;
 };
+

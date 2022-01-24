@@ -1,0 +1,25 @@
+Event	ID	Name			Wwise Object Path	Notes
+	842482879	Play_SH_Blend			\Default Work Unit\Play_SH_Blend	
+	2772719461	Play_Laugh			\Default Work Unit\Play_Laugh	
+	3006999939	ResumeObj			\Default Work Unit\ResumeObj	
+	3107574564	Play_SH1			\Default Work Unit\Play_SH1	
+	3107574567	Play_SH2			\Default Work Unit\Play_SH2	
+	3120493540	StopObj			\Default Work Unit\StopObj	
+	3240900869	ResumeAll			\Default Work Unit\ResumeAll	
+	3487776716	Play_Raven			\Default Work Unit\Play_Raven	
+	3853895036	PauseObj			\Default Work Unit\PauseObj	
+	4091047182	PauseAll			\Default Work Unit\PauseAll	
+	4221407847	Play_Anger			\Default Work Unit\Play_Anger	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	467158820	SourceVolume			\Default Work Unit\SourceVolume	
+	685061404	SoundPitch			\Default Work Unit\SoundPitch	
+	2275229972	MusicBlendParameter			\Default Work Unit\MusicBlendParameter	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	147550508	Silent Hill 2 OST - Alone In The Town	M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\.cache\Windows\SFX\Silent Hill 2 OST - Alone In The Town_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\MusicBlend_SH\Silent Hill 2 OST - Alone In The Town		24637504
+	239195556	raven	M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\.cache\Windows\SFX\raven_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\raven		1152064
+	280711671	Silent Hill 2 OST - White Noiz	M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\.cache\Windows\SFX\Silent Hill 2 OST - White Noiz_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\MusicBlend_SH\Silent Hill 2 OST - White Noiz		14823488
+	337157546	Anger-Mike_Koenig	M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\.cache\Windows\SFX\Anger-Mike_Koenig_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Anger-Mike_Koenig		3676344
+	790410438	Evil Laugh Male	M:\Escritorio\Universitat\GitHub Repository\Phoebus_Engine\Phoebus_Engine\Game\Assets\wwise\PhoebusWwise\.cache\Windows\SFX\Evil Laugh Male_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Evil Laugh Male		350764
+

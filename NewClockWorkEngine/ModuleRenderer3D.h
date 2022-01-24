@@ -1,29 +1,24 @@
-#pragma once
+#ifndef __MODULE_RENDERER__
+#define __MODULE_RENDERER__
+
+
 #include "Module.h"
-#include "Globals.h"
-#include "glmath.h"
-#include "Light.h"
-#include "ModuleImporter.h"
-#include "MathGeoLib/src/MathGeoLib.h"
-#include "SDL/include/SDL.h"
+//#include "Globals.h"
+#include "Light.h" //incuded due to an array declared here
 #include <vector>
+#include "RenderMesh.h"
+#include "RenderBox.h"
+#include "MathGeoLib/include/Algorithm/Random/LCG.h"
+#include "ModuleCamera.h" //TODO forward declare this
 
-struct Mesh;
-class ModuleCamera;
 
-template <typename Box>
-struct RenderBox
-{
-	RenderBox(const Box* box, const Color& color) : box(box), color(color)
-	{
-	
-	}
-
-	const Box* box;
-	Color color;
-};
 
 #define MAX_LIGHTS 8
+#define INDEX_CUBE 36
+
+//class ModuleCamera;
+class ResourceMesh;
+
 
 class ModuleRenderer3D : public Module
 {
@@ -37,41 +32,69 @@ public:
 	bool CleanUp();
 
 	void OnResize(int width, int height);
-	void DrawMesh(ResourceMesh* mesh, float4x4 transform, ResourceMaterial* material, bool drawVertexNormals = false, bool drawboundingbox = false, GameObject* gameObject = nullptr);
-	void DrawVertexNormals(ResourceMesh* mesh, float4x4 transform);
-	void GenerateBuffers(ResourceMesh* newMesh);
+	void GenerateBuffers(int width, int height);
+	void Draw3D();
+	void DrawOutline();
 
-	void CreateChekerTexture();
 
-	void SwitchCullFace();
-	void SwitchDepthTest();
-	void SwitchLighting();
-	void SwitchTexture2d();
-	void SwitchColorMaterial();
-	bool IsObjectInScreen(GameObject* gameObject);
+	void AddMeshToDraw(ModuleMesh* mesh, ModuleMaterial* material, float4x4 gTransform,bool isSelected);
+	void AddMeshToStencil(ModuleMesh* mesh, float4x4 gTransform,Color color=Color(1.0f,1.0f,1.0f));
+	void AddBoxToDraw(std::vector<float3> corners,Color c= Color(1.0f, 1.0f, 1.0f));
 
-	void DrawScenePlane(int size);
+	bool IsInsideFrustum(std::vector<float3>& points);
 
-	void DrawBox(float3* corners);
-	void DrawLine(float3 a, float3 b);
+	void SetCamRay(LineSegment line);
+
+private:
+	void RenderMeshes();
+	void RenderSelectedMeshes();
+	void RenderStencil();
+	void RenderAABBs();
+	void DrawGrid();
+	void DrawDebugRay();
+
+	//sets all the config options(depth testing, cull faces,etc...) to their bool values
+	void SetGLRenderingOptions();
+
+	bool ExpandMeshVerticesByScale(ResourceMesh& m, float newScale);//returns false if scaling cannot be done
+
+private:
+	unsigned int exampleMeshIdentifier;
+	unsigned int indexBind;
+	unsigned int vertexBind;
+	int nVertex;
+	int indexSize;
+	std::vector<RenderMesh> drawMeshes;
+	std::vector<RenderMesh> drawSelectedMeshes;
+	std::vector<RenderMesh> drawStencil;
+	std::vector<RenderBox> drawAABBs;
+	std::vector<ModuleMesh*> stencilMeshes;
+	LineSegment rayLine;
 
 public:
-
-	bool SetDepthtest;
-	bool SetCullface;
-	bool SetLighting;
-	bool SetColormaterial;
-	bool SetTexture2D;
-	bool SetCubemap=false;
-	bool wireframeMode;
-
-	uint checkersId;
 	Light lights[MAX_LIGHTS];
+
 	SDL_GLContext context;
+	
 
-	mat3x3 NormalMatrix;
-	mat4x4 ModelMatrix, ViewMatrix, ProjectionMatrix;
+	unsigned int frameBuffer;
+	unsigned int renderTex;
+	unsigned int depthBuffer;
 
-	std::vector<RenderBox<AABB>> aabb;
-	std::vector<RenderBox<OBB>> obb;
+	float gridLength;
+	float outlineScale;
+	LCG seed;
+
+	//rendering config bools
+	bool depthTesting;
+	bool cullFace;
+	bool lighting;
+	bool colorMaterial;
+	bool texture2D;
+	bool drawGrid;
+	bool drawDebugRay;
+	bool showDepth;
+	bool displayAABBs;
+	ModuleCamera* activeCam;//culling camera
 };
+#endif // !__MODULE_RENDERER__

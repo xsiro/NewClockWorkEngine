@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{746CC4C3-787F-4B0E-AA66-E388FE3FF4F6}</ProjectGuid>
+    <RootNamespace>SDLGame</RootNamespace>
+    <ProjectName>NewClockWorkEngine</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.\Wwise;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.\Wwise;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;AK_OPTIMIZED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="AudioEvent.h" />
+    <ClInclude Include="AudioListener.h" />
+    <ClInclude Include="AudioSource.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="Console.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="Hierarchy.h" />
+    <ClInclude Include="ImGuizmo\ImGuizmo.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="imgui\imgui_impl_sdl.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\imstb_rectpack.h" />
+    <ClInclude Include="imgui\imstb_textedit.h" />
+    <ClInclude Include="imgui\imstb_truetype.h" />
+    <ClInclude Include="Importer.h" />
+    <ClInclude Include="Json\json.hpp" />
+    <ClInclude Include="Json\parson.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="MathChecks.h" />
+    <ClInclude Include="MathGeoLib\include\Algorithm\Random\LCG.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\AABB.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\AABB2D.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Capsule.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Circle.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Cone.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Cylinder.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Frustum.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\GeometryAll.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\GeomType.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\HitInfo.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\KDTree.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Line.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\LineSegment.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\OBB.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\PBVolume.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Plane.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Polygon.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Polyhedron.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\QuadTree.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Ray.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Sphere.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\Triangle.h" />
+    <ClInclude Include="MathGeoLib\include\Geometry\TriangleMesh.h" />
+    <ClInclude Include="MathGeoLib\include\MathBuildConfig.h" />
+    <ClInclude Include="MathGeoLib\include\MathGeoLib.h" />
+    <ClInclude Include="MathGeoLib\include\MathGeoLibFwd.h" />
+    <ClInclude Include="MathGeoLib\include\Math\assume.h" />
+    <ClInclude Include="MathGeoLib\include\Math\BitOps.h" />
+    <ClInclude Include="MathGeoLib\include\Math\Complex.h" />
+    <ClInclude Include="MathGeoLib\include\Math\CoordinateAxisConvention.h" />
+    <ClInclude Include="MathGeoLib\include\Math\FixedPoint.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float2.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float3.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float3x3.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float3x4.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float4.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float4x4.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float4x4_neon.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float4x4_sse.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float4_neon.h" />
+    <ClInclude Include="MathGeoLib\include\Math\float4_sse.h" />
+    <ClInclude Include="MathGeoLib\include\Math\FloatCmp.h" />
+    <ClInclude Include="MathGeoLib\include\Math\MathAll.h" />
+    <ClInclude Include="MathGeoLib\include\Math\MathConstants.h" />
+    <ClInclude Include="MathGeoLib\include\Math\MathFunc.h" />
+    <ClInclude Include="MathGeoLib\include\Math\MathLog.h" />
+    <ClInclude Include="MathGeoLib\include\Math\MathNamespace.h" />
+    <ClInclude Include="MathGeoLib\include\Math\MathTypes.h" />
+    <ClInclude Include="MathGeoLib\include\Math\MatrixProxy.h" />
+    <ClInclude Include="MathGeoLib\include\Math\myassert.h" />
+    <ClInclude Include="MathGeoLib\include\Math\Polynomial.h" />
+    <ClInclude Include="MathGeoLib\include\Math\Quat.h" />
+    <ClInclude Include="MathGeoLib\include\Math\quat_simd.h" />
+    <ClInclude Include="MathGeoLib\include\Math\Rect.h" />
+    <ClInclude Include="MathGeoLib\include\Math\Reinterpret.h" />
+    <ClInclude Include="MathGeoLib\include\Math\SSEMath.h" />
+    <ClInclude Include="MathGeoLib\include\Math\sse_mathfun.h" />
+    <ClInclude Include="MathGeoLib\include\Math\TransformOps.h" />
+    <ClInclude Include="MathGeoLib\include\Time\Clock.h" />
+    <ClInclude Include="ModuleAudioManager.h" />
+    <ClInclude Include="ModuleCamera.h" />
+    <ClInclude Include="ModuleCamera3D.h" />
+    <ClInclude Include="ModuleControl.h" />
+    <ClInclude Include="ModuleFileSystem.h" />
+    <ClInclude Include="ModuleGUI.h" />
+    <ClInclude Include="ModuleMaterial.h" />
+    <ClInclude Include="ModuleMesh.h" />
+    <ClInclude Include="ModuleRenderer3D.h" />
+    <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleInput.h" />
+    <ClInclude Include="ModuleReverbZone.h" />
+    <ClInclude Include="ModuleSceneIntro.h" />
+    <ClInclude Include="ModuleTransform.h" />
+    <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="ModuleResourceManager.h" />
+    <ClInclude Include="PHO.h" />
+    <ClInclude Include="PhysFS\include\physfs.h" />
+    <ClInclude Include="Primitive.h" />
+    <ClInclude Include="RenderBox.h" />
+    <ClInclude Include="RenderMesh.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ResourceMaterial.h" />
+    <ClInclude Include="ResourceMesh.h" />
+    <ClInclude Include="Resources.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Wwise\AK\AkPlatforms.h" />
+    <ClInclude Include="Wwise\AK\AkWwiseSDKVersion.h" />
+    <ClInclude Include="Wwise\AK\Comm\AkCommunication.h" />
+    <ClInclude Include="Wwise\AK\DSP\AkApplyGain.h" />
+    <ClInclude Include="Wwise\AK\DSP\AkDelayLineMemory.h" />
+    <ClInclude Include="Wwise\AK\DSP\AkDelayLineMemoryStream.h" />
+    <ClInclude Include="Wwise\AK\DSP\AkModulatorProcess.h" />
+    <ClInclude Include="Wwise\AK\DSP\AkVolAutomation.h" />
+    <ClInclude Include="Wwise\AK\DSP\Generic\AkDelayLineMemory.h" />
+    <ClInclude Include="Wwise\AK\DSP\Generic\AkDelayLineMemoryStream.h" />
+    <ClInclude Include="Wwise\AK\IBytes.h" />
+    <ClInclude Include="Wwise\AK\MusicEngine\Common\AkMusicEngine.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkAudioInputPlugin.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkAudioInputSourceFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkCompressorFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkConvolutionReverbFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkDelayFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkExpanderFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkFlangerFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkGainFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkGuitarDistortionFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkHarmonizerFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkMatrixReverbFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkMeterFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkOpusDecoderFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkParametricEQFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkPeakLimiterFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkPitchShifterFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkRecorderFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkReflectFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkReflectGameData.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkRoomVerbFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkSilenceSourceFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkSineSourceFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkSinkFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkSoundSeedImpactFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkSoundSeedWindSourceFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkSoundSeedWooshSourceFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkStereoDelayFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkSynthOneSourceFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkTimeStretchFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkToneSourceFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkTremoloFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AkVorbisDecoderFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AllPluginsFactories.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AllPluginsRegistrationHelpers.h" />
+    <ClInclude Include="Wwise\AK\Plugin\AuroHeadphoneFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\iZHybridReverbFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\iZTrashBoxModelerFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\iZTrashDelayFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\iZTrashDistortionFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\iZTrashDynamicsFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\iZTrashFiltersFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\iZTrashMultibandDistortionFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\MasteringSuiteFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\McDSPFutzBoxFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\McDSPLimiterFXFactory.h" />
+    <ClInclude Include="Wwise\AK\Plugin\PluginServices\AkFXDurationHandler.h" />
+    <ClInclude Include="Wwise\AK\Plugin\PluginServices\AkFXParameterChangeHandler.h" />
+    <ClInclude Include="Wwise\AK\Plugin\PluginServices\AkFXTailHandler.h" />
+    <ClInclude Include="Wwise\AK\Plugin\PluginServices\AkMixerInputMap.h" />
+    <ClInclude Include="Wwise\AK\Plugin\PluginServices\AkValueRamp.h" />
+    <ClInclude Include="Wwise\AK\Plugin\PluginServices\AkVectorValueRamp.h" />
+    <ClInclude Include="Wwise\AK\Plugin\ResonanceAudioFXFactory.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkAtomic.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkBytesCount.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkBytesMem.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkCallback.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkCommonDefs.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkDynamicDialogue.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkDynamicSequence.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkFPUtilities.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkMemoryMgr.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkMidiTypes.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkModule.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkQueryParameters.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkSimd.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkSimdMath.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkSoundEngine.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkSoundEngineExport.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkSpeakerConfig.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkSpeakerVolumes.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkStreamMgrModule.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkTypes.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\AkVirtualAcoustics.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\IAkMixerPlugin.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\IAkPlatformContext.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\IAkPlugin.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\IAkPluginMemAlloc.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\IAkProcessorFeatures.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\IAkRTPCSubscriber.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Common\IAkStreamMgr.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\arm_neon\AkSimd.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\arm_neon\AkSimdShuffle.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\Generic\AkSimd.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\Generic\AkSpeakerVolumes.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\Linux\AkAtomic.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\POSIX\AkTypes.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\SSE\AkSimd.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\SSE\AkSimdAvx.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\SSE\AkSimdAvx2.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\Windows\AkAtomic.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\Windows\AkPlatformContext.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\Windows\AkSimd.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\Windows\AkTypes.h" />
+    <ClInclude Include="Wwise\AK\SoundEngine\Platforms\Windows\AkWinSoundEngine.h" />
+    <ClInclude Include="Wwise\AK\SoundFrame\SF.h" />
+    <ClInclude Include="Wwise\AK\SoundFrame\SFObjects.h" />
+    <ClInclude Include="Wwise\AK\SpatialAudio\Common\AkSpatialAudio.h" />
+    <ClInclude Include="Wwise\AK\SpatialAudio\Common\AkSpatialAudioTypes.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkAllocator.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkArray.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkAssert.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkAutoLock.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkBankReadHelpers.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkDynaBlkPool.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkFNVHash.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkHashList.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkHeap.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkKeyArray.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkKeyDef.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkListBare.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkListBareLight.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkLock.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkMonitorError.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkObject.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkPlatformFuncs.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkRingBuffer.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkSet.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkSmartPtr.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkString.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkSyncCaller.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkTls.h" />
+    <ClInclude Include="Wwise\AK\Tools\Common\AkVectors.h" />
+    <ClInclude Include="Wwise\AK\Tools\POSIX\AkLock.h" />
+    <ClInclude Include="Wwise\AK\Tools\POSIX\AkPlatformFuncs.h" />
+    <ClInclude Include="Wwise\AK\Tools\POSIX\AkTls.h" />
+    <ClInclude Include="Wwise\AK\Tools\Win32\AkCOMScope.h" />
+    <ClInclude Include="Wwise\AK\Tools\Win32\AkLock.h" />
+    <ClInclude Include="Wwise\AK\Tools\Win32\AkPlatformFuncs.h" />
+    <ClInclude Include="Wwise\AK\Tools\Win32\AkTls.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\AkJson.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\AkVariant.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\autobahn.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\civetweb.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\Client.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\FutureUtils.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\IWebSocketClientHandler.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\JsonProvider.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\Logger.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkAutobahn\WebSocketClient.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkGuid.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkJsonBase.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\AkVariantBase.h" />
+    <ClInclude Include="Wwise\AK\WwiseAuthoringAPI\waapi.h" />
+    <ClInclude Include="Wwise\AK\Wwise\AudioPlugin.h" />
+    <ClInclude Include="Wwise\AK\Wwise\IXmlTextReader.h" />
+    <ClInclude Include="Wwise\AK\Wwise\IXmlTextWriter.h" />
+    <ClInclude Include="Wwise\AK\Wwise\PlatformID.h" />
+    <ClInclude Include="Wwise\AK\Wwise\SourceControl\ISourceControl.h" />
+    <ClInclude Include="Wwise\AK\Wwise\SourceControl\ISourceControlDialogBase.h" />
+    <ClInclude Include="Wwise\AK\Wwise\SourceControl\ISourceControlOperationProgress.h" />
+    <ClInclude Include="Wwise\AK\Wwise\SourceControl\ISourceControlUtilities.h" />
+    <ClInclude Include="Wwise\AK\Wwise\SourceControl\SourceControlContainers.h" />
+    <ClInclude Include="Wwise\AK\Wwise\TargetVer.h" />
+    <ClInclude Include="Wwise\AK\Wwise\Undo.h" />
+    <ClInclude Include="Wwise\AK\Wwise\Utilities.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkDefaultLowLevelIODispatcher.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFileLocationBase.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackage.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkFilePackageLUT.h" />
+    <ClInclude Include="Wwise\low_level_IO\Common\AkMultipleFileLocation.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkDefaultIOHookBlocking.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkDefaultIOHookDeferred.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkFileHelpers.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkFilePackageLowLevelIOBlocking.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\AkFilePackageLowLevelIODeferred.h" />
+    <ClInclude Include="Wwise\low_level_IO\Win32\stdafx.h" />
+    <ClInclude Include="wwise_libraries.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="AudioEvent.cpp" />
+    <ClCompile Include="AudioListener.cpp" />
+    <ClCompile Include="AudioSource.cpp" />
+    <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Hierarchy.cpp" />
+    <ClCompile Include="ImGuizmo\ImGuizmo.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="imgui\imgui_impl_sdl.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Importer.cpp" />
+    <ClCompile Include="Json\parson.c" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="log.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MathGeoLib\include\Algorithm\Random\LCG.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\AABB.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Capsule.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Circle.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Cone.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Cylinder.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Frustum.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Line.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\LineSegment.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\OBB.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Plane.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Polygon.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Polyhedron.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Ray.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Sphere.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\Triangle.cpp" />
+    <ClCompile Include="MathGeoLib\include\Geometry\TriangleMesh.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\BitOps.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\float2.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\float3.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\float3x3.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\float3x4.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\float4.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\float4x4.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\MathFunc.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\MathLog.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\MathOps.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\Polynomial.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\Quat.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\SSEMath.cpp" />
+    <ClCompile Include="MathGeoLib\include\Math\TransformOps.cpp" />
+    <ClCompile Include="MathGeoLib\include\Time\Clock.cpp" />
+    <ClCompile Include="ModuleAudioManager.cpp" />
+    <ClCompile Include="ModuleCamera.cpp" />
+    <ClCompile Include="ModuleCamera3D.cpp" />
+    <ClCompile Include="ModuleControl.cpp" />
+    <ClCompile Include="ModuleFileSystem.cpp" />
+    <ClCompile Include="ModuleGUI.cpp" />
+    <ClCompile Include="ModuleInput.cpp" />
+    <ClCompile Include="ModuleMaterial.cpp" />
+    <ClCompile Include="ModuleMesh.cpp" />
+    <ClCompile Include="ModuleRenderer3D.cpp" />
+    <ClCompile Include="ModuleReverbZone.cpp" />
+    <ClCompile Include="ModuleSceneIntro.cpp" />
+    <ClCompile Include="ModuleTransform.cpp" />
+    <ClCompile Include="ModuleWindow.cpp" />
+    <ClCompile Include="ModuleResourceManager.cpp" />
+    <ClCompile Include="Primitive.cpp" />
+    <ClCompile Include="RenderBox.cpp" />
+    <ClCompile Include="RenderMesh.cpp" />
+    <ClCompile Include="ResourceMaterial.cpp" />
+    <ClCompile Include="ResourceMesh.cpp" />
+    <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkDefaultLowLevelIODispatcher.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFileLocationBase.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFilePackage.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkFilePackageLUT.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Common\AkMultipleFileLocation.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Win32\AkDefaultIOHookBlocking.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Win32\AkDefaultIOHookDeferred.cpp" />
+    <ClCompile Include="Wwise\low_level_IO\Win32\stdafx.cpp" />
+    <ClCompile Include="wwise_libraries.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="imgui\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Json\Example.json" />
+    <None Include="Json\README.md" />
+    <None Include="MathGeoLib\include\Geometry\KDTree.inl" />
+    <None Include="MathGeoLib\include\Geometry\QuadTree.inl" />
+    <None Include="MathGeoLib\include\Geometry\TriangleMesh_IntersectRay_AVX.inl" />
+    <None Include="MathGeoLib\include\Geometry\TriangleMesh_IntersectRay_CPP.inl" />
+    <None Include="MathGeoLib\include\Geometry\TriangleMesh_IntersectRay_SSE.inl" />
+    <None Include="MathGeoLib\include\Math\Matrix.inl" />
+    <None Include="Wwise\low_level_IO\Common\AkFilePackageLowLevelIO.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NewClockWorkEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Clock_icon.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

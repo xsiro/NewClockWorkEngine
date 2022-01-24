@@ -1,53 +1,39 @@
 #pragma once
-#include "Globals.h"
-#include "glmath.h"
+
+#include "Component.h"
 #include <vector>
-#include "ModuleComponent.h"
-#include "ModuleImporter.h"
-#include "MathGeoLib/src/MathGeoLib.h"
 
-class GameObject;
+#include "MathGeoLib/include/Geometry/AABB.h"
+
 class ResourceMesh;
-class ModuleComponent;
-class ConfigNode;
 
-typedef unsigned int GLuint;
-typedef unsigned char GLubyte;
-
-class ModuleMesh : public ModuleComponent
+class ModuleMesh:public Component
 {
 public:
-
-	ModuleMesh(GameObject* owner);
-	ModuleMesh(GameObject* owner, char* path, ResourceMesh* mesh);
+	ModuleMesh(GameObject* owner,unsigned int ID);
 	~ModuleMesh();
+	void SetNewResource(unsigned int resourceUID)override;
+	ResourceMesh* GetMesh();
+	unsigned int GetResourceID()override;
+	void OnEditor();
 
-	void Update() override;
-	void CleanUp() override;
-	void DrawInspector() override;
-	void OnSave(ConfigNode* node);
-	ResourceMesh* GetMesh() const;
+	AABB GetAABB()const;
 
-	static inline ComponentType GetType() { return ComponentType::Mesh; };
-
-	void DrawMesh();
-
-	char* GetPath()const;
-
-	const AABB& GetAABB() const;
-	const OBB& GetOBB() const;
-
-private:
-
-	ResourceMesh* mesh = nullptr;
-	char* path = nullptr;
-	bool drawVertexNormals = false;
-	bool drawAABB = false;
-
+	void SetTemporalMesh(ResourceMesh* newTempMesh);
+	ResourceMesh* GetTemporalMesh();
+	void DeleteTemporalMesh();
 
 public:
+	float normalVertexSize;
+	float normalFaceSize;
+	int normalDrawMode;
+	int meshDrawMode;
+private:
+	unsigned int resourceID;
+	AABB localAABB;
 
-	AABB aabb;
-	OBB obb;
+	ResourceMesh* temporalRMesh;
 };
+
+
 

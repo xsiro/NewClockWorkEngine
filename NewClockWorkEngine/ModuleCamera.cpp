@@ -1,201 +1,384 @@
-#include "ModuleComponent.h"
-#include "Config.h"
-#include "Application.h"
-#include "GameObject.h"
-
-#include "ModuleRenderer3D.h"
-#include "ModuleCamera3D.h"
-#include "ModuleWindow.h"
-
 #include "ModuleCamera.h"
+#include "GameObject.h"
 #include "ModuleTransform.h"
+#include "imgui/imgui.h"
 
-//#include "Dependecies/mmgr/mmgr.h"
+#include "Application.h"
 
-ModuleCamera::ModuleCamera(GameObject* owner) : ModuleComponent(ComponentType::Camera, owner)
+ModuleCamera::ModuleCamera(GameObject* owner, unsigned int ID, Color backgroundCol) :Component(ComponentType::CAMERA, owner, ID), isCulling(false),
+nearPlaneDist(0.1f), farPlaneDist(500.0f), FoVx(70.0f), FoVy(0.0f), invAspectRatio(0), backgroundCol(backgroundCol),
+projectionMatrix(float4x4::identity)
 {
-	frustum.SetKind(FrustumSpaceGL, FrustumRightHanded);
-	frustum.SetPos(float3(0, 0, 0));
-	frustum.SetFront(float3::unitZ);
-	frustum.SetUp(float3::unitY);
+	frustum.type = math::FrustumType::PerspectiveFrustum;
 
-	frustum.SetViewPlaneDistances(0.1f, 1000.0f);
-	frustum.SetPerspective(1.0f, 1.0f);
+	float2 screenSize;
 
-	SetAspectRatio((float)App->window->GetWidth() / (float)App->window->GetHeight());
-	SetVerticalFov(50.0f);
+	if (App != nullptr)
+		App->gui->GetViewportRectUI(float2(), screenSize);
+	else
+		screenSize = float2(1920, 1080);
 
-	UpdatePlanes();
-
-	corners = new vec[8];
+	SetNewAspectRatio(screenSize.x, screenSize.y);
 }
 
-void ModuleCamera::Update()
+ModuleCamera::ModuleCamera(GameObject* owner, float nPlaneDist, float fPlaneDist, float foV, float aspectRatio, Color backgroundCol) :Component(ComponentType::CAMERA, owner),
+nearPlaneDist(nPlaneDist), farPlaneDist(fPlaneDist), FoVx(foV), FoVy(0.0f), invAspectRatio(0), projectionMatrix(float4x4::identity), isCulling(false),
+backgroundCol(backgroundCol)
 {
-	if (!isCurrentCamera)
+	frustum.type = math::FrustumType::PerspectiveFrustum;
+
+	float2 screenSize;
+
+	if (App != nullptr)
+		App->gui->GetViewportRectUI(float2(), screenSize);
+	else
+		screenSize = float2(1920, 1080);
+
+	if (aspectRatio != 0.0f)
 	{
-		frustum.GetCornerPoints(corners);
-		App->renderer3D->DrawBox(corners);
+		SetNewAspectRatio(aspectRatio);
+	}
+	else
+	{
+		SetNewAspectRatio(screenSize.x, screenSize.y);
+	}
+}
+
+ModuleCamera::~ModuleCamera()
+{
+	if (App != nullptr && App->renderer3D->activeCam == this)//TODO this seems not ok... we dont want camera to be dependant on renderer 3d
+	{
+		App->renderer3D->activeCam = nullptr;
+	}
+}
+
+bool ModuleCamera::Update(float dt)
+{
+
+	if (owner != nullptr)
+	{
+		CalcCamPosFromTransformMat(owner->GetComponent<ModuleTransform>()->GetGlobalTransform());
 	}
 
-	//frustum.ComputeViewMatrix();
+	return true;
 }
 
-void ModuleCamera::CleanUp()
+void ModuleCamera::OnEditor()
 {
-	delete[] corners;
+	bool activeAux = active;
+
+	std::string headerName = "Camera";
+	if (!activeAux)headerName += " (not active)";
+
+	/*ImGui::Checkbox(" ", &active);
+	ImGui::SameLine();
+	ImGui::SetCursorPosX(ImGui::GetCursorPosX()-12);*/
+	ImGuiTreeNodeFlags headerFlags = ImGuiTreeNodeFlags_DefaultOpen;
+
+	if (!activeAux)ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.1f, 0.1f, 0.1f, 1.0f));
+
+	if (ImGui::CollapsingHeader(headerName.c_str(), headerFlags))
+	{
+		if (!activeAux)ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.75f, 0.75f, 0.75f, 0.8f));
+		/*ImGui::SetCursorPosX(ImGui::GetCursorPosX() - 20);*/
+		ImGui::Checkbox("IS ACTIVE##CamCheckbox", &active);
+
+		ImGui::Separator();
+		ImGui::Indent();
+		ImGui::Spacing();
+		ImGui::Spacing();
+
+		//TODO camera things here
+		bool cullingAux = isCulling;
+		if (ImGui::Checkbox("Culling Cam##CamCheckbox", &cullingAux))
+		{
+			SetAsCullingCam(cullingAux);
+		}
+
+		float auxf = GetFoV();
+		if (ImGui::DragFloat("FoV##CamFoVx", &auxf, 0.1f, 1.0f, 180.0f))
+		{
+			SetNewFoV(auxf);
+		}
+		ImGui::Spacing();
+		ImGui::Spacing();
+
+		ImGui::Separator();
+		ImGui::Spacing();
+		ImGui::Spacing();
+
+		//Near plane
+		auxf = GetNearPlaneDist();
+		int flags = ImGuiSliderFlags_Logarithmic;
+
+		if (ImGui::DragFloat("NearPlaneDist##CamNearDist", &auxf, 0.0f, 0.01f, GetFarPlaneDist(), "%.3f", flags))
+		{
+			SetNearPlane(auxf);
+		}
+		//flags = ImGuiSliderFlags_None;
+		//Far plane
+		auxf = GetFarPlaneDist();
+		if (ImGui::DragFloat("FarPlaneDist##CamFarDist", &auxf, 0.0f, 0.1f, 20000.0f, "%.3f", flags))
+		{
+			SetFarPlane(auxf);
+		}
+		ImGui::Spacing();
+		ImGui::Spacing();
+
+		ImGui::Separator();
+		ImGui::Spacing();
+		ImGui::Spacing();
+
+		//aspectRatio
+		auxf = GetAspectRatio();
+		if (ImGui::DragFloat("AspectRatio##CamAspectRatio", &auxf, 0.1f, 0.01f, 10.0f, "%.3f", flags))
+		{
+			SetNewAspectRatio(auxf);
+		}
+		ImGui::Separator();
+		if (ImGui::TreeNode("Select Background Color"))
+		{
+			ImGuiColorEditFlags flags = ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoSidePreview;
+			ImGui::ColorPicker4("MyColor##4", (float*)&backgroundCol, flags);
+			ImGui::TreePop();
+		}
+
+		//camera things end here
+		ImGui::Spacing();
+		ImGui::Spacing();
+
+		ImGui::Separator();
+		ImGui::Unindent();
+
+		if (ImGui::BeginPopup("Delete Camera", ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			ImGui::Text("you are about to delete\n this component");
+
+			if (ImGui::Button("Go ahead"))
+			{
+				toDelete = true;
+			}
+
+			ImGui::SameLine();
+			if (ImGui::Button("Cancel"))
+			{
+				ImGui::CloseCurrentPopup();
+			}
+
+			ImGui::EndPopup();
+		}
+
+		float maxWidth = ImGui::GetWindowContentRegionMax().x;
+		ImGui::SetCursorPosX(maxWidth - 50);
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(1.0f, 0.25f, 0.0f, 1.0f));
+		ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 0.0f, 0.0f, 1.0f));
+
+		if (ImGui::Button("Delete##Camera"))
+		{
+			ImGui::OpenPopup("Delete Camera");
+		}
+
+		if (!activeAux)ImGui::PopStyleColor();
+		ImGui::PopStyleColor(2);
+
+	}
+
+	if (!activeAux)ImGui::PopStyleColor();
 }
 
-//void ModuleCamera::Serialize(JsonNode* node)
-//{
-//	node->AddBool("Is Current Camera", isCurrentCamera);
-//	node->AddBool("Is Culling Camera", isCullingCamera);
-//}
-//
-//void ModuleCamera::Load(JsonNode* node)
-//{
-//	if (node->GetBool("Is Current Camera"))
-//		App->camera->SetCurrentCamera(this);
-//	if (node->GetBool("Is Culling Camera"))
-//		App->camera->SetCullingCamera(this);
-//}
-
-float* ModuleCamera::GetViewMatrix()
+void ModuleCamera::CalcCamPosFromTransformMat(float4x4& gTransform)
 {
-	static float4x4 m;
+	//TODO this global mat might have to be transposed?
+	frustum.pos = gTransform.TranslatePart();
+	frustum.front = gTransform.Col3(2); // The camera looks towards +Z axis of the given transform.
+	frustum.front.Normalize();
+	frustum.up = gTransform.Col3(1); // The camera up points towards +Y of the given transform.
+	frustum.up.Normalize();
 
-	m = frustum.ViewMatrix();
-
-	m.Transpose();
-
-	return (float*)m.v;
+	assume(pos.IsFinite());
+	assume(front.IsNormalized());
+	assume(up.IsNormalized());
+	assume(gTransform.IsColOrthogonal3()); // Front and up must be orthogonal to each other.
+	assume(EqualAbs(gTransform.Determinant(), 1.f)); // The matrix cannot contain mirroring.
 }
 
-void ModuleCamera::OnUpdateTransform(float4x4 globalTransform)
+void ModuleCamera::CalcCamPosFromDirections(float3 pos, float3 front, float3 up)
 {
-	/*frustum.SetFront(owner->transform->GetGlobalTransform().WorldZ());
-	frustum.SetUp(owner->transform->GetGlobalTransform().WorldY());
-
-	float3 position, scale = float3::zero;
-	Quat rotation = Quat::identity;
-	owner->transform->GetGlobalTransform().Decompose(position, rotation, scale);
-
-	frustum.SetPos(position);
-	UpdatePlanes();*/
+	float3 normFront = front.Normalized();
+	float3 normUP = up.Normalized();
+	//TODO this global mat might have to be transposed?
+	frustum.pos = pos;
+	frustum.front = -normFront; // The camera looks towards -Z axis of the given transform. TODO Z+ invert cam
+	frustum.up = normUP; // The camera up points towards +Y of the given transform.
+	assume(pos.IsFinite());
+	assume(front.IsNormalized());
+	assume(up.IsNormalized());
 }
 
-void ModuleCamera::UpdatePlanes()
+float4x4 ModuleCamera::GetProjMat() const
 {
-	frustum.GetPlanes(planes);
+	return projectionMatrix;
 }
 
-void ModuleCamera::Setposition(float3 pos)
+float4x4 ModuleCamera::GetViewMat() const
 {
-	frustum.SetPos(pos);
-	UpdatePlanes();
+	float4x4 viewMat = frustum.ViewMatrix();
+	return viewMat.Transposed();
 }
 
-void ModuleCamera::SetNearPlane(float distance)
+void ModuleCamera::SetNewAspectRatio(int width, int height)
 {
-	frustum.SetViewPlaneDistances(distance, GetFarPlaneDistance());
-	UpdatePlanes();
+	float newW = max(width, 0.01f);
+	float newH = max(height, 0.01f);
+
+	invAspectRatio = newH / newW;
+	SetNewFoV(FoVx);
 }
 
-void ModuleCamera::SetFarPlane(float distance)
+void ModuleCamera::SetNewAspectRatio(float aspectRatio)
 {
-	frustum.SetViewPlaneDistances(GetNearPlaneDistance(), distance);
-	UpdatePlanes();
+	aspectRatio = max(aspectRatio, 0.1f);
+	aspectRatio = min(aspectRatio, 10.0f);
+
+	invAspectRatio = 1 / aspectRatio;
+	SetNewFoV(FoVx);
 }
 
-void ModuleCamera::SetVerticalFov(float verticalFov) //fov
+void ModuleCamera::SetNewFoV(float foV)
 {
-	frustum.SetVerticalFovAndAspectRatio(verticalFov * DEGTORAD, ((float)App->window->GetWidth() / (float)App->window->GetHeight())); //win width / win height
+
+	FoVx = max(foV, 1.0f);
+	FoVx = min(FoVx, 180.0f);
+
+	float aux = Tan(DegToRad(FoVx / 2));
+	aux *= invAspectRatio;
+
+	FoVy = RadToDeg(2 * Atan(aux));//vertical aspect ratio calculates from horizontal one
+
+	UpdateProjectionMat();
+
 }
 
-void ModuleCamera::SetHorizontalFov(float horizontalFov)
+void ModuleCamera::SetNearPlane(float dist)
 {
-	frustum.SetHorizontalFovAndAspectRatio(horizontalFov, ((float)App->window->GetWidth() / (float)App->window->GetHeight()));
+	nearPlaneDist = max(dist, 0.0f);
+
+	if (nearPlaneDist > farPlaneDist)
+	{
+		SetFarPlane(nearPlaneDist);
+	}
+	else
+	{
+		UpdateProjectionMat();
+	}
+
 }
 
-void ModuleCamera::SetAspectRatio(float ratio)
+void ModuleCamera::SetFarPlane(float dist)
 {
-	frustum.SetHorizontalFovAndAspectRatio(frustum.HorizontalFov(), ratio);
+	farPlaneDist = max(dist, 0.0f);
+
+	if (farPlaneDist < nearPlaneDist)
+	{
+		SetNearPlane(farPlaneDist);
+	}
+	else
+	{
+		UpdateProjectionMat();
+	}
 }
 
-float ModuleCamera::ComputeAspectRatio(float verticalFov, float horizontalFov)
+float ModuleCamera::GetNearPlaneDist() const
 {
-	return (Tan(verticalFov / 2) / Tan(horizontalFov / 2));
+	return frustum.nearPlaneDistance;
 }
 
-Frustum ModuleCamera::GetFrustum() const
+float ModuleCamera::GetFarPlaneDist() const
+{
+	return frustum.farPlaneDistance;
+}
+
+float ModuleCamera::GetFoV() const
+{
+	return RadToDeg(frustum.horizontalFov);
+}
+
+float ModuleCamera::GetAspectRatio() const
+{
+
+	return 1 / invAspectRatio;
+}
+
+float ModuleCamera::GetInvAspectRatio() const
+{
+	return invAspectRatio;
+}
+
+const Frustum& ModuleCamera::GetFrustum() const
 {
 	return frustum;
 }
 
-float3 ModuleCamera::GetPos()const
+void ModuleCamera::GetFrustumPoints(std::vector<float3>& emptyVector)
 {
-	return frustum.Pos();
-}
+	float3* frustrumPoints = new float3[8];
+	memset(frustrumPoints, NULL, sizeof(float3) * 8);
+	frustum.GetCornerPoints(frustrumPoints);
 
-float ModuleCamera::GetNearPlaneDistance()const
-{
-	return frustum.NearPlaneDistance();
-}
+	emptyVector.clear();
 
-float ModuleCamera::GetFarPlaneDistance()const
-{
-	return frustum.FarPlaneDistance();
-}
-
-float ModuleCamera::GetVerticalFov()const
-{
-	return frustum.VerticalFov() * RADTODEG;
-}
-
-float ModuleCamera::GetHorizontalFov()const
-{
-	return frustum.HorizontalFov();
-}
-
-void ModuleCamera::DrawInspector()
-{
-	ImGuiInputTextFlags flags = ImGuiInputTextFlags_ReadOnly;
-
-	if (ImGui::CollapsingHeader("Camera"))
+	for (int i = 0; i < 8; i++)
 	{
-		float3 pos = this->GetPos();
-		if (ImGui::DragFloat3("Camera Position", (float*)&pos, 0.5))
-		{
-			this->Setposition(pos);
-		}
-
-		float nearPlane = this->GetNearPlaneDistance();
-		if (ImGui::DragFloat("Near Plane Distance", &nearPlane, 0.5f, 0.f))
-		{
-			this->SetNearPlane(nearPlane);
-		}
-
-		float farPlane = this->GetFarPlaneDistance();
-		if (ImGui::DragFloat("Far Plane Distance", &farPlane, 0.5f, 0.1f))
-		{
-			this->SetFarPlane(farPlane);
-		}
-
-		float verticalFov = this->GetVerticalFov();
-		if (ImGui::DragFloat("Vertical Fov", &verticalFov, 0.1f, 30.f, 120.f))
-		{
-			this->SetVerticalFov(verticalFov);
-		}
-
-		ImGui::Checkbox("Culling", &this->cull);
-		if (ImGui::Button("Set As Current Camera"))
-		{
-			App->camera->SetCurrentCamera(this);
-		}
-
-		if (ImGui::Button("Set As Culling Camera"))
-		{
-			App->camera->SetCullingCamera(this);
-		}
+		emptyVector.push_back(frustrumPoints[i]);
 	}
+	delete[]frustrumPoints;
+	frustrumPoints = nullptr;
+
+}
+
+bool ModuleCamera::GetIsCulling() const
+{
+	return isCulling;
+}
+//TODO add things to this
+void ModuleCamera::SetAsCullingCam(bool newState)
+{
+	if (newState != isCulling)
+	{
+
+		if (newState)
+		{
+			if (App->renderer3D->activeCam != nullptr)
+			{
+				App->renderer3D->activeCam->SetAsCullingCam(false);
+			}
+			App->renderer3D->activeCam = this;
+		}
+		else if (App->renderer3D->activeCam == this)
+		{
+			App->renderer3D->activeCam = nullptr;
+		}
+
+		isCulling = newState;
+	}
+}
+
+Color ModuleCamera::GetBackgroundCol() const
+{
+	return backgroundCol;
+}
+
+void ModuleCamera::SetBackgroundCol(Color c)
+{
+	backgroundCol = c;
+}
+
+void ModuleCamera::UpdateProjectionMat()
+{
+	frustum.nearPlaneDistance = nearPlaneDist;
+	frustum.farPlaneDistance = farPlaneDist;
+	frustum.horizontalFov = DegToRad(FoVx);
+	frustum.verticalFov = DegToRad(FoVy);
+	projectionMatrix = frustum.ProjectionMatrix().Transposed();
+
 }
